@@ -1,3 +1,5 @@
 module.exports = {
-  reactStrictMode: true,
+  images: {
+    // domains: ['cdnjs.cloudflare.com'],
+  },
 }
