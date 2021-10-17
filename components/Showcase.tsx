@@ -3,11 +3,11 @@ import type { ReactNode } from 'react'
 import { css } from '@emotion/react'
 
 import { Col } from 'components/Box'
-import { COLORS, NAMED_COLORS } from 'utils/style'
+import { COLORS, NAMED_COLORS } from 'styles/constants'
 
 export type ShowcaseProps = {
-  headerColor: typeof NAMED_COLORS
-  title: string
+  headerColor: string
+  title: ReactNode
   children: ReactNode
 }
 
@@ -17,10 +17,9 @@ export function Showcase({ headerColor, title, children }: ShowcaseProps) {
       <Col
         css={css`
           background: ${headerColor};
-          padding: 20vh 10vw;
+          padding: 10vh 10vw;
           width: 80vw;
-          height: 100vh;
-          min-height: 100vh;
+          text-align: left;
         `}
       >
         {title}

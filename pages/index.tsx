@@ -1,38 +1,43 @@
 /** @jsxImportSource @emotion/react */
 // ^ required to use css correctly
-import Head from 'next/head'
-import Image from 'next/image'
+import { useState } from 'react'
 import { css } from '@emotion/react'
-import { Col } from 'components/Box'
 
-import { COLORS } from 'styles/global'
+import { Col } from 'components/Box'
+import { COLORS } from 'styles/constants'
+import Typography from 'components/Typography'
+import Colors from 'components/Colors'
 
 import UIKIT from 'svg/ui-kit.svg'
 
 export default function Home() {
   return (
-    <div
+    <main
       css={css`
-        background: ${COLORS.BRAND.BLUE};
-        height: 100vh;
+        font-size: 14px;
       `}
     >
-      <Col
+      <div
         css={css`
-          padding: 20vh 10vw;
-          width: 80vw;
-          height: 100vh;
-          min-height: 100vh;
+          background: ${COLORS.BRAND.BLUE};
         `}
       >
-        <UIKIT
+        <Col
           css={css`
-            fill: ${COLORS.GLOBAL.WHITE};
-            width: 54vw;
-            margin: 0 auto;
+            padding: 10vh 10vw;
+            width: 80vw;
           `}
-        />
-      </Col>
-    </div>
+        >
+          <UIKIT
+            css={css`
+              fill: ${COLORS.GLOBAL.WHITE};
+              width: 54vw;
+            `}
+          />
+        </Col>
+      </div>
+      <Typography />
+      <Colors />
+    </main>
   )
 }
