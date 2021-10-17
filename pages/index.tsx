@@ -14,18 +14,23 @@ export default function Home() {
     <div
       css={css`
         background: ${COLORS.BRAND.BLUE};
-        min-height: 100vh;
+        height: 100vh;
       `}
     >
       <Col
         css={css`
-          padding: 20%;
-          width: 100%;
-          height: 100%;
+          padding: 20vh 10vw;
+          width: 80vw;
+          height: 100vh;
+          min-height: 100vh;
         `}
       >
         <UIKIT
-          style={{ fill: COLORS.GLOBAL.WHITE, width: '54vw', margin: '0 auto' }}
+          css={css`
+            fill: ${COLORS.GLOBAL.WHITE};
+            width: 54vw;
+            margin: 0 auto;
+          `}
         />
       </Col>
     </div>
