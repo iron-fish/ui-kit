@@ -8,6 +8,10 @@ export enum CASE {
   MIXED,
   UPPERCASE,
 }
+export enum THEME {
+  LIGHT,
+  DARK,
+}
 
 export type Typeface = {
   family: FONT

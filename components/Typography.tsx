@@ -27,7 +27,7 @@ const wideRow = css`
   width: 100%;
   justify-content: space-between;
   align-items: center;
-  height: 5rem;
+  height: 6rem;
   overflow: hidden;
   &:nth-of-type(2n + 2) {
     background-color: ${NAMED_COLORS.LIGHTER_GREY};
@@ -36,19 +36,24 @@ const wideRow = css`
 const wideFirstColumn = css`
   ${alignLeft}
   min-width: 5rem;
-  width: 15%;
+  width: 40%;
   justify-self: flex-start;
   overflow: hidden;
   padding-left: 0.5rem;
 `
 const THead = styled('th')`
   ${flexColumn}
-  width: ${100 / 4}%;
+  width: ${100 / 5}%;
+`
+const Lined = styled('div')`
+  padding-bottom: 0.5rem;
+  text-decoration: 1px solid black;
 `
 const TCol = styled('td')`
   ${flexColumn}
-  width: ${100 / 4}%;
+  width: ${100 / 5}%;
 `
+const loremIpsum = `Lorem ipsum dolor sit amet, consectetur adipiscing Iron Fish elit, sed do eiusmod mainnet.`
 
 function TypographyContent() {
   const [$asRem, $setAsRem] = useState<boolean>(true)
@@ -58,22 +63,43 @@ function TypographyContent() {
   return (
     <div
       css={css`
+        cursor: help;
         background-color: ${NAMED_COLORS.WHITE};
-        width: 100vw;
+        width: 100%;
         padding: 0;
         @media screen and (min-width: 60rem) {
-          width: 80vw;
-          padding: 10vh 10vw;
+          padding: 2rem;
+          width: calc(100% - 4rem);
         }
       `}
     >
       <table css={flexColumn} onClick={() => $setAsRem(!$asRem)}>
-        <thead css={wideRow}>
+        <thead
+          css={css`
+            ${wideRow}
+            border-bottom: 1px solid black;
+            height: 3rem;
+          `}
+        >
           <tr css={wideRow}>
-            <THead css={wideFirstColumn}>Name</THead>
-            <THead>Family</THead>
-            <THead>Size (in {units})</THead>
-            <THead>Line Height (in {units})</THead>
+            <THead css={wideFirstColumn}>
+              <Lined>Name</Lined>
+            </THead>
+            <THead>
+              <Lined>Family</Lined>
+            </THead>
+            <THead>
+              <Lined>
+                Size <br />
+                <small>(in {units})</small>
+              </Lined>
+            </THead>
+            <THead>
+              <Lined>
+                Line Height <br />
+                <small>(in {units})</small>
+              </Lined>
+            </THead>
             {/*<THead>Weight</THead>
           <THead>Text Transform</THead>*/}
           </tr>
@@ -87,8 +113,13 @@ function TypographyContent() {
                 title={`.${key} { ${typefaceToCSS(t)} }`}
                 css={wideRow}
               >
-                <TCol css={wideFirstColumn}>
-                  <Example>{capitalize(key)}</Example>
+                <TCol
+                  css={css`
+                    ${wideFirstColumn}
+                    align-self: ${$asRem ? 'center' : 'flex-start'};
+                  `}
+                >
+                  <Example>{$asRem ? capitalize(key) : loremIpsum}</Example>
                 </TCol>
                 <TCol>
                   <Code>{t.family.slice(0, -8)}</Code>

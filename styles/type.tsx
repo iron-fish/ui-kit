@@ -5,6 +5,7 @@ export const favorit = 'favorit-regular'
 export const extended = 'favoritextended-regular'
 
 export const typefaceToCSS = (raw: Typeface) => `
+  margin: 0;
   font-family: ${raw.family};
   font-size: ${raw.size};
   font-weight: ${raw.weight};

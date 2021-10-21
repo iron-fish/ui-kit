@@ -3,10 +3,12 @@
 import { useState } from 'react'
 import { css } from '@emotion/react'
 
+import { COLORS, THEME } from 'styles/constants'
+
 import { Col } from 'components/Box'
-import { COLORS } from 'styles/constants'
 import Typography from 'components/Typography'
 import Colors from 'components/Colors'
+import ComponentsOverview from 'components/ComponentsOverview'
 
 import UIKIT from 'svg/ui-kit.svg'
 
@@ -24,8 +26,8 @@ export default function Home() {
       >
         <Col
           css={css`
-            padding: 10vh 10vw;
-            width: 80vw;
+            padding: 10vh 2vw;
+            width: 96vw;
           `}
         >
           <UIKIT
@@ -38,6 +40,7 @@ export default function Home() {
       </div>
       <Typography />
       <Colors />
+      <ComponentsOverview mode={THEME.LIGHT} />
     </main>
   )
 }
