@@ -6,6 +6,9 @@ module.exports = {
       script: `next dev -p ${PORT}`,
       description: `runs on ${PORT} by default`,
     },
+    bureaucracy: {
+      enforceStaticVersions: `node scripts/force-static-versions.js`,
+    },
     build: 'next build',
     start: 'next start',
     lint: 'next lint',

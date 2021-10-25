@@ -16,6 +16,11 @@ interface SwatchProps {
 
 const invert = (x: string) => colord(x).invert()
 const toHex = (x: string) => toUpper(colord(x).toHex())
+const copyToClipboard = (s: string) => {
+  if (navigator?.clipboard?.writeText) {
+    navigator.clipboard.writeText(s)
+  }
+}
 
 const blackOrWhite = (x: string) => {
   /*
@@ -44,6 +49,7 @@ export const Swatch = ({ name, hex }: SwatchProps) => {
   const q3 = transparentize(0.75, hex)
   return (
     <div
+      onClick={() => copyToClipboard(hex)}
       css={css`
         ${flexRow}
         max-height: 5rem;
@@ -58,7 +64,7 @@ export const Swatch = ({ name, hex }: SwatchProps) => {
           ${flexRow}
           justify-content: space-between;
           align-items: center;
-          min-width: 50%;
+          min-width: 49%;
           min-height: 5rem;
           align-self: flex-start;
           padding: 0 1rem;
@@ -75,7 +81,7 @@ export const Swatch = ({ name, hex }: SwatchProps) => {
           justify-content: center;
           align-items: center;
           min-height: 5rem;
-          width: 20%;
+          width: 17%;
           background: ${q3};
           color: ${blackOrWhite(hex)};
         `}
@@ -88,7 +94,7 @@ export const Swatch = ({ name, hex }: SwatchProps) => {
           justify-content: center;
           align-items: center;
           min-height: 5rem;
-          width: 20%;
+          width: 17%;
           background: ${q2};
           color: ${blackOrWhite(hex)};
         `}
@@ -101,7 +107,7 @@ export const Swatch = ({ name, hex }: SwatchProps) => {
           justify-content: center;
           align-items: center;
           min-height: 5rem;
-          width: 20%;
+          width: 17%;
           background: ${q1};
           color: ${blackOrWhite(hex)};
         `}

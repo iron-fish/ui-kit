@@ -27,7 +27,7 @@ const wideRow = css`
   width: 100%;
   justify-content: space-between;
   align-items: center;
-  height: 6rem;
+  height: 5.5rem;
   overflow: hidden;
   &:nth-of-type(2n + 2) {
     background-color: ${NAMED_COLORS.LIGHTER_GREY};
@@ -39,7 +39,7 @@ const wideFirstColumn = css`
   width: 40%;
   justify-self: flex-start;
   overflow: hidden;
-  padding-left: 0.5rem;
+  padding-left: 2rem;
 `
 const THead = styled('th')`
   ${flexColumn}
@@ -116,6 +116,7 @@ function TypographyContent() {
                 <TCol
                   css={css`
                     ${wideFirstColumn}
+                    margin-top: ${$asRem ? 'inherit' : '0.25rem'};
                     align-self: ${$asRem ? 'center' : 'flex-start'};
                   `}
                 >

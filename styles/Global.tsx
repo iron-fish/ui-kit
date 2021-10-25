@@ -11,8 +11,8 @@ import { NAMED_COLORS, BASE_FONT_SIZE } from 'styles/constants'
 
 export interface Theme {
   colors: {
-    fore: typeof NAMED_COLORS
-    back: typeof NAMED_COLORS
+    fore: string
+    back: string
   }
 }
 

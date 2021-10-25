@@ -29,12 +29,14 @@ interface ColorStackProps {
   title: ReactNode
   colors: Color[]
   compressible?: boolean
+  index?: number
 }
 
 const ColorStack = ({
   title,
   colors,
   compressible = true,
+  index = Infinity,
 }: ColorStackProps) => (
   <div
     css={css`
@@ -44,8 +46,14 @@ const ColorStack = ({
       padding: 2rem;
       ${compressible
         ? `@media screen and (min-width: 48rem) {
-          padding: 2rem;
-          width: calc(50% - 4rem);
+          padding: ${
+            index === 0
+              ? `2rem 1rem 0rem 2rem`
+              : index === 1
+              ? `2rem 2rem 0rem 1rem`
+              : `0rem 2rem 2rem 2rem`
+          };
+          width: calc(50% - ${index > 1 ? '4rem' : '3rem'});
       }`
         : ''}
     `}
@@ -109,6 +117,7 @@ function Colors() {
               Light Mode
             </>
           }
+          index={0}
           colors={Object.entries(COLORS.THEME.LIGHT).map(
             ([name, hex]: [string, string]) => ({ name, hex })
           )}
@@ -121,6 +130,7 @@ function Colors() {
               Dark Mode
             </>
           }
+          index={1}
           colors={Object.entries(COLORS.THEME.DARK).map(
             ([name, hex]: [string, string]) => ({ name, hex })
           )}

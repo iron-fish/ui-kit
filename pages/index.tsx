@@ -26,8 +26,8 @@ export default function Home() {
       >
         <Col
           css={css`
-            padding: 10vh 2vw;
-            width: 96vw;
+            padding: 10rem 2rem;
+            width: calc(100% - 4rem);
           `}
         >
           <UIKIT
