@@ -6,6 +6,7 @@ import {
   useContext,
   useState,
 } from 'react'
+import { map } from 'ramda'
 import { Global, ThemeProvider, css } from '@emotion/react'
 import { NAMED_COLORS, BASE_FONT_SIZE } from 'styles/constants'
 
@@ -23,10 +24,21 @@ export const globalTheme = {
   },
 }
 export const getTheme = (x: { theme: Theme }) => x.theme
+export const FONT_FAMILIES = {
+  EXTENDED: 'extended-regular',
+  BODY: 'favorit-regular',
+  MONO: 'mono-regular',
+}
+// typescript is fucking dumb
+// I shouldn't have to explicitly type `map` 🤬
+const vin = map<{ [key: string]: string }, { [key: string]: string }>(
+  (font: string) => `font-family: ${font};`
+)
+export const FONT = vin(FONT_FAMILIES)
 
 const typeface = (name: string, path: string, family: string) => css`
   @font-face {
-    font-family: '${name}';
+    font-family: '${name as string}';
     src: url('/font/${path}/${family}.eot');
     src: url('/font/${path}/${family}.eot?#iefix') format('embedded-opentype'),
       url('/font/${path}/${family}.woff2') format('woff2'),
@@ -38,14 +50,18 @@ const typeface = (name: string, path: string, family: string) => css`
     font-display: swap;
   }
 `
-const FONTS = {
+export const FONTS = {
   EXTENDED: typeface(
-    'extended-regular',
+    FONT_FAMILIES.EXTENDED,
     'extendedregular',
     'favoritextended-regular-webfont'
   ),
-  MONO: typeface('mono-regular', 'monoregular', 'favoritmono-regular-webfont'),
-  BODY: typeface('favorit-regular', 'regular', 'favorit-regular-webfont'),
+  MONO: typeface(
+    FONT_FAMILIES.MONO,
+    'monoregular',
+    'favoritmono-regular-webfont'
+  ),
+  BODY: typeface(FONT_FAMILIES.BODY, 'regular', 'favorit-regular-webfont'),
 }
 
 export const transition = (x: string | string[]) =>

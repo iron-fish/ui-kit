@@ -1,3 +1,5 @@
+import { mapObjIndexed } from 'ramda'
+
 import styled from '@emotion/styled'
 import { TYPEFACES, CASE, Typeface } from 'styles/constants'
 
@@ -12,6 +14,9 @@ export const typefaceToCSS = (raw: Typeface) => `
   line-height: ${raw.lineHeight};
   text-transform: ${raw.textTransform === CASE.MIXED ? 'none' : 'uppercase'};
 `
+
+export const FACES = mapObjIndexed(value => typefaceToCSS(value), TYPEFACES)
+
 export const BODY = styled('span')(typefaceToCSS(TYPEFACES.BODY))
 export const TITLE = styled('h1')(typefaceToCSS(TYPEFACES.TITLE))
 export const H1 = styled('h1')(typefaceToCSS(TYPEFACES.H1))

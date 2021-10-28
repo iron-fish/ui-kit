@@ -1,4 +1,4 @@
-export enum FONT {
+export enum POSSIBLE_FONTS {
   EXTENDED = 'extended-regular',
   FAVORIT = 'favorit-regular',
   MONO = 'mono-regular',
@@ -14,7 +14,7 @@ export enum THEME {
 }
 
 export type Typeface = {
-  family: FONT
+  family: POSSIBLE_FONTS
   size: string
   lineHeight: string
   weight: string
@@ -22,7 +22,7 @@ export type Typeface = {
 }
 
 const makeFont = (
-  family: FONT,
+  family: POSSIBLE_FONTS,
   size: string,
   lineHeight: string,
   weight: string,
@@ -35,16 +35,28 @@ const makeFont = (
   textTransform,
 })
 
-const BODY = makeFont(FONT.FAVORIT, '0.875rem', '1.4rem', '400', CASE.MIXED)
+const BODY = makeFont(
+  POSSIBLE_FONTS.FAVORIT,
+  '0.875rem',
+  '1.4rem',
+  '400',
+  CASE.MIXED
+)
 
 export const TYPEFACES = {
-  TITLE: makeFont(FONT.EXTENDED, '3.25rem', '5.2rem', '400', CASE.MIXED),
-  H1: makeFont(FONT.EXTENDED, '2.25rem', '3.6rem', '400', CASE.MIXED),
-  H2: makeFont(FONT.EXTENDED, '1.75rem', '2.8rem', '400', CASE.MIXED),
-  H3: makeFont(FONT.EXTENDED, '1.5rem', '2.4rem', '400', CASE.MIXED),
-  H4: makeFont(FONT.FAVORIT, '1rem', '1.6rem', '400', CASE.MIXED),
+  TITLE: makeFont(
+    POSSIBLE_FONTS.EXTENDED,
+    '3.25rem',
+    '5.2rem',
+    '400',
+    CASE.MIXED
+  ),
+  H1: makeFont(POSSIBLE_FONTS.EXTENDED, '2.25rem', '3.6rem', '400', CASE.MIXED),
+  H2: makeFont(POSSIBLE_FONTS.EXTENDED, '1.75rem', '2.8rem', '400', CASE.MIXED),
+  H3: makeFont(POSSIBLE_FONTS.EXTENDED, '1.5rem', '2.4rem', '400', CASE.MIXED),
+  H4: makeFont(POSSIBLE_FONTS.FAVORIT, '1rem', '1.6rem', '400', CASE.MIXED),
   H5: BODY,
-  H6: makeFont(FONT.FAVORIT, '0.75rem', '1.2rem', '400', CASE.MIXED),
+  H6: makeFont(POSSIBLE_FONTS.FAVORIT, '0.75rem', '1.2rem', '400', CASE.MIXED),
   BODY,
 }
 

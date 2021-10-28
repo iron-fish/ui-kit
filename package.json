@@ -34,6 +34,7 @@
     "eslint-config-next": "11.1.2",
     "eslint-config-prettier": "8.3.0",
     "eslint-plugin-prettier": "4.0.0",
+    "gitparty": "1.0.10",
     "husky": "7.0.2",
     "nps": "5.10.0",
     "nps-utils": "1.7.0",
