@@ -10,6 +10,7 @@
   "scripts": {
     "dev": "nps dev",
     "lint": "nps lint",
+    "test": "nps test",
     "build": "nps build",
     "publish": "nps publish"
   },
