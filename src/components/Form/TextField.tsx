@@ -1,6 +1,6 @@
 import styles from './index.module.css'
 import { Dispatch, SetStateAction } from 'react'
-import { Field, NameValue } from 'hooks/useForm'
+import { Field, NameValue } from 'src/hooks/useForm'
 import LabelledRow from './LabelledRow'
 
 interface OptionsProps {

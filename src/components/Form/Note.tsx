@@ -1,8 +1,8 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/css'
 import { ReactNode } from 'react'
-import { NAMED_COLORS } from 'styles/constants'
-import { FACES } from 'styles/type'
+import { NAMED_COLORS } from 'src/styles/constants'
+import { FACES } from 'src/styles/type'
 
 const note = css`
   ${FACES.H6}

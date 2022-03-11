@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "es2015",
+    "declaration": true,
+    "outDir": "./dist",
+    "allowJs": true,
+    "jsx": "preserve"
+  },
+  "include": [
+    "lib/**/*"
+  ],
+  "exclude": ["node_modules"]
+}
