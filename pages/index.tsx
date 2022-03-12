@@ -3,12 +3,12 @@
 import { useState } from 'react'
 import { css } from '@emotion/react'
 
-import { COLORS, THEME } from 'src/styles/constants'
+import { COLORS, THEME } from 'styles/constants'
 
-import { Col } from 'src/components/Box'
-import Typography from 'src/components/Typography'
-import Colors from 'src/components/Colors'
-import ComponentsOverview from 'src/components/ComponentsOverview'
+import { Col } from 'components/Box'
+import Typography from 'components/Typography'
+import Colors from 'components/Colors'
+import ComponentsOverview from 'components/ComponentsOverview'
 
 import UIKIT from 'svg/ui-kit.svg'
 

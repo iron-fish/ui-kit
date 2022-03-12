@@ -1,8 +1,8 @@
 /** @jsxImportSource @emotion/react */
 import { curry, toUpper } from 'ramda'
 import { css } from '@emotion/react'
-import { NAMED_COLORS, COLORS } from 'src/styles/constants'
-import { flexRow, flexColumn, Code } from 'src/styles/shared'
+import { NAMED_COLORS, COLORS } from 'styles/constants'
+import { flexRow, flexColumn, Code } from 'styles/shared'
 import { colord, extend } from 'colord'
 import contrast from 'colord/plugins/a11y'
 extend([contrast])

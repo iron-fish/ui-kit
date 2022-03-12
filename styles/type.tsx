@@ -1,7 +1,7 @@
 import { mapObjIndexed } from 'ramda'
 
 import styled from '@emotion/styled'
-import { TYPEFACES, CASE, Typeface } from 'src/styles/constants'
+import { TYPEFACES, CASE, Typeface } from 'styles/constants'
 
 export const favorit = 'favorit-regular'
 export const extended = 'favoritextended-regular'

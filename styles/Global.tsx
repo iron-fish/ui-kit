@@ -8,7 +8,7 @@ import {
 } from 'react'
 import { map } from 'ramda'
 import { Global, ThemeProvider, css } from '@emotion/react'
-import { NAMED_COLORS, BASE_FONT_SIZE } from 'src/styles/constants'
+import { NAMED_COLORS, BASE_FONT_SIZE } from 'styles/constants'
 
 export interface Theme {
   colors: {

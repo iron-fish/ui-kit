@@ -4,19 +4,19 @@ import { useState } from 'react'
 import styled from '@emotion/styled'
 import { css } from '@emotion/react'
 
-import { Col } from 'src/components/Box'
-import Showcase from 'src/components/Showcase'
-import Swatch from 'src/components/Swatch'
+import { Col } from 'components/Box'
+import Showcase from 'components/Showcase'
+import Swatch from 'components/Swatch'
 import {
   TYPEFACES,
   COLORS,
   Typeface,
   CASE,
   NAMED_COLORS,
-} from 'src/styles/constants'
-import { asPx } from 'src/styles/utils'
-import { H1, TITLE, asFont, typefaceToCSS } from 'src/styles/type'
-import { Code, alignLeft, flexColumn, flexRow } from 'src/styles/shared'
+} from 'styles/constants'
+import { asPx } from 'styles/utils'
+import { H1, TITLE, asFont, typefaceToCSS } from 'styles/type'
+import { Code, alignLeft, flexColumn, flexRow } from 'styles/shared'
 
 import HexFish from 'svg/hexfish.svg'
 

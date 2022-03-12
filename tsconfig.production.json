@@ -1,14 +1,14 @@
 {
   "compilerOptions": {
+    "baseUrl": ".",
     "module": "commonjs",
     "target": "es2015",
     "declaration": true,
     "outDir": "./dist",
     "allowJs": true,
-    "jsx": "preserve"
+    "jsx": "preserve",
+    "skipLibCheck": true,
   },
-  "include": [
-    "lib/**/*"
-  ],
-  "exclude": ["node_modules"]
+  "include": ["**/*.ts", "**/*.tsx"],
+  "exclude": ["node_modules", ".github", "pages", "public", "scripts"]
 }

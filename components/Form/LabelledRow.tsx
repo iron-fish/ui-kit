@@ -2,7 +2,7 @@
 import { css } from '@emotion/react'
 import FormRow from './FormRow'
 import { FieldError } from './FieldStatus'
-import { FACES } from 'src/styles/type'
+import { FACES } from 'styles/type'
 
 interface LabelledRowProps {
   id: string

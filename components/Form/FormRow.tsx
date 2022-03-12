@@ -1,8 +1,8 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react'
-import { FACES } from 'src/styles/type'
-import { NAMED_COLORS, TYPEFACES } from 'src/styles/constants'
-import { FONT } from 'src/styles/Global'
+import { FACES } from 'styles/type'
+import { NAMED_COLORS, TYPEFACES } from 'styles/constants'
+import { FONT } from 'styles/Global'
 
 interface FormRowProps {
   className?: string
