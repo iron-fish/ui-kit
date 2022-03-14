@@ -38,8 +38,14 @@ module.exports = {
         script: 'nps meta.dep.build meta.dep.interactive',
       },
     },
-
-    build: 'tsc --project tsconfig.production.json',
+    build: {
+      script: 'nps build.prod',
+      prod: {
+        esm: 'tsc --project tsconfig.production.esm.json',
+        cjs: 'tsc --project tsconfig.production.cjs.json',
+        script: concurrent.nps('build.prod.esm', 'build.prod.cjs'),
+      },
+    },
     publish: 'npm publish',
     precommit: 'nps care',
     care: concurrent.nps('build', 'lint'),
