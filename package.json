@@ -1,7 +1,11 @@
 {
   "name": "@iron-fish/ui-kit",
+  "main": "dist/cjs/ui-kit.js",
+  "module": "dist/esm/ui-kit.js",
+  "types": "dist/esm/index.d.ts",
   "version": "0.0.1",
   "private": true,
+  "files": ["dist"],
   "scripts": {
     "dev": "nps dev",
     "build": "nps build",

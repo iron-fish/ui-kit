@@ -1,9 +1,7 @@
 #!/usr/bin/env node
 
-const fs = require('fs/promises')
 const path = require('path')
 const {
-  F,
   addIndex,
   always,
   ap,
@@ -27,19 +25,11 @@ const {
   unless,
 } = require('snang/script')
 
+const { writeFile, safeParse } = require('./shared')
+
 const PKG = path.resolve(__dirname, '../package.json')
 
 const CMD = `force-static-versions `
-
-// writeFile :: String -> String -> Future Error String
-const writeFile = curry(
-  (file, raw) =>
-    new F.Future((bad, good) => {
-      fs.writeFile(file, raw, 'utf8').catch(bad).then(good)
-      // eslint-disable-next-line @typescript-eslint/no-empty-function
-      return () => {}
-    })
-)
 
 const SKIP_DEPENDENCIES = ['@babel/core']
 // testExcluded :: List String -> List String
@@ -83,21 +73,6 @@ const makeStatic = (raw, deps) =>
     mash(raw),
     j2
   )(deps)
-
-const safeParse = x =>
-  new F.Future((bad, good) => {
-    try {
-      good(JSON.parse(x))
-    } catch (e) {
-      if (/Unexpected end of JSON input/.test(e.message)) {
-        bad(`${CMD} 🗄 😭 ${PKG} is malformed.`)
-      } else {
-        bad(e)
-      }
-    }
-    // eslint-disable-next-line
-    return () => {}
-  })
 
 module.exports = pipe(
   // take a path

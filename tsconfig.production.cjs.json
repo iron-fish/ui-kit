@@ -24,13 +24,6 @@
     "suppressImplicitAnyIndexErrors": true,
     "target": "es5"
   },
-  "include": [
-    "./next-env.d.ts",
-    "components",
-    "hooks",
-    "styles",
-    "svg",
-    "utils"
-  ],
+  "include": ["ui-kit.tsx", "./next-env.d.ts"],
   "exclude": ["node_modules", "dist"]
 }
