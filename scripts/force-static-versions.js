@@ -3,41 +3,28 @@
 const fs = require('fs/promises')
 const path = require('path')
 const {
-  C,
   F,
-  keys,
   addIndex,
   always,
-  any,
   ap,
   chain,
   curry,
-  equals,
   flip,
   fork,
   fromPairs,
   head,
   identity: I,
-  ifElse,
   includes,
   j2,
-  join,
-  length,
-  lines,
   map,
   merge,
   of,
   pipe,
-  prepend,
   prop,
   readFile,
   reduce,
-  split,
   toPairs,
-  toUpper,
-  trace,
   unless,
-  unlines,
 } = require('snang/script')
 
 const PKG = path.resolve(__dirname, '../package.json')
@@ -49,6 +36,7 @@ const writeFile = curry(
   (file, raw) =>
     new F.Future((bad, good) => {
       fs.writeFile(file, raw, 'utf8').catch(bad).then(good)
+      // eslint-disable-next-line @typescript-eslint/no-empty-function
       return () => {}
     })
 )
@@ -107,6 +95,7 @@ const safeParse = x =>
         bad(e)
       }
     }
+    // eslint-disable-next-line
     return () => {}
   })
 
@@ -136,5 +125,6 @@ module.exports = pipe(
   // map(trace('raw')),
   // because writeToPackage returns a Future also, we need to wrap this with `chain` in order to combine futures
   chain(writeToPackage),
+  // eslint-disable-next-line no-console
   fork(console.error, console.log)
 )(PKG)

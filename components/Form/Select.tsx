@@ -18,7 +18,6 @@ export const Select = ({
   value,
   onChange,
   setTouched,
-  className,
 }: SelectField) => {
   const allOptions = useDefault
     ? [{ name: defaultLabel, value: defaultValue }].concat(options)

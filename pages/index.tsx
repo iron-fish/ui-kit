@@ -1,6 +1,5 @@
 /** @jsxImportSource @emotion/react */
 // ^ required to use css correctly
-import { useState } from 'react'
 import { css } from '@emotion/react'
 
 import { COLORS, THEME } from 'styles/constants'

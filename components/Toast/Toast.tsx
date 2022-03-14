@@ -1,3 +1,6 @@
+import clsx from 'clsx'
+import styles from './styles.module.css'
+
 import { Alignment, ConditionalToastProps } from './types'
 
 export const Toast = ({

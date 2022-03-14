@@ -1,26 +1,17 @@
 /** @jsxImportSource @emotion/react */
 // ^ required to use css correctly
-import type { ReactNode } from 'react'
 import { useState } from 'react'
 import styled from '@emotion/styled'
 import { css } from '@emotion/react'
 
-import { Col } from 'components/Box'
 import Showcase from 'components/Showcase'
-import {
-  TYPEFACES,
-  COLORS,
-  Typeface,
-  CASE,
-  NAMED_COLORS,
-} from 'styles/constants'
+import { TYPEFACES, COLORS, Typeface, NAMED_COLORS } from 'styles/constants'
 import { asPx } from 'styles/utils'
 import { TITLE, asFont, typefaceToCSS } from 'styles/type'
 import { Code, alignLeft, flexColumn, flexRow } from 'styles/shared'
 import { capitalize } from 'utils/string'
 
 import HexFish from 'svg/hexfish.svg'
-import UIKIT from 'svg/ui-kit.svg'
 
 const wideRow = css`
   ${flexRow}
@@ -105,7 +96,7 @@ function TypographyContent() {
           </tr>
         </thead>
         <tbody>
-          {typefaceKVs.map(([key, t]: [string, Typeface], i: number) => {
+          {typefaceKVs.map(([key, t]: [string, Typeface]) => {
             const Example = asFont(key)
             return (
               <tr

@@ -7,6 +7,7 @@
     "plugin:prettier/recommended",
     "plugin:@typescript-eslint/recommended",
   ],
+  "ignorePatterns": ["dist", "package-scripts.js"],
   "rules": {
     "no-shadow": "off",
     "@typescript-eslint/no-shadow": ["error"],

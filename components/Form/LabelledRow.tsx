@@ -14,7 +14,7 @@ interface LabelledRowProps {
   children?: React.ReactNode
 }
 
-const label = css`
+const labelStyle = css`
   ${FACES.H6}
   margin-bottom: 0.75rem;
 `
@@ -31,7 +31,7 @@ export const LabelledRow = ({
   <>
     <FormRow valid={valid} disabled={disabled}>
       {label.length > 0 && (
-        <label htmlFor={id} css={label}>
+        <label htmlFor={id} css={labelStyle}>
           {label}
           {required && (
             <span
