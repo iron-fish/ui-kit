@@ -3,7 +3,6 @@ import type { ReactNode } from 'react'
 import { css } from '@emotion/react'
 
 import { Col } from 'components/Box'
-import { COLORS, NAMED_COLORS } from 'styles/constants'
 
 export type ShowcaseProps = {
   headerColor: string

@@ -1,22 +1,11 @@
 /** @jsxImportSource @emotion/react */
 import type { ReactNode } from 'react'
-import { useState } from 'react'
-import styled from '@emotion/styled'
 import { css } from '@emotion/react'
 
-import { Col } from 'components/Box'
 import Showcase from 'components/Showcase'
 import Swatch from 'components/Swatch'
-import {
-  TYPEFACES,
-  COLORS,
-  Typeface,
-  CASE,
-  NAMED_COLORS,
-} from 'styles/constants'
-import { asPx } from 'styles/utils'
-import { H1, TITLE, asFont, typefaceToCSS } from 'styles/type'
-import { Code, alignLeft, flexColumn, flexRow } from 'styles/shared'
+import { COLORS, NAMED_COLORS } from 'styles/constants'
+import { H1, TITLE } from 'styles/type'
 
 import HexFish from 'svg/hexfish.svg'
 

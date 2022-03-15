@@ -1,7 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react'
-import { typefaceToCSS, FACES } from 'styles/type'
-import { NAMED_COLORS, TYPEFACES } from 'styles/constants'
+import { FACES } from 'styles/type'
+import { NAMED_COLORS } from 'styles/constants'
 import { FONT } from 'styles/Global'
 
 enum FieldStatusFeedback {
