@@ -10,5 +10,5 @@
     "skipLibCheck": true,
   },
   "include": ["**/*.ts", "**/*.tsx"],
-  "exclude": ["node_modules", ".github", "pages", "public", "scripts"]
+  "exclude": ["node_modules", ".github", "pages", "layout", "public", "scripts"]
 }
