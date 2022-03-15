@@ -66,7 +66,7 @@ export const TextField = ({
   <LabelledRow
     key={id}
     id={id}
-    label={label}
+    text={label}
     valid={valid}
     errorText={errorText}
     disabled={disabled}

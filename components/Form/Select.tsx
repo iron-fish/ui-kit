@@ -18,7 +18,6 @@ export const Select = ({
   value,
   onChange,
   setTouched,
-  className,
 }: SelectField) => {
   const allOptions = useDefault
     ? [{ name: defaultLabel, value: defaultValue }].concat(options)
@@ -50,7 +49,7 @@ export const LabelledSelect = (props: SelectField) => {
   return (
     <LabelledRow
       id={id}
-      label={label}
+      text={label}
       valid={valid}
       errorText={errorText}
       disabled={disabled}
