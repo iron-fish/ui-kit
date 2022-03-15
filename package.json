@@ -1,5 +1,5 @@
 {
-  "name": "@iron-fish/ui-kit",
+  "name": "@ironfish/ui-kit",
   "version": "0.0.1",
   "private": true,
   "main": "dist/index.jsx",
