@@ -1,4 +1,4 @@
 export * from '@chakra-ui/react'
 
-export * from './Root'
+export * from './IronFishUIProvider'
 export * from './ColorModeSwitcher'

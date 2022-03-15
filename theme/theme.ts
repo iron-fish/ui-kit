@@ -3,13 +3,6 @@ import { ChakraTheme, DeepPartial } from '@chakra-ui/react'
 const IronFishTheme: DeepPartial<ChakraTheme> = {
   styles: {
     global: {
-      title: {
-        fontSize: '52px',
-        fontWeight: '400',
-        lineHeight: '160%',
-        letterSpacing: '0',
-        fontFamily: 'extended-regular',
-      },
       h1: {
         fontSize: '36px',
         fontWeight: '400',
