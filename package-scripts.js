@@ -39,8 +39,9 @@ module.exports = {
       },
     },
 
-    build: 'next build',
-    start: 'next start',
+    build: 'tsc --project tsconfig.production.json',
+    test: '',
+    publish: 'npm publish',
     precommit: 'nps care',
     care: concurrent.nps('build', 'lint'),
     dx: concurrent.nps('lint', 'bureaucracy', 'meta'),

@@ -1,7 +1,6 @@
 /** @jsxImportSource @emotion/react */
-import { curry, toUpper } from 'ramda'
+import { curry } from 'ramda'
 import { css } from '@emotion/react'
-import { NAMED_COLORS, COLORS } from 'styles/constants'
 import { flexRow, flexColumn, Code } from 'styles/shared'
 import { colord, extend } from 'colord'
 import contrast from 'colord/plugins/a11y'
@@ -14,8 +13,8 @@ interface SwatchProps {
   // description: string
 }
 
-const invert = (x: string) => colord(x).invert()
-const toHex = (x: string) => toUpper(colord(x).toHex())
+// const invert = (x: string) => colord(x).invert()
+// const toHex = (x: string) => toUpper(colord(x).toHex())
 const copyToClipboard = (s: string) => {
   if (navigator?.clipboard?.writeText) {
     navigator.clipboard.writeText(s)

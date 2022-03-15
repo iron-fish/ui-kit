@@ -6,7 +6,7 @@ import { FACES } from 'styles/type'
 
 interface LabelledRowProps {
   id: string
-  label?: string
+  text?: string
   required?: boolean
   valid: boolean
   errorText?: string
@@ -21,7 +21,7 @@ const label = css`
 
 export const LabelledRow = ({
   id,
-  label = '',
+  text = '',
   children,
   valid,
   required = true,
@@ -30,9 +30,9 @@ export const LabelledRow = ({
 }: LabelledRowProps) => (
   <>
     <FormRow valid={valid} disabled={disabled}>
-      {label.length > 0 && (
+      {text.length > 0 && (
         <label htmlFor={id} css={label}>
-          {label}
+          {text}
           {required && (
             <span
               className={`text-md ${
