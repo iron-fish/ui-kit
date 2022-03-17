@@ -1,9 +1,16 @@
 import IronFishUIProvider from 'components/IronFishUIProvider';
+import ColorModeSwitcher from 'components/ColorModeSwitcher';
+import { Flex } from "@chakra-ui/react"
 
 export const decorators = [
   (Story) => (
     <IronFishUIProvider>
-      <Story />
+      <div id="story-wrapper" style={{ minHeight: "100vh" }}>
+        <Flex justify="flex-end" mb={4}>
+          <ColorModeSwitcher />
+        </Flex>
+        <Story />
+      </div>
     </IronFishUIProvider>
   )
 ]
