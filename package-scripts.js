@@ -14,7 +14,7 @@ const folders = [
 module.exports = {
   scripts: {
     dev: {
-      custom: `next dev`,
+      custom: `start-storybook`,
       script: `nps "dev.custom -p ${PORT}"`,
       description: `runs on ${PORT} by default`,
     },

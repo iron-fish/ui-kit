@@ -12,9 +12,7 @@
     "lint": "nps lint",
     "test": "nps test",
     "build": "nps build",
-    "publish": "nps publish",
-    "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "publish": "nps publish"
   },
   "dependencies": {
     "@chakra-ui/react": "1.8.6",
