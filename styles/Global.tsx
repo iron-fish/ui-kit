@@ -64,8 +64,8 @@ export const transition = (x: string | string[]) =>
 
 export const globalStyler = (givenTheme: Theme) => css`
   ${FONTS.EXTENDED}
-  ${FONTS.MONO} 
-  ${FONTS.BODY} 
+  ${FONTS.MONO}
+  ${FONTS.BODY}
   html,
   body {
     font-size: ${BASE_FONT_SIZE}px;
