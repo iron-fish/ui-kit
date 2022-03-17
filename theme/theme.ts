@@ -1,5 +1,12 @@
 import { ChakraTheme, DeepPartial } from '@chakra-ui/react'
 import { mode } from '@chakra-ui/theme-tools'
+import { NAMED_COLORS } from './constants'
+
+const typeface: object = {
+  fontWeight: '400',
+  lineHeight: '160%',
+  letterSpacing: '0',
+}
 
 const IronFishTheme: DeepPartial<ChakraTheme> = {
   components: {
@@ -8,17 +15,23 @@ const IronFishTheme: DeepPartial<ChakraTheme> = {
         blocks: props => ({
           table: {
             borderCollapse: 'separate',
-            borderSpacing: '0px 16px',
-            borderColor: mode('#DEDFE2', '#3B3B3B')(props),
+            borderSpacing: '0 1rem',
+            borderColor: mode(
+              NAMED_COLORS.LIGHT_GREY,
+              NAMED_COLORS.DARK_GREY
+            )(props),
           },
           tbody: {
             tr: {
-              background: mode('#fff', '#252525')(props),
+              background: mode(
+                NAMED_COLORS.WHITE,
+                NAMED_COLORS.DARKER_GREY
+              )(props),
               boxShadow: '0px 4px 11px rgba(0, 0, 0, 0.04)',
             },
           },
           th: {
-            color: mode('#7f7f7f', '#ADAEB4')(props),
+            color: mode(NAMED_COLORS.GREY, NAMED_COLORS.PALE_GREY)(props),
             fontStyle: 'normal',
             fontSize: '12px',
             lineHeight: '19px',
@@ -37,14 +50,14 @@ const IronFishTheme: DeepPartial<ChakraTheme> = {
             lineHeight: '26px',
             fontWeight: '400',
             fontFamily: 'ABC Favorit Trial',
-            color: mode('#0D0C22', '#fff')(props),
-            ':first-child': {
+            color: mode(NAMED_COLORS.DEEP_BLUE, NAMED_COLORS.WHITE)(props),
+            ':first-of-type': {
               borderLeft: '1px solid',
               borderColor: 'inherit',
               borderTopLeftRadius: '4px',
               borderBottomLeftRadius: '4px',
             },
-            ':last-child': {
+            ':last-of-type': {
               borderRight: '1px solid',
               borderColor: 'inherit',
               borderTopRightRadius: '4px',
@@ -58,48 +71,36 @@ const IronFishTheme: DeepPartial<ChakraTheme> = {
   styles: {
     global: props => ({
       body: {
-        backgroundColor: mode('#fff', '#101010')(props),
+        backgroundColor: mode(NAMED_COLORS.WHITE, NAMED_COLORS.BLACK)(props),
       },
       h1: {
+        ...typeface,
         fontSize: '36px',
-        fontWeight: '400',
-        lineHeight: '160%',
-        letterSpacing: '0',
         fontFamily: 'ABC Favorit Extended Trial',
       },
       h2: {
+        ...typeface,
         fontSize: '28px',
-        fontWeight: '400',
-        lineHeight: '160%',
-        letterSpacing: '0',
         fontFamily: 'ABC Favorit Extended Trial',
       },
       h3: {
+        ...typeface,
         fontSize: '24px',
-        fontWeight: '400',
-        lineHeight: '160%',
-        letterSpacing: '0',
         fontFamily: 'ABC Favorit Extended Trial',
       },
       h4: {
+        ...typeface,
         fontSize: '16px',
-        fontWeight: '400',
-        lineHeight: '160%',
-        letterSpacing: '0',
         fontFamily: 'ABC Favorit Trial',
       },
       h5: {
+        ...typeface,
         fontSize: '14px',
-        fontWeight: '400',
-        lineHeight: '160%',
-        letterSpacing: '0',
         fontFamily: 'ABC Favorit Trial',
       },
       h6: {
+        ...typeface,
         fontSize: '12px',
-        fontWeight: '400',
-        lineHeight: '160%',
-        letterSpacing: '0',
         fontFamily: 'ABC Favorit Trial',
       },
     }),
