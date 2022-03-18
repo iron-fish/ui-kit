@@ -1,7 +1,7 @@
-import withFonts from 'next-fonts'
-
-export default withFonts({
-  enableSvg: true,
+module.exports = {
+  images: {
+    // domains: ['cdnjs.cloudflare.com'],
+  },
   webpack(config) {
     config.module.rules.push({
       test: /\.svg$/,
@@ -9,4 +9,4 @@ export default withFonts({
     })
     return config
   },
-})
+}
