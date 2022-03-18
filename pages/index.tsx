@@ -1,6 +1,7 @@
 /** @jsxImportSource @emotion/react */
 // ^ required to use css correctly
 import { css } from '@emotion/react'
+import { Themed } from 'styles/Global'
 
 import { COLORS, THEME } from 'styles/constants'
 
@@ -13,33 +14,35 @@ import UIKIT from 'svg/ui-kit.svg'
 
 export default function Home() {
   return (
-    <main
-      css={css`
-        font-size: 14px;
-      `}
-    >
-      <div
+    <Themed>
+      <main
         css={css`
-          background: ${COLORS.BRAND.BLUE};
+          font-size: 14px;
         `}
       >
-        <Col
+        <div
           css={css`
-            padding: 10rem 2rem;
-            width: calc(100% - 4rem);
+            background: ${COLORS.BRAND.BLUE};
           `}
         >
-          <UIKIT
+          <Col
             css={css`
-              fill: ${COLORS.GLOBAL.WHITE};
-              width: 54vw;
+              padding: 10rem 2rem;
+              width: calc(100% - 4rem);
             `}
-          />
-        </Col>
-      </div>
-      <Typography />
-      <Colors />
-      <ComponentsOverview mode={THEME.LIGHT} />
-    </main>
+          >
+            <UIKIT
+              css={css`
+                fill: ${COLORS.GLOBAL.WHITE};
+                width: 54vw;
+              `}
+            />
+          </Col>
+        </div>
+        <Typography />
+        <Colors />
+        <ComponentsOverview mode={THEME.LIGHT} />
+      </main>
+    </Themed>
   )
 }

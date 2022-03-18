@@ -1,11 +1,11 @@
-import { Themed } from 'styles/Global'
 import type { AppProps } from 'next/app'
+import IronFishUIProvider from 'components/IronFishUIProvider'
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <Themed>
+    <IronFishUIProvider>
       <Component {...pageProps} />
-    </Themed>
+    </IronFishUIProvider>
   )
 }
 

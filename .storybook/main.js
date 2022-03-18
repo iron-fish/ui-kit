@@ -10,6 +10,7 @@ module.exports = {
     "@storybook/addon-interactions"
   ],
   framework: "@storybook/react",
+  staticDirs: ['../public'],
   webpack: async (baseConfig, options) => {
     const { module = {}, resolve = {} } = baseConfig;
     return {
