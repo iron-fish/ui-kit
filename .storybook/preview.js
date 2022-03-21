@@ -1,3 +1,4 @@
+import React from 'react';
 import IronFishUIProvider from 'components/IronFishUIProvider';
 import ColorModeSwitcher from 'components/ColorModeSwitcher';
 import { Flex } from "@chakra-ui/react"
