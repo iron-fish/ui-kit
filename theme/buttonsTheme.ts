@@ -2,7 +2,7 @@ import type { ComponentStyleConfig } from '@chakra-ui/theme'
 import { mode } from '@chakra-ui/theme-tools'
 import { NAMED_COLORS } from 'styles/constants'
 
-const buttonsTheme: ComponentStyleConfig  = {
+const buttonsTheme: ComponentStyleConfig = {
   baseStyle: {
     fontStyle: 'normal',
     fontWeight: '400',
