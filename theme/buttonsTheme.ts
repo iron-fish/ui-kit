@@ -49,14 +49,14 @@ const buttonsTheme: ComponentStyleConfig = {
         fill: mode(NAMED_COLORS.WHITE, NAMED_COLORS.DEEP_BLUE)(props),
       },
       ':hover': {
-        bgColor: mode(NAMED_COLORS.WHITE, NAMED_COLORS.BLACK)(props),
+        bgColor: mode(NAMED_COLORS.WHITE, NAMED_COLORS.DEEP_BLUE)(props),
         color: mode(NAMED_COLORS.DEEP_BLUE, NAMED_COLORS.WHITE)(props),
         borderColor: mode(NAMED_COLORS.DEEP_BLUE, NAMED_COLORS.WHITE)(props),
         '.chakra-button__icon': {
           fill: mode(NAMED_COLORS.DEEP_BLUE, NAMED_COLORS.WHITE)(props),
         },
         ':disabled': {
-          backgroundColor: mode(
+          bgColor: mode(
             NAMED_COLORS.LIGHTER_GREY,
             NAMED_COLORS.DARKER_GREY_1
           )(props),
@@ -74,7 +74,7 @@ const buttonsTheme: ComponentStyleConfig = {
         '.chakra-button__icon': {
           fill: mode(NAMED_COLORS.PALE_GREY, NAMED_COLORS.DARKER_GREY_2)(props),
         },
-        backgroundColor: mode(
+        bgColor: mode(
           NAMED_COLORS.LIGHTER_GREY,
           NAMED_COLORS.DARKER_GREY_1
         )(props),
@@ -102,7 +102,7 @@ const buttonsTheme: ComponentStyleConfig = {
         borderColor: mode(NAMED_COLORS.DEEP_BLUE, NAMED_COLORS.WHITE)(props),
         color: NAMED_COLORS.DEEP_BLUE,
         ':disabled': {
-          backgroundColor: mode(
+          bgColor: mode(
             NAMED_COLORS.LIGHTER_GREY,
             NAMED_COLORS.DARKER_GREY_1
           )(props),
@@ -120,7 +120,7 @@ const buttonsTheme: ComponentStyleConfig = {
         '.chakra-button__icon': {
           fill: mode(NAMED_COLORS.PALE_GREY, NAMED_COLORS.DARKER_GREY_2)(props),
         },
-        backgroundColor: mode(
+        bgColor: mode(
           NAMED_COLORS.LIGHTER_GREY,
           NAMED_COLORS.DARKER_GREY_1
         )(props),
