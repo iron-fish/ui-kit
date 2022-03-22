@@ -3,6 +3,7 @@ import { mode } from '@chakra-ui/theme-tools'
 import { NAMED_COLORS } from 'styles/constants'
 
 const menuTheme: ComponentStyleConfig = {
+  parts: ['button', 'list', 'item'],
   baseStyle: props => ({
     button: {
       boxShadow: '0rem 0.25rem 0.688rem rgba(0, 0, 0, 0.04)',
