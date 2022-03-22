@@ -1,8 +1,7 @@
 import { ChakraTheme, DeepPartial } from '@chakra-ui/react'
 import { mode } from '@chakra-ui/theme-tools'
 import { NAMED_COLORS } from './constants'
-import buttonsTheme from './buttonsTheme'
-import menuTheme from './menuTheme'
+import themedComponents from './components';
 
 const typeface: object = {
   fontWeight: '400',
@@ -12,8 +11,7 @@ const typeface: object = {
 
 const IronFishTheme: DeepPartial<ChakraTheme> = {
   components: {
-    Button: buttonsTheme,
-    Menu: menuTheme,
+    ...themedComponents,
     Table: {
       variants: {
         blocks: props => ({

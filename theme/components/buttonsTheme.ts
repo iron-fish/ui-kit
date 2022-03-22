@@ -11,31 +11,31 @@ const buttonsTheme: ComponentStyleConfig = {
   },
   sizes: {
     large: {
-      h: '69px',
-      fontSize: '16px',
-      borderRadius: '84px',
-      p: '22px 34px 21px',
+      h: '4.313rem',
+      fontSize: '1rem',
+      borderRadius: '5.25rem',
+      p: '1.375rem 2.125rem 1.313rem',
       '.chakra-button__icon': {
-        marginRight: '14px',
+        marginRight: '0.875rem',
       },
     },
     medium: {
-      h: '46px',
-      fontSize: '14px',
-      borderRadius: '64px',
+      h: '2.875rem',
+      fontSize: '0.875rem',
+      borderRadius: '4rem',
       boxSizing: 'bordered-box',
-      p: '12px 24px',
+      p: '0.75rem 1.5rem',
       '.chakra-button__icon': {
-        marginRight: '12px',
+        marginRight: '0.75rem',
       },
     },
     small: {
-      h: '34px',
-      fontSize: '14px',
-      borderRadius: '74px',
-      p: '6px 16px',
+      h: '2.125rem',
+      fontSize: '0.875rem',
+      borderRadius: '4.625rem',
+      p: '0.375rem 1rem',
       '.chakra-button__icon': {
-        marginRight: '8px',
+        marginRight: '0.5rem',
       },
     },
   },
@@ -43,8 +43,8 @@ const buttonsTheme: ComponentStyleConfig = {
     primary: props => ({
       bgColor: mode(NAMED_COLORS.DEEP_BLUE, NAMED_COLORS.WHITE)(props),
       color: mode(NAMED_COLORS.WHITE, NAMED_COLORS.DEEP_BLUE)(props),
-      borderWidth: '1px',
-      boxShadow: '0px 5px 14px rgba(0, 0, 0, 0.07)',
+      border: '0.063rem solid',
+      boxShadow: '0rem 0.313rem 0.875rem rgba(0, 0, 0, 0.07)',
       '.chakra-button__icon': {
         fill: mode(NAMED_COLORS.WHITE, NAMED_COLORS.DEEP_BLUE)(props),
       },
@@ -88,9 +88,9 @@ const buttonsTheme: ComponentStyleConfig = {
     secondary: props => ({
       bgColor: mode(NAMED_COLORS.WHITE, NAMED_COLORS.DEEP_BLUE)(props),
       color: mode(NAMED_COLORS.DEEP_BLUE, NAMED_COLORS.WHITE)(props),
+      boxShadow: '0rem 0.25rem 0.688rem rgba(0, 0, 0, 0.04)',
+      border: '0.063rem solid',
       borderColor: mode(NAMED_COLORS.LIGHTER_GREY, NAMED_COLORS.WHITE)(props),
-      boxShadow: '0px 4px 11px rgba(0, 0, 0, 0.04)',
-      borderWidth: '1px',
       '.chakra-button__icon': {
         fill: mode(NAMED_COLORS.BLACK, NAMED_COLORS.WHITE)(props),
       },
@@ -134,7 +134,7 @@ const buttonsTheme: ComponentStyleConfig = {
     text_link: props => ({
       color: mode(NAMED_COLORS.GREY, NAMED_COLORS.PALE_GREY)(props),
       '.chakra-button__icon': {
-        marginRight: '12px',
+        marginRight: '0.75rem',
         fill: mode(NAMED_COLORS.LIGHTER_GREY, NAMED_COLORS.PALE_GREY)(props),
       },
       ':hover': {

@@ -1,4 +1,4 @@
-import React from 'react'
+import { FC } from 'react'
 import { Menu, MenuButton, MenuItem, MenuList, Icon } from '@chakra-ui/react'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 

@@ -1,6 +1,6 @@
-import React from 'react'
+import { FC } from 'react'
 import { Button, Icon } from '@chakra-ui/react'
-import { ComponentMeta } from '@storybook/react'
+import { ComponentMeta, ComponentStory } from '@storybook/react'
 
 const DemoPlusIcon: FC = () => (
   <Icon viewBox="0 0 24 24">
@@ -13,7 +13,7 @@ export default {
   component: Button,
 } as ComponentMeta<typeof Button>
 
-export const Link = () => (
+export const Link: ComponentStory<FC> = () => (
   <>
     <Button variant="text_link">Text link</Button>
     <Button leftIcon={<DemoPlusIcon />} variant="text_link">
