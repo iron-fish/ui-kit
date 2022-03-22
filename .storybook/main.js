@@ -1,18 +1,18 @@
-const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
-const path = require("path")
+const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin')
+const path = require('path')
 
 const toPath = (_path) => path.join(process.cwd(), _path)
 
 module.exports = {
   stories: [
-    "../stories/**/*.stories.@(js|jsx|ts|tsx)",
+    '../stories/**/*.stories.@(js|jsx|ts|tsx)',
   ],
   addons: [
-    "@storybook/addon-links",
-    "@storybook/addon-essentials",
-    "@storybook/addon-interactions"
+    '@storybook/addon-links',
+    '@storybook/addon-essentials',
+    '@storybook/addon-interactions'
   ],
-  framework: "@storybook/react",
+  framework: '@storybook/react',
   staticDirs: ['../public'],
   webpack: async (baseConfig) => {
     const { module = {}, resolve = {} } = baseConfig;
@@ -25,22 +25,20 @@ module.exports = {
           {
             test: /\.mjs$/,
             include: /node_modules/,
-            type: "javascript/auto",
+            type: 'javascript/auto',
           },
         ],
       },
       resolve: {
         ...resolve,
-        alias: {
-          ...resolve.alias,
-          "@emotion/core": toPath("node_modules/@emotion/react"),
-          "emotion-theming": toPath("node_modules/@emotion/react"),
-        },
         plugins: [
           ...(resolve.plugins || []),
           new TsconfigPathsPlugin()
         ]
-      }
-    };
-  }
+      },
+    }
+  },
+  features: {
+    emotionAlias: false,
+  },
 }
