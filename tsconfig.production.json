@@ -4,7 +4,7 @@
     "module": "commonjs",
     "target": "es2015",
     "declaration": true,
-    "outDir": "./dist",
+    "outDir": "./build",
     "allowJs": true,
     "jsx": "preserve",
     "skipLibCheck": true,

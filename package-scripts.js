@@ -4,7 +4,6 @@ const PORT = process.env.PORT || 5000
 const folders = [
   'components',
   'hooks',
-  'pages',
   'public',
   'styles',
   'svg',
@@ -17,10 +16,6 @@ module.exports = {
       custom: `start-storybook`,
       script: `nps "dev.custom -p ${PORT}"`,
       description: `runs on ${PORT} by default`,
-    },
-    bureaucracy: {
-      script: 'nps bureaucracy.enforceStaticVersions',
-      enforceStaticVersions: `node scripts/force-static-versions.js`,
     },
     lint: {
       script: concurrent.nps('lint.core', 'lint.dry'),
@@ -44,6 +39,6 @@ module.exports = {
     publish: 'npm publish',
     precommit: 'nps care',
     care: concurrent.nps('build', 'lint'),
-    dx: concurrent.nps('lint', 'bureaucracy', 'meta'),
+    dx: concurrent.nps('lint', 'meta'),
   },
 }

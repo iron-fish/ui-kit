@@ -2,12 +2,10 @@
   "parser": "@typescript-eslint/parser",
   "plugins": ["@typescript-eslint"],
   "extends": [
-    "next",
-    "next/core-web-vitals",
     "plugin:prettier/recommended",
     "plugin:@typescript-eslint/recommended"
   ],
-  "ignorePatterns": ["dist", "scripts", "package-scripts.js"],
+  "ignorePatterns": ["build", "package-scripts.js"],
   "rules": {
     "no-shadow": "off",
     "@typescript-eslint/no-shadow": ["error"],
