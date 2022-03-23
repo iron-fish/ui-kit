@@ -2,6 +2,12 @@ import type { ComponentStyleConfig } from '@chakra-ui/theme'
 import { mode } from '@chakra-ui/theme-tools'
 import { NAMED_COLORS } from 'styles/constants'
 
+const getDisabledStyle: object = (props) => ({
+  bgColor: mode(NAMED_COLORS.LIGHTER_GREY, NAMED_COLORS.DARKER_GREY_1)(props),
+  color: mode(NAMED_COLORS.PALE_GREY, NAMED_COLORS.DARKER_GREY_2)(props),
+  borderColor: mode(NAMED_COLORS.LIGHTER_GREY, NAMED_COLORS.DARKER_GREY_1)(props),
+})
+
 const buttonsTheme: ComponentStyleConfig = {
   baseStyle: {
     fontStyle: 'normal',
@@ -55,34 +61,13 @@ const buttonsTheme: ComponentStyleConfig = {
         '.chakra-button__icon': {
           fill: mode(NAMED_COLORS.DEEP_BLUE, NAMED_COLORS.WHITE)(props),
         },
-        ':disabled': {
-          bgColor: mode(
-            NAMED_COLORS.LIGHTER_GREY,
-            NAMED_COLORS.DARKER_GREY_1
-          )(props),
-          color: mode(
-            NAMED_COLORS.PALE_GREY,
-            NAMED_COLORS.DARKER_GREY_2
-          )(props),
-          borderColor: mode(
-            NAMED_COLORS.LIGHTER_GREY,
-            NAMED_COLORS.DARKER_GREY_1
-          )(props),
-        },
+        ':disabled': getDisabledStyle,
       },
       ':disabled': {
         '.chakra-button__icon': {
           fill: mode(NAMED_COLORS.PALE_GREY, NAMED_COLORS.DARKER_GREY_2)(props),
         },
-        bgColor: mode(
-          NAMED_COLORS.LIGHTER_GREY,
-          NAMED_COLORS.DARKER_GREY_1
-        )(props),
-        color: mode(NAMED_COLORS.PALE_GREY, NAMED_COLORS.DARKER_GREY_2)(props),
-        borderColor: mode(
-          NAMED_COLORS.LIGHTER_GREY,
-          NAMED_COLORS.DARKER_GREY_1
-        )(props),
+        ...getDisabledStyle(props),
       },
     }),
     secondary: props => ({
@@ -101,34 +86,13 @@ const buttonsTheme: ComponentStyleConfig = {
         bgColor: NAMED_COLORS.WHITE,
         borderColor: mode(NAMED_COLORS.DEEP_BLUE, NAMED_COLORS.WHITE)(props),
         color: NAMED_COLORS.DEEP_BLUE,
-        ':disabled': {
-          bgColor: mode(
-            NAMED_COLORS.LIGHTER_GREY,
-            NAMED_COLORS.DARKER_GREY_1
-          )(props),
-          color: mode(
-            NAMED_COLORS.PALE_GREY,
-            NAMED_COLORS.DARKER_GREY_2
-          )(props),
-          borderColor: mode(
-            NAMED_COLORS.LIGHTER_GREY,
-            NAMED_COLORS.DARKER_GREY_1
-          )(props),
-        },
+        ':disabled': getDisabledStyle,
       },
       ':disabled': {
         '.chakra-button__icon': {
           fill: mode(NAMED_COLORS.PALE_GREY, NAMED_COLORS.DARKER_GREY_2)(props),
         },
-        bgColor: mode(
-          NAMED_COLORS.LIGHTER_GREY,
-          NAMED_COLORS.DARKER_GREY_1
-        )(props),
-        color: mode(NAMED_COLORS.PALE_GREY, NAMED_COLORS.DARKER_GREY_2)(props),
-        borderColor: mode(
-          NAMED_COLORS.LIGHTER_GREY,
-          NAMED_COLORS.DARKER_GREY_1
-        )(props),
+        ...getDisabledStyle(props),
       },
     }),
     text_link: props => ({
