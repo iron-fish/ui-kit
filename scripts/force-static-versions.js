@@ -112,15 +112,10 @@ module.exports = pipe(
         // always remember to `of` when you `ap`
         of,
         // apply a value to multiple transformations
-        ap([
-          I,
-          prop('dependencies'),
-          prop('devDependencies'),
-          prop('peerDependencies'),
-        ]),
+        ap([I, prop('dependencies'), prop('devDependencies')]),
         // or in the case of the first value, the identity of readFile(path)
-        ([raw, dependencies, devDependencies, peerDependencies]) =>
-          makeStatic(raw, { dependencies, devDependencies, peerDependencies })
+        ([raw, dependencies, devDependencies]) =>
+          makeStatic(raw, { dependencies, devDependencies })
       )
       // )
     )
