@@ -1,6 +1,6 @@
 import IronFishUIProvider from 'components/IronFishUIProvider'
 import ColorModeSwitcher from 'components/ColorModeSwitcher'
-import { Box, CSSReset, Flex } from '@chakra-ui/react'
+import { Box, Flex } from '@chakra-ui/react'
 
 export const decorators = [
   Story => (

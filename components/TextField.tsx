@@ -64,7 +64,7 @@ const TextField: FC<TextFieldProps> = ({
             variant="unstyled"
             onChange={e => {
               setVal(e.target.value)
-              InputProps?.onChange && InputProps?.onChange(e)
+              InputProps?.onChange && InputProps.onChange(e)
             }}
           />
         </Box>
