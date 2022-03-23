@@ -1,7 +1,7 @@
 import { ChakraTheme, DeepPartial } from '@chakra-ui/react'
 import { mode } from '@chakra-ui/theme-tools'
 import { NAMED_COLORS } from './constants'
-import themedComponents from './components';
+import themedComponents from './components'
 
 const typeface: object = {
   fontWeight: '400',

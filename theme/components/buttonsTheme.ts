@@ -2,10 +2,13 @@ import type { ComponentStyleConfig } from '@chakra-ui/theme'
 import { mode } from '@chakra-ui/theme-tools'
 import { NAMED_COLORS } from 'styles/constants'
 
-const getDisabledStyle: object = (props) => ({
+const getDisabledStyle = (props: object): object => ({
   bgColor: mode(NAMED_COLORS.LIGHTER_GREY, NAMED_COLORS.DARKER_GREY_1)(props),
   color: mode(NAMED_COLORS.PALE_GREY, NAMED_COLORS.DARKER_GREY_2)(props),
-  borderColor: mode(NAMED_COLORS.LIGHTER_GREY, NAMED_COLORS.DARKER_GREY_1)(props),
+  borderColor: mode(
+    NAMED_COLORS.LIGHTER_GREY,
+    NAMED_COLORS.DARKER_GREY_1
+  )(props),
 })
 
 const buttonsTheme: ComponentStyleConfig = {

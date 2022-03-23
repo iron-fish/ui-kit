@@ -15,6 +15,4 @@ const ThemeColor: FC = () => {
   return <span>Color mode is: {colorMode}</span>
 }
 
-export const ColorModeSwitcherDemo: ComponentStory<FC> = () => (
-  <ThemeColor />
-)
+export const ColorModeSwitcherDemo: ComponentStory<FC> = () => <ThemeColor />
