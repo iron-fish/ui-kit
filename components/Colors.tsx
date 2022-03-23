@@ -1,13 +1,14 @@
-/** @jsxImportSource @emotion/react */
 import type { ReactNode } from 'react'
-import { css } from '@emotion/react'
+import { chakra } from '@chakra-ui/react'
+
+import { Col, RowColumn } from 'components/Box'
 
 import Showcase from 'components/Showcase'
 import Swatch from 'components/Swatch'
 import { COLORS, NAMED_COLORS } from 'styles/constants'
 import { H1, TITLE } from 'styles/type'
 
-import HexFish from 'svg/hexfish.svg'
+import HexFish from 'svgx/hexfish'
 
 interface Color {
   name: string
@@ -17,23 +18,11 @@ interface Color {
 interface ColorStackProps {
   title: ReactNode
   colors: Color[]
-  compressible?: boolean
-  index?: number
+  // compressible?: boolean
+  // index?: number
 }
-
-const ColorStack = ({
-  title,
-  colors,
-  compressible = true,
-  index = Infinity,
-}: ColorStackProps) => (
-  <div
-    css={css`
-      display: flex;
-      flex-direction: column;
-      width: 100%;
-      padding: 2rem;
-      ${compressible
+/*
+${compressible
         ? `@media screen and (min-width: 48rem) {
           padding: ${
             index === 0
@@ -44,60 +33,42 @@ const ColorStack = ({
           };
           width: calc(50% - ${index > 1 ? '4rem' : '3rem'});
       }`
-        : ''}
-    `}
-  >
-    <H1
-      css={css`
-        text-align: left;
-      `}
-    >
-      {title}
-    </H1>
-    <div
-      css={css`
-        border: 2px solid rgba(0, 0, 0, 0.5);
-        border-radius: 5px;
-        overflow: hidden;
-      `}
+ */
+
+const ColorStack = ({
+  title,
+  colors,
+}: // compressible = true,
+// index = Infinity,
+ColorStackProps) => (
+  <Col w="100%" p="2rem">
+    <H1 align="left">{title}</H1>
+    <chakra.div
+      border="2px"
+      borderStyle="solid"
+      borderColor="rgba(0, 0, 0, 0.5)"
+      borderRadius="5px"
+      overflow="hidden"
     >
       {colors.map(swatch => (
         <Swatch key={swatch.name} {...swatch} />
       ))}
-    </div>
-  </div>
+    </chakra.div>
+  </Col>
 )
 
 function Colors() {
   return (
     <Showcase
       title={
-        <TITLE
-          css={css`
-            color: ${NAMED_COLORS.WHITE};
-          `}
-        >
-          <HexFish
-            css={css`
-              max-width: 3rem;
-              fill: ${NAMED_COLORS.WHITE};
-            `}
-          />{' '}
+        <TITLE color={NAMED_COLORS.WHITE}>
+          <HexFish style={{ maxWidth: '3rem', fill: NAMED_COLORS.WHITE }} />{' '}
           Colors
         </TITLE>
       }
       headerColor={COLORS.BRAND.BLUE}
     >
-      <div
-        css={css`
-          display: flex;
-          flex-direction: column;
-          flex-wrap: wrap;
-          @media screen and (min-width: 40rem) {
-            flex-direction: row;
-          }
-        `}
-      >
+      <RowColumn wrap="wrap">
         <ColorStack
           title={
             <>
@@ -134,7 +105,7 @@ function Colors() {
             })
           )}
         />
-      </div>
+      </RowColumn>
     </Showcase>
   )
 }
