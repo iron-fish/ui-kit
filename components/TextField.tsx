@@ -2,6 +2,7 @@ import { FC, useState, useEffect, useRef, ReactNode } from 'react'
 
 import {
   Box,
+  CSSObject,
   Flex,
   FlexProps,
   Input,
@@ -28,6 +29,9 @@ const TextField: FC<TextFieldProps> = ({
   const [val, setVal] = useState<string>(value)
   const inputRef = useRef<HTMLInputElement>(null)
   const styles = useMultiStyleConfig('TextField', props)
+  const displayInputStyles: CSSObject = {
+    display: 'block',
+  }
 
   useEffect(() => {
     setVal(value)
@@ -53,9 +57,9 @@ const TextField: FC<TextFieldProps> = ({
         <Box
           sx={styles?.inputWrapper}
           display={!!val ? 'block' : 'none'}
-          _groupFocus={{ display: 'block' }}
-          _groupFocusVisible={{ display: 'block' }}
-          _groupFocusWithin={{ display: 'block' }}
+          _groupFocus={displayInputStyles}
+          _groupFocusVisible={displayInputStyles}
+          _groupFocusWithin={displayInputStyles}
         >
           <Input
             {...InputProps}
