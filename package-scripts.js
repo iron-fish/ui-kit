@@ -17,6 +17,10 @@ module.exports = {
       script: `nps "dev.custom -p ${PORT}"`,
       description: `runs on ${PORT} by default`,
     },
+    bureaucracy: {
+      script: 'nps bureaucracy.enforceStaticVersions',
+      enforceStaticVersions: `node scripts/force-static-versions.js`,
+    },
     lint: {
       script: concurrent.nps('lint.core', 'lint.dry'),
       core: 'eslint --fix .',
@@ -34,11 +38,11 @@ module.exports = {
       },
     },
 
-    build: 'tsc --project tsconfig.production.json',
+    build: 'tsc --project tsconfig.json',
     test: '',
     publish: 'npm publish',
     precommit: 'nps care',
     care: concurrent.nps('build', 'lint'),
-    dx: concurrent.nps('lint', 'meta'),
+    dx: concurrent.nps('lint', 'bureaucracy', 'meta'),
   },
 }

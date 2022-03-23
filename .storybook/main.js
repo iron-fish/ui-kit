@@ -31,10 +31,7 @@ module.exports = {
       },
       resolve: {
         ...resolve,
-        plugins: [
-          ...(resolve.plugins || []),
-          new TsconfigPathsPlugin({ configFile: 'tsconfig.production.json' })
-        ]
+        plugins: [...(resolve.plugins || []), new TsconfigPathsPlugin()]
       }
     };
   }

@@ -12,7 +12,7 @@ Then, run the development server:
 yarn dev
 ```
 
-It will lunch [storybook](https://storybook.js.org/) server with styled components examples on [http://localhost:5000](http://localhost:5000)
+It will launch [storybook](https://storybook.js.org/) server with styled components examples on [http://localhost:5000](http://localhost:5000)
 where all available component can be tested and configured.
 
 ## Learn More
