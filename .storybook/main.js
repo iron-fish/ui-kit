@@ -31,16 +31,14 @@ module.exports = {
       },
       resolve: {
         ...resolve,
-        alias: {
-          ...resolve.alias,
-          "@emotion/core": toPath("node_modules/@emotion/react"),
-          "emotion-theming": toPath("node_modules/@emotion/react"),
-        },
         plugins: [
           ...(resolve.plugins || []),
           new TsconfigPathsPlugin()
         ]
-      }
+      },
     };
+  },
+  features: {
+    emotionAlias: false,
   }
 }

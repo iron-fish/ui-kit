@@ -1,5 +1,6 @@
 import { Flex, StyleProps, useMultiStyleConfig } from '@chakra-ui/react'
-import { Children, cloneElement, FC, isValidElement } from 'react'
+import { getValidChildren } from '@chakra-ui/react-utils'
+import { cloneElement, FC, FunctionComponent, ReactElement } from 'react'
 
 const TextFieldGroup: FC<StyleProps> = ({ children, ...props }) => {
   const styles = useMultiStyleConfig('TextFieldGroup', props)
@@ -20,16 +21,17 @@ const TextFieldGroup: FC<StyleProps> = ({ children, ...props }) => {
       }}
       alignItems="center"
     >
-      {Children.toArray(children)
-        .filter(child => isValidElement(child))
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        .map((child: any) => {
-          return cloneElement(child, {
-            ...child?.props,
-            sx: { ...styles?.child, ...child?.props?.sx },
-            w: child?.type?.displayName === 'TextField' ? '100%' : undefined,
-          })
-        })}
+      {getValidChildren(children).map((child: ReactElement) => {
+        return cloneElement(child, {
+          ...child?.props,
+          sx: { ...styles?.child, ...child?.props?.sx },
+          w:
+            typeof child.type === 'function' &&
+            (child.type as FunctionComponent).displayName === 'TextField'
+              ? '100%'
+              : undefined,
+        })
+      })}
     </Flex>
   )
 }
