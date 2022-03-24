@@ -8,6 +8,7 @@ import {
   PopoverBody,
   PopoverContent,
   PopoverTrigger,
+  StyleProps,
   useDisclosure,
   useMultiStyleConfig,
 } from '@chakra-ui/react'
@@ -20,7 +21,7 @@ type OptionType = {
   helperText: string | ReactNode
 }
 
-interface OptionProps extends FlexProps {
+interface OptionProps extends StyleProps {
   option: OptionType
 }
 

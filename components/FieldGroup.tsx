@@ -27,7 +27,8 @@ const FieldGroup: FC<StyleProps> = ({ children, ...props }) => {
           sx: { ...styles?.child, ...child?.props?.sx },
           w:
             typeof child.type === 'function' &&
-            (child.type as FunctionComponent).displayName === 'TextField'
+            ((child.type as FunctionComponent).displayName === 'TextField' ||
+              (child.type as FunctionComponent).displayName === 'SelectField')
               ? '100%'
               : undefined,
         })
