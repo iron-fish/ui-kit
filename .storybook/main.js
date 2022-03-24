@@ -1,4 +1,4 @@
-const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
+const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin')
 
 module.exports = {
   stories: [
@@ -7,12 +7,12 @@ module.exports = {
   addons: [
     "@storybook/addon-links",
     "@storybook/addon-essentials",
-    "@storybook/addon-interactions"
+    "@storybook/addon-interactions",
   ],
   framework: "@storybook/react",
   staticDirs: ['../public'],
   webpack: async (baseConfig, options) => {
-    const { module = {}, resolve = {} } = baseConfig;
+    const { module = {}, resolve = {}} = baseConfig;
     return {
       ...baseConfig,
       module: {
@@ -32,7 +32,10 @@ module.exports = {
           ...(resolve.plugins || []),
           new TsconfigPathsPlugin()
         ]
-      }
+      },
     };
+  },
+  features: {
+    emotionAlias: false,
   }
 }
