@@ -1,4 +1,4 @@
-const { concurrent } = require('nps-utils')
+const { rimraf, concurrent } = require('nps-utils')
 const PORT = process.env.PORT || 5000
 
 const folders = ['components', 'hooks', 'public', 'styles', 'svg', 'utils']
@@ -35,7 +35,7 @@ module.exports = {
     },
     build: {
       description: 'build the codebase with tsc',
-      clean: 'rm -r dist',
+      clean: rimraf('dist'),
       tsc: 'tsc --project tsconfig.json',
       script: 'nps build.clean build.tsc',
     },
