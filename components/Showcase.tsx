@@ -1,8 +1,5 @@
-/** @jsxImportSource @emotion/react */
 import type { ReactNode } from 'react'
-import { css } from '@emotion/react'
-
-import { Col } from 'components/Box'
+import { Flex } from '@chakra-ui/react'
 
 export type ShowcaseProps = {
   headerColor: string
@@ -12,19 +9,17 @@ export type ShowcaseProps = {
 
 export function Showcase({ headerColor, title, children }: ShowcaseProps) {
   return (
-    <div>
-      <Col
-        css={css`
-          background: ${headerColor};
-          padding: 4rem 2rem;
-          width: calc(100% - 4rem);
-          text-align: left;
-        `}
+    <>
+      <Flex
+        background={headerColor}
+        p="4rem 2rem"
+        w="calc(100% - 4rem)"
+        textAlign="left"
       >
         {title}
-      </Col>
+      </Flex>
       {children}
-    </div>
+    </>
   )
 }
 

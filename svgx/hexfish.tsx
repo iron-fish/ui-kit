@@ -1,4 +1,4 @@
-import { SVGProps } from './tyles'
+import { SVGProps } from './types'
 
 export default function HexFish({ style }: SVGProps) {
   return (

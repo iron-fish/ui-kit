@@ -26,20 +26,25 @@ const ColorStack = ({
   compressible = true,
   index = Infinity,
 }: ColorStackProps) => {
-  const blah = compressible
-    ? `@media screen and (min-width: 48rem) {
-          padding: ${
-            index === 0
-              ? `2rem 1rem 0rem 2rem`
-              : index === 1
-              ? `2rem 2rem 0rem 1rem`
-              : `0rem 2rem 2rem 2rem`
-          };
-          width: calc(50% - ${index > 1 ? '4rem' : '3rem'});
-      }`
-    : ``
   return (
-    <Flex flexDirection="column" w="100%" p="2rem">
+    <Flex
+      flexDirection="column"
+      p={{
+        base: '2rem',
+        md:
+          index === 0
+            ? `2rem 1rem 0rem 2rem`
+            : index === 1
+            ? `2rem 2rem 0rem 1rem`
+            : `0rem 2rem 2rem 2rem`,
+      }}
+      w={{
+        base: '100%',
+        md: compressible
+          ? `calc(50% - ${index > 1 ? '4rem' : '3rem'})`
+          : '100%',
+      }}
+    >
       <H1 textAlign="left">{title}</H1>
       <chakra.div
         border="2px solid rgba(0, 0, 0, 0.5)"
@@ -55,9 +60,6 @@ const ColorStack = ({
 }
 
 function Colors() {
-  // @media screen and (min-width: 40rem) {
-  //             flex-direction: row;
-  //           }
   return (
     <Showcase
       title={
@@ -68,7 +70,7 @@ function Colors() {
       }
       headerColor={COLORS.BRAND.BLUE}
     >
-      <Flex flexDirection="column" flexWrap="wrap">
+      <Flex flexDirection={{ base: 'column', md: 'row' }} flexWrap="wrap">
         <ColorStack
           title={
             <>

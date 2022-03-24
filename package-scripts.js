@@ -11,15 +11,18 @@ module.exports = {
       description: `runs on ${PORT} by default`,
     },
     bureaucracy: {
+      description: 'Automatically fix some pain points',
       script: 'nps bureaucracy.enforceStaticVersions',
       enforceStaticVersions: `node scripts/force-static-versions.js`,
     },
     lint: {
+      description: 'lint and keep things DRY',
       script: concurrent.nps('lint.core', 'lint.dry'),
       core: 'eslint --fix .',
       dry: 'twly --boring --lines 3',
     },
     meta: {
+      description: 'build a reference image of the codebase',
       script: 'nps meta.dep',
       log: `gitparty`,
       dependencies: {
@@ -30,8 +33,14 @@ module.exports = {
         script: 'nps meta.dep.build meta.dep.interactive',
       },
     },
-    build: 'tsc --project tsconfig.json',
+    build: {
+      description: 'build the codebase with tsc',
+      clean: 'rm -r dist',
+      tsc: 'tsc --project tsconfig.json',
+      script: 'nps build.clean build.tsc',
+    },
     test: {
+      description: 'test things',
       script: 'jest',
       watch: 'nps "test --watch"',
       snapshot: 'nps "test -u"',

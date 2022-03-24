@@ -1,7 +1,6 @@
-/** @jsxImportSource @emotion/react */
 import { curry } from 'ramda'
-import { css } from '@emotion/react'
-import { flexRow, flexColumn, Code } from 'styles/shared'
+import { Code } from 'styles/shared'
+import { Flex } from '@chakra-ui/react'
 import { colord, extend } from 'colord'
 import contrast from 'colord/plugins/a11y'
 extend([contrast])
@@ -46,74 +45,48 @@ export const Swatch = ({ name, hex }: SwatchProps) => {
   const q1 = transparentize(0.25, hex)
   const q2 = transparentize(0.5, hex)
   const q3 = transparentize(0.75, hex)
+  const colorColumnProps = {
+    justifyContent: 'center',
+    alignItems: 'center',
+    minHeight: '5rem',
+    width: '17%',
+    color: blackOrWhite(hex),
+  }
+
   return (
-    <div
+    <Flex
+      direction="row"
       onClick={() => copyToClipboard(hex)}
-      css={css`
-        ${flexRow}
-        max-height: 5rem;
-        overflow: hidden;
-        justify-content: space-between;
-        align-items: center;
-        color: ${blackOrWhite(hex)};
-      `}
+      maxH="5rem"
+      overflow="hidden"
+      justifyContent="space-between"
+      alignItems="center"
+      color={blackOrWhite(hex)}
     >
-      <div
-        css={css`
-          ${flexRow}
-          justify-content: space-between;
-          align-items: center;
-          min-width: 49%;
-          min-height: 5rem;
-          align-self: flex-start;
-          padding: 0 1rem;
-          background-color: ${hex};
-          color: ${blackOrWhite(hex)};
-        `}
+      <Flex
+        direction="row"
+        justifyContent="space-between"
+        alignItems="center"
+        minWidth="49%"
+        minHeight="5rem"
+        alignSelf="flex-start"
+        padding="0 1rem"
+        backgroundColor={hex}
+        color={blackOrWhite(hex)}
       >
         <strong>{name}</strong>
         <Code>{hex.toUpperCase()}</Code>
-      </div>
-      <div
-        css={css`
-          ${flexColumn}
-          justify-content: center;
-          align-items: center;
-          min-height: 5rem;
-          width: 17%;
-          background: ${q3};
-          color: ${blackOrWhite(hex)};
-        `}
-      >
+      </Flex>
+      <Flex direction="column" background={q3} {...colorColumnProps}>
         75%
-      </div>
-      <div
-        css={css`
-          ${flexColumn}
-          justify-content: center;
-          align-items: center;
-          min-height: 5rem;
-          width: 17%;
-          background: ${q2};
-          color: ${blackOrWhite(hex)};
-        `}
-      >
+      </Flex>
+      <Flex direction="column" background={q2} {...colorColumnProps}>
         50%
-      </div>
-      <div
-        css={css`
-          ${flexColumn}
-          justify-content: center;
-          align-items: center;
-          min-height: 5rem;
-          width: 17%;
-          background: ${q1};
-          color: ${blackOrWhite(hex)};
-        `}
-      >
+      </Flex>
+      <Flex direction="column" background={q1} {...colorColumnProps}>
         25%
-      </div>
-    </div>
+      </Flex>
+    </Flex>
   )
 }
 export default Swatch
