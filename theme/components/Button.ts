@@ -11,7 +11,7 @@ const getDisabledStyle = (props: object): object => ({
   )(props),
 })
 
-const buttonsTheme: ComponentStyleConfig = {
+const Button: ComponentStyleConfig = {
   baseStyle: {
     fontStyle: 'normal',
     fontWeight: '400',
@@ -114,4 +114,4 @@ const buttonsTheme: ComponentStyleConfig = {
   },
 }
 
-export default buttonsTheme
+export default Button

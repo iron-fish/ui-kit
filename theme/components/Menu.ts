@@ -2,7 +2,7 @@ import type { ComponentStyleConfig } from '@chakra-ui/theme'
 import { mode } from '@chakra-ui/theme-tools'
 import { NAMED_COLORS } from '../constants'
 
-const menuTheme: ComponentStyleConfig = {
+const Menu: ComponentStyleConfig = {
   parts: ['button', 'list', 'item'],
   baseStyle: props => ({
     button: {
@@ -47,4 +47,4 @@ const menuTheme: ComponentStyleConfig = {
     },
   }),
 }
-export default menuTheme
+export default Menu
