@@ -2,14 +2,14 @@ const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin')
 
 module.exports = {
   stories: [
-    "../stories/**/*.stories.@(js|jsx|ts|tsx)",
+    '../stories/**/*.stories.@(js|jsx|ts|tsx)',
   ],
   addons: [
     "@storybook/addon-links",
     "@storybook/addon-essentials",
     "@storybook/addon-interactions",
   ],
-  framework: "@storybook/react",
+  framework: '@storybook/react',
   staticDirs: ['../public'],
   webpack: async (baseConfig, options) => {
     const { module = {}, resolve = {}} = baseConfig;
@@ -22,7 +22,7 @@ module.exports = {
           {
             test: /\.mjs$/,
             include: /node_modules/,
-            type: "javascript/auto",
+            type: 'javascript/auto',
           },
         ],
       },
