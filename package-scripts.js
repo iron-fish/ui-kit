@@ -39,7 +39,11 @@ module.exports = {
     },
 
     build: 'tsc --project tsconfig.json',
-    test: '',
+    test: {
+      script: 'jest',
+      watch: 'nps "test --watch"',
+      snapshot: 'nps "test -u"',
+    },
     publish: 'npm publish',
     precommit: 'nps care',
     care: concurrent.nps('build', 'lint'),
