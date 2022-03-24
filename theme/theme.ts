@@ -1,7 +1,7 @@
 import { ChakraTheme, DeepPartial } from '@chakra-ui/react'
 import { mode } from '@chakra-ui/theme-tools'
 import { NAMED_COLORS } from './constants'
-import Components from './components'
+import ThemedComponents from './components'
 
 const typeface: object = {
   fontWeight: '400',
@@ -10,7 +10,7 @@ const typeface: object = {
 }
 
 const IronFishTheme: DeepPartial<ChakraTheme> = {
-  components: Components,
+  components: ThemedComponents,
   styles: {
     global: props => ({
       body: {

@@ -11,6 +11,7 @@ const SelectField: ComponentStyleConfig = {
       px: '1.5rem',
       py: '0.75rem',
       borderRadius: '0.25rem',
+      bg: mode(NAMED_COLORS.WHITE, NAMED_COLORS.DARKER_GREY)(props),
       border: '0.063rem solid',
       borderColor: mode(NAMED_COLORS.LIGHT_GREY, NAMED_COLORS.DARK_GREY)(props),
       boxShadow: '0 0.25rem 0.688rem rgba(0, 0, 0, 0.04)',
@@ -18,6 +19,10 @@ const SelectField: ComponentStyleConfig = {
         borderColor: mode(NAMED_COLORS.DEEP_BLUE, NAMED_COLORS.WHITE)(props),
       },
       _focusWithin: {
+        borderColor: mode(NAMED_COLORS.DEEP_BLUE, NAMED_COLORS.WHITE)(props),
+        borderWidth: '0.094rem',
+      },
+      '&.select-field_focused': {
         borderColor: mode(NAMED_COLORS.DEEP_BLUE, NAMED_COLORS.WHITE)(props),
         borderWidth: '0.094rem',
       },
@@ -29,12 +34,68 @@ const SelectField: ComponentStyleConfig = {
       fontFamily: 'ABC Favorit Trial',
       color: mode(NAMED_COLORS.GREY, NAMED_COLORS.PALE_GREY)(props),
     },
-    inputWrapper: {
-      fontSize: '1rem',
-      p: '0.25rem',
-      fontWeight: '400',
-      fontFamily: 'ABC Favorit Trial',
-      color: mode(NAMED_COLORS.DEEP_BLUE, NAMED_COLORS.WHITE)(props),
+    selectedValue: {
+      '.select-field_selected_label': {
+        fontSize: '1rem',
+        fontWeight: '400',
+        fontFamily: 'ABC Favorit Trial',
+        lineHeight: '1.5rem',
+        color: mode(NAMED_COLORS.DEEP_BLUE, NAMED_COLORS.WHITE)(props),
+      },
+      '.select-field_selected_text': {
+        fontSize: '0.75rem',
+        fontWeight: '400',
+        lineHeight: '1.25rem',
+        fontFamily: 'ABC Favorit Trial',
+        color: mode(NAMED_COLORS.GREY, NAMED_COLORS.PALE_GREY)(props),
+      },
+    },
+    popover: {
+      borderRadius: '0.25rem',
+      border: '0.063rem solid',
+      borderTopRadius: 0,
+      bg: mode(NAMED_COLORS.WHITE, NAMED_COLORS.DARKER_GREY)(props),
+      borderColor: mode(NAMED_COLORS.DEEP_BLUE, NAMED_COLORS.WHITE)(props),
+      boxShadow: '0 0.25rem 0.688rem rgba(0, 0, 0, 0.04) !important',
+      '.chakra-popover__body': {
+        p: '0',
+      },
+    },
+    optionWrapper: {
+      borderBottom: '0.063rem solid',
+      borderColor: mode(NAMED_COLORS.DEEP_BLUE, NAMED_COLORS.WHITE)(props),
+      boxShadow: '0 0.25rem 0.688rem rgba(0, 0, 0, 0.04)',
+      ':last-of-type': {
+        borderBottom: 'none',
+      },
+      '&.selected': {
+        bg: mode(NAMED_COLORS.LIGHTER_GREY, NAMED_COLORS.DARK_GREY)(props),
+        _hover: {
+          bg: mode(NAMED_COLORS.LIGHTER_GREY, NAMED_COLORS.DARK_GREY)(props),
+        },
+      },
+      _hover: {
+        bg: mode(NAMED_COLORS.LIGHTER_GREY, NAMED_COLORS.DARK_GREY)(props),
+      },
+    },
+    option: {
+      h: '4.063rem',
+      px: '1.5rem',
+      py: '0.75rem',
+      cursor: 'pointer',
+      '.select-field_option_label': {
+        fontSize: '1rem',
+        fontWeight: '400',
+        fontFamily: 'ABC Favorit Trial',
+        color: mode(NAMED_COLORS.DEEP_BLUE, NAMED_COLORS.WHITE)(props),
+      },
+      '.select-field_option_text': {
+        fontSize: '0.75rem',
+        fontWeight: '400',
+        fontFamily: 'ABC Favorit Trial',
+        color: mode(NAMED_COLORS.GREY, NAMED_COLORS.PALE_GREY)(props),
+      },
+      
     },
   }),
   defaultProps: {

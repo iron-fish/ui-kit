@@ -1,11 +1,15 @@
 import type { ComponentStyleConfig } from '@chakra-ui/theme'
 
-import Table from './Table'
+import FieldGroup from './FieldGroup'
 import SelectField from './SelectField'
+import Table from './Table'
+import TextField from './TextField'
 
-const Components: Record<string, ComponentStyleConfig> = {
-  Table,
+const ThemedComponents: Record<string, ComponentStyleConfig> = {
+  FieldGroup,
   SelectField,
+  Table,
+  TextField,
 }
 
-export default Components
+export default ThemedComponents
