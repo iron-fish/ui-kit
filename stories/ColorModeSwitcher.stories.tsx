@@ -1,4 +1,4 @@
-import React from 'react'
+import { FC } from 'react'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 import { useColorMode } from '@chakra-ui/react'
 
@@ -9,12 +9,10 @@ export default {
   component: ColorModeSwitcher,
 } as ComponentMeta<typeof ColorModeSwitcher>
 
-const ThemeColor: React.FC = () => {
+const ThemeColor: FC = () => {
   const { colorMode } = useColorMode()
 
   return <span>Color mode is: {colorMode}</span>
 }
 
-export const ColorModeSwitcherDemo: ComponentStory<typeof ThemeColor> = () => (
-  <ThemeColor />
-)
+export const ColorModeSwitcherDemo: ComponentStory<FC> = () => <ThemeColor />

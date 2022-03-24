@@ -1,18 +1,18 @@
-const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
+const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin')
 
 module.exports = {
   stories: [
-    "../stories/**/*.stories.@(js|jsx|ts|tsx)",
+    '../stories/**/*.stories.@(js|jsx|ts|tsx)',
   ],
   addons: [
     "@storybook/addon-links",
     "@storybook/addon-essentials",
-    "@storybook/addon-interactions"
+    "@storybook/addon-interactions",
   ],
-  framework: "@storybook/react",
+  framework: '@storybook/react',
   staticDirs: ['../public'],
-  webpack: async (baseConfig) => {
-    const { module = {}, resolve = {} } = baseConfig;
+  webpack: async (baseConfig, options) => {
+    const { module = {}, resolve = {}} = baseConfig;
     return {
       ...baseConfig,
       module: {
@@ -22,14 +22,20 @@ module.exports = {
           {
             test: /\.mjs$/,
             include: /node_modules/,
-            type: "javascript/auto",
+            type: 'javascript/auto',
           },
         ],
       },
       resolve: {
         ...resolve,
-        plugins: [...(resolve.plugins || []), new TsconfigPathsPlugin()]
-      }
+        plugins: [
+          ...(resolve.plugins || []),
+          new TsconfigPathsPlugin()
+        ]
+      },
     };
+  },
+  features: {
+    emotionAlias: false,
   }
 }
