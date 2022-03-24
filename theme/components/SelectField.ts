@@ -95,7 +95,6 @@ const SelectField: ComponentStyleConfig = {
         fontFamily: 'ABC Favorit Trial',
         color: mode(NAMED_COLORS.GREY, NAMED_COLORS.PALE_GREY)(props),
       },
-      
     },
   }),
   defaultProps: {

@@ -36,33 +36,33 @@ export const BasicExample: ComponentStory<FC> = () => (
     />
     <Box>
       <h4>With custom options render</h4>
-      <SelectField
-        label="Select Label"
-        w="50%"
-        renderOption={option => (
-          <Box px="1.5rem" h="3rem" textAlign="center" pt={2}>
-            <b>{option.label}</b>&nbsp;&nbsp;
-            <small style={{ color: 'red' }}>{option.helperText}</small>
-          </Box>
-        )}
-        options={[
-          {
-            label: 'Test',
-            helperText: 'This is 1 option',
-            value: 'option1',
-          },
-          {
-            label: 'Test',
-            helperText: 'This is 2 option',
-            value: 'option2',
-          },
-          {
-            label: 'Test',
-            helperText: 'This is 3 option',
-            value: 'option3',
-          },
-        ]}
-      />
     </Box>
+    <SelectField
+      label="Select Label"
+      w="50%"
+      renderOption={option => (
+        <Box px="1.5rem" h="3rem" textAlign="center" pt={2}>
+          <b>{option.label}</b>&nbsp;&nbsp;
+          <small style={{ color: 'red' }}>{option.helperText}</small>
+        </Box>
+      )}
+      options={[
+        {
+          label: 'Test',
+          helperText: 'This is 1 option',
+          value: 'option1',
+        },
+        {
+          label: 'Test',
+          helperText: 'This is 2 option',
+          value: 'option2',
+        },
+        {
+          label: 'Test',
+          helperText: 'This is 3 option',
+          value: 'option3',
+        },
+      ]}
+    />
   </Stack>
 )

@@ -4,11 +4,11 @@ import {
   Box,
   Flex,
   FlexProps,
+  HTMLChakraProps,
   Popover,
   PopoverBody,
   PopoverContent,
   PopoverTrigger,
-  StyleProps,
   useDisclosure,
   useMultiStyleConfig,
 } from '@chakra-ui/react'
@@ -21,7 +21,7 @@ type OptionType = {
   helperText: string | ReactNode
 }
 
-interface OptionProps extends StyleProps {
+interface OptionProps extends HTMLChakraProps<'div'> {
   option: OptionType
 }
 
