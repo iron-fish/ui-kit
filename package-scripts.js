@@ -1,14 +1,7 @@
 const { concurrent } = require('nps-utils')
 const PORT = process.env.PORT || 5000
 
-const folders = [
-  'components',
-  'hooks',
-  'public',
-  'styles',
-  'svg',
-  'utils',
-]
+const folders = ['components', 'hooks', 'public', 'styles', 'svg', 'utils']
 
 module.exports = {
   scripts: {
@@ -37,7 +30,6 @@ module.exports = {
         script: 'nps meta.dep.build meta.dep.interactive',
       },
     },
-
     build: 'tsc --project tsconfig.json',
     test: {
       script: 'jest',

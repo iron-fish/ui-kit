@@ -1,7 +1,5 @@
 import type { ReactNode } from 'react'
-import { chakra } from '@chakra-ui/react'
-
-import { Col, RowColumn } from 'components/Box'
+import { chakra, Flex } from '@chakra-ui/react'
 
 import Showcase from 'components/Showcase'
 import Swatch from 'components/Swatch'
@@ -18,12 +16,18 @@ interface Color {
 interface ColorStackProps {
   title: ReactNode
   colors: Color[]
-  // compressible?: boolean
-  // index?: number
+  compressible?: boolean
+  index?: number
 }
-/*
-${compressible
-        ? `@media screen and (min-width: 48rem) {
+
+const ColorStack = ({
+  title,
+  colors,
+  compressible = true,
+  index = Infinity,
+}: ColorStackProps) => {
+  const blah = compressible
+    ? `@media screen and (min-width: 48rem) {
           padding: ${
             index === 0
               ? `2rem 1rem 0rem 2rem`
@@ -33,31 +37,27 @@ ${compressible
           };
           width: calc(50% - ${index > 1 ? '4rem' : '3rem'});
       }`
- */
-
-const ColorStack = ({
-  title,
-  colors,
-}: // compressible = true,
-// index = Infinity,
-ColorStackProps) => (
-  <Col w="100%" p="2rem">
-    <H1 align="left">{title}</H1>
-    <chakra.div
-      border="2px"
-      borderStyle="solid"
-      borderColor="rgba(0, 0, 0, 0.5)"
-      borderRadius="5px"
-      overflow="hidden"
-    >
-      {colors.map(swatch => (
-        <Swatch key={swatch.name} {...swatch} />
-      ))}
-    </chakra.div>
-  </Col>
-)
+    : ``
+  return (
+    <Flex flexDirection="column" w="100%" p="2rem">
+      <H1 textAlign="left">{title}</H1>
+      <chakra.div
+        border="2px solid rgba(0, 0, 0, 0.5)"
+        borderRadius="5px"
+        overflow="hidden"
+      >
+        {colors.map(swatch => (
+          <Swatch key={swatch.name} {...swatch} />
+        ))}
+      </chakra.div>
+    </Flex>
+  )
+}
 
 function Colors() {
+  // @media screen and (min-width: 40rem) {
+  //             flex-direction: row;
+  //           }
   return (
     <Showcase
       title={
@@ -68,7 +68,7 @@ function Colors() {
       }
       headerColor={COLORS.BRAND.BLUE}
     >
-      <RowColumn wrap="wrap">
+      <Flex flexDirection="column" flexWrap="wrap">
         <ColorStack
           title={
             <>
@@ -105,7 +105,7 @@ function Colors() {
             })
           )}
         />
-      </RowColumn>
+      </Flex>
     </Showcase>
   )
 }
