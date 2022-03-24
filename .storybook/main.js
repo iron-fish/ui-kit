@@ -5,14 +5,14 @@ module.exports = {
     '../stories/**/*.stories.@(js|jsx|ts|tsx)',
   ],
   addons: [
-    '@storybook/addon-links',
-    '@storybook/addon-essentials',
-    '@storybook/addon-interactions'
+    "@storybook/addon-links",
+    "@storybook/addon-essentials",
+    "@storybook/addon-interactions",
   ],
   framework: '@storybook/react',
   staticDirs: ['../public'],
-  webpack: async (baseConfig) => {
-    const { module = {}, resolve = {} } = baseConfig;
+  webpack: async (baseConfig, options) => {
+    const { module = {}, resolve = {}} = baseConfig;
     return {
       ...baseConfig,
       module: {
@@ -33,9 +33,9 @@ module.exports = {
           new TsconfigPathsPlugin()
         ]
       },
-    }
+    };
   },
   features: {
     emotionAlias: false,
-  },
+  }
 }
