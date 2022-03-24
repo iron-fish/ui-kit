@@ -4,12 +4,16 @@ import FieldGroup from './FieldGroup'
 import SelectField from './SelectField'
 import Table from './Table'
 import TextField from './TextField'
+import Button from './Button'
+import Menu from './Menu'
 
 const ThemedComponents: Record<string, ComponentStyleConfig> = {
   FieldGroup,
   SelectField,
   Table,
   TextField,
+  Button,
+  Menu,
 }
 
 export default ThemedComponents

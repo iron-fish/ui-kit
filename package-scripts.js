@@ -4,7 +4,6 @@ const PORT = process.env.PORT || 5000
 const folders = [
   'components',
   'hooks',
-  'pages',
   'public',
   'styles',
   'svg',
@@ -39,7 +38,7 @@ module.exports = {
       },
     },
 
-    build: 'tsc --project tsconfig.production.json',
+    build: 'tsc --project tsconfig.json',
     test: '',
     publish: 'npm publish',
     precommit: 'nps care',
