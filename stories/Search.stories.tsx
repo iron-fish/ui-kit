@@ -19,10 +19,9 @@ export const SearchInput: ComponentStory<FC> = () => (
     <Box>
       <h4>Simple search input</h4>
       <InputGroup variant="search">
-        <InputLeftElement
-          pointerEvents="none"
-          children={<Search2Icon w={'0.875rem'} h={'0.875rem'} />}
-        />
+        <InputLeftElement pointerEvents="none">
+          <Search2Icon w={'0.875rem'} h={'0.875rem'} />
+        </InputLeftElement>
         <Input placeholder="Search" />
       </InputGroup>
     </Box>
