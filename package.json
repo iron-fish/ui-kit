@@ -15,6 +15,7 @@
     "publish": "nps publish"
   },
   "dependencies": {
+    "@chakra-ui/icons": "^1.1.7",
     "@chakra-ui/react": "1.8.6",
     "@emotion/css": "11.7.1",
     "@emotion/react": "11.8.2",
@@ -40,9 +41,7 @@
     "@testing-library/jest-dom": "5.16.2",
     "@testing-library/react": "12.1.4",
     "@types/jest": "27.4.1",
-    "@types/ramda": "0.27.45",
     "@types/ramda": "0.28.1",
-    "@types/react": "17.0.30",
     "@types/react": "17.0.41",
     "@typescript-eslint/eslint-plugin": "5.16.0",
     "@typescript-eslint/parser": "5.16.0",

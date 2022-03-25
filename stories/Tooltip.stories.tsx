@@ -1,6 +1,6 @@
 import { FC } from 'react'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
-import { Tooltip, Flex, Box } from '@chakra-ui/react'
+import { Tooltip, Flex } from '@chakra-ui/react'
 import { InfoOutlineIcon } from '@chakra-ui/icons'
 
 export default {
@@ -21,8 +21,6 @@ export const SearchInput: ComponentStory<FC> = args => (
     </Tooltip>
   </Flex>
 )
-
 SearchInput.args = {
   placement: 'auto',
-  isOpen: false,
 }
