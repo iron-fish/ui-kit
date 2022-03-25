@@ -50,7 +50,6 @@
     "babel-loader": "8.2.3",
     "dependency-cruiser": "11.4.1",
     "eslint": "8.11.0",
-    "eslint-config-next": "12.1.0",
     "eslint-config-prettier": "8.5.0",
     "eslint-plugin-prettier": "4.0.0",
     "gitparty": "1.0.10",
