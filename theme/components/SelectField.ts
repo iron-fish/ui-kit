@@ -22,27 +22,28 @@ const SelectField: ComponentStyleConfig = {
         borderColor: mode(NAMED_COLORS.DEEP_BLUE, NAMED_COLORS.WHITE)(props),
         borderWidth: '0.094rem',
       },
-      '&.select-field_focused': {
-        borderColor: mode(NAMED_COLORS.DEEP_BLUE, NAMED_COLORS.WHITE)(props),
-        borderWidth: '0.094rem',
+      '&.select-field': {
+        '&--focused': {
+          borderColor: mode(NAMED_COLORS.DEEP_BLUE, NAMED_COLORS.WHITE)(props),
+          borderWidth: '0.094rem',
+        },
       },
     },
     label: {
       fontSize: '0.75rem',
-      p: '0.25rem',
       fontWeight: '400',
       fontFamily: 'ABC Favorit Trial',
       color: mode(NAMED_COLORS.GREY, NAMED_COLORS.PALE_GREY)(props),
     },
-    selectedValue: {
-      '.select-field_selected_label': {
+    value: {
+      '.select-field__value-label': {
         fontSize: '1rem',
         fontWeight: '400',
         fontFamily: 'ABC Favorit Trial',
         lineHeight: '1.5rem',
         color: mode(NAMED_COLORS.DEEP_BLUE, NAMED_COLORS.WHITE)(props),
       },
-      '.select-field_selected_text': {
+      '.select-field__value-text': {
         fontSize: '0.75rem',
         fontWeight: '400',
         lineHeight: '1.25rem',
@@ -68,10 +69,12 @@ const SelectField: ComponentStyleConfig = {
       ':last-of-type': {
         borderBottom: 'none',
       },
-      '&.selected': {
-        bg: mode(NAMED_COLORS.LIGHTER_GREY, NAMED_COLORS.DARK_GREY)(props),
-        _hover: {
+      '&.select-field__option-wrapper': {
+        '&--selected': {
           bg: mode(NAMED_COLORS.LIGHTER_GREY, NAMED_COLORS.DARK_GREY)(props),
+          _hover: {
+            bg: mode(NAMED_COLORS.LIGHTER_GREY, NAMED_COLORS.DARK_GREY)(props),
+          },
         },
       },
       _hover: {
@@ -83,13 +86,13 @@ const SelectField: ComponentStyleConfig = {
       px: '1.5rem',
       py: '0.75rem',
       cursor: 'pointer',
-      '.select-field_option_label': {
+      '.select-field__option-label': {
         fontSize: '1rem',
         fontWeight: '400',
         fontFamily: 'ABC Favorit Trial',
         color: mode(NAMED_COLORS.DEEP_BLUE, NAMED_COLORS.WHITE)(props),
       },
-      '.select-field_option_text': {
+      '.select-field__option-text': {
         fontSize: '0.75rem',
         fontWeight: '400',
         fontFamily: 'ABC Favorit Trial',

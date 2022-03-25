@@ -4,7 +4,6 @@ import {
   Box,
   Flex,
   FlexProps,
-  HTMLChakraProps,
   Popover,
   PopoverBody,
   PopoverContent,
@@ -13,6 +12,9 @@ import {
   useMultiStyleConfig,
 } from '@chakra-ui/react'
 import { TriangleDownIcon } from '@chakra-ui/icons'
+import blem from 'blem'
+
+const bem = blem('select-field')
 
 type OptionType = {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -20,17 +22,6 @@ type OptionType = {
   label: string | ReactNode
   helperText: string | ReactNode
 }
-
-interface OptionProps extends HTMLChakraProps<'div'> {
-  option: OptionType
-}
-
-const Option: FC<OptionProps> = ({ option, ...props }) => (
-  <Box {...props}>
-    <Box className="select-field_option_label">{option?.label}</Box>
-    <Box className="select-field_option_text">{option?.helperText}</Box>
-  </Box>
-)
 
 interface SelectFieldProps extends FlexProps {
   label: string
@@ -43,11 +34,11 @@ interface SelectFieldProps extends FlexProps {
 
 const SelectField: FC<SelectFieldProps> = ({
   label,
-  value,
+  value = null,
   options = [],
   renderOption,
   renderSelected,
-  onSelectOption,
+  onSelectOption = () => void 0,
   ...props
 }) => {
   const [val, setVal] = useState<OptionType | null>(null)
@@ -55,8 +46,23 @@ const SelectField: FC<SelectFieldProps> = ({
   const styles = useMultiStyleConfig('SelectField', props)
 
   useEffect(() => {
-    setVal(value || null)
+    setVal(value)
   }, [value])
+
+  const renderDefaultOption = option => (
+    <Box sx={styles?.option}>
+      <Box className={bem('option-label')}>{option?.label}</Box>
+      <Box className={bem('option-text')}>{option?.helperText}</Box>
+    </Box>
+  )
+  const renderDefaultSelected = option => (
+    <Flex alignItems="end">
+      <Box className={bem('value-label')} pr={2}>
+        {option?.label}
+      </Box>
+      <Box className={bem('value-text')}>{option?.helperText}</Box>
+    </Flex>
+  )
 
   return (
     <Popover
@@ -70,7 +76,7 @@ const SelectField: FC<SelectFieldProps> = ({
       <PopoverTrigger>
         <Flex
           id="SelectField"
-          className={isOpen ? 'select-field_focused' : ''}
+          className={bem(...(isOpen ? ['', 'focused'] : []))}
           tabIndex={0}
           {...props}
           sx={{
@@ -85,21 +91,8 @@ const SelectField: FC<SelectFieldProps> = ({
         >
           <Flex flexDirection="column" justifyContent="center" w="100%">
             <Box sx={styles?.label}>{label}</Box>
-            <Box sx={styles?.selectedValue} display={!!val ? 'block' : 'none'}>
-              {val ? (
-                renderSelected ? (
-                  renderSelected(val)
-                ) : (
-                  <Flex sx={styles?.selectedValue} alignItems="end">
-                    <Box className="select-field_selected_label" pr={2}>
-                      {val?.label}
-                    </Box>
-                    <Box className="select-field_selected_text">
-                      {val?.helperText}
-                    </Box>
-                  </Flex>
-                )
-              ) : null}
+            <Box sx={styles?.value} display={!!val ? 'block' : 'none'}>
+              {val ? (renderSelected || renderDefaultSelected)(val) : null}
             </Box>
           </Flex>
           <Box>
@@ -112,35 +105,26 @@ const SelectField: FC<SelectFieldProps> = ({
       </PopoverTrigger>
       <PopoverContent w="100%" sx={styles?.popover}>
         <PopoverBody w="100%">
-          {val ? (
-            <Box w="100%" className="selected" sx={styles?.optionWrapper}>
-              {renderOption ? (
-                renderOption(val)
-              ) : (
-                <Option sx={styles?.option} option={val} />
+          {options.map(option => (
+            <Box
+              w="100%"
+              key={option?.value}
+              className={bem(
+                'option-wrapper',
+                val === option ? 'selected' : ''
               )}
-            </Box>
-          ) : null}
-          {options
-            .filter(option => option !== val)
-            .map(option => (
-              <Box
-                w="100%"
-                key={option?.value}
-                sx={styles?.optionWrapper}
-                onClick={() => {
+              sx={styles?.optionWrapper}
+              onClick={() => {
+                if (val !== option) {
                   setVal(option)
-                  onSelectOption && onSelectOption(option)
+                  onSelectOption(option)
                   onClose()
-                }}
-              >
-                {renderOption ? (
-                  renderOption(option)
-                ) : (
-                  <Option sx={styles?.option} option={option} />
-                )}
-              </Box>
-            ))}
+                }
+              }}
+            >
+              {(renderOption || renderDefaultOption)(option)}
+            </Box>
+          ))}
         </PopoverBody>
       </PopoverContent>
     </Popover>

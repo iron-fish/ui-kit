@@ -1,6 +1,11 @@
+import { cloneElement, FC, FunctionComponent, ReactElement } from 'react'
 import { Flex, StyleProps, useMultiStyleConfig } from '@chakra-ui/react'
 import { getValidChildren } from '@chakra-ui/react-utils'
-import { cloneElement, FC, FunctionComponent, ReactElement } from 'react'
+
+const isFieldInput = (el: ReactElement) =>
+  typeof el.type === 'function' &&
+  ((el.type as FunctionComponent).displayName === 'TextField' ||
+    (el.type as FunctionComponent).displayName === 'SelectField')
 
 const FieldGroup: FC<StyleProps> = ({ children, ...props }) => {
   const styles = useMultiStyleConfig('FieldGroup', props)
@@ -25,12 +30,7 @@ const FieldGroup: FC<StyleProps> = ({ children, ...props }) => {
         return cloneElement(child, {
           ...child?.props,
           sx: { ...styles?.child, ...child?.props?.sx },
-          w:
-            typeof child.type === 'function' &&
-            ((child.type as FunctionComponent).displayName === 'TextField' ||
-              (child.type as FunctionComponent).displayName === 'SelectField')
-              ? '100%'
-              : undefined,
+          w: isFieldInput(child) ? '100%' : undefined,
         })
       })}
     </Flex>
