@@ -1,10 +1,11 @@
 import type { ReactNode } from 'react'
 import { chakra, Flex } from '@chakra-ui/react'
 
-import Showcase from 'components/Showcase'
-import Swatch from 'components/Swatch'
 import { COLORS, NAMED_COLORS } from 'styles/constants'
 import { H1, TITLE } from 'styles/type'
+
+import Showcase from './Showcase'
+import Swatch from './Swatch'
 
 import HexFish from 'svgx/hexfish'
 

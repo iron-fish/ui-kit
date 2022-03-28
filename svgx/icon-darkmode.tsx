@@ -1,4 +1,4 @@
-export default function DarkMode() {
+export function IconDarkMode() {
   return (
     <svg
       width="24"
@@ -14,3 +14,5 @@ export default function DarkMode() {
     </svg>
   )
 }
+
+export default IconDarkMode

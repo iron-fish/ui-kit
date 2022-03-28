@@ -1,6 +1,6 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 
-import Colors from 'components/Colors'
+import Colors from './Colors'
 
 export default {
   title: 'Components/Colors',

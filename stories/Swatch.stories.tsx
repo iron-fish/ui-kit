@@ -1,6 +1,6 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 
-import Swatch from 'components/Swatch'
+import Swatch from './Swatch'
 
 export default {
   title: 'Components/Swatch',

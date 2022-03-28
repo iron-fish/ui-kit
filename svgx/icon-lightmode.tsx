@@ -1,4 +1,4 @@
-export default function LightMode() {
+export function IconLightMode() {
   return (
     <svg
       width="24"
@@ -14,3 +14,5 @@ export default function LightMode() {
     </svg>
   )
 }
+
+export default IconLightMode
