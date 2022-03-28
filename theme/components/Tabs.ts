@@ -33,10 +33,7 @@ const Tabs: ComponentStyleConfig = {
     tablist: {
       borderBottomWidth: '0.125rem',
       borderBottomStyle: 'solid',
-      borderColor: mode(
-        NAMED_COLORS.LIGHTER_GREY,
-        NAMED_COLORS.DARK_GREY
-      )(props),
+      borderColor: mode(NAMED_COLORS.LIGHT_GREY, NAMED_COLORS.DARK_GREY)(props),
     },
   }),
   defaultProps: {
