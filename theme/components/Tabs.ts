@@ -26,12 +26,6 @@ const Tabs: ComponentStyleConfig = {
         borderColor: mode(NAMED_COLORS.DEEP_BLUE, NAMED_COLORS.WHITE)(props),
         color: mode(NAMED_COLORS.DEEP_BLUE, NAMED_COLORS.WHITE)(props),
       },
-      _active: {
-        borderBottomWidth: '0.125rem',
-        borderBottomStyle: 'solid',
-        borderColor: mode(NAMED_COLORS.DEEP_BLUE, NAMED_COLORS.WHITE)(props),
-        color: mode(NAMED_COLORS.DEEP_BLUE, NAMED_COLORS.WHITE)(props),
-      },
       ':first-child': {
         marginLeft: 0,
       },
@@ -46,7 +40,7 @@ const Tabs: ComponentStyleConfig = {
     },
   }),
   defaultProps: {
-    variant: 'none',
+    variant: null,
   },
 }
 
