@@ -6,6 +6,7 @@ import TextField from './TextField'
 import Button from './Button'
 import Menu from './Menu'
 import Input from './Input'
+import Tabs from './Tabs'
 
 const ThemedComponents: Record<string, ComponentStyleConfig> = {
   FieldGroup,
@@ -14,6 +15,7 @@ const ThemedComponents: Record<string, ComponentStyleConfig> = {
   Button,
   Menu,
   Input,
+  Tabs,
 }
 
 export default ThemedComponents

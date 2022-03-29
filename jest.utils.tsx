@@ -27,7 +27,6 @@ export function getGlobalObject<T>(): T {
 }
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
-/* eslint-disable react/display-name */
 export const rasterizeWithProps = (C: ReactType, props: Record<string, any>) =>
   createElement(C, props, props.children || [])
 
@@ -46,6 +45,5 @@ export const render = (C: any, options?: Omit<RenderOptions, 'wrapper'>) =>
     ...options,
   })
 /* eslint-enable @typescript-eslint/no-explicit-any */
-/* eslint-enable react/display-name */
 
 // export const mockFetch = lookupFn => jest.fn().mockImplementation(lookupFn)
