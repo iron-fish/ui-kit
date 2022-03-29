@@ -26,6 +26,40 @@ type OptionType = {
   helperText: string | ReactNode
 }
 
+/**
+ * Default representation of SelectField option
+ */
+export const Option: FC<OptionType> = ({ label, helperText, ...rest }) => {
+  const styles = useMultiStyleConfig('SelectField', rest)
+
+  return (
+    <Box sx={styles?.option}>
+      <Box className={bem('option-label')}>{label}</Box>
+      <Box className={bem('option-text')}>{helperText}</Box>
+    </Box>
+  )
+}
+
+/**
+ * Default representation of selected option in SelectField
+ */
+export const SelectedOption: FC<OptionType> = ({ label, helperText }) => (
+  <Flex alignItems="end">
+    <Box className={bem('value-label')} pr={2}>
+      {label}
+    </Box>
+    <Box className={bem('value-text')}>{helperText}</Box>
+  </Flex>
+)
+
+const defaultOptionsFilter = (option: OptionType, searchTerm: string) => {
+  const _label = option.label.toString().toLowerCase()
+  const _helperText = option.helperText.toString().toLowerCase()
+  const _searchTerm = searchTerm.toLowerCase()
+
+  return _label.includes(_searchTerm) || _helperText.includes(_searchTerm)
+}
+
 interface AutocompleteProps extends FlexProps {
   label: string
   value?: OptionType
@@ -44,10 +78,10 @@ const Autocomplete: FC<AutocompleteProps> = ({
   InputProps = {},
   options = [],
   emptyOption = 'No results',
-  renderOption,
-  renderSelected,
+  renderOption = Option,
+  renderSelected = SelectedOption,
   onSelectOption = () => void 0,
-  filterOption,
+  filterOption = defaultOptionsFilter,
   ...props
 }) => {
   const [val, setVal] = useState<OptionType | null>(value)
@@ -62,29 +96,9 @@ const Autocomplete: FC<AutocompleteProps> = ({
     setVal(value)
   }, [value])
 
-  const renderDefaultOption = option => (
-    <Box sx={styles?.option}>
-      <Box className={bem('option-label')}>{option?.label}</Box>
-      <Box className={bem('option-text')}>{option?.helperText}</Box>
-    </Box>
+  const optionsToDisplay = options.filter(option =>
+    filterOption(option, search)
   )
-  const renderDefaultSelected = option => (
-    <Flex alignItems="end">
-      <Box className={bem('value-label')} pr={2}>
-        {option?.label}
-      </Box>
-      <Box className={bem('value-text')}>{option?.helperText}</Box>
-    </Flex>
-  )
-
-  const optionsToDisplay = options.filter(option => {
-    return filterOption
-      ? filterOption(option, search)
-      : (typeof option?.label === 'string' &&
-          option.label.toLowerCase().includes(search?.toLowerCase())) ||
-          (typeof option?.helperText === 'string' &&
-            option.helperText.toLowerCase().includes(search?.toLowerCase()))
-  })
 
   return (
     <Popover
@@ -118,7 +132,7 @@ const Autocomplete: FC<AutocompleteProps> = ({
           <Flex flexDirection="column" justifyContent="center" w="100%">
             <Box sx={styles?.label}>{label}</Box>
             <Box sx={styles?.value} display={val && !isOpen ? 'block' : 'none'}>
-              {val ? (renderSelected || renderDefaultSelected)(val) : null}
+              {val && renderSelected(val)}
             </Box>
             <Box sx={styles?.inputWrapper} display={isOpen ? 'block' : 'none'}>
               <Input
@@ -143,11 +157,11 @@ const Autocomplete: FC<AutocompleteProps> = ({
       </PopoverTrigger>
       <PopoverContent w="100%" sx={styles?.popover} ref={popoverRef}>
         <PopoverBody w="100%">
-          {optionsToDisplay && optionsToDisplay.length > 0 ? (
+          {optionsToDisplay.length > 0 ? (
             optionsToDisplay.map(option => (
               <Box
                 w="100%"
-                key={option?.value}
+                key={option.value}
                 className={bem(
                   'option-wrapper',
                   val === option ? 'selected' : ''
@@ -161,13 +175,13 @@ const Autocomplete: FC<AutocompleteProps> = ({
                   }
                 }}
               >
-                {(renderOption || renderDefaultOption)(option)}
+                {renderOption(option)}
               </Box>
             ))
           ) : (
             <Box
               w="100%"
-              key={null}
+              key="empty-option"
               className={bem('option-wrapper')}
               sx={styles?.emptyOption}
               textAlign="center"
