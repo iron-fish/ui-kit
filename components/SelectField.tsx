@@ -22,6 +22,31 @@ type OptionType = {
   label: string | ReactNode
   helperText: string | ReactNode
 }
+/**
+ * Default representation of SelectField option
+ */
+export const Option: FC<OptionType> = ({ label, helperText, ...rest }) => {
+  const styles = useMultiStyleConfig('SelectField', rest)
+
+  return (
+    <Box sx={styles?.option}>
+      <Box className={bem('option-label')}>{label}</Box>
+      <Box className={bem('option-text')}>{helperText}</Box>
+    </Box>
+  )
+}
+
+/**
+ * Default representation of selected option in SelectField
+ */
+export const SelectedOption: FC<OptionType> = ({ label, helperText }) => (
+  <Flex alignItems="end">
+    <Box className={bem('value-label')} pr={2}>
+      {label}
+    </Box>
+    <Box className={bem('value-text')}>{helperText}</Box>
+  </Flex>
+)
 
 interface SelectFieldProps extends FlexProps {
   label: string
@@ -36,8 +61,8 @@ const SelectField: FC<SelectFieldProps> = ({
   label,
   value = null,
   options = [],
-  renderOption,
-  renderSelected,
+  renderOption = Option,
+  renderSelected = SelectedOption,
   onSelectOption = () => void 0,
   ...props
 }) => {
@@ -48,21 +73,6 @@ const SelectField: FC<SelectFieldProps> = ({
   useEffect(() => {
     setVal(value)
   }, [value])
-
-  const renderDefaultOption = option => (
-    <Box sx={styles?.option}>
-      <Box className={bem('option-label')}>{option?.label}</Box>
-      <Box className={bem('option-text')}>{option?.helperText}</Box>
-    </Box>
-  )
-  const renderDefaultSelected = option => (
-    <Flex alignItems="end">
-      <Box className={bem('value-label')} pr={2}>
-        {option?.label}
-      </Box>
-      <Box className={bem('value-text')}>{option?.helperText}</Box>
-    </Flex>
-  )
 
   return (
     <Popover
@@ -92,7 +102,7 @@ const SelectField: FC<SelectFieldProps> = ({
           <Flex flexDirection="column" justifyContent="center" w="100%">
             <Box sx={styles?.label}>{label}</Box>
             <Box sx={styles?.value} display={!!val ? 'block' : 'none'}>
-              {val ? (renderSelected || renderDefaultSelected)(val) : null}
+              {val && renderSelected(val)}
             </Box>
           </Flex>
           <Box>
@@ -122,7 +132,7 @@ const SelectField: FC<SelectFieldProps> = ({
                 }
               }}
             >
-              {(renderOption || renderDefaultOption)(option)}
+              {renderOption(option)}
             </Box>
           ))}
         </PopoverBody>
