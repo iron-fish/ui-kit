@@ -29,7 +29,7 @@ export const Option: FC<OptionType> = ({ label, helperText, ...rest }) => {
   const styles = useMultiStyleConfig('SelectField', rest)
 
   return (
-    <Box sx={styles?.option}>
+    <Box className={bem('option')} sx={styles?.option}>
       <Box className={bem('option-label')}>{label}</Box>
       <Box className={bem('option-text')}>{helperText}</Box>
     </Box>
@@ -99,7 +99,7 @@ const SelectField: FC<SelectFieldProps> = ({
           justifyContent="center"
           alignItems="center"
         >
-          <Flex flexDirection="column" justifyContent="center" w="100%">
+          <Flex className={bem('content')} w="100%">
             <Box sx={styles?.label}>{label}</Box>
             <Box sx={styles?.value} display={!!val ? 'block' : 'none'}>
               {val && renderSelected(val)}
