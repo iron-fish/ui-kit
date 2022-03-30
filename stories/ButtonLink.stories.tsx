@@ -1,5 +1,5 @@
 import { FC } from 'react'
-import { Button, Icon } from '@chakra-ui/react'
+import { Button } from '@chakra-ui/react'
 import { ComponentMeta, ComponentStory } from '@storybook/react'
 import { AddIcon } from '@chakra-ui/icons'
 
@@ -10,8 +10,8 @@ export default {
 
 export const Link: ComponentStory<FC> = () => (
   <>
-    <Button variant="text_link">Text link</Button>
-    <Button leftIcon={<AddIcon />} variant="text_link">
+    <Button variant="textLink">Text link</Button>
+    <Button leftIcon={<AddIcon />} variant="textLink">
       Text link with icon
     </Button>
   </>

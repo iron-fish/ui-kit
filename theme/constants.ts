@@ -25,4 +25,5 @@ export const NAMED_COLORS: Record<string, string> = {
   RED: '#F15929',
   DARKER_GREY_1: '#222222',
   DARKER_GREY_2: '#626262',
+  LIGHT_BLACK: '#101010',
 }

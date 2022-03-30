@@ -1,4 +1,5 @@
 import type { ComponentStyleConfig } from '@chakra-ui/theme'
+
 import { mode } from '@chakra-ui/theme-tools'
 import { NAMED_COLORS } from '../constants'
 
@@ -98,7 +99,7 @@ const Button: ComponentStyleConfig = {
         ...getDisabledStyle(props),
       },
     }),
-    text_link: props => ({
+    textLink: props => ({
       color: mode(NAMED_COLORS.GREY, NAMED_COLORS.PALE_GREY)(props),
       '.chakra-button__icon': {
         marginRight: '0.75rem',
@@ -108,6 +109,34 @@ const Button: ComponentStyleConfig = {
         color: mode(NAMED_COLORS.DEEP_BLUE, NAMED_COLORS.WHITE)(props),
         '.chakra-button__icon': {
           fill: mode(NAMED_COLORS.DEEP_BLUE, NAMED_COLORS.WHITE)(props),
+        },
+      },
+    }),
+    sideBarNavItem: props => ({
+      h: '2.5rem',
+      w: '100%',
+      fontSize: '0.875rem',
+      fontFamily: 'ABC Favorit Extended Trial',
+      color: mode(NAMED_COLORS.GREY, NAMED_COLORS.PALE_GREY)(props),
+      borderRadius: '0.25rem',
+      pr: '0.5rem',
+      bgColor: mode(NAMED_COLORS.WHITE, NAMED_COLORS.LIGHT_BLACK)(props),
+      _focus: {
+        boxShadow: null,
+      },
+      _hover: {
+        color: mode(NAMED_COLORS.DEEP_BLUE, NAMED_COLORS.WHITE)(props),
+      },
+      _active: {
+        bgColor: mode(NAMED_COLORS.LIGHTER_GREY, NAMED_COLORS.DARK_GREY)(props),
+      },
+      '.chakra-button__icon': {
+        color: mode(NAMED_COLORS.DEEP_BLUE, NAMED_COLORS.WHITE)(props),
+        ':first-child': {
+          marginRight: '1rem',
+        },
+        ':last-child': {
+          marginLeft: 'auto',
         },
       },
     }),
