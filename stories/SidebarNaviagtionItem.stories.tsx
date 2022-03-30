@@ -15,7 +15,7 @@ export const SideBarNavigationItem: ComponentStory<FC> = () => (
       <Button
         variant="navItem"
         leftIcon={<EmailIcon />}
-        rightIcon={<Badge>R</Badge>}
+        rightIcon={<Badge variant="navItem">R</Badge>}
       >
         Receive $IRON
       </Button>
@@ -25,7 +25,7 @@ export const SideBarNavigationItem: ComponentStory<FC> = () => (
       <Button
         variant="navItem"
         leftIcon={<EmailIcon />}
-        rightIcon={<Badge>R</Badge>}
+        rightIcon={<Badge variant="navItem">R</Badge>}
         isActive={true}
       >
         Receive $IRON

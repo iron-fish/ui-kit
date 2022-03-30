@@ -137,14 +137,6 @@ const Button: ComponentStyleConfig = {
         },
         ':last-child': {
           marginLeft: 'auto',
-          '.chakra-badge': {
-            bgColor: mode(
-              NAMED_COLORS.LIGHT_GREY,
-              NAMED_COLORS.DARKER_GREY
-            )(props),
-            p: '0.063rem 0.375rem',
-            borderRadius: '0.125rem',
-          },
         },
       },
     }),
