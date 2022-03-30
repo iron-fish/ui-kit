@@ -112,7 +112,7 @@ const Button: ComponentStyleConfig = {
         },
       },
     }),
-    sideBarNavItem: props => ({
+    navItem: props => ({
       h: '2.5rem',
       w: '100%',
       fontSize: '0.875rem',
@@ -137,6 +137,14 @@ const Button: ComponentStyleConfig = {
         },
         ':last-child': {
           marginLeft: 'auto',
+          '.chakra-badge': {
+            bgColor: mode(
+              NAMED_COLORS.LIGHT_GREY,
+              NAMED_COLORS.DARKER_GREY
+            )(props),
+            p: '0.063rem 0.375rem',
+            borderRadius: '0.125rem',
+          },
         },
       },
     }),
