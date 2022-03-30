@@ -1,12 +1,7 @@
 import { FC } from 'react'
-import { Button, Icon } from '@chakra-ui/react'
+import { Button } from '@chakra-ui/react'
 import { ComponentMeta } from '@storybook/react'
-
-const DemoPlusIcon: FC = () => (
-  <Icon viewBox="0 0 24 24">
-    <path d="M0,12a1.5,1.5,0,0,0,1.5,1.5h8.75a.25.25,0,0,1,.25.25V22.5a1.5,1.5,0,0,0,3,0V13.75a.25.25,0,0,1,.25-.25H22.5a1.5,1.5,0,0,0,0-3H13.75a.25.25,0,0,1-.25-.25V1.5a1.5,1.5,0,0,0-3,0v8.75a.25.25,0,0,1-.25.25H1.5A1.5,1.5,0,0,0,0,12Z" />
-  </Icon>
-)
+import { AddIcon } from '@chakra-ui/icons'
 
 export default {
   title: 'Components/Button',
@@ -30,7 +25,7 @@ const commonProps = {
 export const Primary: ComponentStory<FC> = args => (
   <>
     <Button {...args}>Button</Button>
-    <Button leftIcon={<DemoPlusIcon />} {...args}>
+    <Button leftIcon={<AddIcon />} {...args}>
       Button with icon
     </Button>
   </>
@@ -44,7 +39,7 @@ Primary.args = {
 export const Secondary: ComponentStory<FC> = args => (
   <>
     <Button {...args}>Button</Button>
-    <Button leftIcon={<DemoPlusIcon />} {...args}>
+    <Button leftIcon={<AddIcon />} {...args}>
       Button with icon
     </Button>
   </>
@@ -58,7 +53,7 @@ Secondary.args = {
 export const Tertiary: ComponentStory<FC> = args => (
   <>
     <Button {...args}>Button</Button>
-    <Button leftIcon={<DemoPlusIcon />} {...args}>
+    <Button leftIcon={<AddIcon />} {...args}>
       Button
     </Button>
   </>
