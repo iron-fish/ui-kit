@@ -1,4 +1,4 @@
-import React, { FC } from 'react'
+import { FC } from 'react'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 import { Box, Flex, Table, Tbody, Td, Th, Thead, Tr } from '@chakra-ui/react'
 

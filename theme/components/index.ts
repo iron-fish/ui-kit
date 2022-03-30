@@ -1,21 +1,23 @@
 import type { ComponentStyleConfig } from '@chakra-ui/theme'
 
-import FieldGroup from './FieldGroup'
-import Table from './Table'
-import TextField from './TextField'
 import Button from './Button'
-import Menu from './Menu'
+import FieldGroup from './FieldGroup'
 import Input from './Input'
+import Menu from './Menu'
+import Table from './Table'
 import Tabs from './Tabs'
+import TextField from './TextField'
+import Tooltip from './Tooltip'
 
 const ThemedComponents: Record<string, ComponentStyleConfig> = {
-  FieldGroup,
-  Table,
-  TextField,
   Button,
-  Menu,
+  FieldGroup,
   Input,
+  Menu,
+  Table,
   Tabs,
+  TextField,
+  Tooltip,
 }
 
 export default ThemedComponents
