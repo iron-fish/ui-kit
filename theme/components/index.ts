@@ -5,6 +5,7 @@ import FieldGroup from './FieldGroup'
 import Input from './Input'
 import Menu from './Menu'
 import Table from './Table'
+import Tabs from './Tabs'
 import TextField from './TextField'
 import Tooltip from './Tooltip'
 
@@ -14,6 +15,7 @@ const ThemedComponents: Record<string, ComponentStyleConfig> = {
   Input,
   Menu,
   Table,
+  Tabs,
   TextField,
   Tooltip,
 }
