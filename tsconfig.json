@@ -1,14 +1,35 @@
 {
   "compilerOptions": {
-    "baseUrl": ".",
-    "module": "commonjs",
-    "target": "es2015",
-    "declaration": true,
     "outDir": "./dist",
-    "allowJs": true,
-    "jsx": "preserve",
+    "module": "CommonJs",
+    "target": "ES5",
+    "lib": ["es6", "dom", "es2016", "es2017"],
+    "declaration": true,
+    "sourceMap": true,
+    "moduleResolution": "node",
     "skipLibCheck": true,
+    "strict": true,
+    "isolatedModules": true,
+    "noFallthroughCasesInSwitch": true,
+    "suppressImplicitAnyIndexErrors": true,
+    "noImplicitAny": true,
+    "strictFunctionTypes": true,
+    "strictNullChecks": true,
+    "strictPropertyInitialization": true,
+    "jsx": "react-jsx",
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "allowSyntheticDefaultImports": true,
+    "downlevelIteration": true,
+    "incremental": true,
+    "declarationMap": true
   },
-  "include": ["**/*.ts", "**/*.tsx"],
-  "exclude": ["node_modules", ".github", "public", "scripts", "stories", ".storybook"]
+  "include": ["index.tsx", "components/**/*", "hooks/**/*", "svgx/**/*", "theme/**/*", "utils/**/*"],
+  "ts-node": {
+    "compilerOptions": {
+      "module": "CommonJS",
+      "resolveJsonModule": true,
+      "noImplicitAny": false
+    }
+  }
 }

@@ -1,7 +1,7 @@
 import type { FC } from 'react'
 
 import { ChakraProvider, ConfigColorMode, extendTheme } from '@chakra-ui/react'
-import IronFishTheme from 'theme/theme'
+import IronFishTheme from '../theme/theme'
 import { css, Global } from '@emotion/react'
 
 const theme = extendTheme(IronFishTheme)

@@ -1,5 +1,5 @@
 import { curry } from 'ramda'
-import { Code } from 'styles/shared'
+import { Code } from '../styles/shared'
 import { Flex } from '@chakra-ui/react'
 import { colord, extend } from 'colord'
 import contrast from 'colord/plugins/a11y'

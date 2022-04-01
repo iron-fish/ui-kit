@@ -1,6 +1,6 @@
 import { useEffect, useState, ChangeEvent } from 'react'
 import type { Dispatch, SetStateAction } from 'react'
-import { setStateOnChange } from 'utils/forms'
+import { setStateOnChange } from '../utils/forms'
 
 export interface NameValue {
   name: string

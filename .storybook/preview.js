@@ -1,5 +1,5 @@
-import IronFishUIProvider from 'components/IronFishUIProvider'
-import ColorModeSwitcher from 'components/ColorModeSwitcher'
+import IronFishUIProvider from '../components/IronFishUIProvider'
+import ColorModeSwitcher from '../components/ColorModeSwitcher'
 import { Box, Flex } from '@chakra-ui/react'
 
 export const decorators = [
