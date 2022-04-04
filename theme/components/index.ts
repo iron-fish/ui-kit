@@ -1,5 +1,6 @@
 import type { ComponentStyleConfig } from '@chakra-ui/theme'
 
+import Badge from './Badge'
 import Button from './Button'
 import FieldGroup from './FieldGroup'
 import Input from './Input'
@@ -10,6 +11,7 @@ import TextField from './TextField'
 import Tooltip from './Tooltip'
 
 const ThemedComponents: Record<string, ComponentStyleConfig> = {
+  Badge,
   Button,
   FieldGroup,
   Input,
