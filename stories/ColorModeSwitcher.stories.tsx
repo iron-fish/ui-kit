@@ -2,7 +2,7 @@ import { FC } from 'react'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 import { useColorMode } from '@chakra-ui/react'
 
-import ColorModeSwitcher from '../components/ColorModeSwitcher'
+import ColorModeSwitcher from 'components/ColorModeSwitcher'
 
 export default {
   title: 'Components/ColorModeSwitcher',

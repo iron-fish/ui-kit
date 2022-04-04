@@ -1,7 +1,7 @@
 import type { ComponentStyleConfig } from '@chakra-ui/theme'
 
 import { mode } from '@chakra-ui/theme-tools'
-import { NAMED_COLORS } from '../constants'
+import { NAMED_COLORS } from 'theme/constants'
 
 const TextField: ComponentStyleConfig = {
   parts: ['container', 'label', 'inputWrapper'],

@@ -37,7 +37,8 @@ module.exports = {
       description: 'build the codebase with tsc',
       clean: rimraf('dist'),
       tsc: 'tsc --project tsconfig.json',
-      script: 'nps build.clean build.tsc',
+      alias: 'tsc-alias --project tsconfig.json',
+      script: 'nps build.clean build.tsc build.alias',
     },
     test: {
       description: 'test things',

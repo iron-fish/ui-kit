@@ -1,9 +1,9 @@
 import { FC } from 'react'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 import { Box, Button, Stack } from '@chakra-ui/react'
-import TextField from '../components/TextField'
-import FieldGroup from '../components/FieldGroup'
-import ColorModeSwitcher from '../components/ColorModeSwitcher'
+import TextField from 'components/TextField'
+import FieldGroup from 'components/FieldGroup'
+import ColorModeSwitcher from 'components/ColorModeSwitcher'
 
 export default {
   title: 'Components/TextField',

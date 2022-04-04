@@ -1,6 +1,6 @@
 import type { ComponentStyleConfig } from '@chakra-ui/theme'
 import { mode } from '@chakra-ui/theme-tools'
-import { NAMED_COLORS } from '../constants'
+import { NAMED_COLORS } from 'theme/constants'
 
 const Menu: ComponentStyleConfig = {
   parts: ['button', 'list', 'item'],
