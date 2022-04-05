@@ -46,7 +46,6 @@ module.exports = {
       watch: 'nps "test --watch"',
       snapshot: 'nps "test -u"',
     },
-    publish: 'npm publish',
     precommit: 'nps care',
     care: concurrent.nps('lint', 'bureaucracy'),
     dx: concurrent.nps('lint', 'bureaucracy', 'meta'),
