@@ -48,7 +48,7 @@ module.exports = {
     },
     publish: 'npm publish',
     precommit: 'nps care',
-    care: concurrent.nps('build', 'lint'),
+    care: concurrent.nps('lint', 'bureaucracy'),
     dx: concurrent.nps('lint', 'bureaucracy', 'meta'),
   },
 }

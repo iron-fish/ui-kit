@@ -12885,7 +12885,7 @@ ts-toolbelt@^6.15.1:
   resolved "https://registry.npmjs.org/ts-toolbelt/-/ts-toolbelt-6.15.5.tgz"
   integrity sha512-FZIXf1ksVyLcfr7M317jbB67XFJhOO1YqdTcuGaq9q5jLUoTikukZ+98TPjKiP2jC5CgmYdWWYs0s2nLSU0/1A==
 
-tsc-alias@^1.6.5:
+tsc-alias@1.6.5:
   version "1.6.5"
   resolved "https://registry.yarnpkg.com/tsc-alias/-/tsc-alias-1.6.5.tgz#06127ff6bad25643467eba941768585935a023da"
   integrity sha512-0ECpqsxu3fsW0NwRDiBfsq4MDmdo0CXU9fzKv6UOvQFruh1OgEAkDEqCTDFTDjLBN9ZiHHrl5RpuQo+/RFCNqw==
