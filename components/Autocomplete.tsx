@@ -14,43 +14,11 @@ import {
   useMultiStyleConfig,
 } from '@chakra-ui/react'
 import { TriangleDownIcon } from '@chakra-ui/icons'
-import blem from 'blem'
 import useOutsideClickHandler from 'hooks/useOutsideClickHandler'
+import { Option, OptionType, SelectedOption } from './SelectField'
 
-const bem = blem('autocomplete')
-
-type OptionType = {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  value: any
-  label: string | ReactNode
-  helperText: string | ReactNode
-}
-
-/**
- * Default representation of SelectField option
- */
-export const Option: FC<OptionType> = ({ label, helperText, ...rest }) => {
-  const styles = useMultiStyleConfig('SelectField', rest)
-
-  return (
-    <Box sx={styles?.option}>
-      <Box className={bem('option-label')}>{label}</Box>
-      <Box className={bem('option-text')}>{helperText}</Box>
-    </Box>
-  )
-}
-
-/**
- * Default representation of selected option in SelectField
- */
-export const SelectedOption: FC<OptionType> = ({ label, helperText }) => (
-  <Flex alignItems="end">
-    <Box className={bem('value-label')} pr={2}>
-      {label}
-    </Box>
-    <Box className={bem('value-text')}>{helperText}</Box>
-  </Flex>
-)
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const bem = require('blem')('autocomplete')
 
 const defaultOptionsFilter = (option: OptionType, searchTerm: string) => {
   const _label = option.label.toString().toLowerCase()

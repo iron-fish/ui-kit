@@ -1,4 +1,3 @@
-export * from './Global'
 export * from './constants'
 export * from './shared'
 export * from './type'

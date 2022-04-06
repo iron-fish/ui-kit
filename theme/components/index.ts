@@ -1,21 +1,31 @@
 import type { ComponentStyleConfig } from '@chakra-ui/theme'
 
 import Autocomplete from './Autocomplete'
-import FieldGroup from './FieldGroup'
-import Table from './Table'
-import TextField from './TextField'
+import Badge from './Badge'
 import Button from './Button'
-import Menu from './Menu'
+import FieldGroup from './FieldGroup'
+import SelectField from './SelectField'
 import Input from './Input'
+import Menu from './Menu'
+import Option from './Option'
+import Table from './Table'
+import Tabs from './Tabs'
+import TextField from './TextField'
+import Tooltip from './Tooltip'
 
 const ThemedComponents: Record<string, ComponentStyleConfig> = {
   Autocomplete,
-  FieldGroup,
-  Table,
-  TextField,
+  Badge,
   Button,
-  Menu,
+  FieldGroup,
+  SelectField,
   Input,
+  Menu,
+  Option,
+  Table,
+  Tabs,
+  TextField,
+  Tooltip,
 }
 
 export default ThemedComponents

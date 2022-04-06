@@ -1,4 +1,4 @@
-import React, { FC } from 'react'
+import { FC } from 'react'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 import {
   Input,
@@ -28,7 +28,9 @@ export const SearchInput: ComponentStory<FC> = () => (
     <Box>
       <h4>Nav search input</h4>
       <InputGroup variant="nav_search">
-        <InputLeftElement pointerEvents="none" children={<Search2Icon />} />
+        <InputLeftElement pointerEvents="none">
+          <Search2Icon />
+        </InputLeftElement>
         <Input placeholder="Search" />
       </InputGroup>
     </Box>

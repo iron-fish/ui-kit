@@ -1,14 +1,14 @@
 import type { ComponentStyleConfig } from '@chakra-ui/theme'
 
 import { mode } from '@chakra-ui/theme-tools'
-import { NAMED_COLORS } from '../constants'
+import { NAMED_COLORS } from 'theme/constants'
 
 const FieldGroup: ComponentStyleConfig = {
   parts: ['container', 'child'],
   baseStyle: props => ({
     child: {
       h: '4.313rem',
-      bg: mode(NAMED_COLORS.WHITE, NAMED_COLORS.BLACK)(props),
+      bg: mode(NAMED_COLORS.WHITE, NAMED_COLORS.DARKER_GREY)(props),
       borderCollapse: 'collapse',
       borderRadius: '0.25rem',
       border: '0.063rem solid',
