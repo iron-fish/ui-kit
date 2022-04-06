@@ -8,10 +8,10 @@ const useOutsideClickHandler = (
     /**
      * Calls callback if clicked on outside of elements
      */
-    function handleClickOutside(event) {
+    function handleClickOutside(event: MouseEvent) {
       if (
         refs.findIndex(
-          ref => ref.current && ref.current.contains(event.target)
+          ref => ref.current && ref.current.contains(event.target as Node)
         ) === -1
       ) {
         callback()

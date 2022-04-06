@@ -1,4 +1,12 @@
-import { FC, useState, useEffect, useRef, ReactNode } from 'react'
+import {
+  FC,
+  useState,
+  useEffect,
+  useRef,
+  ReactNode,
+  MutableRefObject,
+  RefObject,
+} from 'react'
 
 import {
   Box,
@@ -21,11 +29,11 @@ import { Option, OptionType, SelectedOption } from './SelectField'
 const bem = require('blem')('autocomplete')
 
 const defaultOptionsFilter = (option: OptionType, searchTerm: string) => {
-  const _label = option.label.toString().toLowerCase()
-  const _helperText = option.helperText.toString().toLowerCase()
+  const _label = option.label?.toString().toLowerCase()
+  const _helperText = option.helperText?.toString().toLowerCase()
   const _searchTerm = searchTerm.toLowerCase()
 
-  return _label.includes(_searchTerm) || _helperText.includes(_searchTerm)
+  return _label?.includes(_searchTerm) || _helperText?.includes(_searchTerm)
 }
 
 interface AutocompleteProps extends FlexProps {
@@ -46,7 +54,7 @@ const Autocomplete: FC<AutocompleteProps> = ({
   InputProps = {},
   options = [],
   emptyOption = 'No results',
-  renderOption = Option,
+  renderOption = option => <Option {...option} />,
   renderSelected = SelectedOption,
   onSelectOption = () => void 0,
   filterOption = defaultOptionsFilter,
@@ -55,11 +63,17 @@ const Autocomplete: FC<AutocompleteProps> = ({
   const [val, setVal] = useState<OptionType | null>(value)
   const [search, setSearch] = useState<string>('')
   const styles = useMultiStyleConfig('Autocomplete', props)
-  const inputRef = useRef<HTMLInputElement>(null)
-  const popoverRef = useRef<HTMLDivElement>(null)
+  const inputRef = useRef<HTMLInputElement>()
+  const popoverRef = useRef<HTMLDivElement>()
   const { onOpen, onClose, isOpen } = useDisclosure()
 
-  useOutsideClickHandler([inputRef, popoverRef], onClose)
+  useOutsideClickHandler(
+    [
+      inputRef as MutableRefObject<HTMLElement>,
+      popoverRef as MutableRefObject<HTMLElement>,
+    ],
+    onClose
+  )
   useEffect(() => {
     setVal(value)
   }, [value])
@@ -76,7 +90,7 @@ const Autocomplete: FC<AutocompleteProps> = ({
       onClose={onClose}
       closeOnBlur={false}
       closeOnEsc
-      initialFocusRef={inputRef}
+      initialFocusRef={inputRef as RefObject<HTMLInputElement>}
       offset={[0, 0]}
       placement="bottom"
     >
@@ -106,7 +120,7 @@ const Autocomplete: FC<AutocompleteProps> = ({
               <Input
                 {...InputProps}
                 value={search}
-                ref={inputRef}
+                ref={inputRef as RefObject<HTMLInputElement>}
                 variant="unstyled"
                 onChange={e => {
                   setSearch(e.target.value)
@@ -123,7 +137,11 @@ const Autocomplete: FC<AutocompleteProps> = ({
           </Box>
         </Flex>
       </PopoverTrigger>
-      <PopoverContent w="100%" sx={styles?.popover} ref={popoverRef}>
+      <PopoverContent
+        w="100%"
+        sx={styles?.popover}
+        ref={popoverRef as RefObject<HTMLDivElement>}
+      >
         <PopoverBody w="100%">
           {optionsToDisplay.length > 0 ? (
             optionsToDisplay.map(option => (
