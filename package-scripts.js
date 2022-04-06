@@ -1,14 +1,7 @@
-const { concurrent } = require('nps-utils')
+const { rimraf, concurrent } = require('nps-utils')
 const PORT = process.env.PORT || 5000
 
-const folders = [
-  'components',
-  'hooks',
-  'public',
-  'styles',
-  'svg',
-  'utils',
-]
+const folders = ['components', 'hooks', 'public', 'styles', 'svg', 'utils']
 
 module.exports = {
   scripts: {
@@ -18,15 +11,18 @@ module.exports = {
       description: `runs on ${PORT} by default`,
     },
     bureaucracy: {
+      description: 'Automatically fix some pain points',
       script: 'nps bureaucracy.enforceStaticVersions',
       enforceStaticVersions: `node scripts/force-static-versions.js`,
     },
     lint: {
+      description: 'lint and keep things DRY',
       script: concurrent.nps('lint.core', 'lint.dry'),
       core: 'eslint --fix .',
       dry: 'twly --boring --lines 3',
     },
     meta: {
+      description: 'build a reference image of the codebase',
       script: 'nps meta.dep',
       log: `gitparty`,
       dependencies: {
@@ -37,16 +33,21 @@ module.exports = {
         script: 'nps meta.dep.build meta.dep.interactive',
       },
     },
-
-    build: 'tsc --project tsconfig.json',
+    build: {
+      description: 'build the codebase with tsc',
+      clean: rimraf('dist'),
+      tsc: 'tsc --project tsconfig.json',
+      alias: 'tsc-alias --project tsconfig.json',
+      script: 'nps build.clean build.tsc build.alias',
+    },
     test: {
+      description: 'test things',
       script: 'jest',
       watch: 'nps "test --watch"',
       snapshot: 'nps "test -u"',
     },
-    publish: 'npm publish',
     precommit: 'nps care',
-    care: concurrent.nps('build', 'lint'),
+    care: concurrent.nps('lint', 'bureaucracy'),
     dx: concurrent.nps('lint', 'bureaucracy', 'meta'),
   },
 }

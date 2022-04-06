@@ -1,7 +1,7 @@
 export * from '@chakra-ui/react'
 
-export * from './IronFishUIProvider'
-export * from './ColorModeSwitcher'
-export * from './SelectField'
-export * from './TextField'
-export * from './FieldGroup'
+export { default as IronFishUIProvider } from './IronFishUIProvider'
+export { default as ColorModeSwitcher } from './ColorModeSwitcher'
+export { default as TextField } from './TextField'
+export { default as SelectField } from './SelectField'
+export { default as FieldGroup } from './FieldGroup'

@@ -1,7 +1,17 @@
 {
+  "env": {
+    "node": true
+  },
   "parser": "@typescript-eslint/parser",
   "plugins": ["@typescript-eslint"],
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  },
   "extends": [
+    "plugin:react/recommended",
+    "plugin:react/jsx-runtime",
     "plugin:prettier/recommended",
     "plugin:@typescript-eslint/recommended"
   ],
