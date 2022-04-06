@@ -8,7 +8,7 @@ const FieldGroup: ComponentStyleConfig = {
   baseStyle: props => ({
     child: {
       h: '4.313rem',
-      bg: mode(NAMED_COLORS.WHITE, NAMED_COLORS.BLACK)(props),
+      bg: mode(NAMED_COLORS.WHITE, NAMED_COLORS.DARKER_GREY)(props),
       borderCollapse: 'collapse',
       borderRadius: '0.25rem',
       border: '0.063rem solid',
