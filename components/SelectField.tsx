@@ -12,9 +12,10 @@ import {
   useMultiStyleConfig,
 } from '@chakra-ui/react'
 import { TriangleDownIcon } from '@chakra-ui/icons'
-import blem from 'blem'
 
-const bem = blem('select-field')
+// This is avoid error: Could not find a declaration file for module 'blem'.
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const bem = require('blem')('select-field')
 
 type OptionType = {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
