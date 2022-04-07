@@ -10,13 +10,15 @@ import {
   PopoverTrigger,
   useDisclosure,
   useMultiStyleConfig,
+  useStyleConfig,
 } from '@chakra-ui/react'
 import { TriangleDownIcon } from '@chakra-ui/icons'
-import blem from 'blem'
 
-const bem = blem('select-field')
+// This is avoid error: Could not find a declaration file for module 'blem'.
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const bem = require('blem')('select-field')
 
-type OptionType = {
+export type OptionType = {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   value: any
   label: string | ReactNode
@@ -26,12 +28,12 @@ type OptionType = {
  * Default representation of SelectField option
  */
 export const Option: FC<OptionType> = ({ label, helperText, ...rest }) => {
-  const styles = useMultiStyleConfig('SelectField', rest)
+  const styles = useStyleConfig('Option', rest)
 
   return (
-    <Box className={bem('option')} sx={styles?.option}>
-      <Box className={bem('option-label')}>{label}</Box>
-      <Box className={bem('option-text')}>{helperText}</Box>
+    <Box className="option" sx={styles}>
+      <Box className="option-label">{label}</Box>
+      <Box className="option-text">{helperText}</Box>
     </Box>
   )
 }

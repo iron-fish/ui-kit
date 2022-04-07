@@ -1,21 +1,16 @@
-/** @jsxImportSource @emotion/react */
-import styled from '@emotion/styled'
+import { chakra } from '@chakra-ui/react'
 import type { ReactNode } from 'react'
-import { css } from '@emotion/react'
 
 interface CodeProps {
   children: ReactNode
   pre?: boolean
   json?: boolean
 }
+const mono = { baseStyle: { fontFamily: 'mono-regular' } }
 
 export const El = {
-  pre: styled('pre')`
-    font-family: mono-regular;
-  `,
-  code: styled('code')`
-    font-family: mono-regular;
-  `,
+  pre: chakra('pre', mono),
+  code: chakra('code', mono),
 }
 
 export const Code = ({ children, pre = true, json = false }: CodeProps) => {
@@ -28,18 +23,3 @@ export const Code = ({ children, pre = true, json = false }: CodeProps) => {
     <El.code>raw</El.code>
   )
 }
-
-export const flexColumn = css`
-  display: flex;
-  flex-direction: column;
-`
-export const flexRow = css`
-  display: flex;
-  flex-direction: row;
-`
-export const alignLeft = css`
-  text-align: left;
-`
-export const alignRight = css`
-  text-align: right;
-`

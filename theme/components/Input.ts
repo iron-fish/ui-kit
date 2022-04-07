@@ -16,18 +16,28 @@ const Input: ComponentStyleConfig = {
       boxShadow: '0 0.25rem 0.688rem rgba(0, 0, 0, 0.04)',
       bgColor: mode(NAMED_COLORS.WHITE, NAMED_COLORS.DARKER_GREY)(props),
       borderColor: mode(NAMED_COLORS.LIGHT_GREY, NAMED_COLORS.DARK_GREY)(props),
-      '::placeholder': {
+      _placeholder: {
         color: mode(NAMED_COLORS.GRAY, NAMED_COLORS.PALE_GREY)(props),
       },
-      ':focus': {
+      _focus: {
         borderColor: mode(NAMED_COLORS.DEEP_BLUE, NAMED_COLORS.WHITE)(props),
-        '::placeholder': {
+        _placeholder: {
           color: mode(NAMED_COLORS.GRAY, NAMED_COLORS.WHITE)(props),
         },
       },
     },
   }),
   variants: {
+    unstyled: {
+      field: {
+        border: 'none',
+        boxShadow: 'none',
+        borderColor: 'none',
+        _focus: {
+          borderColor: 'none',
+        },
+      },
+    },
     search: {
       field: {
         h: '2.5rem',

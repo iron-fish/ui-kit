@@ -1,10 +1,19 @@
 import type { ComponentStyleConfig } from '@chakra-ui/theme'
+
 import { mode } from '@chakra-ui/theme-tools'
+import { NAMED_COLORS } from '../constants'
 
-import { NAMED_COLORS } from 'theme/constants'
-
-const SelectField: ComponentStyleConfig = {
-  parts: ['container', 'label', 'value', 'popover', 'optionWrapper'],
+const Autocomplete: ComponentStyleConfig = {
+  parts: [
+    'container',
+    'label',
+    'value',
+    'popover',
+    'optionWrapper',
+    'option',
+    'emptyOption',
+    'inputWrapper',
+  ],
   baseStyle: props => ({
     container: {
       h: '4.313rem',
@@ -18,19 +27,11 @@ const SelectField: ComponentStyleConfig = {
       _hover: {
         borderColor: mode(NAMED_COLORS.DEEP_BLUE, NAMED_COLORS.WHITE)(props),
       },
-      _focusWithin: {
-        borderColor: mode(NAMED_COLORS.DEEP_BLUE, NAMED_COLORS.WHITE)(props),
-        borderWidth: '0.094rem',
-      },
-      '&.select-field': {
+      '&.autocomplete': {
         '&--focused': {
           borderColor: mode(NAMED_COLORS.DEEP_BLUE, NAMED_COLORS.WHITE)(props),
           borderWidth: '0.094rem',
         },
-      },
-      '.select-field__content': {
-        flexDirection: 'column',
-        justifyContent: 'center',
       },
     },
     label: {
@@ -40,14 +41,14 @@ const SelectField: ComponentStyleConfig = {
       color: mode(NAMED_COLORS.GREY, NAMED_COLORS.PALE_GREY)(props),
     },
     value: {
-      '.select-field__value-label': {
+      '.autocomplete__value-label': {
         fontSize: '1rem',
         fontWeight: '400',
         fontFamily: 'ABC Favorit Trial',
         lineHeight: '1.5rem',
         color: mode(NAMED_COLORS.DEEP_BLUE, NAMED_COLORS.WHITE)(props),
       },
-      '.select-field__value-text': {
+      '.autocomplete__value-text': {
         fontSize: '0.75rem',
         fontWeight: '400',
         lineHeight: '1.25rem',
@@ -73,7 +74,7 @@ const SelectField: ComponentStyleConfig = {
       ':last-of-type': {
         borderBottom: 'none',
       },
-      '&.select-field__option-wrapper': {
+      '&.autocomplete__option-wrapper': {
         '&--selected': {
           bg: mode(NAMED_COLORS.LIGHTER_GREY, NAMED_COLORS.DARK_GREY)(props),
           _hover: {
@@ -85,46 +86,40 @@ const SelectField: ComponentStyleConfig = {
         bg: mode(NAMED_COLORS.LIGHTER_GREY, NAMED_COLORS.DARK_GREY)(props),
       },
     },
+    option: {
+      h: '4.063rem',
+      px: '1.5rem',
+      py: '0.75rem',
+      cursor: 'pointer',
+      '.autocomplete__option-label': {
+        fontSize: '1rem',
+        fontWeight: '400',
+        fontFamily: 'ABC Favorit Trial',
+        color: mode(NAMED_COLORS.DEEP_BLUE, NAMED_COLORS.WHITE)(props),
+      },
+      '.autocomplete__option-text': {
+        fontSize: '0.75rem',
+        fontWeight: '400',
+        fontFamily: 'ABC Favorit Trial',
+        color: mode(NAMED_COLORS.GREY, NAMED_COLORS.PALE_GREY)(props),
+      },
+    },
+    inputWrapper: {
+      fontSize: '1rem',
+      fontWeight: '400',
+      fontFamily: 'ABC Favorit Trial',
+      color: mode(NAMED_COLORS.DEEP_BLUE, NAMED_COLORS.WHITE)(props),
+    },
+    emptyOption: {
+      px: '1.5rem',
+      py: '0.75rem',
+      cursor: 'pointer',
+      fontSize: '0.75rem',
+      fontWeight: '400',
+      fontFamily: 'ABC Favorit Trial',
+      color: mode(NAMED_COLORS.GREY, NAMED_COLORS.PALE_GREY)(props),
+    },
   }),
-  sizes: {
-    small: {
-      container: {
-        h: '2.5rem',
-        px: '1rem',
-        py: '0.75rem',
-        '.select-field__content': {
-          flexDirection: 'row',
-          alignItems: 'center',
-          justifyContent: 'start'
-        },
-      },
-      label: {
-        mr: '0.4rem'
-      },
-      optionWrapper: {
-        '.option': {
-          h: '2.5rem',
-          px: '1rem',
-          py: '0.75rem',
-          '.option-label': {
-            fontSize: '0.75rem',
-          },
-          '.option-text': {
-            display: 'none'
-          }
-        },
-      },
-      value: {
-        '.select-field__value-label': {
-          fontSize: '0.75rem',
-          lineHeight: '1rem',
-        },
-        '.select-field__value-text': {
-          display: 'none'
-        },
-      },
-    }
-  },
   defaultProps: {
     h: '4.313rem',
     px: '1.5rem',
@@ -134,4 +129,4 @@ const SelectField: ComponentStyleConfig = {
   },
 }
 
-export default SelectField
+export default Autocomplete

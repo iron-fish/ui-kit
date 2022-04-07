@@ -1,30 +1,30 @@
 import { mapObjIndexed } from 'ramda'
+import { chakra } from '@chakra-ui/react'
 
-import styled from '@emotion/styled'
 import { TYPEFACES, CASE, Typeface } from 'styles/constants'
 
 export const favorit = 'favorit-regular'
 export const extended = 'favoritextended-regular'
 
-export const typefaceToCSS = (raw: Typeface) => `
-  margin: 0;
-  font-family: ${raw.family};
-  font-size: ${raw.size};
-  font-weight: ${raw.weight};
-  line-height: ${raw.lineHeight};
-  text-transform: ${raw.textTransform === CASE.MIXED ? 'none' : 'uppercase'};
-`
+export const typefaceToCSS = (raw: Typeface) => ({
+  margin: 0,
+  fontFamily: raw.family,
+  fontSize: raw.size,
+  fontWeight: raw.weight,
+  lineHeight: raw.lineHeight,
+  textTransform: raw.textTransform === CASE.MIXED ? 'none' : 'uppercase',
+})
 
 export const FACES = mapObjIndexed(value => typefaceToCSS(value), TYPEFACES)
 
-export const BODY = styled('span')(typefaceToCSS(TYPEFACES.BODY))
-export const TITLE = styled('h1')(typefaceToCSS(TYPEFACES.TITLE))
-export const H1 = styled('h1')(typefaceToCSS(TYPEFACES.H1))
-export const H2 = styled('h2')(typefaceToCSS(TYPEFACES.H2))
-export const H3 = styled('h3')(typefaceToCSS(TYPEFACES.H3))
-export const H4 = styled('h4')(typefaceToCSS(TYPEFACES.H4))
-export const H5 = styled('h5')(typefaceToCSS(TYPEFACES.H5))
-export const H6 = styled('h6')(typefaceToCSS(TYPEFACES.H6))
+export const BODY = chakra('span', { baseStyle: typefaceToCSS(TYPEFACES.BODY) })
+export const TITLE = chakra('h1', { baseStyle: typefaceToCSS(TYPEFACES.TITLE) })
+export const H1 = chakra('h1', { baseStyle: typefaceToCSS(TYPEFACES.H1) })
+export const H2 = chakra('h2', { baseStyle: typefaceToCSS(TYPEFACES.H2) })
+export const H3 = chakra('h3', { baseStyle: typefaceToCSS(TYPEFACES.H3) })
+export const H4 = chakra('h4', { baseStyle: typefaceToCSS(TYPEFACES.H4) })
+export const H5 = chakra('h5', { baseStyle: typefaceToCSS(TYPEFACES.H5) })
+export const H6 = chakra('h6', { baseStyle: typefaceToCSS(TYPEFACES.H6) })
 
 export const asFont = (x: string) => {
   switch (x) {
