@@ -7,3 +7,5 @@ export function HexFish({ style }: SVGProps) {
     </svg>
   )
 }
+
+export default HexFish

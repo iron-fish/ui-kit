@@ -15,7 +15,7 @@
     "plugin:prettier/recommended",
     "plugin:@typescript-eslint/recommended"
   ],
-  "ignorePatterns": ["dist", "scripts", "package-scripts.js"],
+  "ignorePatterns": ["dist", "scripts", "package-scripts.js", "storybook-static"],
   "rules": {
     "no-shadow": "off",
     "@typescript-eslint/no-shadow": ["error"],
