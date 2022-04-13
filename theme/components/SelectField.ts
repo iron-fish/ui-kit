@@ -4,7 +4,7 @@ import { mode } from '@chakra-ui/theme-tools'
 import { NAMED_COLORS } from 'theme/constants'
 
 const SelectField: ComponentStyleConfig = {
-  parts: ['container', 'label', 'inputWrapper'],
+  parts: ['container', 'label', 'value', 'popover', 'optionWrapper'],
   baseStyle: props => ({
     container: {
       h: '4.313rem',
@@ -27,6 +27,10 @@ const SelectField: ComponentStyleConfig = {
           borderColor: mode(NAMED_COLORS.DEEP_BLUE, NAMED_COLORS.WHITE)(props),
           borderWidth: '0.094rem',
         },
+      },
+      '.select-field__content': {
+        flexDirection: 'column',
+        justifyContent: 'center',
       },
     },
     label: {
@@ -82,6 +86,45 @@ const SelectField: ComponentStyleConfig = {
       },
     },
   }),
+  sizes: {
+    small: {
+      container: {
+        h: '2.5rem',
+        px: '1rem',
+        py: '0.75rem',
+        '.select-field__content': {
+          flexDirection: 'row',
+          alignItems: 'center',
+          justifyContent: 'start'
+        },
+      },
+      label: {
+        mr: '0.4rem'
+      },
+      optionWrapper: {
+        '.option': {
+          h: '2.5rem',
+          px: '1rem',
+          py: '0.75rem',
+          '.option-label': {
+            fontSize: '0.75rem',
+          },
+          '.option-text': {
+            display: 'none'
+          }
+        },
+      },
+      value: {
+        '.select-field__value-label': {
+          fontSize: '0.75rem',
+          lineHeight: '1rem',
+        },
+        '.select-field__value-text': {
+          display: 'none'
+        },
+      },
+    }
+  },
   defaultProps: {
     h: '4.313rem',
     px: '1.5rem',

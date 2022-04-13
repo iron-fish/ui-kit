@@ -101,7 +101,7 @@ const SelectField: FC<SelectFieldProps> = ({
           justifyContent="center"
           alignItems="center"
         >
-          <Flex flexDirection="column" justifyContent="center" w="100%">
+          <Flex className={bem('content')} w="100%">
             <Box sx={styles?.label}>{label}</Box>
             <Box sx={styles?.value} display={!!val ? 'block' : 'none'}>
               {val && renderSelected(val)}
