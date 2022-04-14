@@ -6,6 +6,7 @@ const folders = ['components', 'hooks', 'public', 'styles', 'svg', 'utils']
 module.exports = {
   scripts: {
     dev: {
+      build: `build-storybook`,
       custom: `start-storybook`,
       script: `nps "dev.custom -p ${PORT}"`,
       description: `runs on ${PORT} by default`,
