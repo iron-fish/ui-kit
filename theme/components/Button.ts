@@ -99,19 +99,6 @@ const Button: ComponentStyleConfig = {
         ...getDisabledStyle(props),
       },
     }),
-    textLink: props => ({
-      color: mode(NAMED_COLORS.GREY, NAMED_COLORS.PALE_GREY)(props),
-      '.chakra-button__icon': {
-        marginRight: '0.75rem',
-        fill: mode(NAMED_COLORS.LIGHTER_GREY, NAMED_COLORS.PALE_GREY)(props),
-      },
-      ':hover': {
-        color: mode(NAMED_COLORS.DEEP_BLUE, NAMED_COLORS.WHITE)(props),
-        '.chakra-button__icon': {
-          fill: mode(NAMED_COLORS.DEEP_BLUE, NAMED_COLORS.WHITE)(props),
-        },
-      },
-    }),
     navItem: props => ({
       h: '2.5rem',
       w: '100%',
