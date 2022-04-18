@@ -59,7 +59,7 @@ const Button: ComponentStyleConfig = {
         fill: mode(NAMED_COLORS.WHITE, NAMED_COLORS.DEEP_BLUE)(props),
       },
       ':hover': {
-        bgColor: mode(NAMED_COLORS.WHITE, NAMED_COLORS.DEEP_BLUE)(props),
+        bgColor: mode(NAMED_COLORS.WHITE, NAMED_COLORS.LIGHT_BLACK)(props),
         color: mode(NAMED_COLORS.DEEP_BLUE, NAMED_COLORS.WHITE)(props),
         borderColor: mode(NAMED_COLORS.DEEP_BLUE, NAMED_COLORS.WHITE)(props),
         '.chakra-button__icon': {
@@ -75,7 +75,7 @@ const Button: ComponentStyleConfig = {
       },
     }),
     secondary: props => ({
-      bgColor: mode(NAMED_COLORS.WHITE, NAMED_COLORS.DEEP_BLUE)(props),
+      bgColor: mode(NAMED_COLORS.WHITE, NAMED_COLORS.LIGHT_BLACK)(props),
       color: mode(NAMED_COLORS.DEEP_BLUE, NAMED_COLORS.WHITE)(props),
       boxShadow: '0rem 0.25rem 0.688rem rgba(0, 0, 0, 0.04)',
       border: '0.063rem solid',
