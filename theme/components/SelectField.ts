@@ -20,12 +20,10 @@ const SelectField: ComponentStyleConfig = {
       },
       _focusWithin: {
         borderColor: mode(NAMED_COLORS.DEEP_BLUE, NAMED_COLORS.WHITE)(props),
-        borderWidth: '0.094rem',
       },
       '&.select-field': {
         '&--focused': {
           borderColor: mode(NAMED_COLORS.DEEP_BLUE, NAMED_COLORS.WHITE)(props),
-          borderWidth: '0.094rem',
         },
       },
       '.select-field__content': {
@@ -67,11 +65,9 @@ const SelectField: ComponentStyleConfig = {
       },
     },
     optionWrapper: {
-      borderBottom: '0.063rem solid',
       borderColor: mode(NAMED_COLORS.DEEP_BLUE, NAMED_COLORS.WHITE)(props),
-      boxShadow: '0 0.25rem 0.688rem rgba(0, 0, 0, 0.04)',
       ':last-of-type': {
-        borderBottom: 'none',
+        borderBottomRadius: '0.25rem',
       },
       '&.select-field__option-wrapper': {
         '&--selected': {
