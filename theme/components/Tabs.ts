@@ -30,6 +30,9 @@ const Tabs: ComponentStyleConfig = {
       ':first-child': {
         marginLeft: 0,
       },
+      _hover: {
+        color: mode(NAMED_COLORS.DEEP_BLUE, NAMED_COLORS.WHITE)(props),
+      },
     },
     tablist: {
       borderBottomWidth: '0.125rem',
