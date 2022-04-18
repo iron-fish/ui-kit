@@ -15,6 +15,7 @@ const SelectField: ComponentStyleConfig = {
       border: '0.063rem solid',
       borderColor: mode(NAMED_COLORS.LIGHT_GREY, NAMED_COLORS.DARK_GREY)(props),
       boxShadow: '0 0.25rem 0.688rem rgba(0, 0, 0, 0.04)',
+      transition: 'all 300ms ease-in, background-color 0ms',
       _hover: {
         borderColor: mode(NAMED_COLORS.DEEP_BLUE, NAMED_COLORS.WHITE)(props),
       },
@@ -27,6 +28,9 @@ const SelectField: ComponentStyleConfig = {
         },
       },
       '.select-field__content': {
+        div: {
+          transition: 'all 300ms ease',
+        },
         flexDirection: 'column',
         justifyContent: 'center',
       },
@@ -66,6 +70,7 @@ const SelectField: ComponentStyleConfig = {
     },
     optionWrapper: {
       borderColor: mode(NAMED_COLORS.DEEP_BLUE, NAMED_COLORS.WHITE)(props),
+      transition: 'all 300ms ease-in',
       ':last-of-type': {
         borderBottomRadius: '0.25rem',
       },

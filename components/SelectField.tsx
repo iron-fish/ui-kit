@@ -103,7 +103,11 @@ const SelectField: FC<SelectFieldProps> = ({
         >
           <Flex className={bem('content')} w="100%">
             <Box sx={styles?.label}>{label}</Box>
-            <Box sx={styles?.value} display={!!val ? 'block' : 'none'}>
+            <Box
+              sx={styles?.value}
+              height={!!val ? '1.5rem' : '0rem'}
+              overflow="hidden"
+            >
               {val && renderSelected(val)}
             </Box>
           </Flex>

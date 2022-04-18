@@ -111,7 +111,14 @@ const Autocomplete: FC<AutocompleteProps> = ({
           justifyContent="center"
           alignItems="center"
         >
-          <Flex flexDirection="column" justifyContent="center" w="100%">
+          <Flex 
+            flexDirection="column" 
+            justifyContent="center" 
+            w="100%"
+            overflow="hidden"
+            height={val || isOpen ? '3.5rem' : '1.5rem'}
+            transition="all 300ms ease-in"
+          >
             <Box sx={styles?.label}>{label}</Box>
             <Box sx={styles?.value} display={val && !isOpen ? 'block' : 'none'}>
               {val && renderSelected(val)}
