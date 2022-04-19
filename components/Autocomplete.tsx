@@ -21,9 +21,9 @@ import {
   useDisclosure,
   useMultiStyleConfig,
 } from '@chakra-ui/react'
-import { TriangleDownIcon } from '@chakra-ui/icons'
 import useOutsideClickHandler from 'hooks/useOutsideClickHandler'
 import { Option, OptionType, SelectedOption } from './SelectField'
+import DropdownArrow from 'svgx/dropdown-arrow'
 
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const bem = require('blem')('autocomplete')
@@ -111,7 +111,14 @@ const Autocomplete: FC<AutocompleteProps> = ({
           justifyContent="center"
           alignItems="center"
         >
-          <Flex flexDirection="column" justifyContent="center" w="100%">
+          <Flex 
+            flexDirection="column" 
+            justifyContent="center" 
+            w="100%"
+            overflow="hidden"
+            height={val || isOpen ? '3.5rem' : '1.5rem'}
+            transition="all 300ms ease-in"
+          >
             <Box sx={styles?.label}>{label}</Box>
             <Box sx={styles?.value} display={val && !isOpen ? 'block' : 'none'}>
               {val && renderSelected(val)}
@@ -130,9 +137,8 @@ const Autocomplete: FC<AutocompleteProps> = ({
             </Box>
           </Flex>
           <Box>
-            <TriangleDownIcon
-              transform={`rotate(${isOpen ? '180deg' : '0'})`}
-              w="10px"
+            <DropdownArrow
+              style={{ transform: `rotate(${isOpen ? '0' : '180deg'})` }}
             />
           </Box>
         </Flex>
