@@ -23,4 +23,5 @@ export const SearchInput: ComponentStory<FC> = args => (
 )
 SearchInput.args = {
   placement: 'auto',
+  hasArrow: true,
 }
