@@ -21,7 +21,6 @@ const TextField: ComponentStyleConfig = {
       },
       _focusWithin: {
         borderColor: mode(NAMED_COLORS.DEEP_BLUE, NAMED_COLORS.WHITE)(props),
-        borderWidth: '0.094rem',
       },
     },
     label: {
