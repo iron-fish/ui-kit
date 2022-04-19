@@ -6,6 +6,7 @@ import Button from './Button'
 import FieldGroup from './FieldGroup'
 import SelectField from './SelectField'
 import Input from './Input'
+import Link from './Link'
 import Menu from './Menu'
 import Option from './Option'
 import Table from './Table'
@@ -20,6 +21,7 @@ const ThemedComponents: Record<string, ComponentStyleConfig> = {
   FieldGroup,
   SelectField,
   Input,
+  Link,
   Menu,
   Option,
   Table,

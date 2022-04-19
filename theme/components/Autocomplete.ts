@@ -23,6 +23,7 @@ const Autocomplete: ComponentStyleConfig = {
       bg: mode(NAMED_COLORS.WHITE, NAMED_COLORS.DARKER_GREY)(props),
       border: '0.063rem solid',
       borderColor: mode(NAMED_COLORS.LIGHT_GREY, NAMED_COLORS.DARK_GREY)(props),
+      transition: 'all 300ms ease-in, background-color 0ms',
       boxShadow: '0 0.25rem 0.688rem rgba(0, 0, 0, 0.04)',
       _hover: {
         borderColor: mode(NAMED_COLORS.DEEP_BLUE, NAMED_COLORS.WHITE)(props),
@@ -30,7 +31,6 @@ const Autocomplete: ComponentStyleConfig = {
       '&.autocomplete': {
         '&--focused': {
           borderColor: mode(NAMED_COLORS.DEEP_BLUE, NAMED_COLORS.WHITE)(props),
-          borderWidth: '0.094rem',
         },
       },
     },
@@ -41,14 +41,14 @@ const Autocomplete: ComponentStyleConfig = {
       color: mode(NAMED_COLORS.GREY, NAMED_COLORS.PALE_GREY)(props),
     },
     value: {
-      '.autocomplete__value-label': {
+      '.select-field__value-label': {
         fontSize: '1rem',
         fontWeight: '400',
         fontFamily: 'ABC Favorit Trial',
         lineHeight: '1.5rem',
         color: mode(NAMED_COLORS.DEEP_BLUE, NAMED_COLORS.WHITE)(props),
       },
-      '.autocomplete__value-text': {
+      '.select-field__value-text': {
         fontSize: '0.75rem',
         fontWeight: '400',
         lineHeight: '1.25rem',
@@ -68,11 +68,10 @@ const Autocomplete: ComponentStyleConfig = {
       },
     },
     optionWrapper: {
-      borderBottom: '0.063rem solid',
       borderColor: mode(NAMED_COLORS.DEEP_BLUE, NAMED_COLORS.WHITE)(props),
-      boxShadow: '0 0.25rem 0.688rem rgba(0, 0, 0, 0.04)',
+      transition: 'all 300ms ease-in',
       ':last-of-type': {
-        borderBottom: 'none',
+        borderBottomRadius: '0.25rem',
       },
       '&.autocomplete__option-wrapper': {
         '&--selected': {
@@ -105,6 +104,7 @@ const Autocomplete: ComponentStyleConfig = {
       },
     },
     inputWrapper: {
+      overflow: 'hidden',
       fontSize: '1rem',
       fontWeight: '400',
       fontFamily: 'ABC Favorit Trial',
