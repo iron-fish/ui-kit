@@ -108,6 +108,7 @@ const Button: ComponentStyleConfig = {
       borderRadius: '0.25rem',
       pr: '0.5rem',
       bgColor: mode(NAMED_COLORS.WHITE, NAMED_COLORS.LIGHT_BLACK)(props),
+      justifyContent: 'flex-start',
       _focus: {
         boxShadow: null,
       },
@@ -116,14 +117,21 @@ const Button: ComponentStyleConfig = {
       },
       _active: {
         bgColor: mode(NAMED_COLORS.LIGHTER_GREY, NAMED_COLORS.DARK_GREY)(props),
+        color: mode(NAMED_COLORS.DEEP_BLUE, NAMED_COLORS.WHITE)(props),
+        '.chakra-button__icon': {
+          ':last-child': {
+            display: 'block',
+            marginLeft: 'auto',
+          },
+        },
       },
       '.chakra-button__icon': {
         color: mode(NAMED_COLORS.DEEP_BLUE, NAMED_COLORS.WHITE)(props),
         ':first-child': {
-          marginRight: '1rem',
+          marginRight: '1.25rem',
         },
         ':last-child': {
-          marginLeft: 'auto',
+          display: 'none',
         },
       },
     }),

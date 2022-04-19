@@ -1,7 +1,8 @@
 import { FC } from 'react'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 import { Button, Box, Stack, Badge } from '@chakra-ui/react'
-import { EmailIcon } from '@chakra-ui/icons'
+import ArrowDownLeft from 'svgx/arrow-down-left'
+import IconHome from 'svgx/icon-home'
 
 export default {
   title: 'Components/SideBarNavigationItem',
@@ -14,7 +15,7 @@ export const SideBarNavigationItem: ComponentStory<FC> = () => (
       <h4>Regular item</h4>
       <Button
         variant="navItem"
-        leftIcon={<EmailIcon />}
+        leftIcon={<IconHome />}
         rightIcon={<Badge variant="navItem">R</Badge>}
       >
         Receive $IRON
@@ -24,7 +25,7 @@ export const SideBarNavigationItem: ComponentStory<FC> = () => (
       <h4>Active item</h4>
       <Button
         variant="navItem"
-        leftIcon={<EmailIcon />}
+        leftIcon={<ArrowDownLeft />}
         rightIcon={<Badge variant="navItem">R</Badge>}
         isActive={true}
       >
