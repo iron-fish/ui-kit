@@ -95,11 +95,11 @@ const SelectField: ComponentStyleConfig = {
         '.select-field__content': {
           flexDirection: 'row',
           alignItems: 'center',
-          justifyContent: 'start'
+          justifyContent: 'start',
         },
       },
       label: {
-        mr: '0.4rem'
+        mr: '0.4rem',
       },
       optionWrapper: {
         '.option': {
@@ -110,8 +110,8 @@ const SelectField: ComponentStyleConfig = {
             fontSize: '0.75rem',
           },
           '.option-text': {
-            display: 'none'
-          }
+            display: 'none',
+          },
         },
       },
       value: {
@@ -120,10 +120,10 @@ const SelectField: ComponentStyleConfig = {
           lineHeight: '1rem',
         },
         '.select-field__value-text': {
-          display: 'none'
+          display: 'none',
         },
       },
-    }
+    },
   },
   defaultProps: {
     h: '4.313rem',

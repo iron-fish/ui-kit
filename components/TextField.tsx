@@ -7,8 +7,10 @@ import {
   FlexProps,
   Input,
   InputProps as IProps,
+  useConst,
   useMultiStyleConfig,
 } from '@chakra-ui/react'
+import TimeoutManager from 'utils/TimeoutManager'
 
 interface TextFieldProps extends FlexProps {
   label: string
@@ -31,7 +33,9 @@ const TextField: FC<TextFieldProps> = ({
   const styles = useMultiStyleConfig('TextField', props)
   const displayInputStyles: CSSObject = {
     display: 'block',
+    height: '1.5rem',
   }
+  const tManager = useConst(new TimeoutManager())
 
   useEffect(() => {
     setVal(value)
@@ -41,7 +45,8 @@ const TextField: FC<TextFieldProps> = ({
     <Flex
       id="TextField"
       tabIndex={0}
-      onFocus={() => inputRef?.current?.focus()}
+      onFocus={() => tManager.execute(() => inputRef?.current?.focus(), 150)}
+      onBlur={() => tManager.cancel()}
       {...props}
       sx={{
         ...styles?.container,
@@ -56,7 +61,8 @@ const TextField: FC<TextFieldProps> = ({
         <Box sx={styles?.label}>{label}</Box>
         <Box
           sx={styles?.inputWrapper}
-          display={!!val ? 'block' : 'none'}
+          height={!!val ? '1.5rem' : '0rem'}
+          overflow="hidden"
           _groupFocus={displayInputStyles}
           _groupFocusVisible={displayInputStyles}
           _groupFocusWithin={displayInputStyles}
