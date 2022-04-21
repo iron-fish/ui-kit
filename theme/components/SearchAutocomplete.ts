@@ -15,6 +15,7 @@ const SearchAutocomplete: ComponentStyleConfig = {
     nav_search: props => ({
       popover: {
         borderRadius: '1.875rem',
+        bg: mode(NAMED_COLORS.WHITE, NAMED_COLORS.DARKER_GREY)(props),
         _focus: {
           boxShadow: 'none',
         },
