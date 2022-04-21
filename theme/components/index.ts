@@ -4,6 +4,7 @@ import Autocomplete from './Autocomplete'
 import Badge from './Badge'
 import Button from './Button'
 import FieldGroup from './FieldGroup'
+import SearchAutocomplete from './SearchAutocomplete'
 import SelectField from './SelectField'
 import Input from './Input'
 import Link from './Link'
@@ -20,6 +21,7 @@ const ThemedComponents: Record<string, ComponentStyleConfig> = {
   Button,
   FieldGroup,
   SelectField,
+  SearchAutocomplete,
   Input,
   Link,
   Menu,
