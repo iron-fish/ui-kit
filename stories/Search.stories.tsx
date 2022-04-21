@@ -36,7 +36,7 @@ export const SearchInput: ComponentStory<FC> = () => (
         <InputLeftElement pointerEvents="none">
           <IconSearch />
         </InputLeftElement>
-        <Input placeholder="Search" _placeholder={{ color: 'black' }} />
+        <Input placeholder="Search" />
       </InputGroup>
     </Box>
   </Stack>
@@ -102,7 +102,7 @@ export const SearchAutocompleteInput: ComponentStory<FC> = () => (
         options={[...new Array(10)].map((item, index) => {
           const value = `000045645665456434634564456400004564566545643463456445644564456${index}`
           return {
-            label: `${index}3940194 - ${value}`,
+            label: `${index}3940194`,
             object: index % 2 === 0 ? 'block' : 'transaction',
             value,
           }

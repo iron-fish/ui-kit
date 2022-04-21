@@ -123,7 +123,7 @@ const SearchAutocomplete: FC<SearchAutocompleteProps> = ({
           ) : null}
           <Input
             {...InputProps}
-            value={val ? val.label : search}
+            value={val ? `${val.label} - ${val.value}` : search}
             ref={inputRef as RefObject<HTMLInputElement>}
             onFocus={e => e.target?.select()}
             onChange={e => {
