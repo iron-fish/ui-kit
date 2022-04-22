@@ -111,9 +111,9 @@ const Autocomplete: FC<AutocompleteProps> = ({
           justifyContent="center"
           alignItems="center"
         >
-          <Flex 
-            flexDirection="column" 
-            justifyContent="center" 
+          <Flex
+            flexDirection="column"
+            justifyContent="center"
             w="100%"
             overflow="hidden"
             height={val || isOpen ? '3.5rem' : '1.5rem'}
