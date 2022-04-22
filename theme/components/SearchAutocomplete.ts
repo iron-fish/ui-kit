@@ -21,27 +21,31 @@ const SearchAutocomplete: ComponentStyleConfig = {
         },
       },
       popoverBody: {
-        padding: '16px 0px 32px 32px',
+        padding: '16px 0',
       },
       emptyOption: {
-        marginBottom: '-16px',
+        padding: '0 32px',
         fontSize: '1rem',
         lineHeight: '1.5',
         fontWeight: '400',
         fontFamily: 'ABC Favorit Trial',
         color: mode(NAMED_COLORS.GREY, NAMED_COLORS.PALE_GREY)(props),
       },
-      groupOptionTitle: {
-        padding: '16px 0 11px',
+      groupTitleWrapper: {
+        padding: '16px 32px 11px',
         fontSize: '0.875rem',
         fontWeight: '400',
         lineHeight: '160%',
         fontFamily: 'ABC Favorit Trial',
       },
       groupOptionWrapper: {
-        padding: '5px 0',
+        padding: '8px 32px',
         _hover: {
           bg: mode(NAMED_COLORS.LIGHTER_GREY, NAMED_COLORS.DARK_GREY)(props),
+          transition: 'all 300ms ease-in',
+        },
+        _last: {
+          marginBottom: '16px',
         },
       },
     }),

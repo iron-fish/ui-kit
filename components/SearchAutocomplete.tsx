@@ -40,6 +40,7 @@ interface SearchAutocompleteProps {
   groupOptionsBy: () => string
   inputLeftElement?: ReactNode
   variant?: string
+  renderGroupTitle?: ReactNode
 }
 
 const SearchAutocomplete: FC<SearchAutocompleteProps> = ({
@@ -50,6 +51,7 @@ const SearchAutocomplete: FC<SearchAutocompleteProps> = ({
   renderOption = option => <Box>{option.label}</Box>,
   onSelectOption = () => void 0,
   groupOptionsBy = option => option.object,
+  renderGroupTitle = title => <Text>{title}</Text>,
   inputLeftElement,
   ...props
 }) => {
@@ -80,7 +82,9 @@ const SearchAutocomplete: FC<SearchAutocompleteProps> = ({
     return (
       <>
         {groupName ? (
-          <Text sx={styles?.groupOptionTitle}>{groupName}</Text>
+          <Box w="100%" sx={styles?.groupTitleWrapper}>
+            {renderGroupTitle(groupName)}
+          </Box>
         ) : null}
         {groupOptions.map(option => (
           <Box
@@ -123,7 +127,7 @@ const SearchAutocomplete: FC<SearchAutocompleteProps> = ({
           ) : null}
           <Input
             {...InputProps}
-            value={val ? `${val.label} - ${val.value}` : search}
+            value={val ? val.label : search}
             ref={inputRef as RefObject<HTMLInputElement>}
             onFocus={e => e.target?.select()}
             onChange={e => {

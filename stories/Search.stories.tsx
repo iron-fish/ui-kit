@@ -42,7 +42,7 @@ export const SearchInput: ComponentStory<FC> = () => (
   </Stack>
 )
 
-const Option: FC<OptionType> = ({ label, value }) => {
+const Option: FC<OptionType> = ({ blockHeight, value }) => {
   const hashValue = useBreakpointValue({
     base: truncateHash(value, 2),
     sm: truncateHash(value, 4),
@@ -59,7 +59,7 @@ const Option: FC<OptionType> = ({ label, value }) => {
         whiteSpace="nowrap"
         color={NAMED_COLORS.LIGHT_BLUE}
       >
-        {label} - {hashValue}
+        {blockHeight} - {hashValue}
       </Box>
     </Flex>
   )
@@ -101,9 +101,11 @@ export const SearchAutocompleteInput: ComponentStory<FC> = () => (
         inputLeftElement={<IconSearch />}
         options={[...new Array(10)].map((item, index) => {
           const value = `000045645665456434634564456400004564566545643463456445644564456${index}`
+          const blockHeight = `${index}3940194`
           return {
-            label: `${index}3940194`,
+            label: `${blockHeight} - ${value}`,
             object: index % 2 === 0 ? 'block' : 'transaction',
+            blockHeight,
             value,
           }
         })}
