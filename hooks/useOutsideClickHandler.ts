@@ -1,6 +1,6 @@
 import { MutableRefObject, useEffect } from 'react'
 
-const useOutsideClickHandler = (
+export const useOutsideClickHandler = (
   refs: MutableRefObject<HTMLElement>[],
   callback: () => void
 ) => {
