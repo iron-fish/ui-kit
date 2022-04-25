@@ -97,6 +97,7 @@ const SearchAutocomplete: FC<SearchAutocompleteProps> = ({
               if (val !== option) {
                 setVal(option)
                 onSelectOption(option)
+                setSearch('')
                 onClose()
               }
             }}
@@ -111,7 +112,7 @@ const SearchAutocomplete: FC<SearchAutocompleteProps> = ({
   return (
     <Popover
       matchWidth
-      isOpen={isOpen}
+      isOpen={isOpen && search}
       onOpen={onOpen}
       onClose={onClose}
       closeOnBlur={false}
