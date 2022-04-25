@@ -1,6 +1,6 @@
 import { Icon, IconProps } from '@chakra-ui/react'
 
-export function IconBlock(props): FC<IconProps> {
+const IconBlock: FC<IconProps> = props => {
   return (
     <Icon
       viewBox="0 0 26 30"
