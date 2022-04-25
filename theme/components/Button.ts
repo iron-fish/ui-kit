@@ -18,6 +18,9 @@ const Button: ComponentStyleConfig = {
     fontWeight: '400',
     fontFamily: 'ABC Favorit Trial',
     lineHeight: '160%',
+    _focus: {
+      boxShadow: 'none',
+    },
   },
   sizes: {
     large: {
@@ -79,7 +82,7 @@ const Button: ComponentStyleConfig = {
       color: mode(NAMED_COLORS.DEEP_BLUE, NAMED_COLORS.WHITE)(props),
       boxShadow: '0rem 0.25rem 0.688rem rgba(0, 0, 0, 0.04)',
       border: '0.063rem solid',
-      borderColor: mode(NAMED_COLORS.LIGHTER_GREY, NAMED_COLORS.WHITE)(props),
+      borderColor: mode(NAMED_COLORS.LIGHT_GREY, NAMED_COLORS.WHITE)(props),
       '.chakra-button__icon': {
         fill: mode(NAMED_COLORS.BLACK, NAMED_COLORS.WHITE)(props),
       },

@@ -11,6 +11,16 @@ const ColorModeSwitcher: FC = () => {
       aria-label="Color mode"
       icon={colorMode === 'dark' ? <IconLightMode /> : <IconDarkMode />}
       onClick={toggleColorMode}
+      _focus={{
+        boxShadow: 'none',
+      }}
+      background={'none'}
+      _hover={{
+        background: 'none',
+      }}
+      _active={{
+        background: 'none',
+      }}
     />
   )
 }
