@@ -1,3 +1,4 @@
+import { FC } from 'react'
 import { Icon, IconProps } from '@chakra-ui/react'
 
 const IconBlock: FC<IconProps> = props => {
