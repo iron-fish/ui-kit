@@ -27,7 +27,8 @@ import { groupBy } from 'ramda'
 
 export type OptionType = {
   value: string | number
-  label: string | ReactNode
+  label: string
+  object: string
 }
 
 interface SearchAutocompleteProps {
@@ -37,10 +38,10 @@ interface SearchAutocompleteProps {
   emptyOption?: ReactNode
   renderOption?: (option: OptionType) => ReactNode
   onSelectOption?: (option: OptionType) => void
-  groupOptionsBy: () => string
-  inputLeftElement?: ReactNode
+  groupOptionsBy: (option: OptionType) => string
+  inputLeftElement?: () => ReactNode
   variant?: string
-  renderGroupTitle?: ReactNode
+  renderGroupTitle?: (title: string) => ReactNode
 }
 
 const SearchAutocomplete: FC<SearchAutocompleteProps> = ({
@@ -78,7 +79,7 @@ const SearchAutocomplete: FC<SearchAutocompleteProps> = ({
     groupOptions => groupOptions.length
   )
 
-  const renderGroup = (groupName, groupOptions) => {
+  const renderGroup = (groupName: string, groupOptions: OptionType[]) => {
     return (
       <>
         {groupName ? (
@@ -86,7 +87,7 @@ const SearchAutocomplete: FC<SearchAutocompleteProps> = ({
             {renderGroupTitle(groupName)}
           </Box>
         ) : null}
-        {groupOptions.map(option => (
+        {groupOptions.map((option: OptionType) => (
           <Box
             w="100%"
             key={option.value}
