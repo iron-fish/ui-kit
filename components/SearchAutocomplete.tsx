@@ -25,20 +25,21 @@ import {
 import useOutsideClickHandler from 'hooks/useOutsideClickHandler'
 import { groupBy } from 'ramda'
 
-export type OptionType = {
+export type SearchOptionType = {
+  id: string | number
   value: string | number
   label: string
   object: string
 }
 
 interface SearchAutocompleteProps {
-  value?: OptionType
+  value?: SearchOptionType
   InputProps?: IProps
-  options?: OptionType[]
+  options?: SearchOptionType[]
   emptyOption?: ReactNode
-  renderOption?: (option: OptionType) => ReactNode
-  onSelectOption?: (option: OptionType) => void
-  groupOptionsBy: (option: OptionType) => string
+  renderOption?: (option: SearchOptionType) => ReactNode
+  onSelectOption?: (option: SearchOptionType) => void
+  groupOptionsBy?: (option: SearchOptionType) => string
   inputLeftElement?: () => ReactNode
   variant?: string
   renderGroupTitle?: (title: string) => ReactNode
@@ -56,7 +57,7 @@ const SearchAutocomplete: FC<SearchAutocompleteProps> = ({
   inputLeftElement,
   ...props
 }) => {
-  const [val, setVal] = useState<OptionType | null>(value)
+  const [val, setVal] = useState<SearchOptionType | null>(value)
   const [search, setSearch] = useState<string>('')
   const styles = useMultiStyleConfig('SearchAutocomplete', props)
   const inputRef = useRef<HTMLInputElement>()
@@ -79,7 +80,7 @@ const SearchAutocomplete: FC<SearchAutocompleteProps> = ({
     groupOptions => groupOptions.length
   )
 
-  const renderGroup = (groupName: string, groupOptions: OptionType[]) => {
+  const renderGroup = (groupName: string, groupOptions: SearchOptionType[]) => {
     return (
       <>
         {groupName ? (
@@ -87,7 +88,7 @@ const SearchAutocomplete: FC<SearchAutocompleteProps> = ({
             {renderGroupTitle(groupName)}
           </Box>
         ) : null}
-        {groupOptions.map((option: OptionType) => (
+        {groupOptions.map((option: SearchOptionType) => (
           <Box
             w="100%"
             key={option.value}
