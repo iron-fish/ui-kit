@@ -21,10 +21,10 @@ const SearchAutocomplete: ComponentStyleConfig = {
         },
       },
       popoverBody: {
-        padding: '16px 0',
+        padding: '1rem 0',
       },
       emptyOption: {
-        padding: '0 32px',
+        padding: '0 2rem',
         fontSize: '1rem',
         lineHeight: '1.5',
         fontWeight: '400',
@@ -32,20 +32,20 @@ const SearchAutocomplete: ComponentStyleConfig = {
         color: mode(NAMED_COLORS.GREY, NAMED_COLORS.PALE_GREY)(props),
       },
       groupTitleWrapper: {
-        padding: '16px 32px 11px',
+        padding: '1rem 2rem 0.6875rem',
         fontSize: '0.875rem',
         fontWeight: '400',
         lineHeight: '160%',
         fontFamily: 'ABC Favorit Trial',
       },
       groupOptionWrapper: {
-        padding: '8px 32px',
+        padding: '0.5rem 2rem',
         _hover: {
           bg: mode(NAMED_COLORS.LIGHTER_GREY, NAMED_COLORS.DARK_GREY)(props),
           transition: 'all 300ms ease-in',
         },
         _last: {
-          marginBottom: '16px',
+          marginBottom: '1rem',
         },
       },
     }),

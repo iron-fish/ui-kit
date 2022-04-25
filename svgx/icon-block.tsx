@@ -1,13 +1,12 @@
-import { Icon } from '@chakra-ui/react'
+import { Icon, IconProps } from '@chakra-ui/react'
 
-export function IconBlock() {
+export function IconBlock(props): FC<IconProps> {
   return (
     <Icon
-      w="26px"
-      h="30px"
       viewBox="0 0 26 30"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      {...props}
     >
       <g clipPath="url(#a)">
         <path

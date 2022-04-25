@@ -45,13 +45,12 @@ export const SearchInput: ComponentStory<FC> = () => (
 const Option: FC<OptionType> = ({ blockHeight, value }) => {
   const hashValue = useBreakpointValue({
     base: truncateHash(value, 2),
-    sm: truncateHash(value, 4),
     md: value,
   })
   return (
-    <Flex minH="30px" alignItems="center">
-      <Box mr="16px">
-        <IconBlock />
+    <Flex minH="1.875rem" alignItems="center">
+      <Box mr="1rem">
+        <IconBlock w="1.625rem" h="1.875rem" />
       </Box>
       <Box
         overflow="hidden"
@@ -93,7 +92,7 @@ const groupOptionsBy = option => {
 
 export const SearchAutocompleteInput: ComponentStory<FC> = () => (
   <Stack>
-    <Box display="column">
+    <Box display="column" width="18.75rem">
       <h4>Autocomplete search</h4>
       <SearchAutocomplete
         InputProps={{ placeholder: 'Search' }}
@@ -113,7 +112,7 @@ export const SearchAutocompleteInput: ComponentStory<FC> = () => (
         groupOptionsBy={groupOptionsBy}
       />
     </Box>
-    <Box display="column">
+    <Box display="column" width="18.75rem">
       <h4>Autocomplete search no options</h4>
       <SearchAutocomplete
         InputProps={{ placeholder: 'Search' }}

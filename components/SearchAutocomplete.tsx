@@ -143,7 +143,7 @@ const SearchAutocomplete: FC<SearchAutocompleteProps> = ({
         </InputGroup>
       </PopoverTrigger>
       <PopoverContent
-        w="100%"
+        w="inherit"
         sx={styles?.popover}
         ref={popoverRef as RefObject<HTMLDivElement>}
       >
