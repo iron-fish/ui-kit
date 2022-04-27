@@ -138,6 +138,18 @@ const Button: ComponentStyleConfig = {
         },
       },
     }),
+    unStyledIconButton: {
+      background: 'none',
+      _focus: {
+        boxShadow: 'none',
+      },
+      _hover: {
+        background: 'none',
+      },
+      _active: {
+        background: 'none',
+      },
+    },
   },
 }
 
