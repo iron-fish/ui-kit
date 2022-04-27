@@ -34,15 +34,13 @@ export const BasicExample: ComponentStory<FC> = () => (
       <h3>Text Field Group Example</h3>
       <h4>Buttons on the left</h4>
       <FieldGroup w="50%" my={1}>
-        <Button>Test 1</Button>
-        <Button>Test 2</Button>
+        <Button px="1.5rem">Test 1</Button>
         <TextField label="Group Example" />
       </FieldGroup>
       <h4>Buttons on the right</h4>
       <FieldGroup w="50%" my={1}>
         <TextField label="Group Example" />
-        <Button>Test 1</Button>
-        <Button>Test 2</Button>
+        <Button px="1.5rem">Test 1</Button>
       </FieldGroup>
       <h4>Two inputs</h4>
       <FieldGroup w="50%" my={1}>

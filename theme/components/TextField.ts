@@ -15,12 +15,12 @@ const TextField: ComponentStyleConfig = {
       border: '0.063rem solid',
       borderColor: mode(NAMED_COLORS.LIGHT_GREY, NAMED_COLORS.DARK_GREY)(props),
       boxShadow: '0 0.25rem 0.688rem rgba(0, 0, 0, 0.04)',
+      transition: 'all 300ms ease-in',
       _hover: {
         borderColor: mode(NAMED_COLORS.DEEP_BLUE, NAMED_COLORS.WHITE)(props),
       },
       _focusWithin: {
         borderColor: mode(NAMED_COLORS.DEEP_BLUE, NAMED_COLORS.WHITE)(props),
-        borderWidth: '0.094rem',
       },
     },
     label: {
@@ -31,8 +31,9 @@ const TextField: ComponentStyleConfig = {
       color: mode(NAMED_COLORS.GREY, NAMED_COLORS.PALE_GREY)(props),
     },
     inputWrapper: {
+      transition: 'all 150ms ease-in',
       fontSize: '1rem',
-      p: '0.25rem',
+      px: '0.25rem',
       fontWeight: '400',
       fontFamily: 'ABC Favorit Trial',
       color: mode(NAMED_COLORS.DEEP_BLUE, NAMED_COLORS.WHITE)(props),
