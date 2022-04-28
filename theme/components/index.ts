@@ -3,6 +3,7 @@ import type { ComponentStyleConfig } from '@chakra-ui/theme'
 import Autocomplete from './Autocomplete'
 import Badge from './Badge'
 import Button from './Button'
+import ColorModeSwitcher from './ColorModeSwitcher'
 import FieldGroup from './FieldGroup'
 import SelectField from './SelectField'
 import Input from './Input'
@@ -18,6 +19,7 @@ const ThemedComponents: Record<string, ComponentStyleConfig> = {
   Autocomplete,
   Badge,
   Button,
+  ColorModeSwitcher,
   FieldGroup,
   SelectField,
   Input,
