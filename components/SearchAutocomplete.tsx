@@ -20,29 +20,29 @@ import {
   useMultiStyleConfig,
   InputGroup,
   InputLeftElement,
-  Text,
 } from '@chakra-ui/react'
 import useOutsideClickHandler from 'hooks/useOutsideClickHandler'
-import { groupBy } from 'ramda'
+import Group, { GroupProps } from './Group'
 
-export type SearchOptionType = {
-  id: string | number
-  value: string | number
+export interface SearchOption {
   label: string
-  object: string
+  value: string | number
+}
+export interface SearchOptionGroup {
+  label: string
+  options: SearchOption[]
 }
 
 interface SearchAutocompleteProps {
-  value?: SearchOptionType
+  value?: SearchOption
   InputProps?: IProps
-  options?: SearchOptionType[]
+  options?: (SearchOption | SearchOptionGroup)[]
   emptyOption?: ReactNode
-  renderOption?: (option: SearchOptionType) => ReactNode
-  onSelectOption?: (option: SearchOptionType) => void
-  groupOptionsBy?: (option: SearchOptionType) => string
+  renderOption?: (option: SearchOption) => ReactNode
+  onSelectOption?: (option: SearchOption) => void
   inputLeftElement?: () => ReactNode
+  groupProps?: GroupProps
   variant?: string
-  renderGroupTitle?: (title: string) => ReactNode
 }
 
 const SearchAutocomplete: FC<SearchAutocompleteProps> = ({
@@ -50,14 +50,13 @@ const SearchAutocomplete: FC<SearchAutocompleteProps> = ({
   InputProps = {},
   options = [],
   emptyOption = 'No matches',
-  renderOption = option => <Box>{option.label}</Box>,
+  renderOption = option => <Box>{option?.label}</Box>,
   onSelectOption = () => void 0,
-  groupOptionsBy = option => option.object,
-  renderGroupTitle = title => <Text>{title}</Text>,
   inputLeftElement,
+  groupProps = { headerProps: { as: 'h5' } },
   ...props
 }) => {
-  const [val, setVal] = useState<SearchOptionType | null>(value)
+  const [val, setVal] = useState<SearchOption | null>(value)
   const [search, setSearch] = useState<string>('')
   const styles = useMultiStyleConfig('SearchAutocomplete', props)
   const inputRef = useRef<HTMLInputElement>()
@@ -75,44 +74,32 @@ const SearchAutocomplete: FC<SearchAutocompleteProps> = ({
     setVal(value)
   }, [value])
 
-  const groupedOptions = groupBy(groupOptionsBy)(options)
-  const hasOptions = Object.values(groupedOptions).some(
-    groupOptions => groupOptions.length
+  const renderOptionItem = (option: SearchOption) => (
+    <Box
+      w="100%"
+      key={option.value}
+      sx={styles?.groupOptionWrapper}
+      onClick={() => {
+        if (val !== option) {
+          setVal(option)
+          onSelectOption(option)
+          setSearch('')
+          onClose()
+        }
+      }}
+    >
+      {renderOption(option)}
+    </Box>
   )
 
-  const renderGroup = (groupName: string, groupOptions: SearchOptionType[]) => {
-    return (
-      <>
-        {groupName ? (
-          <Box w="100%" sx={styles?.groupTitleWrapper}>
-            {renderGroupTitle(groupName)}
-          </Box>
-        ) : null}
-        {groupOptions.map((option: SearchOptionType) => (
-          <Box
-            w="100%"
-            key={option.value}
-            sx={styles?.groupOptionWrapper}
-            onClick={() => {
-              if (val !== option) {
-                setVal(option)
-                onSelectOption(option)
-                setSearch('')
-                onClose()
-              }
-            }}
-          >
-            {renderOption(option)}
-          </Box>
-        ))}
-      </>
-    )
-  }
+  const hasOptions =
+    options.length &&
+    options.some(option => ('options' in option ? option.options.length : true))
 
   return (
     <Popover
       matchWidth
-      isOpen={isOpen && search}
+      isOpen={isOpen && !!search}
       onOpen={onOpen}
       onClose={onClose}
       closeOnBlur={false}
@@ -150,9 +137,28 @@ const SearchAutocomplete: FC<SearchAutocompleteProps> = ({
       >
         <PopoverBody sx={styles?.popoverBody}>
           {hasOptions ? (
-            Object.entries(groupedOptions).map(groupData =>
-              renderGroup(...groupData)
-            )
+            options.map((option: SearchOption | SearchOptionGroup) => {
+              if ('options' in option) {
+                return option.options.length ? (
+                  <Group
+                    sx={{ ...styles?.group, ...groupProps.sx }}
+                    label={option.label}
+                    headerProps={{
+                      ...groupProps.headerProps,
+                      sx: {
+                        ...styles?.groupHeader,
+                        ...groupProps.headerProps.sx,
+                      },
+                    }}
+                  >
+                    {option.options.map((item: SearchOption) =>
+                      renderOptionItem(item)
+                    )}
+                  </Group>
+                ) : null
+              }
+              return renderOptionItem(option)
+            })
           ) : (
             <Box w="100%" key="empty-option" sx={styles?.emptyOption}>
               {emptyOption}

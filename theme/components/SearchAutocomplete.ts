@@ -12,7 +12,7 @@ const SearchAutocomplete: ComponentStyleConfig = {
     'groupOptionWrapper',
   ],
   variants: {
-    nav_search: props => ({
+    navSearch: props => ({
       popover: {
         borderRadius: '1.875rem',
         bg: mode(NAMED_COLORS.WHITE, NAMED_COLORS.DARKER_GREY)(props),
@@ -21,7 +21,7 @@ const SearchAutocomplete: ComponentStyleConfig = {
         },
       },
       popoverBody: {
-        padding: '1rem 0',
+        padding: '1.75rem 0',
       },
       emptyOption: {
         padding: '0 2rem',
@@ -30,22 +30,21 @@ const SearchAutocomplete: ComponentStyleConfig = {
         fontWeight: '400',
         fontFamily: 'ABC Favorit Trial',
         color: mode(NAMED_COLORS.GREY, NAMED_COLORS.PALE_GREY)(props),
+        m: '-0.75rem 0',
       },
-      groupTitleWrapper: {
-        padding: '1rem 2rem 0.6875rem',
-        fontSize: '0.875rem',
-        fontWeight: '400',
-        lineHeight: '160%',
-        fontFamily: 'ABC Favorit Trial',
+      group: {
+        _first: {
+          marginTop: '-0.75rem',
+        },
+      },
+      groupHeader: {
+        p: '1rem 2rem 0.75rem',
       },
       groupOptionWrapper: {
         padding: '0.5rem 2rem',
         _hover: {
           bg: mode(NAMED_COLORS.LIGHTER_GREY, NAMED_COLORS.DARK_GREY)(props),
           transition: 'all 300ms ease-in',
-        },
-        _last: {
-          marginBottom: '1rem',
         },
       },
     }),
