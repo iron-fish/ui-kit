@@ -115,11 +115,11 @@ export const SearchAutocompleteInput: ComponentStory<FC> = () => (
   <Stack>
     <Box display="column" width="25rem">
       <h4>Autocomplete search with grouped options</h4>
-      <Search demoOptions={demoOptions} />
+      <Search options={demoOptions} />
     </Box>
     <Box display="column" width="25rem">
       <h4>Autocomplete search with simple options</h4>
-      <Search demoOptions={demoOptions1} />
+      <Search options={demoOptions1} />
     </Box>
   </Stack>
 )
