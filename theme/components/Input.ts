@@ -17,13 +17,10 @@ const Input: ComponentStyleConfig = {
       bgColor: mode(NAMED_COLORS.WHITE, NAMED_COLORS.DARKER_GREY)(props),
       borderColor: mode(NAMED_COLORS.LIGHT_GREY, NAMED_COLORS.DARK_GREY)(props),
       _placeholder: {
-        color: mode(NAMED_COLORS.GRAY, NAMED_COLORS.PALE_GREY)(props),
+        color: mode(NAMED_COLORS.GREY, NAMED_COLORS.PALE_GREY)(props),
       },
       _focus: {
         borderColor: mode(NAMED_COLORS.DEEP_BLUE, NAMED_COLORS.WHITE)(props),
-        _placeholder: {
-          color: mode(NAMED_COLORS.GRAY, NAMED_COLORS.WHITE)(props),
-        },
       },
     },
   }),
