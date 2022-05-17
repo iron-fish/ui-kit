@@ -1,4 +1,5 @@
 import type { ComponentStyleConfig } from '@chakra-ui/theme'
+import { POSSIBLE_FONTS as FONTS } from 'styles/constants'
 
 import { mode } from '@chakra-ui/theme-tools'
 import { NAMED_COLORS } from '../constants'
@@ -37,14 +38,14 @@ const Autocomplete: ComponentStyleConfig = {
     label: {
       fontSize: '0.75rem',
       fontWeight: '400',
-      fontFamily: 'ABC Favorit Trial',
+      fontFamily: FONTS.FAVORIT,
       color: mode(NAMED_COLORS.GREY, NAMED_COLORS.PALE_GREY)(props),
     },
     value: {
       '.select-field__value-label': {
         fontSize: '1rem',
         fontWeight: '400',
-        fontFamily: 'ABC Favorit Trial',
+        fontFamily: FONTS.FAVORIT,
         lineHeight: '1.5rem',
         color: mode(NAMED_COLORS.DEEP_BLUE, NAMED_COLORS.WHITE)(props),
       },
@@ -52,7 +53,7 @@ const Autocomplete: ComponentStyleConfig = {
         fontSize: '0.75rem',
         fontWeight: '400',
         lineHeight: '1.25rem',
-        fontFamily: 'ABC Favorit Trial',
+        fontFamily: FONTS.FAVORIT,
         color: mode(NAMED_COLORS.GREY, NAMED_COLORS.PALE_GREY)(props),
       },
     },
@@ -93,13 +94,13 @@ const Autocomplete: ComponentStyleConfig = {
       '.autocomplete__option-label': {
         fontSize: '1rem',
         fontWeight: '400',
-        fontFamily: 'ABC Favorit Trial',
+        fontFamily: FONTS.FAVORIT,
         color: mode(NAMED_COLORS.DEEP_BLUE, NAMED_COLORS.WHITE)(props),
       },
       '.autocomplete__option-text': {
         fontSize: '0.75rem',
         fontWeight: '400',
-        fontFamily: 'ABC Favorit Trial',
+        fontFamily: FONTS.FAVORIT,
         color: mode(NAMED_COLORS.GREY, NAMED_COLORS.PALE_GREY)(props),
       },
     },
@@ -107,7 +108,7 @@ const Autocomplete: ComponentStyleConfig = {
       overflow: 'hidden',
       fontSize: '1rem',
       fontWeight: '400',
-      fontFamily: 'ABC Favorit Trial',
+      fontFamily: FONTS.FAVORIT,
       color: mode(NAMED_COLORS.DEEP_BLUE, NAMED_COLORS.WHITE)(props),
     },
     emptyOption: {
@@ -116,7 +117,7 @@ const Autocomplete: ComponentStyleConfig = {
       cursor: 'pointer',
       fontSize: '0.75rem',
       fontWeight: '400',
-      fontFamily: 'ABC Favorit Trial',
+      fontFamily: FONTS.FAVORIT,
       color: mode(NAMED_COLORS.GREY, NAMED_COLORS.PALE_GREY)(props),
     },
   }),

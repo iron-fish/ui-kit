@@ -2,6 +2,7 @@ import type { ComponentStyleConfig } from '@chakra-ui/theme'
 
 import { mode } from '@chakra-ui/theme-tools'
 import { NAMED_COLORS } from 'theme/constants'
+import { POSSIBLE_FONTS as FONTS } from 'styles/constants'
 
 const Table: ComponentStyleConfig = {
   variants: {
@@ -26,7 +27,7 @@ const Table: ComponentStyleConfig = {
         fontSize: '0.75rem',
         lineHeight: '1.188rem',
         fontWeight: '400',
-        fontFamily: 'ABC Favorit Trial',
+        fontFamily: FONTS.FAVORIT,
         letterSpacing: '0.1em',
         paddingTop: '0.5rem',
         paddingBottom: '0',
@@ -39,7 +40,7 @@ const Table: ComponentStyleConfig = {
         fontStyle: 'normal',
         lineHeight: '1.625rem',
         fontWeight: '400',
-        fontFamily: 'ABC Favorit Trial',
+        fontFamily: FONTS.FAVORIT,
         color: mode(NAMED_COLORS.DEEP_BLUE, NAMED_COLORS.WHITE)(props),
         ':first-of-type': {
           borderLeft: '0.063rem solid',

@@ -2,6 +2,7 @@ import type { ComponentStyleConfig } from '@chakra-ui/theme'
 import { mode } from '@chakra-ui/theme-tools'
 
 import { NAMED_COLORS } from 'theme/constants'
+import { POSSIBLE_FONTS as FONTS } from 'styles/constants'
 
 const SelectField: ComponentStyleConfig = {
   parts: ['container', 'label', 'value', 'popover', 'optionWrapper'],
@@ -38,14 +39,14 @@ const SelectField: ComponentStyleConfig = {
     label: {
       fontSize: '0.75rem',
       fontWeight: '400',
-      fontFamily: 'ABC Favorit Trial',
+      fontFamily: FONTS.FAVORIT,
       color: mode(NAMED_COLORS.GREY, NAMED_COLORS.PALE_GREY)(props),
     },
     value: {
       '.select-field__value-label': {
         fontSize: '1rem',
         fontWeight: '400',
-        fontFamily: 'ABC Favorit Trial',
+        fontFamily: FONTS.FAVORIT,
         lineHeight: '1.5rem',
         color: mode(NAMED_COLORS.DEEP_BLUE, NAMED_COLORS.WHITE)(props),
       },
@@ -53,7 +54,7 @@ const SelectField: ComponentStyleConfig = {
         fontSize: '0.75rem',
         fontWeight: '400',
         lineHeight: '1.25rem',
-        fontFamily: 'ABC Favorit Trial',
+        fontFamily: FONTS.FAVORIT,
         color: mode(NAMED_COLORS.GREY, NAMED_COLORS.PALE_GREY)(props),
       },
     },

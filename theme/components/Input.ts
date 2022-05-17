@@ -2,6 +2,7 @@ import type { ComponentStyleConfig } from '@chakra-ui/theme'
 
 import { mode } from '@chakra-ui/theme-tools'
 import { NAMED_COLORS } from 'theme/constants'
+import { POSSIBLE_FONTS as FONTS } from 'styles/constants'
 
 const Input: ComponentStyleConfig = {
   parts: ['field', 'element'],
@@ -11,7 +12,7 @@ const Input: ComponentStyleConfig = {
       fontSize: '0.875rem',
       lineHeight: '1.4rem',
       fontWeight: '400',
-      fontFamily: 'ABC Favorit Trial',
+      fontFamily: FONTS.FAVORIT,
       border: '0.063rem solid',
       boxShadow: '0 0.25rem 0.688rem rgba(0, 0, 0, 0.04)',
       bgColor: mode(NAMED_COLORS.WHITE, NAMED_COLORS.DARKER_GREY)(props),

@@ -2,6 +2,7 @@ import type { ComponentStyleConfig } from '@chakra-ui/theme'
 
 import { mode } from '@chakra-ui/theme-tools'
 import { NAMED_COLORS } from 'theme/constants'
+import { POSSIBLE_FONTS as FONTS } from 'styles/constants'
 
 const getDisabledStyle = (props: object): object => ({
   bgColor: mode(NAMED_COLORS.LIGHTER_GREY, NAMED_COLORS.DARKER_GREY_1)(props),
@@ -16,7 +17,7 @@ const Button: ComponentStyleConfig = {
   baseStyle: {
     fontStyle: 'normal',
     fontWeight: '400',
-    fontFamily: 'ABC Favorit Trial',
+    fontFamily: FONTS.FAVORIT,
     lineHeight: '160%',
     _focus: {
       boxShadow: 'none',
