@@ -3,6 +3,7 @@ export enum POSSIBLE_FONTS {
   FAVORIT = 'favorit-regular',
   MONO = 'mono-regular',
 }
+export const FONTS = POSSIBLE_FONTS
 
 export enum CASE {
   MIXED,

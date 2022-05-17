@@ -2,7 +2,7 @@ import { ChakraTheme, DeepPartial } from '@chakra-ui/react'
 import { mode } from '@chakra-ui/theme-tools'
 import { NAMED_COLORS } from './constants'
 import ThemedComponents from './components'
-import { POSSIBLE_FONTS as FONTS } from 'styles/constants'
+import { FONTS } from 'styles/constants'
 
 const typeface: object = {
   fontWeight: '400',

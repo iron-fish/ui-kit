@@ -1,5 +1,5 @@
 import type { ComponentStyleConfig } from '@chakra-ui/theme'
-import { POSSIBLE_FONTS as FONTS } from 'styles/constants'
+import { FONTS } from 'styles/constants'
 
 import { mode } from '@chakra-ui/theme-tools'
 import { NAMED_COLORS } from '../constants'
