@@ -1,7 +1,7 @@
 import type { ComponentStyleConfig } from '@chakra-ui/theme'
 
 import { mode } from '@chakra-ui/theme-tools'
-import { NAMED_COLORS } from 'theme/constants'
+import { FONTS, NAMED_COLORS } from 'theme/constants'
 
 const Menu: ComponentStyleConfig = {
   parts: ['button', 'list', 'item'],
@@ -43,7 +43,7 @@ const Menu: ComponentStyleConfig = {
       fontWeight: '400',
       lineHeight: '160%',
       letterSpacing: '0',
-      fontFamily: 'ABC Favorit Trial',
+      fontFamily: FONTS.FAVORIT,
       padding: '0.5rem 1rem',
     },
   }),

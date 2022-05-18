@@ -1,7 +1,7 @@
 import type { ComponentStyleConfig } from '@chakra-ui/theme'
 
 import { mode } from '@chakra-ui/theme-tools'
-import { NAMED_COLORS } from 'theme/constants'
+import { NAMED_COLORS, FONTS } from 'theme/constants'
 
 const Option: ComponentStyleConfig = {
   baseStyle: props => ({
@@ -13,13 +13,13 @@ const Option: ComponentStyleConfig = {
       '&-label': {
         fontSize: '1rem',
         fontWeight: '400',
-        fontFamily: 'ABC Favorit Trial',
+        fontFamily: FONTS.FAVORIT,
         color: mode(NAMED_COLORS.DEEP_BLUE, NAMED_COLORS.WHITE)(props),
       },
       '&-text': {
         fontSize: '0.75rem',
         fontWeight: '400',
-        fontFamily: 'ABC Favorit Trial',
+        fontFamily: FONTS.FAVORIT,
         color: mode(NAMED_COLORS.GREY, NAMED_COLORS.PALE_GREY)(props),
       },
     },

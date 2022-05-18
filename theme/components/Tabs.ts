@@ -2,6 +2,7 @@ import type { ComponentStyleConfig } from '@chakra-ui/theme'
 
 import { mode } from '@chakra-ui/theme-tools'
 import { NAMED_COLORS } from 'theme/constants'
+import { FONTS } from 'theme/constants'
 
 const Tabs: ComponentStyleConfig = {
   baseStyle: props => ({
@@ -10,7 +11,7 @@ const Tabs: ComponentStyleConfig = {
       fontSize: '0.875rem',
       lineHeight: '1.4rem',
       fontWeight: '400',
-      fontFamily: 'ABC Favorit Trial',
+      fontFamily: FONTS.FAVORIT,
       padding: '0',
       paddingInlineStart: '0',
       paddingInlineEnd: '0',

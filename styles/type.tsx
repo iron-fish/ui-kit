@@ -1,8 +1,47 @@
 import { mapObjIndexed } from 'ramda'
+
 import { chakra } from '@chakra-ui/react'
+import { FONTS } from 'theme/constants'
 
-import { TYPEFACES, CASE, Typeface } from 'styles/constants'
+export enum CASE {
+  MIXED,
+  UPPERCASE,
+}
 
+const makeFont = (
+  family: FONTS,
+  size: string,
+  lineHeight: string,
+  weight: string,
+  textTransform: CASE
+): Typeface => ({
+  family,
+  size,
+  weight,
+  lineHeight,
+  textTransform,
+})
+
+const TYPE_H5 = makeFont(FONTS.FAVORIT, '0.875rem', '1.4rem', '400', CASE.MIXED)
+
+export const TYPEFACES = {
+  TITLE: makeFont(FONTS.EXTENDED, '3.25rem', '5.2rem', '400', CASE.MIXED),
+  H1: makeFont(FONTS.EXTENDED, '2.25rem', '3.6rem', '400', CASE.MIXED),
+  H2: makeFont(FONTS.EXTENDED, '1.75rem', '2.8rem', '400', CASE.MIXED),
+  H3: makeFont(FONTS.EXTENDED, '1.5rem', '2.4rem', '400', CASE.MIXED),
+  H4: makeFont(FONTS.FAVORIT, '1rem', '1.6rem', '400', CASE.MIXED),
+  H5: TYPE_H5,
+  H6: makeFont(FONTS.FAVORIT, '0.75rem', '1.2rem', '400', CASE.MIXED),
+  BODY: TYPE_H5,
+}
+
+export type Typeface = {
+  family: FONTS
+  size: string
+  lineHeight: string
+  weight: string
+  textTransform: CASE
+}
 export const favorit = 'favorit-regular'
 export const extended = 'favoritextended-regular'
 

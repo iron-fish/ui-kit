@@ -1,7 +1,7 @@
 import type { ComponentStyleConfig } from '@chakra-ui/theme'
 
 import { mode } from '@chakra-ui/theme-tools'
-import { NAMED_COLORS } from 'theme/constants'
+import { FONTS, NAMED_COLORS } from 'theme/constants'
 
 const TextField: ComponentStyleConfig = {
   parts: ['container', 'label', 'inputWrapper'],
@@ -27,7 +27,7 @@ const TextField: ComponentStyleConfig = {
       fontSize: '0.75rem',
       p: '0.25rem',
       fontWeight: '400',
-      fontFamily: 'ABC Favorit Trial',
+      fontFamily: FONTS.FAVORIT,
       color: mode(NAMED_COLORS.GREY, NAMED_COLORS.PALE_GREY)(props),
     },
     inputWrapper: {
@@ -35,7 +35,7 @@ const TextField: ComponentStyleConfig = {
       fontSize: '1rem',
       px: '0.25rem',
       fontWeight: '400',
-      fontFamily: 'ABC Favorit Trial',
+      fontFamily: FONTS.FAVORIT,
       color: mode(NAMED_COLORS.DEEP_BLUE, NAMED_COLORS.WHITE)(props),
     },
   }),
