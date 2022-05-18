@@ -1,8 +1,7 @@
 import type { ComponentStyleConfig } from '@chakra-ui/theme'
-import { FONTS } from 'styles/constants'
 
 import { mode } from '@chakra-ui/theme-tools'
-import { NAMED_COLORS } from '../constants'
+import { FONTS, NAMED_COLORS } from '../constants'
 
 const Autocomplete: ComponentStyleConfig = {
   parts: [

@@ -2,7 +2,7 @@ import type { ComponentStyleConfig } from '@chakra-ui/theme'
 
 import { mode } from '@chakra-ui/theme-tools'
 import { NAMED_COLORS } from 'theme/constants'
-import { FONTS } from 'styles/constants'
+import { FONTS } from 'theme/constants'
 
 const Tabs: ComponentStyleConfig = {
   baseStyle: props => ({
