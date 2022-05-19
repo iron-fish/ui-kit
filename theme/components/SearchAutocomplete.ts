@@ -22,6 +22,10 @@ const SearchAutocomplete: ComponentStyleConfig = {
       },
       popoverBody: {
         padding: '1.75rem 0',
+        '.option--is-focused': {
+          bg: mode(NAMED_COLORS.LIGHTER_GREY, NAMED_COLORS.DARK_GREY)(props),
+          transition: 'all 300ms ease-in',
+        },
       },
       emptyOption: {
         padding: '0 2rem',
