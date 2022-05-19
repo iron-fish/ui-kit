@@ -4,7 +4,7 @@ This is a library with customized [chakra-ui](https://chakra-ui.com/) components
 
 1. Install dependencies: `yarn`
 2. Install optional dependencies: `yarn global add nps`
-3. See scripts by running `nps`
+3. See scripts by running `nps` or `./node_modules/.bin/nps`:
    - `nps dev` - Run Storybook locally
    - `nps build` - Build Storybook and the TypeScript project for deployment
    - `nps lint` - Core Linting
