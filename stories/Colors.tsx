@@ -2,6 +2,20 @@ import type { ReactNode } from 'react'
 import { chakra, Flex } from '@chakra-ui/react'
 import { H1, TITLE } from 'styles/type'
 
+const makeTheme = (
+  base: string,
+  bg: string,
+  a: string,
+  b: string,
+  c: string
+) => ({
+  BASE: base,
+  PRIMARY: bg,
+  SECONDARY: a,
+  TERTIARY: b,
+  QUATERNARY: c,
+})
+
 export const NAMED_COLORS = {
   // the base color, light or dark
   DEEP_BLUE: '#0d0c22',
