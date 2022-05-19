@@ -45,7 +45,7 @@ const Input: ComponentStyleConfig = {
         paddingLeft: '0.625rem',
       },
     },
-    nav_search: {
+    navSearch: {
       field: {
         h: '2.875rem',
         paddingLeft: '3.125rem',

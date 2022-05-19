@@ -7,7 +7,7 @@ import {
   Stack,
   Box,
 } from '@chakra-ui/react'
-import { Search2Icon } from '@chakra-ui/icons'
+import IconSearch from 'svgx/icon-search'
 
 export default {
   title: 'Components/SearchInput',
@@ -20,16 +20,16 @@ export const SearchInput: ComponentStory<FC> = () => (
       <h4>Simple search input</h4>
       <InputGroup variant="search">
         <InputLeftElement pointerEvents="none">
-          <Search2Icon w={'0.875rem'} h={'0.875rem'} />
+          <IconSearch w={'0.875rem'} h={'0.875rem'} />
         </InputLeftElement>
         <Input placeholder="Search" />
       </InputGroup>
     </Box>
     <Box>
       <h4>Nav search input</h4>
-      <InputGroup variant="nav_search">
+      <InputGroup variant="navSearch">
         <InputLeftElement pointerEvents="none">
-          <Search2Icon />
+          <IconSearch />
         </InputLeftElement>
         <Input placeholder="Search" />
       </InputGroup>

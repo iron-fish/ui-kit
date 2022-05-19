@@ -22,7 +22,7 @@ export type OptionType = {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   value: any
   label: string | ReactNode
-  helperText: string | ReactNode
+  helperText?: string | ReactNode
 }
 /**
  * Default representation of SelectField option
