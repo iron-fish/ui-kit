@@ -1,9 +1,7 @@
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin')
 
 module.exports = {
-  stories: [
-    '../stories/**/*.stories.@(js|jsx|ts|tsx)',
-  ],
+  stories: ['../stories/**/*.stories.@(js|jsx|ts|tsx)'],
   addons: [
     '@storybook/addon-links',
     '@storybook/addon-essentials',
@@ -28,14 +26,14 @@ module.exports = {
       },
       resolve: {
         ...resolve,
-        plugins: [
-          ...(resolve.plugins || []),
-          new TsconfigPathsPlugin()
-        ]
+        plugins: [...(resolve.plugins || []), new TsconfigPathsPlugin()],
       },
-    };
+    }
   },
   features: {
     emotionAlias: false,
+  },
+  refs: {
+    '@chakra-ui/react': { disable: true },
   },
 }
