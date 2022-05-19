@@ -27,3 +27,9 @@ export const NAMED_COLORS: Record<string, string> = {
   DARKER_GREY_2: '#626262',
   LIGHT_BLACK: '#101010',
 }
+
+export enum FONTS {
+  EXTENDED = 'extended-regular',
+  FAVORIT = 'favorit-regular',
+  MONO = 'mono-regular',
+}
