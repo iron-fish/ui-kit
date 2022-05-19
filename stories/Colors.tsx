@@ -1,6 +1,25 @@
 import type { ReactNode } from 'react'
 import { chakra, Flex } from '@chakra-ui/react'
-import { H1, TITLE } from 'styles/type'
+
+import HexFish from '../svgx/hexfish'
+import { H1, TITLE } from '../styles/type'
+
+import Showcase from './Showcase'
+import Swatch from './Swatch'
+
+const makeTheme = (
+  base: string,
+  bg: string,
+  a: string,
+  b: string,
+  c: string
+) => ({
+  BASE: base,
+  PRIMARY: bg,
+  SECONDARY: a,
+  TERTIARY: b,
+  QUATERNARY: c,
+})
 
 export const NAMED_COLORS = {
   // the base color, light or dark
@@ -19,6 +38,7 @@ export const NAMED_COLORS = {
   DARKER_GREY: '#252525',
   // global
   BLACK: '#000000',
+  NEAR_BLACK: '#010101',
   WHITE: '#ffffff',
   // brand
   LIGHT_BLUE: '#2C72FF',
@@ -39,8 +59,8 @@ export const COLORS = {
       NAMED_COLORS.LIGHTER_GREY
     ),
     DARK: makeTheme(
-      NAMED_COLORS.BLACK,
-      NAMED_COLORS.DEEP_BLUE,
+      NAMED_COLORS.NEAR_BLACK,
+      NAMED_COLORS.NEAR_BLACK,
       NAMED_COLORS.DARKER_GREY,
       NAMED_COLORS.DARK_GREY,
       NAMED_COLORS.PALE_GREY
@@ -59,11 +79,6 @@ export const COLORS = {
     RED: NAMED_COLORS.RED,
   },
 }
-
-import Showcase from './Showcase'
-import Swatch from './Swatch'
-
-import HexFish from 'svgx/hexfish'
 
 interface Color {
   name: string
@@ -97,10 +112,9 @@ const ColorStack = ({
       }}
       w={{
         base: '100%',
-        md: compressible
-          ? `calc(50% - ${index > 1 ? '4rem' : '3rem'})`
-          : '100%',
+        md: compressible ? '50%' : '100%',
       }}
+      marginBottom="1rem"
     >
       <H1 textAlign="left">{title}</H1>
       <chakra.div
@@ -127,7 +141,11 @@ function Colors() {
       }
       headerColor={COLORS.BRAND.BLUE}
     >
-      <Flex flexDirection={{ base: 'column', md: 'row' }} flexWrap="wrap">
+      <Flex
+        flexDirection={{ base: 'column', md: 'row' }}
+        flexWrap="wrap"
+        justifyContent="space-between"
+      >
         <ColorStack
           title={
             <>
