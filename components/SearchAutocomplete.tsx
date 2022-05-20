@@ -63,7 +63,9 @@ const SearchAutocomplete: FC<SearchAutocompleteProps> = ({
   const inputRef = useRef<HTMLInputElement>()
   const popoverRef = useRef<HTMLDivElement>()
   const { onOpen, onClose, isOpen } = useDisclosure()
-  const [focusedOption, setFocusedOption] = useState<SearchOption | null>(null)
+  const [$focusedOption, $setFocusedOption] = useState<SearchOption | null>(
+    null
+  )
 
   useOutsideClickHandler(
     [
@@ -91,7 +93,7 @@ const SearchAutocomplete: FC<SearchAutocompleteProps> = ({
       key={option.value}
       sx={styles?.groupOptionWrapper}
       className={
-        option.value === focusedOption?.value ? 'option--is-focused' : ''
+        option.value === $focusedOption?.value ? 'option--is-focused' : ''
       }
       onClick={() => handleOptionSelect(option)}
     >
@@ -119,9 +121,7 @@ const SearchAutocomplete: FC<SearchAutocompleteProps> = ({
       }
       return acc
     }, [])
-    const focusedIndex = focusedOption
-      ? focusableOptions.indexOf(focusedOption)
-      : -1
+    const focusedIndex = focusableOptions.indexOf($focusedOption)
 
     switch (e.key) {
       case 'ArrowUp':
@@ -133,7 +133,7 @@ const SearchAutocomplete: FC<SearchAutocompleteProps> = ({
         e.preventDefault()
         break
       case 'Enter':
-        handleOptionSelect(focusedOption)
+        handleOptionSelect($focusedOption)
         break
       case 'Escape':
         onClose()
@@ -141,7 +141,7 @@ const SearchAutocomplete: FC<SearchAutocompleteProps> = ({
       default:
         break
     }
-    setFocusedOption(focusableOptions[nextFocus])
+    $setFocusedOption(focusableOptions[nextFocus])
   }
 
   return (
@@ -190,7 +190,7 @@ const SearchAutocomplete: FC<SearchAutocompleteProps> = ({
               if ('options' in option) {
                 return option.options.length ? (
                   <Group
-                    key={`options-${option.label}-group`}
+                    key={option.label}
                     sx={{ ...styles?.group, ...groupProps.sx }}
                     label={option.label}
                     headerProps={{
