@@ -6,6 +6,7 @@ import {
   ReactNode,
   MutableRefObject,
   RefObject,
+  KeyboardEvent,
 } from 'react'
 
 import {
@@ -39,7 +40,7 @@ interface SearchAutocompleteProps {
   options?: (SearchOption | SearchOptionGroup)[]
   emptyOption?: ReactNode
   renderOption?: (option: SearchOption) => ReactNode
-  onSelectOption?: (option: SearchOption) => void
+  onSelectOption?: (option: SearchOption | null) => void
   inputLeftElement?: () => ReactNode
   groupProps?: GroupProps
   variant?: string
@@ -62,6 +63,9 @@ const SearchAutocomplete: FC<SearchAutocompleteProps> = ({
   const inputRef = useRef<HTMLInputElement>()
   const popoverRef = useRef<HTMLDivElement>()
   const { onOpen, onClose, isOpen } = useDisclosure()
+  const [$focusedOption, $setFocusedOption] = useState<SearchOption | null>(
+    null
+  )
 
   useOutsideClickHandler(
     [
@@ -74,19 +78,24 @@ const SearchAutocomplete: FC<SearchAutocompleteProps> = ({
     setVal(value)
   }, [value])
 
+  const handleOptionSelect = (option: SearchOption | null) => {
+    if (val !== option) {
+      setVal(option)
+      onSelectOption(option)
+      setSearch('')
+      onClose()
+    }
+  }
+
   const renderOptionItem = (option: SearchOption) => (
     <Box
       w="100%"
       key={option.value}
       sx={styles?.groupOptionWrapper}
-      onClick={() => {
-        if (val !== option) {
-          setVal(option)
-          onSelectOption(option)
-          setSearch('')
-          onClose()
-        }
-      }}
+      className={
+        option.value === $focusedOption?.value ? 'option--is-focused' : ''
+      }
+      onClick={() => handleOptionSelect(option)}
     >
       {renderOption(option)}
     </Box>
@@ -95,6 +104,47 @@ const SearchAutocomplete: FC<SearchAutocompleteProps> = ({
   const hasOptions =
     options.length &&
     options.some(option => ('options' in option ? option.options.length : true))
+
+  const onKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
+    if (!options.length) {
+      return
+    }
+    if (!isOpen) {
+      onOpen()
+    }
+    let nextFocus = 0
+    const focusableOptions = options.reduce<SearchOption[]>((acc, option) => {
+      if ('options' in option) {
+        acc.push(...option.options)
+      } else {
+        acc.push(option)
+      }
+      return acc
+    }, [])
+    const focusedIndex = focusableOptions.findIndex(
+      option => $focusedOption?.value === option.value
+    )
+
+    switch (e.key) {
+      case 'ArrowUp':
+        nextFocus = focusedIndex > 0 ? focusedIndex - 1 : options.length - 1
+        e.preventDefault()
+        break
+      case 'ArrowDown':
+        nextFocus = (focusedIndex + 1) % options.length
+        e.preventDefault()
+        break
+      case 'Enter':
+        handleOptionSelect($focusedOption)
+        break
+      case 'Escape':
+        onClose()
+        break
+      default:
+        break
+    }
+    $setFocusedOption(focusableOptions[nextFocus])
+  }
 
   return (
     <Popover
@@ -120,6 +170,7 @@ const SearchAutocomplete: FC<SearchAutocompleteProps> = ({
             value={val ? val.label : search}
             ref={inputRef as RefObject<HTMLInputElement>}
             onFocus={e => e.target?.select()}
+            onKeyDown={onKeyDown}
             onChange={e => {
               if (val) {
                 setVal(null)
@@ -141,6 +192,7 @@ const SearchAutocomplete: FC<SearchAutocompleteProps> = ({
               if ('options' in option) {
                 return option.options.length ? (
                   <Group
+                    key={option.label}
                     sx={{ ...styles?.group, ...groupProps.sx }}
                     label={option.label}
                     headerProps={{

@@ -114,11 +114,17 @@ const Search = ({ options }) => {
 export const SearchAutocompleteInput: ComponentStory<FC> = () => (
   <Stack>
     <Box display="column" width="25rem">
-      <h4>Autocomplete search with grouped options</h4>
+      <h4>
+        Autocomplete search with grouped options <br />
+        to see result type 1, 2, 3 or 4
+      </h4>
       <Search options={demoOptions} />
     </Box>
     <Box display="column" width="25rem">
-      <h4>Autocomplete search with simple options</h4>
+      <h4>
+        Autocomplete search with simple options,
+        <br /> to see result type 4
+      </h4>
       <Search options={demoOptions1} />
     </Box>
   </Stack>
