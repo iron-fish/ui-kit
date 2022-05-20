@@ -121,7 +121,9 @@ const SearchAutocomplete: FC<SearchAutocompleteProps> = ({
       }
       return acc
     }, [])
-    const focusedIndex = focusableOptions.indexOf($focusedOption)
+    const focusedIndex = focusableOptions.findIndex(
+      option => $focusedOption?.value === option.value
+    )
 
     switch (e.key) {
       case 'ArrowUp':
