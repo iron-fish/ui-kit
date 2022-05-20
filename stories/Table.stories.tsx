@@ -41,6 +41,20 @@ export const BlockTable: ComponentStory<FC> = () => (
             <Td>0000...5664...2313...4585</Td>
             <Td>6/22/2021 8:09:41PM</Td>
           </Tr>
+          <Tr>
+            <Td color="#2C72FF">23940193</Td>
+            <Td>2.31kb</Td>
+            <Td>1</Td>
+            <Td>0000...5664...2313...4585</Td>
+            <Td>6/22/2021 8:09:41PM</Td>
+          </Tr>
+          <Tr>
+            <Td color="#2C72FF">23940193</Td>
+            <Td>2.31kb</Td>
+            <Td>1</Td>
+            <Td>0000...5664...2313...4585</Td>
+            <Td>6/22/2021 8:09:41PM</Td>
+          </Tr>
         </Tbody>
       </Table>
     </Box>
