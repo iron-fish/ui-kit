@@ -1,4 +1,4 @@
-const { rimraf, concurrent } = require('nps-utils')
+const { series, mkdirp, rimraf, concurrent, copy } = require('nps-utils')
 const PORT = process.env.PORT || 5000
 
 const folders = ['components', 'hooks', 'public', 'styles', 'svg', 'utils']
@@ -39,7 +39,8 @@ module.exports = {
       clean: rimraf('dist'),
       tsc: 'tsc --project tsconfig.json',
       alias: 'tsc-alias --project tsconfig.json',
-      script: 'nps build.clean build.tsc build.alias',
+      fonts: series(mkdirp('dist/font'), 'cp -r public/font dist/.'),
+      script: 'nps build.clean build.tsc build.alias build.fonts',
     },
     test: {
       description: 'test things',
