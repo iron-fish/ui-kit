@@ -4,6 +4,8 @@ import { Box, Button, Stack } from '@chakra-ui/react'
 import TextField from 'components/TextField'
 import FieldGroup from 'components/FieldGroup'
 import ColorModeSwitcher from 'components/ColorModeSwitcher'
+import IconCopy from 'svgx/icon-copy'
+import { NAMED_COLORS } from 'theme/constants'
 
 export default {
   title: 'Components/TextField',
@@ -34,13 +36,25 @@ export const BasicExample: ComponentStory<FC> = () => (
       <h3>Text Field Group Example</h3>
       <h4>Buttons on the left</h4>
       <FieldGroup w="50%" my={1}>
-        <Button px="1.5rem">Test 1</Button>
+        <Button
+          px="1.5rem"
+          textColor={NAMED_COLORS.LIGHT_BLUE}
+          leftIcon={<IconCopy w="16px" h="16px" />}
+        >
+          Copy
+        </Button>
         <TextField label="Group Example" />
       </FieldGroup>
       <h4>Buttons on the right</h4>
       <FieldGroup w="50%" my={1}>
         <TextField label="Group Example" />
-        <Button px="1.5rem">Test 1</Button>
+        <Button
+          px="1.5rem"
+          textColor={NAMED_COLORS.LIGHT_BLUE}
+          rightIcon={<IconCopy w="16px" h="16px" />}
+        >
+          Copy
+        </Button>
       </FieldGroup>
       <h4>Two inputs</h4>
       <FieldGroup w="50%" my={1}>
