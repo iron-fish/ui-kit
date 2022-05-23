@@ -1,7 +1,7 @@
 import { FC } from 'react'
 import { Button } from '@chakra-ui/react'
 import { ComponentMeta } from '@storybook/react'
-import { AddIcon } from '@chakra-ui/icons'
+import IconAdd from 'svgx/icon-add'
 
 export default {
   title: 'Components/Button',
@@ -25,7 +25,7 @@ const commonProps = {
 export const Primary: ComponentStory<FC> = args => (
   <>
     <Button {...args}>Button</Button>
-    <Button leftIcon={<AddIcon />} {...args}>
+    <Button leftIcon={<IconAdd w="26px" h="26px" />} {...args}>
       Button with icon
     </Button>
   </>
@@ -39,7 +39,7 @@ Primary.args = {
 export const Secondary: ComponentStory<FC> = args => (
   <>
     <Button {...args}>Button</Button>
-    <Button leftIcon={<AddIcon />} {...args}>
+    <Button leftIcon={<IconAdd w="22px" h="22px" />} {...args}>
       Button with icon
     </Button>
   </>
@@ -53,7 +53,7 @@ Secondary.args = {
 export const Tertiary: ComponentStory<FC> = args => (
   <>
     <Button {...args}>Button</Button>
-    <Button leftIcon={<AddIcon />} {...args}>
+    <Button leftIcon={<IconAdd w="22px" h="22px" />} {...args}>
       Button
     </Button>
   </>

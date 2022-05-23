@@ -17,7 +17,7 @@ const Menu: ComponentStyleConfig = {
       '.chakra-icon': {
         fill: mode(NAMED_COLORS.DEEP_BLUE, NAMED_COLORS.WHITE)(props),
       },
-      ':hover': {
+      _hover: {
         borderColor: mode(NAMED_COLORS.DEEP_BLUE, NAMED_COLORS.WHITE)(props),
         bgColor: NAMED_COLORS.WHITE,
         '.chakra-icon': {
@@ -45,6 +45,10 @@ const Menu: ComponentStyleConfig = {
       letterSpacing: '0',
       fontFamily: FONTS.FAVORIT,
       padding: '0.5rem 1rem',
+      transition: 'all 300ms ease-in',
+      _focus: {
+        bg: mode(NAMED_COLORS.LIGHTER_GREY, NAMED_COLORS.DARK_GREY)(props),
+      },
     },
   }),
 }
