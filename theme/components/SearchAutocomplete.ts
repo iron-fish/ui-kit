@@ -46,9 +46,9 @@ const SearchAutocomplete: ComponentStyleConfig = {
       },
       groupOptionWrapper: {
         padding: '0.5rem 2rem',
+        transition: 'all 300ms ease-in',
         _hover: {
           bg: mode(NAMED_COLORS.LIGHTER_GREY, NAMED_COLORS.DARK_GREY)(props),
-          transition: 'all 300ms ease-in',
         },
       },
     }),
