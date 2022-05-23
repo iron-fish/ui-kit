@@ -13,3 +13,5 @@ export * from './icon-home'
 export * from './icon-miner'
 export * from './icon-node'
 export * from './icon-copy'
+export * from './icon-add'
+
