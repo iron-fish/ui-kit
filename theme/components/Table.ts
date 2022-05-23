@@ -18,6 +18,13 @@ const Table: ComponentStyleConfig = {
         tr: {
           background: mode(NAMED_COLORS.WHITE, NAMED_COLORS.DARKER_GREY)(props),
           boxShadow: '0 0.25rem 0.668rem rgba(0, 0, 0, 0.04)',
+          transition: 'all 300ms ease-in',
+          _hover: {
+            borderColor: mode(
+              NAMED_COLORS.DEEP_BLUE,
+              NAMED_COLORS.WHITE
+            )(props),
+          },
         },
       },
       th: {
