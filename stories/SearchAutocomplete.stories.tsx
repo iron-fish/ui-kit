@@ -63,12 +63,6 @@ const Option: FC<SearchOption> = ({ label }) => {
     </Flex>
   )
 }
-group => ({
-  ...group,
-  options: group.options.filter(({ value }) =>
-    value?.toString().startsWith(search)
-  ),
-})
 
 const Search = ({ options }) => {
   const [search, setSearch] = useState<string>('')
