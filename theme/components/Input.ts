@@ -22,6 +22,9 @@ const Input: ComponentStyleConfig = {
       _focus: {
         borderColor: mode(NAMED_COLORS.DEEP_BLUE, NAMED_COLORS.WHITE)(props),
       },
+      _hover: {
+        borderColor: mode(NAMED_COLORS.DEEP_BLUE, NAMED_COLORS.WHITE)(props),
+      },
     },
   }),
   variants: {
