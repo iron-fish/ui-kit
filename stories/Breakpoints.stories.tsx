@@ -1,8 +1,7 @@
 import { FC, useRef } from 'react'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 import { Badge, useBreakpointValue, useDimensions } from '@chakra-ui/react'
-import HorizontalRuler from 'components/Breakpoints/Horizontal'
-import theme from 'theme/theme'
+import { Breakpoints as RawBreakpoints } from 'components/Breakpoints'
 
 const Demo: FC = () => {
   const size = useBreakpointValue([
@@ -18,9 +17,7 @@ const Demo: FC = () => {
   const bodyDimension = useDimensions(elementRef, true)
   return (
     <>
-      {Object.entries(theme.breakpoints).map(([k, v]: [string, string]) => (
-        <HorizontalRuler offset={v} label={k} key={k} />
-      ))}
+      <RawBreakpoints />
       <Badge w={'100%'} mt="3rem">
         {size}:{' '}
         {bodyDimension?.borderBox.width + bodyDimension?.padding.right + 1}
