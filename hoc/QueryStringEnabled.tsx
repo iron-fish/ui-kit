@@ -1,16 +1,22 @@
-import { SFC } from 'react'
+import { FC, ReactType } from 'react'
 import useQuery from 'hooks/useQuery'
 
-interface QueryStringEnabledProps {
+export interface QueryStringEnabledProps {
   queryKey: string
 }
 
-export const queryStringEnabled = ({ queryKey, children }) => {
-  const C: SFC<QueryStringEnabledProps> = () => {
+export interface Parent {
+  children: ReactType
+}
+
+function queryStringEnabled<T>(queryKey: string, C: FC<T>) {
+  const _HOC: FC<T> = (props: T & Parent) => {
+    const { children } = props
     const $query = useQuery(queryKey)
-    return $query ? <>{children}</> : null
+    return $query ? <C {...props}>{children}</C> : null
   }
-  return C
+  _HOC.displayName = `QSEnabled__${queryKey}`
+  return _HOC
 }
 
 export default queryStringEnabled
