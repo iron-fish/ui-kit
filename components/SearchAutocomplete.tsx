@@ -25,22 +25,22 @@ import {
 import useOutsideClickHandler from 'hooks/useOutsideClickHandler'
 import Group, { GroupProps } from './Group'
 
-export interface SearchOption {
+export interface SearchOptionType {
   label: string
   value: string | number
 }
-export interface SearchOptionGroup {
+export interface SearchOptionGroupType {
   label: string
-  options: SearchOption[]
+  options: SearchOptionType[]
 }
 
 interface SearchAutocompleteProps {
-  value?: SearchOption
+  value?: SearchOptionType
   InputProps?: IProps
-  options?: (SearchOption | SearchOptionGroup)[]
+  options?: (SearchOptionType | SearchOptionGroupType)[]
   emptyOption?: ReactNode
-  renderOption?: (option: SearchOption) => ReactNode
-  onSelectOption?: (option: SearchOption | null) => void
+  renderOption?: (option: SearchOptionType) => ReactNode
+  onSelectOption?: (option: SearchOptionType | null) => void
   inputLeftElement?: () => ReactNode
   groupProps?: GroupProps
   variant?: string
@@ -57,13 +57,13 @@ const SearchAutocomplete: FC<SearchAutocompleteProps> = ({
   groupProps = { headerProps: { as: 'h5' } },
   ...props
 }) => {
-  const [val, setVal] = useState<SearchOption | null>(value)
+  const [val, setVal] = useState<SearchOptionType | null>(value)
   const [search, setSearch] = useState<string>('')
   const styles = useMultiStyleConfig('SearchAutocomplete', props)
   const inputRef = useRef<HTMLInputElement>()
   const popoverRef = useRef<HTMLDivElement>()
   const { onOpen, onClose, isOpen } = useDisclosure()
-  const [$focusedOption, $setFocusedOption] = useState<SearchOption | null>(
+  const [$focusedOption, $setFocusedOption] = useState<SearchOptionType | null>(
     null
   )
 
@@ -78,7 +78,7 @@ const SearchAutocomplete: FC<SearchAutocompleteProps> = ({
     setVal(value)
   }, [value])
 
-  const handleOptionSelect = (option: SearchOption | null) => {
+  const handleOptionSelect = (option: SearchOptionType | null) => {
     if (val !== option) {
       setVal(option)
       onSelectOption(option)
@@ -87,7 +87,7 @@ const SearchAutocomplete: FC<SearchAutocompleteProps> = ({
     }
   }
 
-  const renderOptionItem = (option: SearchOption) => (
+  const renderOptionItem = (option: SearchOptionType) => (
     <Box
       w="100%"
       key={option.value}
@@ -113,14 +113,17 @@ const SearchAutocomplete: FC<SearchAutocompleteProps> = ({
       onOpen()
     }
     let nextFocus = 0
-    const focusableOptions = options.reduce<SearchOption[]>((acc, option) => {
-      if ('options' in option) {
-        acc.push(...option.options)
-      } else {
-        acc.push(option)
-      }
-      return acc
-    }, [])
+    const focusableOptions = options.reduce<SearchOptionType[]>(
+      (acc, option) => {
+        if ('options' in option) {
+          acc.push(...option.options)
+        } else {
+          acc.push(option)
+        }
+        return acc
+      },
+      []
+    )
     const focusedIndex = focusableOptions.findIndex(
       option => $focusedOption?.value === option.value
     )
@@ -188,7 +191,7 @@ const SearchAutocomplete: FC<SearchAutocompleteProps> = ({
       >
         <PopoverBody sx={styles?.popoverBody}>
           {hasOptions ? (
-            options.map((option: SearchOption | SearchOptionGroup) => {
+            options.map((option: SearchOptionType | SearchOptionGroupType) => {
               if ('options' in option) {
                 return option.options.length ? (
                   <Group
@@ -203,7 +206,7 @@ const SearchAutocomplete: FC<SearchAutocompleteProps> = ({
                       },
                     }}
                   >
-                    {option.options.map((item: SearchOption) =>
+                    {option.options.map((item: SearchOptionType) =>
                       renderOptionItem(item)
                     )}
                   </Group>
