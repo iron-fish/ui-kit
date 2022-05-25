@@ -1,14 +1,21 @@
+import { ChakraTheme, DeepPartial } from '@chakra-ui/react'
+
 import map from 'ramda/src/map'
 import pipe from 'ramda/src/pipe'
 import propOr from 'ramda/src/propOr'
 import toPairs from 'ramda/src/toPairs'
 
-import theme from 'theme/theme'
-
 import { Directional } from './types'
 import Ruler from './Ruler'
 
-export const Breakpoints = ({ direction }: Directional) => (
+interface DirectionalBreakpointProps extends Directional {
+  theme: DeepPartial<ChakraTheme>
+}
+
+export const Breakpoints = ({
+  direction,
+  theme,
+}: DirectionalBreakpointProps) => (
   <>
     {pipe(
       propOr({}, 'breakpoints'),

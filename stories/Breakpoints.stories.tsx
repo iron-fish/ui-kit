@@ -1,7 +1,9 @@
 import { FC, useRef } from 'react'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 import { Badge, useBreakpointValue, useDimensions } from '@chakra-ui/react'
+
 import { Breakpoints as RawBreakpoints } from 'components/Breakpoints'
+import theme from 'theme/theme'
 
 const Demo: FC = () => {
   const size = useBreakpointValue([
@@ -17,7 +19,7 @@ const Demo: FC = () => {
   const bodyDimension = useDimensions(elementRef, true)
   return (
     <>
-      <RawBreakpoints />
+      <RawBreakpoints direction="horizontal" theme={theme} />
       <Badge w={'100%'} mt="3rem">
         {size}:{' '}
         {bodyDimension?.borderBox.width + bodyDimension?.padding.right + 1}
