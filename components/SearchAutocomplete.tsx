@@ -41,7 +41,7 @@ interface SearchAutocompleteProps {
   emptyOption?: ReactNode
   renderOption?: (option: SearchOptionType) => ReactNode
   onSelectOption?: (option: SearchOptionType | null) => void
-  inputLeftElement?: () => ReactNode
+  inputLeftElement?: ReactNode
   groupProps?: GroupProps
   variant?: string
 }
@@ -57,8 +57,8 @@ const SearchAutocomplete: FC<SearchAutocompleteProps> = ({
   groupProps = { headerProps: { as: 'h5' } },
   ...props
 }) => {
-  const [val, setVal] = useState<SearchOptionType | null>(value)
-  const [search, setSearch] = useState<string>('')
+  const [$val, $setVal] = useState<SearchOptionType | null>(value)
+  const [$search, $setSearch] = useState<string>('')
   const styles = useMultiStyleConfig('SearchAutocomplete', props)
   const inputRef = useRef<HTMLInputElement>()
   const popoverRef = useRef<HTMLDivElement>()
@@ -75,14 +75,14 @@ const SearchAutocomplete: FC<SearchAutocompleteProps> = ({
     onClose
   )
   useEffect(() => {
-    setVal(value)
+    $setVal(value)
   }, [value])
 
   const handleOptionSelect = (option: SearchOptionType | null) => {
-    if (val !== option) {
-      setVal(option)
+    if ($val !== option) {
+      $setVal(option)
       onSelectOption(option)
-      setSearch('')
+      $setSearch('')
       onClose()
     }
   }
@@ -130,11 +130,12 @@ const SearchAutocomplete: FC<SearchAutocompleteProps> = ({
 
     switch (e.key) {
       case 'ArrowUp':
-        nextFocus = focusedIndex > 0 ? focusedIndex - 1 : options.length - 1
+        nextFocus =
+          focusedIndex > 0 ? focusedIndex - 1 : focusableOptions.length - 1
         e.preventDefault()
         break
       case 'ArrowDown':
-        nextFocus = (focusedIndex + 1) % options.length
+        nextFocus = (focusedIndex + 1) % focusableOptions.length
         e.preventDefault()
         break
       case 'Enter':
@@ -152,7 +153,7 @@ const SearchAutocomplete: FC<SearchAutocompleteProps> = ({
   return (
     <Popover
       matchWidth
-      isOpen={isOpen && !!search}
+      isOpen={isOpen && !!$search}
       onOpen={onOpen}
       onClose={onClose}
       closeOnBlur={false}
@@ -170,15 +171,15 @@ const SearchAutocomplete: FC<SearchAutocompleteProps> = ({
           ) : null}
           <Input
             {...InputProps}
-            value={val ? val.label : search}
+            value={$val ? $val.label : $search}
             ref={inputRef as RefObject<HTMLInputElement>}
             onFocus={e => e.target?.select()}
             onKeyDown={onKeyDown}
             onChange={e => {
-              if (val) {
-                setVal(null)
+              if ($val) {
+                $setVal(null)
               }
-              setSearch(e.target.value)
+              $setSearch(e.target.value)
               InputProps?.onChange && InputProps.onChange(e)
             }}
           />
