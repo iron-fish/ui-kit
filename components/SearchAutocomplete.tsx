@@ -1,5 +1,4 @@
 import {
-  FC,
   useState,
   useEffect,
   useRef,
