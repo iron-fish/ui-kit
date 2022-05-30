@@ -25,28 +25,29 @@ import {
 import useOutsideClickHandler from 'hooks/useOutsideClickHandler'
 import Group, { GroupProps } from './Group'
 
-export interface SearchOptionType {
+export interface SearchOptionProps {
   label: string
-  value: string | number
-}
-export interface SearchOptionGroupType {
-  label: string
-  options: SearchOptionType[]
+  value: string
 }
 
-interface SearchAutocompleteProps {
-  value?: SearchOptionType
+export interface SearchOptionGroupType<T extends SearchOptionProps> {
+  label: string
+  options: T[]
+}
+
+interface SearchAutocompleteProps<OptionType extends SearchOptionProps> {
+  value?: OptionType | null
   InputProps?: IProps
-  options?: (SearchOptionType | SearchOptionGroupType)[]
+  options?: (OptionType | SearchOptionGroupType<OptionType>)[]
   emptyOption?: ReactNode
-  renderOption?: (option: SearchOptionType) => ReactNode
-  onSelectOption?: (option: SearchOptionType | null) => void
+  renderOption?: (option: OptionType) => ReactNode
+  onSelectOption?: (option: OptionType | null) => void
   inputLeftElement?: ReactNode
   groupProps?: GroupProps
   variant?: string
 }
 
-const SearchAutocomplete: FC<SearchAutocompleteProps> = ({
+const SearchAutocomplete = <OptionType extends SearchOptionProps>({
   value = null,
   InputProps = {},
   options = [],
@@ -56,16 +57,14 @@ const SearchAutocomplete: FC<SearchAutocompleteProps> = ({
   inputLeftElement,
   groupProps = { headerProps: { as: 'h5' } },
   ...props
-}) => {
-  const [$val, $setVal] = useState<SearchOptionType | null>(value)
+}: SearchAutocompleteProps<OptionType>) => {
+  const [$val, $setVal] = useState<OptionType | null>(value)
   const [$search, $setSearch] = useState<string>('')
   const styles = useMultiStyleConfig('SearchAutocomplete', props)
   const inputRef = useRef<HTMLInputElement>()
   const popoverRef = useRef<HTMLDivElement>()
   const { onOpen, onClose, isOpen } = useDisclosure()
-  const [$focusedOption, $setFocusedOption] = useState<SearchOptionType | null>(
-    null
-  )
+  const [$focusedOption, $setFocusedOption] = useState<OptionType | null>(null)
 
   useOutsideClickHandler(
     [
@@ -78,7 +77,7 @@ const SearchAutocomplete: FC<SearchAutocompleteProps> = ({
     $setVal(value)
   }, [value])
 
-  const handleOptionSelect = (option: SearchOptionType | null) => {
+  const handleOptionSelect = (option: OptionType | null) => {
     if ($val !== option) {
       $setVal(option)
       onSelectOption(option)
@@ -87,7 +86,7 @@ const SearchAutocomplete: FC<SearchAutocompleteProps> = ({
     }
   }
 
-  const renderOptionItem = (option: SearchOptionType) => (
+  const renderOptionItem = (option: OptionType) => (
     <Box
       w="100%"
       key={option.value}
@@ -113,17 +112,14 @@ const SearchAutocomplete: FC<SearchAutocompleteProps> = ({
       onOpen()
     }
     let nextFocus = 0
-    const focusableOptions = options.reduce<SearchOptionType[]>(
-      (acc, option) => {
-        if ('options' in option) {
-          acc.push(...option.options)
-        } else {
-          acc.push(option)
-        }
-        return acc
-      },
-      []
-    )
+    const focusableOptions = options.reduce<OptionType[]>((acc, option) => {
+      if ('options' in option) {
+        acc.push(...option.options)
+      } else {
+        acc.push(option)
+      }
+      return acc
+    }, [])
     const focusedIndex = focusableOptions.findIndex(
       option => $focusedOption?.value === option.value
     )
@@ -192,29 +188,31 @@ const SearchAutocomplete: FC<SearchAutocompleteProps> = ({
       >
         <PopoverBody sx={styles?.popoverBody}>
           {hasOptions ? (
-            options.map((option: SearchOptionType | SearchOptionGroupType) => {
-              if ('options' in option) {
-                return option.options.length ? (
-                  <Group
-                    key={option.label}
-                    sx={{ ...styles?.group, ...groupProps.sx }}
-                    label={option.label}
-                    headerProps={{
-                      ...groupProps.headerProps,
-                      sx: {
-                        ...styles?.groupHeader,
-                        ...groupProps.headerProps.sx,
-                      },
-                    }}
-                  >
-                    {option.options.map((item: SearchOptionType) =>
-                      renderOptionItem(item)
-                    )}
-                  </Group>
-                ) : null
+            options.map(
+              (option: OptionType | SearchOptionGroupType<OptionType>) => {
+                if ('options' in option) {
+                  return option.options.length ? (
+                    <Group
+                      key={option.label}
+                      sx={{ ...styles?.group, ...groupProps.sx }}
+                      label={option.label}
+                      headerProps={{
+                        ...groupProps.headerProps,
+                        sx: {
+                          ...styles?.groupHeader,
+                          ...groupProps.headerProps.sx,
+                        },
+                      }}
+                    >
+                      {option.options.map((item: OptionType) =>
+                        renderOptionItem(item)
+                      )}
+                    </Group>
+                  ) : null
+                }
+                return renderOptionItem(option)
               }
-              return renderOptionItem(option)
-            })
+            )
           ) : (
             <Box w="100%" key="empty-option" sx={styles?.emptyOption}>
               {emptyOption}
