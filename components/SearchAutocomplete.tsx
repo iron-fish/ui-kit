@@ -1,5 +1,4 @@
 import {
-  FC,
   useState,
   useEffect,
   useRef,
@@ -25,28 +24,29 @@ import {
 import useOutsideClickHandler from 'hooks/useOutsideClickHandler'
 import Group, { GroupProps } from './Group'
 
-export interface SearchOptionType {
+export interface SearchOptionProps {
   label: string
-  value: string | number
-}
-export interface SearchOptionGroupType {
-  label: string
-  options: SearchOptionType[]
+  value: string
 }
 
-interface SearchAutocompleteProps {
-  value?: SearchOptionType
+export interface SearchOptionGroupType<T extends SearchOptionProps> {
+  label: string
+  options: T[]
+}
+
+interface SearchAutocompleteProps<OptionType extends SearchOptionProps> {
+  value?: OptionType | null
   InputProps?: IProps
-  options?: (SearchOptionType | SearchOptionGroupType)[]
+  options?: (OptionType | SearchOptionGroupType<OptionType>)[]
   emptyOption?: ReactNode
-  renderOption?: (option: SearchOptionType) => ReactNode
-  onSelectOption?: (option: SearchOptionType | null) => void
-  inputLeftElement?: () => ReactNode
+  renderOption?: (option: OptionType) => ReactNode
+  onSelectOption?: (option: OptionType | null) => void
+  inputLeftElement?: ReactNode
   groupProps?: GroupProps
   variant?: string
 }
 
-const SearchAutocomplete: FC<SearchAutocompleteProps> = ({
+const SearchAutocomplete = <OptionType extends SearchOptionProps>({
   value = null,
   InputProps = {},
   options = [],
@@ -56,16 +56,14 @@ const SearchAutocomplete: FC<SearchAutocompleteProps> = ({
   inputLeftElement,
   groupProps = { headerProps: { as: 'h5' } },
   ...props
-}) => {
-  const [val, setVal] = useState<SearchOptionType | null>(value)
-  const [search, setSearch] = useState<string>('')
+}: SearchAutocompleteProps<OptionType>) => {
+  const [$val, $setVal] = useState<OptionType | null>(value)
+  const [$search, $setSearch] = useState<string>('')
   const styles = useMultiStyleConfig('SearchAutocomplete', props)
   const inputRef = useRef<HTMLInputElement>()
   const popoverRef = useRef<HTMLDivElement>()
   const { onOpen, onClose, isOpen } = useDisclosure()
-  const [$focusedOption, $setFocusedOption] = useState<SearchOptionType | null>(
-    null
-  )
+  const [$focusedOption, $setFocusedOption] = useState<OptionType | null>(null)
 
   useOutsideClickHandler(
     [
@@ -75,19 +73,19 @@ const SearchAutocomplete: FC<SearchAutocompleteProps> = ({
     onClose
   )
   useEffect(() => {
-    setVal(value)
+    $setVal(value)
   }, [value])
 
-  const handleOptionSelect = (option: SearchOptionType | null) => {
-    if (val !== option) {
-      setVal(option)
+  const handleOptionSelect = (option: OptionType | null) => {
+    if ($val !== option) {
+      $setVal(option)
       onSelectOption(option)
-      setSearch('')
+      $setSearch('')
       onClose()
     }
   }
 
-  const renderOptionItem = (option: SearchOptionType) => (
+  const renderOptionItem = (option: OptionType) => (
     <Box
       w="100%"
       key={option.value}
@@ -113,28 +111,26 @@ const SearchAutocomplete: FC<SearchAutocompleteProps> = ({
       onOpen()
     }
     let nextFocus = 0
-    const focusableOptions = options.reduce<SearchOptionType[]>(
-      (acc, option) => {
-        if ('options' in option) {
-          acc.push(...option.options)
-        } else {
-          acc.push(option)
-        }
-        return acc
-      },
-      []
-    )
+    const focusableOptions = options.reduce<OptionType[]>((acc, option) => {
+      if ('options' in option) {
+        acc.push(...option.options)
+      } else {
+        acc.push(option)
+      }
+      return acc
+    }, [])
     const focusedIndex = focusableOptions.findIndex(
       option => $focusedOption?.value === option.value
     )
 
     switch (e.key) {
       case 'ArrowUp':
-        nextFocus = focusedIndex > 0 ? focusedIndex - 1 : options.length - 1
+        nextFocus =
+          focusedIndex > 0 ? focusedIndex - 1 : focusableOptions.length - 1
         e.preventDefault()
         break
       case 'ArrowDown':
-        nextFocus = (focusedIndex + 1) % options.length
+        nextFocus = (focusedIndex + 1) % focusableOptions.length
         e.preventDefault()
         break
       case 'Enter':
@@ -152,7 +148,7 @@ const SearchAutocomplete: FC<SearchAutocompleteProps> = ({
   return (
     <Popover
       matchWidth
-      isOpen={isOpen && !!search}
+      isOpen={isOpen && !!$search}
       onOpen={onOpen}
       onClose={onClose}
       closeOnBlur={false}
@@ -170,15 +166,15 @@ const SearchAutocomplete: FC<SearchAutocompleteProps> = ({
           ) : null}
           <Input
             {...InputProps}
-            value={val ? val.label : search}
+            value={$val ? $val.label : $search}
             ref={inputRef as RefObject<HTMLInputElement>}
             onFocus={e => e.target?.select()}
             onKeyDown={onKeyDown}
             onChange={e => {
-              if (val) {
-                setVal(null)
+              if ($val) {
+                $setVal(null)
               }
-              setSearch(e.target.value)
+              $setSearch(e.target.value)
               InputProps?.onChange && InputProps.onChange(e)
             }}
           />
@@ -191,29 +187,31 @@ const SearchAutocomplete: FC<SearchAutocompleteProps> = ({
       >
         <PopoverBody sx={styles?.popoverBody}>
           {hasOptions ? (
-            options.map((option: SearchOptionType | SearchOptionGroupType) => {
-              if ('options' in option) {
-                return option.options.length ? (
-                  <Group
-                    key={option.label}
-                    sx={{ ...styles?.group, ...groupProps.sx }}
-                    label={option.label}
-                    headerProps={{
-                      ...groupProps.headerProps,
-                      sx: {
-                        ...styles?.groupHeader,
-                        ...groupProps.headerProps.sx,
-                      },
-                    }}
-                  >
-                    {option.options.map((item: SearchOptionType) =>
-                      renderOptionItem(item)
-                    )}
-                  </Group>
-                ) : null
+            options.map(
+              (option: OptionType | SearchOptionGroupType<OptionType>) => {
+                if ('options' in option) {
+                  return option.options.length ? (
+                    <Group
+                      key={option.label}
+                      sx={{ ...styles?.group, ...groupProps.sx }}
+                      label={option.label}
+                      headerProps={{
+                        ...groupProps.headerProps,
+                        sx: {
+                          ...styles?.groupHeader,
+                          ...groupProps.headerProps.sx,
+                        },
+                      }}
+                    >
+                      {option.options.map((item: OptionType) =>
+                        renderOptionItem(item)
+                      )}
+                    </Group>
+                  ) : null
+                }
+                return renderOptionItem(option)
               }
-              return renderOptionItem(option)
-            })
+            )
           ) : (
             <Box w="100%" key="empty-option" sx={styles?.emptyOption}>
               {emptyOption}

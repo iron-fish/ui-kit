@@ -4,7 +4,7 @@ import { Box, BoxProps } from '@chakra-ui/react'
 export interface GroupProps extends BoxProps {
   label?: ReactNode | string
   headerProps: BoxProps
-  children: ReactNode[]
+  children?: ReactNode[]
 }
 
 const Group: FC<GroupProps> = ({ label, headerProps, children, ...rest }) => {

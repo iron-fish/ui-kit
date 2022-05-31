@@ -2,7 +2,7 @@
 import { FC, useState, useEffect } from 'react'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 import { Stack, Box, Flex } from '@chakra-ui/react'
-import SearchAutocomplete, { SearchOption } from 'components/SearchAutocomplete'
+import SearchAutocomplete from 'components/SearchAutocomplete'
 import IconSearch from 'svgx/icon-search'
 import IconBlock from 'svgx/icon-block'
 import { NAMED_COLORS } from 'theme/constants'
@@ -11,6 +11,13 @@ export default {
   title: 'Components/SearchInput',
   component: SearchAutocomplete,
 } as ComponentMeta<typeof SearchAutocomplete>
+
+type SearchOption = {
+  label: string
+  value: string
+  id: number
+  hash: string
+}
 
 const demoOptions = [
   {
@@ -21,6 +28,8 @@ const demoOptions = [
       return {
         label: `${id} - ${hash}`,
         value: hash,
+        hash,
+        id,
       }
     }),
   },
@@ -32,6 +41,8 @@ const demoOptions = [
       return {
         label: `${id} - ${hash}`,
         value: hash,
+        hash,
+        id,
       }
     }),
   },
@@ -43,6 +54,8 @@ const demoOptions1 = [...new Array(4)].map((item, index) => {
   return {
     label: `${id} - ${hash}`,
     value: hash,
+    hash,
+    id,
   }
 })
 
@@ -67,12 +80,13 @@ const Option: FC<SearchOption> = ({ label }) => {
 const Search = ({ options }) => {
   const [search, setSearch] = useState<string>('')
   const [foundOptions, setFoundOptions] = useState<SearchOption[]>([])
+  const [selectedOptionValue, setSelectedValueOption] = useState<SearchOption>()
 
   // simple search action imitation
   useEffect(() => {
     if (search?.trim()) {
-      setFoundOptions(
-        options.reduce((acc, option) => {
+      setFoundOptions(() => {
+        const nextOptions = options.reduce((acc, option) => {
           if (option.options) {
             acc.push({
               ...option,
@@ -85,23 +99,28 @@ const Search = ({ options }) => {
           }
           return acc
         }, [])
-      )
+        return nextOptions
+      })
     } else {
       setFoundOptions([])
     }
   }, [search])
 
   return (
-    <SearchAutocomplete
-      InputProps={{
-        placeholder: 'Search',
-        onChange: e => setSearch(e.target.value),
-      }}
-      variant="navSearch"
-      inputLeftElement={<IconSearch />}
-      options={foundOptions}
-      renderOption={option => <Option {...option} />}
-    />
+    <>
+      <SearchAutocomplete
+        InputProps={{
+          placeholder: 'Search',
+          onChange: e => setSearch(e.target.value),
+        }}
+        variant="navSearch"
+        inputLeftElement={<IconSearch />}
+        options={foundOptions}
+        renderOption={option => <Option {...option} />}
+        onSelectOption={option => setSelectedValueOption(option.id)}
+      />
+      <Box>selected option id: {selectedOptionValue}</Box>
+    </>
   )
 }
 
