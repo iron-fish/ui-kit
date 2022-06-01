@@ -36,7 +36,7 @@ interface SearchAutocompleteProps<OptionType> {
   emptyOption?: ReactNode
   renderOption?: (option: OptionType) => ReactNode
   onSelectOption?: (option: OptionType | null) => void
-  getOptionLabel: (option: OptionType | null) => ReactNode
+  getOptionLabel: (option: OptionType | null) => string
   inputLeftElement?: ReactNode
   groupProps?: GroupProps
   variant?: string
