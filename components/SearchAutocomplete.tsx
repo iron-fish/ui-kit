@@ -49,6 +49,7 @@ const SearchAutocomplete = <OptionType,>({
   emptyOption = 'No matches',
   renderOption = option => <Box>{option}</Box>,
   onSelectOption = () => void 0,
+  getOptionLabel,
   inputLeftElement,
   groupProps = { headerProps: { as: 'h5' } },
   ...props
