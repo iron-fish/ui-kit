@@ -17,6 +17,14 @@ const Link: ComponentStyleConfig = {
       textDecoration: null,
     },
   }),
+  variants: {
+    underlined: props => ({
+      color: mode(NAMED_COLORS.DEEP_BLUE, NAMED_COLORS.WHITE)(props),
+      _hover: {
+        textDecoration: 'underline',
+      },
+    }),
+  },
 }
 
 export default Link
