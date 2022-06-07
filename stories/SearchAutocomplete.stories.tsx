@@ -59,7 +59,7 @@ const demoOptions1 = [...new Array(4)].map((item, index) => {
   }
 })
 
-const Option: FC<SearchOption> = ({ label }) => {
+const Option: FC<{ label: string }> = ({ label }) => {
   return (
     <Flex minH="1.875rem" alignItems="center">
       <Box mr="1rem">
@@ -76,6 +76,8 @@ const Option: FC<SearchOption> = ({ label }) => {
     </Flex>
   )
 }
+
+const getOptionLabel = option => (option ? option.label : '')
 
 const Search = ({ options }) => {
   const [search, setSearch] = useState<string>('')
@@ -108,15 +110,16 @@ const Search = ({ options }) => {
 
   return (
     <>
-      <SearchAutocomplete
+      <SearchAutocomplete<SearchOption>
         InputProps={{
           placeholder: 'Search',
           onChange: e => setSearch(e.target.value),
         }}
+        getOptionLabel={getOptionLabel}
         variant="navSearch"
         inputLeftElement={<IconSearch />}
         options={foundOptions}
-        renderOption={option => <Option {...option} />}
+        renderOption={option => <Option label={getOptionLabel(option)} />}
         onSelectOption={option => setSelectedValueOption(option.id)}
       />
       <Box>selected option id: {selectedOptionValue}</Box>

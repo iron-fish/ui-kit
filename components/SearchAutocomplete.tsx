@@ -24,35 +24,32 @@ import {
 import useOutsideClickHandler from 'hooks/useOutsideClickHandler'
 import Group, { GroupProps } from './Group'
 
-export interface SearchOptionProps {
+export interface SearchOptionGroupType<OptionType> {
   label: string
-  value: string
+  options: OptionType[]
 }
 
-export interface SearchOptionGroupType<T extends SearchOptionProps> {
-  label: string
-  options: T[]
-}
-
-interface SearchAutocompleteProps<OptionType extends SearchOptionProps> {
+interface SearchAutocompleteProps<OptionType> {
   value?: OptionType | null
   InputProps?: IProps
   options?: (OptionType | SearchOptionGroupType<OptionType>)[]
   emptyOption?: ReactNode
   renderOption?: (option: OptionType) => ReactNode
   onSelectOption?: (option: OptionType | null) => void
+  getOptionLabel: (option: OptionType | null) => string
   inputLeftElement?: ReactNode
   groupProps?: GroupProps
   variant?: string
 }
 
-const SearchAutocomplete = <OptionType extends SearchOptionProps>({
+const SearchAutocomplete = <OptionType,>({
   value = null,
   InputProps = {},
   options = [],
   emptyOption = 'No matches',
-  renderOption = option => <Box>{option?.label}</Box>,
+  renderOption = option => <Box>{option}</Box>,
   onSelectOption = () => void 0,
+  getOptionLabel,
   inputLeftElement,
   groupProps = { headerProps: { as: 'h5' } },
   ...props
@@ -88,10 +85,12 @@ const SearchAutocomplete = <OptionType extends SearchOptionProps>({
   const renderOptionItem = (option: OptionType) => (
     <Box
       w="100%"
-      key={option.value}
+      key={getOptionLabel(option)}
       sx={styles?.groupOptionWrapper}
       className={
-        option.value === $focusedOption?.value ? 'option--is-focused' : ''
+        getOptionLabel(option) === getOptionLabel($focusedOption)
+          ? 'option--is-focused'
+          : ''
       }
       onClick={() => handleOptionSelect(option)}
     >
@@ -120,7 +119,7 @@ const SearchAutocomplete = <OptionType extends SearchOptionProps>({
       return acc
     }, [])
     const focusedIndex = focusableOptions.findIndex(
-      option => $focusedOption?.value === option.value
+      option => getOptionLabel($focusedOption) === getOptionLabel(option)
     )
 
     switch (e.key) {
@@ -166,7 +165,7 @@ const SearchAutocomplete = <OptionType extends SearchOptionProps>({
           ) : null}
           <Input
             {...InputProps}
-            value={$val ? $val.label : $search}
+            value={$val ? getOptionLabel($val) : $search}
             ref={inputRef as RefObject<HTMLInputElement>}
             onFocus={e => e.target?.select()}
             onKeyDown={onKeyDown}
