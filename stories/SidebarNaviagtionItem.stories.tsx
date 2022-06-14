@@ -1,6 +1,6 @@
 import { FC } from 'react'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
-import { Button, Box, Stack, Badge } from '@chakra-ui/react'
+import { Button, Box, Stack, Kbd } from '@chakra-ui/react'
 import ArrowDownLeft from 'svgx/arrow-down-left'
 import IconHome from 'svgx/icon-home'
 
@@ -16,7 +16,7 @@ export const SideBarNavigationItem: ComponentStory<FC> = () => (
       <Button
         variant="navItem"
         leftIcon={<IconHome />}
-        rightIcon={<Badge variant="navItem">R</Badge>}
+        rightIcon={<Kbd>R</Kbd>}
       >
         Receive $IRON
       </Button>
@@ -26,7 +26,7 @@ export const SideBarNavigationItem: ComponentStory<FC> = () => (
       <Button
         variant="navItem"
         leftIcon={<ArrowDownLeft />}
-        rightIcon={<Badge variant="navItem">R</Badge>}
+        rightIcon={<Kbd>R</Kbd>}
         isActive={true}
       >
         Receive $IRON
