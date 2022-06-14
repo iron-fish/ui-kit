@@ -10,6 +10,7 @@ import Input from './Input'
 import Kbd from './Kbd'
 import Link from './Link'
 import Menu from './Menu'
+import MnemonicView from './MnemonicView'
 import Option from './Option'
 import Table from './Table'
 import Tabs from './Tabs'
@@ -27,6 +28,7 @@ const ThemedComponents: Record<string, ComponentStyleConfig> = {
   Kbd,
   Link,
   Menu,
+  MnemonicView,
   Option,
   Table,
   Tabs,
