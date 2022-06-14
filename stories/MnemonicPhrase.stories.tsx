@@ -23,7 +23,7 @@ const words = [
   'Milk',
 ]
 
-export const MnemonicView: ComponentStory<FC> = () => (
+export const MnemonicViewTemplate: ComponentStory<FC> = () => (
   <Flex w="100%" flexDirection="column" p="4">
     <MnemonicView
       header="Mnemonic phrase"
