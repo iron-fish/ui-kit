@@ -12,15 +12,15 @@ import { css, Global } from '@emotion/react'
 
 type IronFishProps = {
   initialColorMode?: ConfigColorMode
-  theme: DeepPartial<ChakraTheme>
+  theme?: DeepPartial<ChakraTheme>
 }
 
 const IronFishUIProvider: FC<IronFishProps> = ({
   initialColorMode = 'light',
   children,
-  theme: rawTheme,
+  theme: rawTheme = {},
 }) => {
-  const theme = extendTheme({ ...rawTheme, ...IronFishTheme })
+  const theme = extendTheme({ ...IronFishTheme, ...rawTheme })
   return (
     <>
       <ChakraProvider theme={{ ...theme, initialColorMode: initialColorMode }}>
