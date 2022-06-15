@@ -1,19 +1,26 @@
 import type { FC } from 'react'
 
-import { ChakraProvider, ConfigColorMode, extendTheme } from '@chakra-ui/react'
+import {
+  DeepPartial,
+  ChakraTheme,
+  ChakraProvider,
+  ConfigColorMode,
+  extendTheme,
+} from '@chakra-ui/react'
 import IronFishTheme from 'theme/theme'
 import { css, Global } from '@emotion/react'
 
-const theme = extendTheme(IronFishTheme)
-
 type IronFishProps = {
   initialColorMode?: ConfigColorMode
+  theme?: DeepPartial<ChakraTheme>
 }
 
 const IronFishUIProvider: FC<IronFishProps> = ({
   initialColorMode = 'light',
   children,
+  theme: rawTheme = {},
 }) => {
+  const theme = extendTheme({ ...IronFishTheme, ...rawTheme })
   return (
     <>
       <ChakraProvider theme={{ ...theme, initialColorMode: initialColorMode }}>
