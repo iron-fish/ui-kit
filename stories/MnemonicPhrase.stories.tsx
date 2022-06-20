@@ -1,6 +1,6 @@
 import { FC } from 'react'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
-import { Flex } from '@chakra-ui/react'
+import { VStack, Box } from '@chakra-ui/react'
 import { MnemonicView } from 'components'
 
 export default {
@@ -24,14 +24,28 @@ const words = [
 ]
 
 export const MnemonicViewTemplate: ComponentStory<FC> = () => (
-  <Flex w="100%" flexDirection="column" p="4">
+  <VStack w="100%" flexDirection="column" spacing={16}>
     <MnemonicView
       header="Mnemonic phrase"
-      words={words}
+      value={words}
       w="600px"
       toolTipProps={{
         label: 'Secret phrase',
       }}
+      isReadOnly={true}
     />
-  </Flex>
+    <Box>
+      <h4>Input mode</h4>
+      <MnemonicView
+        header="Mnemonic phrase"
+        placeholder="Empty"
+        w="600px"
+        toolTipProps={{
+          label: 'Secret phrase',
+        }}
+        isReadOnly={false}
+        onChange={currentWords => console.log(currentWords)}
+      />
+    </Box>
+  </VStack>
 )

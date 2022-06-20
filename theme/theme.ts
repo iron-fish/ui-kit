@@ -66,10 +66,14 @@ const IronFishTheme: DeepPartial<ChakraTheme> = {
   breakpoints: {
     sm: '30rem', //480px
     sm1: '36rem', //576px
+    md0: '46.875rem', //750px
     md: '48rem', //768px
+    md1: '56.25rem', //900px
     lg: '64rem', //1024px
+    lg1: '72rem', //1152px
     xl: '75rem', //1200px
     '2xl': '90rem', //1440px
+    '3xl': '112.5rem', //1800px
   },
 }
 
