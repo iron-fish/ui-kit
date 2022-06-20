@@ -44,7 +44,7 @@ export const MnemonicViewTemplate: ComponentStory<FC> = () => (
           label: 'Secret phrase',
         }}
         isReadOnly={false}
-        onChange={currentWords => console.log(currentWords)}
+        onChange={currentWords => currentWords}
       />
     </Box>
   </VStack>
