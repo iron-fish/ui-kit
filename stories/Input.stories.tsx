@@ -1,16 +1,44 @@
-import { FC } from 'react'
+import { FC, useState } from 'react'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
-import { Box, Button, Stack } from '@chakra-ui/react'
+import { Box, HStack, Button, Stack } from '@chakra-ui/react'
 import TextField from 'components/TextField'
 import FieldGroup from 'components/FieldGroup'
 import ColorModeSwitcher from 'components/ColorModeSwitcher'
 import IconCopy from 'svgx/icon-copy'
+import IconEye from 'svgx/icon-eye'
+import IconInfo from 'svgx/icon-info'
 import { NAMED_COLORS } from 'theme/constants'
 
 export default {
   title: 'Components/TextField',
   component: TextField,
 } as ComponentMeta<typeof TextField>
+
+const PasswordInput: FC = () => {
+  const [show, setShow] = useState(false)
+
+  return (
+    <TextField
+      label="Example password"
+      InputProps={{
+        type: show ? 'text' : 'password',
+        placeholder: 'Enter password',
+      }}
+      w="50%"
+      my={1}
+      RightAddons={
+        <HStack marginLeft={'2.5rem'} spacing={'0.875rem'}>
+          <IconEye
+            cursor={'pointer'}
+            crossed={show}
+            onClick={() => setShow(!show)}
+          />
+          <IconInfo cursor={'pointer'} />
+        </HStack>
+      }
+    />
+  )
+}
 
 export const BasicExample: ComponentStory<FC> = () => (
   <Stack>
@@ -31,6 +59,8 @@ export const BasicExample: ComponentStory<FC> = () => (
         my={1}
         RightAddons={<ColorModeSwitcher />}
       />
+      <h4>Password input</h4>
+      <PasswordInput />
     </Box>
     <Box>
       <h3>Text Field Group Example</h3>

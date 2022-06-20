@@ -1,11 +1,9 @@
 {
   "name": "@ironfish/ui-kit",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
-  "files": [
-    "/dist"
-  ],
+  "files": ["/dist"],
   "scripts": {
     "care": "nps care",
     "dev": "nps dev",

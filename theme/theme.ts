@@ -9,7 +9,7 @@ const typeface: object = {
   letterSpacing: '0',
 }
 
-const IronFishTheme: DeepPartial<ChakraTheme> = {
+export const IronFishTheme: DeepPartial<ChakraTheme> = {
   components: ThemedComponents,
   styles: {
     global: props => ({
