@@ -20,6 +20,7 @@ import {
   useMultiStyleConfig,
   InputGroup,
   InputLeftElement,
+  useDimensions,
 } from '@chakra-ui/react'
 import useOutsideClickHandler from 'hooks/useOutsideClickHandler'
 import Group, { GroupProps } from './Group'
@@ -57,10 +58,11 @@ const SearchAutocomplete = <OptionType,>({
   const [$val, $setVal] = useState<OptionType | null>(value)
   const [$search, $setSearch] = useState<string>('')
   const styles = useMultiStyleConfig('SearchAutocomplete', props)
-  const inputRef = useRef<HTMLInputElement>()
-  const popoverRef = useRef<HTMLDivElement>()
+  const inputRef = useRef<HTMLInputElement>(null)
+  const popoverRef = useRef<HTMLDivElement>(null)
   const { onOpen, onClose, isOpen } = useDisclosure()
   const [$focusedOption, $setFocusedOption] = useState<OptionType | null>(null)
+  const $inputDimensions = useDimensions(inputRef, true)
 
   useOutsideClickHandler(
     [
@@ -180,7 +182,7 @@ const SearchAutocomplete = <OptionType,>({
         </InputGroup>
       </PopoverTrigger>
       <PopoverContent
-        w="inherit"
+        w={$inputDimensions?.borderBox.width}
         sx={styles?.popover}
         ref={popoverRef as RefObject<HTMLDivElement>}
       >
