@@ -1,7 +1,7 @@
 import type { ComponentStyleConfig } from '@chakra-ui/theme'
 
 import { mode } from '@chakra-ui/theme-tools'
-import { NAMED_COLORS } from '../constants'
+import { FONTS, NAMED_COLORS } from '../constants'
 
 const SearchAutocomplete: ComponentStyleConfig = {
   parts: [
@@ -32,7 +32,7 @@ const SearchAutocomplete: ComponentStyleConfig = {
         fontSize: '1rem',
         lineHeight: '1.5',
         fontWeight: '400',
-        fontFamily: 'ABC Favorit Trial',
+        fontFamily: FONTS.FAVORIT,
         color: mode(NAMED_COLORS.GREY, NAMED_COLORS.PALE_GREY)(props),
         m: '-0.75rem 0',
       },

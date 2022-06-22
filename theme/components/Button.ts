@@ -106,7 +106,7 @@ const Button: ComponentStyleConfig = {
       h: '2.5rem',
       w: '100%',
       fontSize: '0.875rem',
-      fontFamily: 'ABC Favorit Extended Trial',
+      fontFamily: FONTS.EXTENDED,
       color: mode(NAMED_COLORS.GREY, NAMED_COLORS.PALE_GREY)(props),
       borderRadius: '0.25rem',
       pr: '0.5rem',
