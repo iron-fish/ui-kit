@@ -21,7 +21,7 @@ type BlockType = {
 const demoData = [
   {
     id: 1652264,
-    hash: '000000000005fa49b5756655bc58f03204c3b1967e35a52a33fa2487c330126b',
+    hash: '0000...97a3...d235...8435',
     sequence: 43248,
     size: 302838,
     timestamp: '2022-06-09T15:04:09.378Z',
@@ -29,7 +29,7 @@ const demoData = [
   },
   {
     id: 1652263,
-    hash: '0000000000011f14770f1370d6b3782bc603d970f6717159ab85952bdc392db5',
+    hash: '0000...97a3...d235...8435',
     sequence: 43247,
     transactions_count: 155,
     timestamp: '2022-06-09T15:03:39.370Z',
@@ -37,7 +37,7 @@ const demoData = [
   },
   {
     id: 1652262,
-    hash: '00000000000a1dbdde9052f966b00c4676fb3bd293c6a1ba97b212dc09fed845',
+    hash: '0000...97a3...d235...8435',
     sequence: 43246,
     transactions_count: 10,
     timestamp: '2022-06-09T15:03:26.347Z',
@@ -45,7 +45,7 @@ const demoData = [
   },
   {
     id: 1652261,
-    hash: '000000000003969cd90417d7b2b27751e957835c428fb868beb407ce3b64dea0',
+    hash: '0000...97a3...d235...8435',
     sequence: 43245,
     transactions_count: 130,
     timestamp: '2022-06-09T15:02:54.648Z',
@@ -53,7 +53,7 @@ const demoData = [
   },
   {
     id: 1652260,
-    hash: '000000000007113347ce130452e2477b636f5fb0fb7ee74b139319d8fdb05635',
+    hash: '0000...97a3...d235...8435',
     sequence: 43244,
     transactions_count: 118,
     timestamp: '2022-06-09T15:02:03.800Z',
