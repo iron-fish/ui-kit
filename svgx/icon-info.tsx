@@ -1,9 +1,10 @@
-import { FC } from 'react'
+import { forwardRef } from 'react'
 import { Icon, IconProps } from '@chakra-ui/react'
 
-const IconInfo: FC<IconProps> = props => {
+const IconInfo = forwardRef<SVGSVGElement, IconProps>((props, ref) => {
   return (
     <Icon
+      ref={ref}
       viewBox="0 0 14 14"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
@@ -15,6 +16,8 @@ const IconInfo: FC<IconProps> = props => {
       />
     </Icon>
   )
-}
+})
+
+IconInfo.displayName = 'IconInfo'
 
 export default IconInfo
