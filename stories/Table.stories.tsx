@@ -7,6 +7,12 @@ import { NAMED_COLORS } from 'theme/constants'
 export default {
   title: 'Components/CommonTable',
   component: CommonTable,
+  argTypes: {
+    textTransform: {
+      options: ['capitalize', null, 'uppercase'],
+      control: { type: 'select' },
+    },
+  },
 } as ComponentMeta<typeof CommonTable>
 
 type BlockType = {
@@ -110,6 +116,7 @@ export const BlockTable: ComponentStory<FC> = args => {
     >
       <Box w="100%">
         <CommonTable
+          textTransform={args.textTransform}
           columns={COLUMNS}
           data={args.loading ? emptyData : data}
           onRowClick={() => alert('row clicked')}
@@ -120,4 +127,5 @@ export const BlockTable: ComponentStory<FC> = args => {
 }
 BlockTable.args = {
   loading: false,
+  textTransform: null,
 }
