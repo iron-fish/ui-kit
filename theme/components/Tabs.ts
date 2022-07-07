@@ -34,6 +34,12 @@ const Tabs: ComponentStyleConfig = {
       _hover: {
         color: mode(NAMED_COLORS.DEEP_BLUE, NAMED_COLORS.WHITE)(props),
       },
+      _disabled: {
+        cursor: 'not-allowed',
+        _hover: {
+          color: mode(NAMED_COLORS.GREY, NAMED_COLORS.PALE_GREY)(props),
+        },
+      },
     },
     tablist: {
       borderBottomWidth: '0.125rem',

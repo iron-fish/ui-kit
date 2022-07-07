@@ -1,41 +1,30 @@
 import { FC } from 'react'
-import { Box, Flex, Th } from '@chakra-ui/react'
+import { Flex, Th, Table, Thead, Tbody, Tr, Td } from '@chakra-ui/react'
 
 import { RowItemProps } from './types'
 
-const RowItem: FC<RowItemProps> = ({ label = null, children, ...rest }) =>
+const RowItem: FC<RowItemProps> = ({
+  label = null,
+  children,
+  textTransform,
+  ...rest
+}) =>
   label || children ? (
     <Flex direction="column" {...rest}>
-      <Box as="table">
+      <Table variant="rowItem">
         {label && (
-          <Box as="thead">
-            <Box
-              as="tr"
-              boxShadow="unset !important"
-              display={{ base: 'block', lg: 'none' }}
-            >
-              <Th p={{ base: '0 0 0.9375rem', lg: '0.9375rem 0' }}>{label}</Th>
-            </Box>
-          </Box>
+          <Thead>
+            <Tr display={{ base: 'block', lg: 'none' }}>
+              <Th textTransform={textTransform}>{label}</Th>
+            </Tr>
+          </Thead>
         )}
-        <Box as="tbody">
-          <Box as="tr" boxShadow="unset !important">
-            <Flex
-              as="td"
-              alignItems="center"
-              minH="1.875rem"
-              sx={{
-                fontSize: '1rem',
-                fontStyle: 'normal',
-                lineHeight: '1.625rem',
-                fontWeight: '400',
-              }}
-            >
-              {children}
-            </Flex>
-          </Box>
-        </Box>
-      </Box>
+        <Tbody>
+          <Tr>
+            <Td>{children}</Td>
+          </Tr>
+        </Tbody>
+      </Table>
     </Flex>
   ) : null
 

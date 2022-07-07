@@ -21,6 +21,7 @@ export const CommonTable: FC<
 > = ({
   data = null,
   columns = [],
+  textTransform = 'uppercase',
   // eslint-disable-next-line @typescript-eslint/no-empty-function
   onRowClick,
   ...rest
@@ -32,11 +33,13 @@ export const CommonTable: FC<
   }
 
   return (
-    <Table {...rest} variant="blocks">
+    <Table {...rest}>
       <Thead display={{ base: 'none', lg: 'table-header-group' }}>
         <Tr>
           {columns.map(column => (
-            <Th key={column.key}>{column.label}</Th>
+            <Th textTransform={textTransform} key={column.key}>
+              {column.label}
+            </Th>
           ))}
         </Tr>
       </Thead>
@@ -85,7 +88,11 @@ export const CommonTable: FC<
                   borderRight: borderStyle,
                 }}
               >
-                <RowItem label={column.label} {...column.ItemProps}>
+                <RowItem
+                  label={column.label}
+                  {...column.ItemProps}
+                  textTransform={textTransform}
+                >
                   {block ? column.render(block) : <RowItemSpin minW="4rem" />}
                 </RowItem>
               </Td>

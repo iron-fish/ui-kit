@@ -13,6 +13,7 @@ export const TabsComponent: ComponentStory<FC> = () => (
       <Tab>One</Tab>
       <Tab>Two</Tab>
       <Tab>Three</Tab>
+      <Tab isDisabled={true}>Disabled</Tab>
     </TabList>
 
     <TabPanels>
