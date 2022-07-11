@@ -16,7 +16,7 @@ import DropdownArrow from 'svgx/dropdown-arrow'
 
 // This is avoid error: Could not find a declaration file for module 'blem'.
 // eslint-disable-next-line @typescript-eslint/no-var-requires
-const bem = require('blem')('select-field')
+const bem = require('utils/className').bem('select-field')
 
 export type OptionType = {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -89,7 +89,7 @@ const SelectField: FC<SelectFieldProps> = ({
       <PopoverTrigger>
         <Flex
           id="SelectField"
-          className={bem(...(isOpen ? ['', 'focused'] : []))}
+          className={isOpen ? bem(['focused']) : bem()}
           tabIndex={0}
           {...props}
           sx={{

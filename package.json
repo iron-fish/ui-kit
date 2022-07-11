@@ -3,7 +3,9 @@
   "version": "0.0.8",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
-  "files": ["/dist"],
+  "files": [
+    "/dist"
+  ],
   "scripts": {
     "care": "nps care",
     "dev": "nps dev",
@@ -18,7 +20,7 @@
     "@emotion/css": "11.7.1",
     "@emotion/react": "11.8.2",
     "@emotion/styled": "11.8.1",
-    "blem": "0.0.9",
+    "bem-classname": "^0.1.1",
     "colord": "2.9.2",
     "emotion": "11.0.0",
     "framer-motion": "6.2.8",
