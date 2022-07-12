@@ -61,7 +61,7 @@ const MnemonicInput: FC<MnemonicInputProps> = ({
           {orderNo}
         </Kbd>
         <Input
-          maxlength="8"
+          maxLength="8"
           variant={'unstyled'}
           w={`5.3125rem`}
           value={isReadOnly ? visibleValue : value}
