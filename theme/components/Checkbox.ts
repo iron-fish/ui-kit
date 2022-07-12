@@ -7,9 +7,9 @@ const Checkbox: ComponentStyleConfig = {
   parts: ['control', 'label'],
   baseStyle: props => ({
     control: {
-      border: '1px solid',
+      border: '0.0625rem solid',
       borderColor: mode(NAMED_COLORS.DEEP_BLUE, NAMED_COLORS.WHITE)(props),
-      borderRadius: '2px',
+      borderRadius: '0.125rem',
       _checked: {
         background: mode(NAMED_COLORS.DEEP_BLUE, NAMED_COLORS.WHITE)(props),
         borderColor: mode(NAMED_COLORS.DEEP_BLUE, NAMED_COLORS.WHITE)(props),
@@ -24,7 +24,7 @@ const Checkbox: ComponentStyleConfig = {
     },
     label: {
       fontFamily: FONTS.FAVORIT,
-      fontSize: '14px',
+      fontSize: '0.875rem',
       fontWeight: 400,
     },
   }),
