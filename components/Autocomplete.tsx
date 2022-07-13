@@ -26,7 +26,7 @@ import { Option, OptionType, SelectedOption } from './SelectField'
 import DropdownArrow from 'svgx/dropdown-arrow'
 
 // eslint-disable-next-line @typescript-eslint/no-var-requires
-const bem = require('utils/className').bem('autocomplete')
+const bem = require('bem-classname').bind(null, 'autocomplete')
 
 const defaultOptionsFilter = (option: OptionType, searchTerm: string) => {
   const _label = option.label?.toString().toLowerCase()

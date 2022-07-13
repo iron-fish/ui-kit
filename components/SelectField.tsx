@@ -14,9 +14,9 @@ import {
 } from '@chakra-ui/react'
 import DropdownArrow from 'svgx/dropdown-arrow'
 
-// This is avoid error: Could not find a declaration file for module 'blem'.
+// This is avoid error: Could not find a declaration file for module 'bem'.
 // eslint-disable-next-line @typescript-eslint/no-var-requires
-const bem = require('utils/className').bem('select-field')
+const bem = require('bem-classname').bind(null, 'select-field')
 
 export type OptionType = {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any

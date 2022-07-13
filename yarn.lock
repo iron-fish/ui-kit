@@ -4649,7 +4649,7 @@ batch-processor@1.0.0:
   resolved "https://registry.npmjs.org/batch-processor/-/batch-processor-1.0.0.tgz"
   integrity sha1-dclcMrdI4IUNEMKxaPa9vpiRrOg=
 
-bem-classname@^0.1.1:
+bem-classname@0.1.1:
   version "0.1.1"
   resolved "https://registry.yarnpkg.com/bem-classname/-/bem-classname-0.1.1.tgz#9268c6bee485c8e629f2afc3632660b829258dd6"
   integrity sha512-p018evftMHuUZRPF4Fy54vM4XETvh4tvfQj3OYv4fEKVKomnVU4CLsk60j7+wO6W1S68jbvx4p3TU+1C5TFeog==
