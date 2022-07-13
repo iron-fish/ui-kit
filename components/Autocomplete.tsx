@@ -26,7 +26,7 @@ import { Option, OptionType, SelectedOption } from './SelectField'
 import DropdownArrow from 'svgx/dropdown-arrow'
 
 // eslint-disable-next-line @typescript-eslint/no-var-requires
-const bem = require('blem')('autocomplete')
+const bem = require('bem-classname').bind(null, 'autocomplete')
 
 const defaultOptionsFilter = (option: OptionType, searchTerm: string) => {
   const _label = option.label?.toString().toLowerCase()
@@ -97,7 +97,7 @@ const Autocomplete: FC<AutocompleteProps> = ({
       <PopoverTrigger>
         <Flex
           id="Autocomplete"
-          className={bem(...(isOpen ? ['', 'focused'] : []))}
+          className={isOpen ? bem(['focused']) : bem()}
           tabIndex={0}
           {...props}
           onKeyDown={e => e.key === 'Escape' && onClose()}

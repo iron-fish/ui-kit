@@ -4649,6 +4649,11 @@ batch-processor@1.0.0:
   resolved "https://registry.npmjs.org/batch-processor/-/batch-processor-1.0.0.tgz"
   integrity sha1-dclcMrdI4IUNEMKxaPa9vpiRrOg=
 
+bem-classname@0.1.1:
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/bem-classname/-/bem-classname-0.1.1.tgz#9268c6bee485c8e629f2afc3632660b829258dd6"
+  integrity sha512-p018evftMHuUZRPF4Fy54vM4XETvh4tvfQj3OYv4fEKVKomnVU4CLsk60j7+wO6W1S68jbvx4p3TU+1C5TFeog==
+
 better-opn@^2.1.1:
   version "2.1.1"
   resolved "https://registry.npmjs.org/better-opn/-/better-opn-2.1.1.tgz"
@@ -4686,14 +4691,6 @@ bl@^4.1.0:
     buffer "^5.5.0"
     inherits "^2.0.4"
     readable-stream "^3.4.0"
-
-blem@0.0.9:
-  version "0.0.9"
-  resolved "https://registry.yarnpkg.com/blem/-/blem-0.0.9.tgz#dafa9f1ec4cb2d177cd0f24d663ea62105258b44"
-  integrity sha512-q3j+FVxP+VQswzodF+hlq7w4LEf1AFu1LM7XQY9eYaKhFK6IXDxtceSqKNzbmcI/6cT5jSyCgRvBjhHDIRm2MQ==
-  dependencies:
-    fast-memoize "^2.5.1"
-    ramda "^0.26.1"
 
 bluebird@^3.3.5, bluebird@^3.5.5:
   version "3.7.2"
@@ -6892,11 +6889,6 @@ fast-levenshtein@^2.0.6, fast-levenshtein@~2.0.6:
   version "2.0.6"
   resolved "https://registry.npmjs.org/fast-levenshtein/-/fast-levenshtein-2.0.6.tgz"
   integrity sha1-PYpcZog6FqMMqGQ+hR8Zuqd5eRc=
-
-fast-memoize@^2.5.1:
-  version "2.5.2"
-  resolved "https://registry.npmjs.org/fast-memoize/-/fast-memoize-2.5.2.tgz"
-  integrity sha512-Ue0LwpDYErFbmNnZSF0UH6eImUwDmogUO1jyE+JbN2gsQz/jICm1Ve7t9QT0rNSsfJt+Hs4/S3GnsDVjL4HVrw==
 
 fast.js@^0.1.1:
   version "0.1.1"
@@ -11011,11 +11003,6 @@ ramda@^0.21.0:
   version "0.21.0"
   resolved "https://registry.npmjs.org/ramda/-/ramda-0.21.0.tgz"
   integrity sha1-oAGr7bP/YQd9T/HVd9RN536NCjU=
-
-ramda@^0.26.1:
-  version "0.26.1"
-  resolved "https://registry.npmjs.org/ramda/-/ramda-0.26.1.tgz"
-  integrity sha512-hLWjpy7EnsDBb0p+Z3B7rPi3GDeRG5ZtiI33kJhTt+ORCd38AbAIjB/9zRIUoeTbE/AVX5ZkU7m6bznsvrf8eQ==
 
 ramda@^0.27.1:
   version "0.27.2"
