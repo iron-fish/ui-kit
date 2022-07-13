@@ -1,4 +1,4 @@
-import { FC, useState, useRef, useEffect, ChangeEvent, useMemo } from 'react'
+import { FC, useState, useEffect, ChangeEvent, useMemo } from 'react'
 
 import {
   Box,
@@ -13,7 +13,6 @@ import {
 } from '@chakra-ui/react'
 import IconBlinkingEye from 'svgx/icon-blinkingEye'
 import IconInfo from 'svgx/icon-info'
-import { FONTS } from 'theme/constants'
 
 interface MnemonicInputProps {
   value: string
@@ -33,24 +32,13 @@ const MnemonicInput: FC<MnemonicInputProps> = ({
   onChange,
 }) => {
   const $styles = useMultiStyleConfig('MnemonicView', {})
-  const [$textWidth, $setTextWidth] = useState(0)
-  const $textBox = useRef<HTMLDivElement>(null)
 
   const visibleValue = useMemo(() => {
     if (isVisible) {
       return value
-    } else {
-      if (isReadOnly) {
-        return new Array(7).fill('•').join('')
-      } else {
-        return new Array(value.length).fill('•').join('')
-      }
     }
+    return new Array(10).fill('•').join('')
   }, [value, isVisible])
-
-  useEffect(() => {
-    $setTextWidth($textBox.current?.offsetWidth || 0)
-  }, [value, visibleValue, placeholder, $textBox.current?.offsetWidth])
 
   const changeHandler = (e: ChangeEvent<HTMLInputElement>) => {
     onChange(e.target.value)
@@ -58,31 +46,24 @@ const MnemonicInput: FC<MnemonicInputProps> = ({
 
   return (
     <Box>
-      <Box
-        ref={$textBox}
-        sx={{
-          opacity: 0,
-          height: '0',
-          width: 'min-content',
-          fontSize: '1rem',
-          fontFamily: FONTS.FAVORIT,
-        }}
-      >
-        {isReadOnly ? visibleValue : visibleValue || placeholder}
-      </Box>
       <Flex
         sx={$styles.inputContainer}
         alignItems="center"
-        p={isVisible ? '0rem 0.75rem 0 0.375rem' : '0rem 0.75rem'}
+        p="0rem 0.75rem 0 0.375rem"
       >
-        {isVisible && (
-          <Kbd p="0.0625rem 0.5625rem" mr="0.6875rem">
-            {orderNo}
-          </Kbd>
-        )}
+        <Kbd
+          p="0.0625rem 0"
+          mr="0.6875rem"
+          width="1.75rem"
+          display="flex"
+          justifyContent="center"
+        >
+          {orderNo}
+        </Kbd>
         <Input
+          maxLength={8}
           variant={'unstyled'}
-          w={`${$textWidth}px`}
+          w={`5.3125rem`}
           value={isReadOnly ? visibleValue : value}
           isReadOnly={isReadOnly}
           placeholder={!isReadOnly ? placeholder : ''}
