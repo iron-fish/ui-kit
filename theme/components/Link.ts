@@ -16,6 +16,9 @@ const Link: ComponentStyleConfig = {
       color: mode(NAMED_COLORS.DEEP_BLUE, NAMED_COLORS.WHITE)(props),
       textDecoration: null,
     },
+    _focus: {
+      boxShadow: 'none',
+    },
   }),
   variants: {
     underlined: props => ({

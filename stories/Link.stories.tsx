@@ -9,7 +9,9 @@ export default {
 
 export const LinkComponents: ComponentStory<FC> = () => (
   <VStack align={'flex-start'}>
-    <Link>Text link</Link>
-    <Link variant="underlined">Underlined Text link</Link>
+    <Link href="#">Text link</Link>
+    <Link href="#" variant="underlined">
+      Underlined Text link
+    </Link>
   </VStack>
 )
