@@ -33,6 +33,7 @@ export const MnemonicViewTemplate: ComponentStory<FC> = () => (
         label: 'Secret phrase',
       }}
       isReadOnly={true}
+      visible
     />
     <Box>
       <h4>Input mode</h4>

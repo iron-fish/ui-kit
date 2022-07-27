@@ -82,6 +82,7 @@ interface MnemonicViewProps extends Omit<FlexProps, 'onChange'> {
   value?: string[]
   toolTipProps?: TooltipProps
   isReadOnly: boolean
+  visible?: boolean
   onChange: (value: string[]) => void
 }
 
@@ -91,10 +92,11 @@ const MnemonicView: FC<MnemonicViewProps> = ({
   placeholder,
   toolTipProps,
   isReadOnly,
+  visible,
   onChange,
   ...rest
 }) => {
-  const [$show, $setShow] = useState<boolean>(!isReadOnly)
+  const [$show, $setShow] = useState<boolean>(!!visible)
   const [$currentWords, $setCurrentWords] = useState<string[]>([])
   const $styles = useMultiStyleConfig('MnemonicView', rest)
 
