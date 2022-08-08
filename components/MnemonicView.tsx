@@ -49,12 +49,12 @@ const MnemonicInput: FC<MnemonicInputProps> = ({
       <Flex
         sx={$styles.inputContainer}
         alignItems="center"
-        p="0rem 0.75rem 0 0.375rem"
+        p="0rem 0.375rem 0 0.375rem"
       >
         <Kbd
           p="0.0625rem 0"
-          mr="0.6875rem"
-          width="1.75rem"
+          mr="0.375rem"
+          width="1.5rem"
           display="flex"
           justifyContent="center"
         >
