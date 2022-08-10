@@ -95,6 +95,11 @@ const COLUMNS: ColumnProps<BlockType>[] = [
     label: 'Timestamp',
     render: block => block.timestamp,
   },
+  {
+    key: 'empty-header-row',
+    label: null,
+    render: () => 'Empty header row',
+  },
 ]
 
 const emptyData = new Array(5).fill(null)

@@ -12,13 +12,11 @@ const RowItem: FC<RowItemProps> = ({
   label || children ? (
     <Flex direction="column" {...rest}>
       <Table variant="rowItem">
-        {label && (
-          <Thead>
-            <Tr display={{ base: 'block', lg: 'none' }}>
-              <Th textTransform={textTransform}>{label}</Th>
-            </Tr>
-          </Thead>
-        )}
+        <Thead>
+          <Tr display={{ base: 'block', lg: 'none' }}>
+            <Th textTransform={textTransform}>{label || '\u00A0'}</Th>
+          </Tr>
+        </Thead>
         <Tbody>
           <Tr>
             <Td>{children}</Td>
