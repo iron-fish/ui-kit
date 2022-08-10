@@ -41,6 +41,8 @@ const CopyToClipboardButton: FC<CopyToClipboardButtonProps> = ({
       {...tooltipProps}
     >
       <IconButton
+        justifyContent="none"
+        minW="0.75rem"
         aria-label={$copied ? copiedTooltipText : copyTooltipText}
         h="1.25rem"
         onClick={e => {

@@ -18,7 +18,7 @@ const CopyValueToClipboard: FC<CopyValueToClipboardProps> = ({
   ...rest
 }) => (
   <HStack spacing={0} {...containerProps}>
-    <Box as="h4" {...labelProps}>
+    <Box as="h4" mr="0.5rem" {...labelProps}>
       {label}
     </Box>
     <CopyToClipboardButton {...rest} />
