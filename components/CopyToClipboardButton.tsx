@@ -15,7 +15,7 @@ export interface CopyToClipboardButtonProps {
   copiedTooltipText: string
   tooltipProps?: TooltipProps
   tooltipCloseDelay?: number
-  iconButtonProps?: Omit<IconButtonProps, 'onClick'>
+  iconButtonProps?: Omit<IconButtonProps, 'onClick' | 'aria-label'>
 }
 
 const CopyToClipboardButton: FC<CopyToClipboardButtonProps> = ({
