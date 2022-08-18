@@ -82,6 +82,7 @@ const Button: ComponentStyleConfig = {
       color: mode(NAMED_COLORS.DEEP_BLUE, NAMED_COLORS.WHITE)(props),
       boxShadow: '0rem 0.25rem 0.688rem rgba(0, 0, 0, 0.04)',
       border: '0.063rem solid',
+      p: '0 1.5rem',
       borderColor: mode(NAMED_COLORS.LIGHT_GREY, NAMED_COLORS.WHITE)(props),
       '.chakra-button__icon': {
         fill: mode(NAMED_COLORS.BLACK, NAMED_COLORS.WHITE)(props),
