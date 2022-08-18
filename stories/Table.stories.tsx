@@ -1,8 +1,9 @@
 import { FC, useState, useEffect } from 'react'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
-import { Box, Flex } from '@chakra-ui/react'
+import { Box, Flex, Link, chakra } from '@chakra-ui/react'
 import { CommonTable } from 'components'
 import { NAMED_COLORS } from 'theme/constants'
+import Caret from 'svgx/icon-caret'
 
 export default {
   title: 'Components/CommonTable',
@@ -94,6 +95,31 @@ const COLUMNS: ColumnProps<BlockType>[] = [
     key: 'block-timestamp',
     label: 'Timestamp',
     render: block => block.timestamp,
+  },
+  {
+    key: 'actions',
+    label: '',
+    WrapperProps: {
+      display: 'flex',
+    },
+    ItemProps: {
+      justifyContent: 'flex-end',
+    },
+    render: () => (
+      <Link
+        sx={{
+          color: NAMED_COLORS.LIGHT_BLUE,
+          _hover: {
+            color: NAMED_COLORS.LIGHT_BLUE,
+          },
+        }}
+      >
+        <Flex>
+          <chakra.h5 mr="0.3125rem">View Details</chakra.h5>
+          <Caret />
+        </Flex>
+      </Link>
+    ),
   },
 ]
 
