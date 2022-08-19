@@ -124,11 +124,12 @@ const MnemonicView: FC<MnemonicViewProps> = ({
         <Box sx={$styles.icons}>
           <IconBlinkingEye
             closed={$show}
+            cursor="pointer"
             onClick={() => $setShow(!$show)}
             mr="0.9375rem"
           />
           <Tooltip hasArrow={true} {...toolTipProps}>
-            <IconInfo />
+            <IconInfo cursor="pointer" />
           </Tooltip>
         </Box>
       </Flex>
