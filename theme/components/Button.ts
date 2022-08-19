@@ -6,6 +6,7 @@ import { FONTS, NAMED_COLORS } from 'theme/constants'
 const getDisabledStyle = (props: object): object => ({
   bgColor: mode(NAMED_COLORS.LIGHTER_GREY, NAMED_COLORS.DARKER_GREY_1)(props),
   color: mode(NAMED_COLORS.PALE_GREY, NAMED_COLORS.DARKER_GREY_2)(props),
+  opacity: 1,
   borderColor: mode(
     NAMED_COLORS.LIGHTER_GREY,
     NAMED_COLORS.DARKER_GREY_1
@@ -68,9 +69,9 @@ const Button: ComponentStyleConfig = {
         '.chakra-button__icon': {
           fill: mode(NAMED_COLORS.DEEP_BLUE, NAMED_COLORS.WHITE)(props),
         },
-        ':disabled': getDisabledStyle,
+        _disabled: getDisabledStyle,
       },
-      ':disabled': {
+      _disabled: {
         '.chakra-button__icon': {
           fill: mode(NAMED_COLORS.PALE_GREY, NAMED_COLORS.DARKER_GREY_2)(props),
         },
@@ -94,9 +95,9 @@ const Button: ComponentStyleConfig = {
         bgColor: NAMED_COLORS.WHITE,
         borderColor: mode(NAMED_COLORS.DEEP_BLUE, NAMED_COLORS.WHITE)(props),
         color: NAMED_COLORS.DEEP_BLUE,
-        ':disabled': getDisabledStyle,
+        _disabled: getDisabledStyle,
       },
-      ':disabled': {
+      _disabled: {
         '.chakra-button__icon': {
           fill: mode(NAMED_COLORS.PALE_GREY, NAMED_COLORS.DARKER_GREY_2)(props),
         },
