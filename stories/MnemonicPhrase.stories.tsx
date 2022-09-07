@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import { FC, useEffect, useState } from 'react'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 import { VStack, Box } from '@chakra-ui/react'
 import { MnemonicView } from 'components'
@@ -23,30 +23,42 @@ const words = [
   'Milk',
 ]
 
-export const MnemonicViewTemplate: ComponentStory<FC> = () => (
-  <VStack w="100%" flexDirection="column" spacing={16}>
-    <MnemonicView
-      header="Mnemonic phrase"
-      value={words}
-      w="600px"
-      toolTipProps={{
-        label: 'Secret phrase',
-      }}
-      isReadOnly={true}
-      visible
-    />
-    <Box>
-      <h4>Input mode</h4>
+export const MnemonicViewTemplate: ComponentStory<FC> = () => {
+  const [phrase, setPhrase] = useState([])
+  const [secondPhrase, setSecondPhrase] = useState([])
+
+  useEffect(() => {
+    setTimeout(() => {
+      setPhrase(words)
+    }, 3000)
+  }, [])
+
+  return (
+    <VStack w="100%" flexDirection="column" spacing={16}>
       <MnemonicView
         header="Mnemonic phrase"
-        placeholder="Empty"
+        value={phrase}
         w="600px"
         toolTipProps={{
           label: 'Secret phrase',
         }}
-        isReadOnly={false}
-        onChange={currentWords => currentWords}
+        isReadOnly={true}
+        visible
       />
-    </Box>
-  </VStack>
-)
+      <Box>
+        <h4>Input mode</h4>
+        <MnemonicView
+          header="Mnemonic phrase"
+          placeholder="Empty"
+          value={secondPhrase}
+          w="600px"
+          toolTipProps={{
+            label: 'Secret phrase',
+          }}
+          isReadOnly={false}
+          onChange={newPhrase => setSecondPhrase(newPhrase)}
+        />
+      </Box>
+    </VStack>
+  )
+}
