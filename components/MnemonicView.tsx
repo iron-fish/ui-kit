@@ -100,22 +100,19 @@ const MnemonicView: FC<MnemonicViewProps> = ({
   const [$currentWords, $setCurrentWords] = useState<string[]>([])
   const $styles = useMultiStyleConfig('MnemonicView', rest)
 
-  const onWordChange = (index: number) => (word: string) =>
-    $setCurrentWords(prev => {
-      const next = [...prev]
-      next[index] = word
-      return next
-    })
+  const onWordChange = (index: number) => (word: string) => {
+    const next = [...$currentWords]
+    next[index] = word
+    onChange(next)
+  }
 
   useEffect(() => {
     $setCurrentWords(isReadOnly ? value : new Array(12).fill(''))
   }, [])
 
   useEffect(() => {
-    if (!isReadOnly && onChange) {
-      onChange($currentWords)
-    }
-  }, [$currentWords])
+    $setCurrentWords(value.length ? value : new Array(12).fill(''))
+  }, [JSON.stringify(value)])
 
   return (
     <Flex sx={$styles.container} direction="column" {...rest}>
