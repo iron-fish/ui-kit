@@ -10,6 +10,7 @@ import {
   Tooltip,
   useMultiStyleConfig,
   Input,
+  Skeleton,
 } from '@chakra-ui/react'
 import IconBlinkingEye from 'svgx/icon-blinkingEye'
 import IconInfo from 'svgx/icon-info'
@@ -21,6 +22,7 @@ interface MnemonicInputProps {
   orderNo: number
   isReadOnly: boolean
   onChange: (value: string) => void
+  loading?: boolean
 }
 
 const MnemonicInput: FC<MnemonicInputProps> = ({
@@ -30,6 +32,7 @@ const MnemonicInput: FC<MnemonicInputProps> = ({
   orderNo,
   isReadOnly,
   onChange,
+  loading = false,
 }) => {
   const $styles = useMultiStyleConfig('MnemonicView', {})
 
@@ -60,17 +63,23 @@ const MnemonicInput: FC<MnemonicInputProps> = ({
         >
           {orderNo}
         </Kbd>
-        <Input
-          maxLength={8}
-          variant={'unstyled'}
-          w={`5.3125rem`}
-          value={isReadOnly ? visibleValue : value}
-          isReadOnly={isReadOnly}
-          placeholder={!isReadOnly ? placeholder : ''}
-          type={isVisible ? 'text' : 'password'}
-          sx={$styles.input}
-          onChange={changeHandler}
-        />
+        {loading ? (
+          <Flex w="5.3125rem" h="2.25rem" align="center">
+            <Skeleton variant="ironFish" w="100%" h="1.375rem" />
+          </Flex>
+        ) : (
+          <Input
+            maxLength={8}
+            variant={'unstyled'}
+            w="5.3125rem"
+            value={isReadOnly ? visibleValue : value}
+            isReadOnly={isReadOnly}
+            placeholder={!isReadOnly ? placeholder : ''}
+            type={isVisible ? 'text' : 'password'}
+            sx={$styles.input}
+            onChange={changeHandler}
+          />
+        )}
       </Flex>
     </Box>
   )
@@ -84,6 +93,7 @@ interface MnemonicViewProps extends Omit<FlexProps, 'onChange'> {
   isReadOnly: boolean
   visible?: boolean
   onChange: (value: string[]) => void
+  loading?: boolean
 }
 
 const MnemonicView: FC<MnemonicViewProps> = ({
@@ -94,6 +104,7 @@ const MnemonicView: FC<MnemonicViewProps> = ({
   isReadOnly,
   visible,
   onChange,
+  loading,
   ...rest
 }) => {
   const [$show, $setShow] = useState<boolean>(!!visible)
@@ -136,6 +147,7 @@ const MnemonicView: FC<MnemonicViewProps> = ({
             <MnemonicInput
               key={index}
               value={word}
+              loading={loading}
               placeholder={placeholder}
               isVisible={$show}
               orderNo={index + 1}
