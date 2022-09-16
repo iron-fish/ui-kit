@@ -134,7 +134,7 @@ const SelectField: FC<SelectFieldProps> = ({
                 }
               }}
             >
-              {RenderOption(option)}
+              {<RenderOption {...option} />}
             </Box>
           ))}
         </PopoverBody>
