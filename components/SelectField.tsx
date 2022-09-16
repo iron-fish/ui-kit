@@ -55,7 +55,7 @@ interface SelectFieldProps extends FlexProps {
   value?: OptionType
   options?: OptionType[]
   size?: string
-  renderOption?: (option: OptionType) => Element
+  renderOption?: (option: OptionType) => ReactNode
   renderSelected?: (option: OptionType) => ReactNode
   onSelectOption?: (option: OptionType) => void
 }
@@ -64,7 +64,7 @@ const SelectField: FC<SelectFieldProps> = ({
   label,
   value = null,
   options = [],
-  renderOption: RenderOption = Option,
+  renderOption = option => <Option {...option} />,
   renderSelected = SelectedOption,
   onSelectOption = () => void 0,
   ...props
@@ -134,7 +134,7 @@ const SelectField: FC<SelectFieldProps> = ({
                 }
               }}
             >
-              {<RenderOption {...option} />}
+              {renderOption(option)}
             </Box>
           ))}
         </PopoverBody>

@@ -1,7 +1,7 @@
 import { FC, useState, useEffect } from 'react'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 import SelectField from 'components/SelectField'
-import { Box, Stack } from '@chakra-ui/react'
+import { Box, Stack, VStack } from '@chakra-ui/react'
 
 export default {
   title: 'Components/Select',
@@ -120,11 +120,28 @@ export const DelayedOptions: ComponentStory<FC> = () => {
   }, [])
 
   return (
-    <Box>
-      <Box>
-        <h4>With default options render</h4>
+    <VStack spacing="2rem" alignItems="start" w="100%">
+      <Box w="50%">
+        <Box>
+          <h4>With default options render</h4>
+        </Box>
+        <SelectField label="Select Label" options={options} />
       </Box>
-      <SelectField label="Select Label" w="50%" options={options} />
-    </Box>
+      <Box w="50%">
+        <Box>
+          <h4>With custom options render</h4>
+        </Box>
+        <SelectField
+          renderOption={option => (
+            <Box px="1.5rem" h="3rem" textAlign="center" pt={2}>
+              <b>{option.label}</b>&nbsp;&nbsp;
+              <small style={{ color: 'red' }}>{option.helperText}</small>
+            </Box>
+          )}
+          label="Select Label"
+          options={options}
+        />
+      </Box>
+    </VStack>
   )
 }
