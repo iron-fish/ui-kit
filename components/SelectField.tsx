@@ -1,4 +1,4 @@
-import { FC, useState, useEffect, ReactNode } from 'react'
+import { FC, useState, useEffect, ReactNode, Element } from 'react'
 
 import {
   Box,
@@ -55,7 +55,7 @@ interface SelectFieldProps extends FlexProps {
   value?: OptionType
   options?: OptionType[]
   size?: string
-  renderOption?: (option: OptionType) => ReactNode
+  renderOption?: (option: OptionType) => Element
   renderSelected?: (option: OptionType) => ReactNode
   onSelectOption?: (option: OptionType) => void
 }
@@ -134,7 +134,7 @@ const SelectField: FC<SelectFieldProps> = ({
                 }
               }}
             >
-              {<RenderOption {...option} />}
+              {RenderOption(option)}
             </Box>
           ))}
         </PopoverBody>
