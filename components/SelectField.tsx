@@ -1,4 +1,4 @@
-import { FC, useState, useEffect, ReactNode, Element } from 'react'
+import { FC, useState, useEffect, ReactNode } from 'react'
 
 import {
   Box,
