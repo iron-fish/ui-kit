@@ -64,7 +64,7 @@ const SelectField: FC<SelectFieldProps> = ({
   label,
   value = null,
   options = [],
-  renderOption = Option,
+  renderOption: RenderOption = Option,
   renderSelected = SelectedOption,
   onSelectOption = () => void 0,
   ...props
@@ -134,7 +134,7 @@ const SelectField: FC<SelectFieldProps> = ({
                 }
               }}
             >
-              {renderOption(option)}
+              {<RenderOption {...option} />}
             </Box>
           ))}
         </PopoverBody>

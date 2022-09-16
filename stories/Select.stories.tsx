@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import { FC, useState, useEffect } from 'react'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 import SelectField from 'components/SelectField'
 import { Box, Stack } from '@chakra-ui/react'
@@ -91,3 +91,40 @@ export const BasicExample: ComponentStory<FC> = () => (
     />
   </Stack>
 )
+
+export const DelayedOptions: ComponentStory<FC> = () => {
+  const [options, setOptions] = useState([])
+
+  useEffect(() => {
+    setTimeout(
+      () =>
+        setOptions([
+          {
+            label: 'Test',
+            helperText: 'This is 1 option',
+            value: 'option1',
+          },
+          {
+            label: 'Test',
+            helperText: 'This is 2 option',
+            value: 'option2',
+          },
+          {
+            label: 'Test',
+            helperText: 'This is 3 option',
+            value: 'option3',
+          },
+        ]),
+      3000
+    )
+  }, [])
+
+  return (
+    <Box>
+      <Box>
+        <h4>With default options render</h4>
+      </Box>
+      <SelectField label="Select Label" w="50%" options={options} />
+    </Box>
+  )
+}
