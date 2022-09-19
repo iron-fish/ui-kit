@@ -47,6 +47,7 @@ export const MnemonicViewTemplate: ComponentStory<FC> = () => {
         }}
         isReadOnly={true}
         visible
+        loaded={!loading}
       />
       <Box>
         <h4>Input mode</h4>
@@ -60,20 +61,6 @@ export const MnemonicViewTemplate: ComponentStory<FC> = () => {
           }}
           isReadOnly={false}
           onChange={newPhrase => setSecondPhrase(newPhrase)}
-        />
-      </Box>
-      <Box>
-        <h4>Loading mode</h4>
-        <MnemonicView
-          header="Mnemonic phrase"
-          placeholder="Empty"
-          value={phrase}
-          w="600px"
-          toolTipProps={{
-            label: 'Secret phrase',
-          }}
-          isReadOnly={true}
-          loaded={!loading}
         />
       </Box>
       <Box>
