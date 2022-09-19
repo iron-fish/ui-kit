@@ -73,7 +73,7 @@ export const MnemonicViewTemplate: ComponentStory<FC> = () => {
             label: 'Secret phrase',
           }}
           isReadOnly={true}
-          loading={loading}
+          loaded={!loading}
         />
       </Box>
       <Box>
@@ -87,7 +87,7 @@ export const MnemonicViewTemplate: ComponentStory<FC> = () => {
             label: 'Secret phrase',
           }}
           isReadOnly={true}
-          loading={true}
+          loaded={false}
         />
       </Box>
     </VStack>

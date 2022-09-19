@@ -22,7 +22,7 @@ interface MnemonicInputProps {
   orderNo: number
   isReadOnly: boolean
   onChange: (value: string) => void
-  loading?: boolean
+  loaded?: boolean
 }
 
 const MnemonicInput: FC<MnemonicInputProps> = ({
@@ -32,7 +32,7 @@ const MnemonicInput: FC<MnemonicInputProps> = ({
   orderNo,
   isReadOnly,
   onChange,
-  loading = false,
+  loaded = true,
 }) => {
   const $styles = useMultiStyleConfig('MnemonicView', {})
 
@@ -48,26 +48,22 @@ const MnemonicInput: FC<MnemonicInputProps> = ({
   }
 
   return (
-    <Box>
-      <Flex
-        sx={$styles.inputContainer}
-        alignItems="center"
-        p="0rem 0.375rem 0 0.375rem"
-      >
-        <Kbd
-          p="0.0625rem 0"
-          mr="0.375rem"
-          width="1.5rem"
-          display="flex"
-          justifyContent="center"
+    <Skeleton isLoaded={loaded} variant="ironFish">
+      <Box>
+        <Flex
+          sx={$styles.inputContainer}
+          alignItems="center"
+          p="0rem 0.375rem 0 0.375rem"
         >
-          {orderNo}
-        </Kbd>
-        {loading ? (
-          <Flex w="5.3125rem" h="2.25rem" align="center">
-            <Skeleton variant="ironFish" w="100%" h="1.375rem" />
-          </Flex>
-        ) : (
+          <Kbd
+            p="0.0625rem 0"
+            mr="0.375rem"
+            width="1.5rem"
+            display="flex"
+            justifyContent="center"
+          >
+            {orderNo}
+          </Kbd>
           <Input
             maxLength={8}
             variant={'unstyled'}
@@ -79,9 +75,9 @@ const MnemonicInput: FC<MnemonicInputProps> = ({
             sx={$styles.input}
             onChange={changeHandler}
           />
-        )}
-      </Flex>
-    </Box>
+        </Flex>
+      </Box>
+    </Skeleton>
   )
 }
 
@@ -93,7 +89,7 @@ interface MnemonicViewProps extends Omit<FlexProps, 'onChange'> {
   isReadOnly: boolean
   visible?: boolean
   onChange: (value: string[]) => void
-  loading?: boolean
+  loaded?: boolean
 }
 
 const MnemonicView: FC<MnemonicViewProps> = ({
@@ -104,7 +100,7 @@ const MnemonicView: FC<MnemonicViewProps> = ({
   isReadOnly,
   visible,
   onChange,
-  loading,
+  loaded,
   ...rest
 }) => {
   const [$show, $setShow] = useState<boolean>(!!visible)
@@ -147,7 +143,7 @@ const MnemonicView: FC<MnemonicViewProps> = ({
             <MnemonicInput
               key={index}
               value={word}
-              loading={loading}
+              loaded={loaded}
               placeholder={placeholder}
               isVisible={$show}
               orderNo={index + 1}
