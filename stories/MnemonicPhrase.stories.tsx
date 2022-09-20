@@ -26,10 +26,13 @@ const words = [
 export const MnemonicViewTemplate: ComponentStory<FC> = () => {
   const [phrase, setPhrase] = useState([])
   const [secondPhrase, setSecondPhrase] = useState([])
+  const [loading, setLoading] = useState(false)
 
   useEffect(() => {
+    setLoading(true)
     setTimeout(() => {
       setPhrase(words)
+      setLoading(false)
     }, 3000)
   }, [])
 
@@ -44,6 +47,7 @@ export const MnemonicViewTemplate: ComponentStory<FC> = () => {
         }}
         isReadOnly={true}
         visible
+        loaded={!loading}
       />
       <Box>
         <h4>Input mode</h4>
@@ -57,6 +61,20 @@ export const MnemonicViewTemplate: ComponentStory<FC> = () => {
           }}
           isReadOnly={false}
           onChange={newPhrase => setSecondPhrase(newPhrase)}
+        />
+      </Box>
+      <Box>
+        <h4>Loading state</h4>
+        <MnemonicView
+          header="Mnemonic phrase"
+          placeholder="Empty"
+          value={phrase}
+          w="37.5rem"
+          toolTipProps={{
+            label: 'Secret phrase',
+          }}
+          isReadOnly={true}
+          loaded={false}
         />
       </Box>
     </VStack>

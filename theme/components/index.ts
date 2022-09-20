@@ -7,6 +7,7 @@ import Checkbox from './Checkbox'
 import FieldGroup from './FieldGroup'
 import SearchAutocomplete from './SearchAutocomplete'
 import SelectField from './SelectField'
+import Skeleton from './Skeleton'
 import Input from './Input'
 import Kbd from './Kbd'
 import Link from './Link'
@@ -26,6 +27,7 @@ const ThemedComponents: Record<string, ComponentStyleConfig> = {
   FieldGroup,
   SelectField,
   SearchAutocomplete,
+  Skeleton,
   Input,
   Kbd,
   Link,
