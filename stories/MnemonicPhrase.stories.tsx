@@ -69,7 +69,7 @@ export const MnemonicViewTemplate: ComponentStory<FC> = () => {
           header="Mnemonic phrase"
           placeholder="Empty"
           value={phrase}
-          w="600px"
+          w="37.5rem"
           toolTipProps={{
             label: 'Secret phrase',
           }}
