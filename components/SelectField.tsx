@@ -64,7 +64,7 @@ const SelectField: FC<SelectFieldProps> = ({
   label,
   value = null,
   options = [],
-  renderOption = Option,
+  renderOption = option => <Option {...option} />,
   renderSelected = SelectedOption,
   onSelectOption = () => void 0,
   ...props
