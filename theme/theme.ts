@@ -14,7 +14,10 @@ export const IronFishTheme: DeepPartial<ChakraTheme> = {
   styles: {
     global: props => ({
       body: {
-        backgroundColor: mode(NAMED_COLORS.WHITE, NAMED_COLORS.BLACK)(props),
+        backgroundColor: mode(
+          NAMED_COLORS.WHITE,
+          NAMED_COLORS.LIGHT_BLACK
+        )(props),
       },
       h1: {
         ...typeface,
