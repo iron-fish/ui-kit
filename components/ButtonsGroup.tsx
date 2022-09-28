@@ -1,4 +1,4 @@
-import { FC, ReactNode } from 'react'
+import { FC, ReactNode, MouseEvent } from 'react'
 import {
   ButtonProps,
   Menu,
@@ -14,11 +14,11 @@ import ThreeDotsIcon from 'svgx/three-dots-Icon'
 export interface MenuItemsType {
   key: string
   label: ReactNode
-  onClick: (event: MouseEventHandler<HTMLButtonElement>) => void
+  onClick: (event: MouseEvent<HTMLButtonElement>) => void
 }
 
 interface ButtonsGroupProps {
-  menuItems: MenuItemsType
+  menuItems: MenuItemsType[]
   menuProps: MenuProps
   menuButtonProps: ButtonProps
   menuListProps: MenuListProps
