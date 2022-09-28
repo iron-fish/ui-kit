@@ -1,7 +1,7 @@
 import { FC, useEffect, useState } from 'react'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
-import { VStack, Box } from '@chakra-ui/react'
-import { MnemonicView } from 'components'
+import { VStack, Box, Flex } from '@chakra-ui/react'
+import { MnemonicView, CopyToClipboardButton } from 'components'
 
 export default {
   title: 'Components/MnemonicView',
@@ -23,6 +23,21 @@ const words = [
   'Milk',
 ]
 
+interface HeaderProps {
+  value: string
+}
+
+const Header: FC<HeaderProps> = ({ value }) => (
+  <Flex gap="0.4375rem" alignItems="baseline">
+    <h3>Mnemonic phrase</h3>
+    <CopyToClipboardButton
+      value={value}
+      copyTooltipText="CopyToClipBoard"
+      copiedTooltipText="Copied"
+    />
+  </Flex>
+)
+
 export const MnemonicViewTemplate: ComponentStory<FC> = () => {
   const [phrase, setPhrase] = useState([])
   const [secondPhrase, setSecondPhrase] = useState([])
@@ -39,7 +54,7 @@ export const MnemonicViewTemplate: ComponentStory<FC> = () => {
   return (
     <VStack w="100%" flexDirection="column" spacing={16}>
       <MnemonicView
-        header="Mnemonic phrase"
+        header={<Header value={phrase.join(', ')} />}
         value={phrase}
         w="600px"
         toolTipProps={{

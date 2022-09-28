@@ -82,7 +82,7 @@ const MnemonicInput: FC<MnemonicInputProps> = ({
 }
 
 interface MnemonicViewProps extends Omit<FlexProps, 'onChange'> {
-  header: string
+  header: ReactNode
   placeholder: string
   value?: string[]
   toolTipProps?: TooltipProps
