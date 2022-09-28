@@ -56,7 +56,7 @@ interface SelectFieldProps extends FlexProps {
   options?: OptionType[]
   size?: string
   renderOption?: (option: OptionType) => ReactNode
-  renderLabel?: (option: OptionType) => ReactNode
+  renderLabel?: (label: string) => ReactNode
   renderSelected?: (option: OptionType) => ReactNode
   onSelectOption?: (option: OptionType) => void
 }
