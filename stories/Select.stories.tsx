@@ -1,12 +1,22 @@
 import { FC, useState, useEffect } from 'react'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 import SelectField from 'components/SelectField'
-import { Box, Stack, VStack } from '@chakra-ui/react'
+import { Flex, Box, Stack, VStack } from '@chakra-ui/react'
+import ArrowUpArrowDownIcon from 'svgx/arrow-up-arrow-down-icon'
 
 export default {
   title: 'Components/Select',
   component: SelectField,
 } as ComponentMeta<typeof SelectField>
+
+const renderLabel = label => {
+  return (
+    <Flex alignItems="center" gap="5px">
+      <ArrowUpArrowDownIcon />
+      {label}
+    </Flex>
+  )
+}
 
 export const BasicExample: ComponentStory<FC> = () => (
   <Stack>
@@ -69,7 +79,6 @@ export const BasicExample: ComponentStory<FC> = () => (
     </Box>
     <SelectField
       label="Select Label"
-      w="25%"
       size="small"
       options={[
         {
@@ -89,6 +98,37 @@ export const BasicExample: ComponentStory<FC> = () => (
         },
       ]}
     />
+    <Box>
+      <h4>Compact</h4>
+    </Box>
+    <Flex width="100%">
+      {[0, 'auto'].map((ml, index) => (
+        <SelectField
+          key={index}
+          ml={ml}
+          label="Sort"
+          size="compact"
+          renderLabel={renderLabel}
+          options={[
+            {
+              label: 'Test 1',
+              helperText: 'This is 1 option',
+              value: 'option1',
+            },
+            {
+              label: 'Test 2',
+              helperText: 'This is 2 option',
+              value: 'option2',
+            },
+            {
+              label: 'This is 3 option',
+              helperText: 'This is 3 option',
+              value: 'option3',
+            },
+          ]}
+        />
+      ))}
+    </Flex>
   </Stack>
 )
 

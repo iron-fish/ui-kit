@@ -125,6 +125,56 @@ const SelectField: ComponentStyleConfig = {
         },
       },
     },
+    compact: props => ({
+      container: {
+        h: '2.5rem',
+        px: '1rem',
+        py: '0.75rem',
+        width: 'fit-content',
+        '&.select-field': {
+          '&--focused': {
+            borderRadius: '0.25rem',
+          },
+        },
+        '.select-field__content': {
+          flexDirection: 'row',
+          alignItems: 'center',
+          justifyContent: 'start',
+          maxW: 'min-content',
+          w: 'min-content',
+          whiteSpace: 'nowrap',
+        },
+      },
+      label: {
+        mr: '0.4rem',
+        fontSize: '0.6875rem',
+        fontWeight: '400',
+        fontFamily: FONTS.FAVORIT,
+        lineHeight: '1.1rem',
+        color: mode(NAMED_COLORS.DEEP_BLUE, NAMED_COLORS.PALE_GREY)(props),
+      },
+      popover: {
+        borderTopRadius: '0.25rem',
+      },
+      optionWrapper: {
+        '.option': {
+          minW: '16.0625rem',
+          h: '2.5rem',
+          px: '1rem',
+          py: '0.75rem',
+          '.option-label': {
+            fontSize: '0.75rem',
+          },
+          '.option-text': {
+            display: 'none',
+          },
+        },
+      },
+      value: {
+        display: 'none',
+      },
+      leftIcon: { display: 'none' },
+    }),
   },
   defaultProps: {
     h: '4.313rem',

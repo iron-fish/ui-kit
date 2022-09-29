@@ -56,6 +56,7 @@ interface SelectFieldProps extends FlexProps {
   options?: OptionType[]
   size?: string
   renderOption?: (option: OptionType) => ReactNode
+  renderLabel?: (label: string) => ReactNode
   renderSelected?: (option: OptionType) => ReactNode
   onSelectOption?: (option: OptionType) => void
 }
@@ -64,6 +65,7 @@ const SelectField: FC<SelectFieldProps> = ({
   label,
   value = null,
   options = [],
+  renderLabel = valueLabel => valueLabel,
   renderOption = option => <Option {...option} />,
   renderSelected = SelectedOption,
   onSelectOption = () => void 0,
@@ -84,7 +86,7 @@ const SelectField: FC<SelectFieldProps> = ({
       onOpen={onOpen}
       onClose={onClose}
       offset={[0, 0]}
-      placement="bottom"
+      placement={props.size !== 'compact' ? 'bottom' : 'bottom-end'}
     >
       <PopoverTrigger>
         <Flex
@@ -103,12 +105,12 @@ const SelectField: FC<SelectFieldProps> = ({
           alignItems="center"
         >
           <Flex className={bem('content')} w="100%">
-            <Box sx={styles?.label}>{label}</Box>
+            <Box sx={styles?.label}>{label && renderLabel(label)}</Box>
             <Box sx={styles?.value} overflow="hidden">
               {val && renderSelected(val)}
             </Box>
           </Flex>
-          <Box>
+          <Box sx={styles.leftIcon}>
             <DropdownArrow
               style={{ transform: `rotate(${isOpen ? '0' : '180deg'})` }}
             />
