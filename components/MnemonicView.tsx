@@ -1,4 +1,4 @@
-import { FC, useState, useEffect, ChangeEvent, useMemo } from 'react'
+import { FC, useState, useEffect, ChangeEvent, useMemo, ReactNode } from 'react'
 
 import {
   Box,
@@ -82,7 +82,7 @@ const MnemonicInput: FC<MnemonicInputProps> = ({
 }
 
 interface MnemonicViewProps extends Omit<FlexProps, 'onChange'> {
-  header: string
+  header: ReactNode
   placeholder: string
   value?: string[]
   toolTipProps?: TooltipProps
