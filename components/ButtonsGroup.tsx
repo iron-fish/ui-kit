@@ -19,10 +19,10 @@ export interface MenuItemsType {
 
 interface ButtonsGroupProps {
   menuItems: MenuItemsType[]
-  menuProps: MenuProps
-  menuButtonProps: ButtonProps
-  menuListProps: MenuListProps
-  menuItemProps: MenuItemProps
+  menuProps?: MenuProps
+  menuButtonProps?: ButtonProps
+  menuListProps?: MenuListProps
+  menuItemProps?: MenuItemProps
 }
 
 const ButtonsGroup: FC<ButtonsGroupProps> = ({
