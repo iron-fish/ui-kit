@@ -1,4 +1,4 @@
-import { FC, useState, useEffect, ChangeEvent, useMemo } from 'react'
+import { FC, useState, useEffect, ChangeEvent, useMemo, ReactNode } from 'react'
 
 import {
   Box,
@@ -10,6 +10,7 @@ import {
   Tooltip,
   useMultiStyleConfig,
   Input,
+  Skeleton,
 } from '@chakra-ui/react'
 import IconBlinkingEye from 'svgx/icon-blinkingEye'
 import IconInfo from 'svgx/icon-info'
@@ -21,6 +22,7 @@ interface MnemonicInputProps {
   orderNo: number
   isReadOnly: boolean
   onChange: (value: string) => void
+  loaded?: boolean
 }
 
 const MnemonicInput: FC<MnemonicInputProps> = ({
@@ -30,6 +32,7 @@ const MnemonicInput: FC<MnemonicInputProps> = ({
   orderNo,
   isReadOnly,
   onChange,
+  loaded = true,
 }) => {
   const $styles = useMultiStyleConfig('MnemonicView', {})
 
@@ -45,45 +48,48 @@ const MnemonicInput: FC<MnemonicInputProps> = ({
   }
 
   return (
-    <Box>
-      <Flex
-        sx={$styles.inputContainer}
-        alignItems="center"
-        p="0rem 0.375rem 0 0.375rem"
-      >
-        <Kbd
-          p="0.0625rem 0"
-          mr="0.375rem"
-          width="1.5rem"
-          display="flex"
-          justifyContent="center"
+    <Skeleton isLoaded={loaded} variant="ironFish">
+      <Box>
+        <Flex
+          sx={$styles.inputContainer}
+          alignItems="center"
+          p="0rem 0.375rem 0 0.375rem"
         >
-          {orderNo}
-        </Kbd>
-        <Input
-          maxLength={8}
-          variant={'unstyled'}
-          w={`5.3125rem`}
-          value={isReadOnly ? visibleValue : value}
-          isReadOnly={isReadOnly}
-          placeholder={!isReadOnly ? placeholder : ''}
-          type={isVisible ? 'text' : 'password'}
-          sx={$styles.input}
-          onChange={changeHandler}
-        />
-      </Flex>
-    </Box>
+          <Kbd
+            p="0.0625rem 0"
+            mr="0.375rem"
+            width="1.5rem"
+            display="flex"
+            justifyContent="center"
+          >
+            {orderNo}
+          </Kbd>
+          <Input
+            maxLength={8}
+            variant={'unstyled'}
+            w="5.3125rem"
+            value={isReadOnly ? visibleValue : value}
+            isReadOnly={isReadOnly}
+            placeholder={!isReadOnly ? placeholder : ''}
+            type={isVisible ? 'text' : 'password'}
+            sx={$styles.input}
+            onChange={changeHandler}
+          />
+        </Flex>
+      </Box>
+    </Skeleton>
   )
 }
 
 interface MnemonicViewProps extends Omit<FlexProps, 'onChange'> {
-  header: string
+  header: ReactNode
   placeholder: string
   value?: string[]
   toolTipProps?: TooltipProps
   isReadOnly: boolean
   visible?: boolean
   onChange: (value: string[]) => void
+  loaded?: boolean
 }
 
 const MnemonicView: FC<MnemonicViewProps> = ({
@@ -94,28 +100,26 @@ const MnemonicView: FC<MnemonicViewProps> = ({
   isReadOnly,
   visible,
   onChange,
+  loaded,
   ...rest
 }) => {
   const [$show, $setShow] = useState<boolean>(!!visible)
   const [$currentWords, $setCurrentWords] = useState<string[]>([])
   const $styles = useMultiStyleConfig('MnemonicView', rest)
 
-  const onWordChange = (index: number) => (word: string) =>
-    $setCurrentWords(prev => {
-      const next = [...prev]
-      next[index] = word
-      return next
-    })
+  const onWordChange = (index: number) => (word: string) => {
+    const next = [...$currentWords]
+    next[index] = word
+    onChange(next)
+  }
 
   useEffect(() => {
     $setCurrentWords(isReadOnly ? value : new Array(12).fill(''))
   }, [])
 
   useEffect(() => {
-    if (!isReadOnly && onChange) {
-      onChange($currentWords)
-    }
-  }, [$currentWords])
+    $setCurrentWords(value.length ? value : new Array(12).fill(''))
+  }, [JSON.stringify(value)])
 
   return (
     <Flex sx={$styles.container} direction="column" {...rest}>
@@ -124,11 +128,12 @@ const MnemonicView: FC<MnemonicViewProps> = ({
         <Box sx={$styles.icons}>
           <IconBlinkingEye
             closed={$show}
+            cursor="pointer"
             onClick={() => $setShow(!$show)}
             mr="0.9375rem"
           />
           <Tooltip hasArrow={true} {...toolTipProps}>
-            <IconInfo />
+            <IconInfo cursor="pointer" />
           </Tooltip>
         </Box>
       </Flex>
@@ -138,6 +143,7 @@ const MnemonicView: FC<MnemonicViewProps> = ({
             <MnemonicInput
               key={index}
               value={word}
+              loaded={loaded}
               placeholder={placeholder}
               isVisible={$show}
               orderNo={index + 1}

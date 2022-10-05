@@ -27,7 +27,7 @@ where all available component can be tested and configured.
 
 ## Learn More
 
-- [Chakra-ui documentation](https://chakra-ui.com/guides/first-steps).
+- [Chakra-ui documentation](https://chakra-ui.com/getting-started).
 - [Storybook documentation](https://storybook.js.org/docs/react/get-started/introduction).
 
 

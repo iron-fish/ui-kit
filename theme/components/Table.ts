@@ -20,18 +20,24 @@ const Table: ComponentStyleConfig = {
         },
       },
     },
+    th: {
+      color: mode(NAMED_COLORS.GREY, NAMED_COLORS.PALE_GREY)(props),
+      fontStyle: 'normal',
+      fontSize: '0.75rem',
+      lineHeight: '1.188rem',
+      fontWeight: '400',
+      fontFamily: FONTS.FAVORIT,
+      letterSpacing: '0.1em',
+    },
     thead: {
       th: {
-        color: mode(NAMED_COLORS.GREY, NAMED_COLORS.PALE_GREY)(props),
-        fontStyle: 'normal',
-        fontSize: '0.75rem',
-        lineHeight: '1.188rem',
-        fontWeight: '400',
-        fontFamily: FONTS.FAVORIT,
-        letterSpacing: '0.1em',
-        paddingTop: '0.5rem',
+        paddingTop: '0.125rem',
         paddingBottom: '0',
+        paddingLeft: '1rem',
         borderBottom: 'none',
+        _first: {
+          paddingLeft: '2rem',
+        },
       },
     },
     td: {
@@ -69,6 +75,9 @@ const Table: ComponentStyleConfig = {
       thead: {
         th: {
           p: '0 0 0.9375rem',
+          _first: {
+            paddingLeft: '0',
+          },
         },
       },
       tbody: {
