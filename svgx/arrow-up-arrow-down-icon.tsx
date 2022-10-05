@@ -1,7 +1,7 @@
 import { FC } from 'react'
 import { Icon, IconProps } from '@chakra-ui/react'
 
-const ArrowUpArrowDownIcon: FC<IconProps> = props => {
+export const ArrowUpArrowDownIcon: FC<IconProps> = props => {
   return (
     <Icon
       width="14px"

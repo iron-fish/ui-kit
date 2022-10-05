@@ -5,12 +5,12 @@ import * as Svgx from 'svgx'
 
 export default {
   title: 'Components/Icons',
-  component: Flex,
+  component: Icon,
 } as ComponentMeta<typeof Icon>
 
 const getIconDemo = (UIKitIcon, iconName, iconProps = {}) => (
   <Flex direction="column" align="center">
-    <UIKitIcon height="24px" width="auto" {...iconProps} />
+    <UIKitIcon height="1.5rem" width="100%" {...iconProps} />
     <Text pt="5px">{iconName}</Text>
   </Flex>
 )
