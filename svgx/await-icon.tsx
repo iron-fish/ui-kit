@@ -3,8 +3,8 @@ import { FC } from 'react'
 
 export const AwaitIcon: FC<IconProps> = props => (
   <Icon
-    w="14px"
-    h="14px"
+    w="0.875rem"
+    h="0.875rem"
     viewBox="0 0 14 14"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"

@@ -3,8 +3,8 @@ import { FC } from 'react'
 
 export const PendingIcon: FC<IconProps> = props => (
   <Icon
-    w="10px"
-    h="2px"
+    w="0.625rem"
+    h="0.125rem"
     viewBox="0 0 10 2"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
