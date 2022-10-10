@@ -4,16 +4,24 @@ import { NAMED_COLORS } from 'theme/constants'
 
 const Tooltip: ComponentStyleConfig = {
   variants: {
-    ironBlue: {
+    ironBlue: ({ isIndeterminate }) => ({
       filledTrack: {
-        bgImage: `linear-gradient(to right, transparent 0%, ${NAMED_COLORS.BLUE} 50%, transparent 100%)`,
+        ...(isIndeterminate
+          ? {
+              bgImage: `linear-gradient(to right, transparent 0%, ${NAMED_COLORS.BLUE} 50%, transparent 100%)`,
+            }
+          : { bg: NAMED_COLORS.BLUE }),
       },
-    },
-    ironLightBlue: {
+    }),
+    ironLightBlue: ({ isIndeterminate }) => ({
       filledTrack: {
-        bgImage: `linear-gradient(to right, transparent 0%, ${NAMED_COLORS.LIGHT_BLUE} 50%, transparent 100%)`,
+        ...(isIndeterminate
+          ? {
+              bgImage: `linear-gradient(to right, transparent 0%, ${NAMED_COLORS.LIGHT_BLUE} 50%, transparent 100%)`,
+            }
+          : { bgColor: NAMED_COLORS.LIGHT_BLUE }),
       },
-    },
+    }),
   },
 }
 
