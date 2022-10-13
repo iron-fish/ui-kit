@@ -10,7 +10,7 @@ export const ConfirmedIcon: FC<IconProps> = props => (
     xmlns="http://www.w3.org/2000/svg"
     {...props}
   >
-    <path d="M13 1L4.81818 8.5L1 5" stroke="black" strokeWidth="1.5" />
+    <path d="M13 1L4.81818 8.5L1 5" stroke="currentColor" strokeWidth="1.5" />
   </Icon>
 )
 

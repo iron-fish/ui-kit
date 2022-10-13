@@ -10,7 +10,7 @@ export const ExpiredIcon: FC<IconProps> = props => (
     xmlns="http://www.w3.org/2000/svg"
     {...props}
   >
-    <path d="M11 1L1 10M1 1L11 10" stroke="#F15929" strokeWidth="1.5" />
+    <path d="M11 1L1 10M1 1L11 10" stroke="currentColor" strokeWidth="1.5" />
   </Icon>
 )
 
