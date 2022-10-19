@@ -8,6 +8,10 @@ import IconBulb from 'svgx/icon-bulb'
 import IconHome from 'svgx/icon-home'
 import IconMiner from 'svgx/icon-miner'
 import IconNode from 'svgx/icon-node'
+import AwaitIcon from 'svgx/await-icon'
+import ConfirmedIcon from 'svgx/confirmed-icon'
+import ExpiredIcon from 'svgx/expired-icon'
+import PendingIcon from 'svgx/pending-icon'
 
 export default {
   title: 'Components/Icons',
@@ -30,5 +34,9 @@ export const Icons: ComponentStory<FC> = () => (
     {getIconDemo(<IconHome />, 'IconHome')}
     {getIconDemo(<IconMiner />, 'IconMiner')}
     {getIconDemo(<IconNode />, 'IconNode')}
+    {getIconDemo(<AwaitIcon />, 'AwaitIcon')}
+    {getIconDemo(<ConfirmedIcon />, 'ConfirmedIcon')}
+    {getIconDemo(<ExpiredIcon />, 'ExpiredIcon')}
+    {getIconDemo(<PendingIcon />, 'PendingIcon')}
   </Grid>
 )
