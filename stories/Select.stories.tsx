@@ -26,23 +26,11 @@ export const BasicExample: ComponentStory<FC> = () => (
     <SelectField
       label="Select Label"
       w="50%"
-      options={[
-        {
-          label: 'Test',
-          helperText: 'This is 1 option',
-          value: 'option1',
-        },
-        {
-          label: 'Test',
-          helperText: 'This is 2 option',
-          value: 'option2',
-        },
-        {
-          label: 'Test',
-          helperText: 'This is 3 option',
-          value: 'option3',
-        },
-      ]}
+      options={[...new Array(20)].map((item, index) => ({
+        label: `Test${index}`,
+        helperText: `This is ${index} option`,
+        value: `option ${index}`,
+      }))}
     />
     <Box>
       <h4>With custom options render</h4>
@@ -129,6 +117,15 @@ export const BasicExample: ComponentStory<FC> = () => (
         />
       ))}
     </Flex>
+    <SelectField
+      label="Select Label"
+      w="50%"
+      options={[...new Array(5)].map((item, index) => ({
+        label: `Test${index}`,
+        helperText: `This is ${index} option`,
+        value: `option ${index}`,
+      }))}
+    />
   </Stack>
 )
 

@@ -1,4 +1,4 @@
-import { FC, useState, useEffect, ReactNode } from 'react'
+import { FC, useState, useEffect, ReactNode, useRef } from 'react'
 
 import {
   Box,
@@ -74,6 +74,14 @@ const SelectField: FC<SelectFieldProps> = ({
   const [val, setVal] = useState<OptionType | null>(null)
   const { onOpen, onClose, isOpen } = useDisclosure()
   const styles = useMultiStyleConfig('SelectField', props)
+  const containerRef = useRef()
+
+  const isToTop =
+    containerRef.current &&
+    containerRef.current.parentElement.getAttribute('data-popper-placement') ===
+      'top'
+
+  console.log(isToTop)
 
   useEffect(() => {
     setVal(value)
@@ -97,8 +105,15 @@ const SelectField: FC<SelectFieldProps> = ({
           sx={{
             ...styles?.container,
             ...props.sx,
-            borderBottomRadius: isOpen ? 0 : undefined,
-            borderBottom: isOpen ? 0 : undefined,
+            ...(isToTop
+              ? {
+                  borderTopRadius: isOpen ? 0 : undefined,
+                  borderTop: isOpen ? 0 : undefined,
+                }
+              : {
+                  borderBottomRadius: isOpen ? 0 : undefined,
+                  borderBottom: isOpen ? 0 : undefined,
+                }),
           }}
           role="group"
           justifyContent="center"
@@ -117,16 +132,23 @@ const SelectField: FC<SelectFieldProps> = ({
           </Box>
         </Flex>
       </PopoverTrigger>
-      <PopoverContent w="100%" sx={styles?.popover}>
+      <PopoverContent
+        w="100%"
+        sx={{
+          ...styles?.popover,
+          borderBottomRadius: isToTop ? 0 : '0.25rem',
+          borderTopRadius: isToTop ? '0.25rem' : 0,
+        }}
+        ref={containerRef}
+      >
         <PopoverBody w="100%">
           {options.map(option => (
             <Box
               w="100%"
               key={option?.value}
-              className={bem(
-                'option-wrapper',
-                val === option ? 'selected' : ''
-              )}
+              className={bem('option-wrapper', {
+                selected: val === option,
+              })}
               sx={styles?.optionWrapper}
               onClick={() => {
                 if (val !== option) {
