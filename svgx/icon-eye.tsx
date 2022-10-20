@@ -5,9 +5,11 @@ interface IconEyeProps extends IconProps {
   crossed: boolean
 }
 
-const IconEye: FC<IconEyeProps> = ({ crossed = true, ...rest }) => {
+export const IconEye: FC<IconEyeProps> = ({ crossed = true, ...rest }) => {
   return crossed ? (
     <Icon
+      height="11px"
+      width="16px"
       viewBox="0 0 16 11"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
@@ -20,6 +22,8 @@ const IconEye: FC<IconEyeProps> = ({ crossed = true, ...rest }) => {
     </Icon>
   ) : (
     <Icon
+      height="14px"
+      width="16px"
       viewBox="0 0 16 14"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"

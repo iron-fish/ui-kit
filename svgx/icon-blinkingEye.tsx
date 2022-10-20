@@ -5,9 +5,11 @@ interface IconEyeProps extends IconProps {
   closed: boolean
 }
 
-const IconBlinkingEye: FC<IconEyeProps> = ({ closed, ...rest }) => {
+export const IconBlinkingEye: FC<IconEyeProps> = ({ closed, ...rest }) => {
   return closed ? (
     <Icon
+      height="13px"
+      width="15px"
       viewBox="0 0 15 13"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
@@ -21,6 +23,8 @@ const IconBlinkingEye: FC<IconEyeProps> = ({ closed, ...rest }) => {
     </Icon>
   ) : (
     <Icon
+      height="13px"
+      width="15px"
       viewBox="0 0 15 13"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
