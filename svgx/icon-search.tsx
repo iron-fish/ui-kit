@@ -1,8 +1,16 @@
-import { Icon } from '@chakra-ui/react'
+import { Icon, IconProps } from '@chakra-ui/react'
+import { FC } from 'react'
 
-export function IconSearch() {
+export const IconSearch: FC<IconProps> = props => {
   return (
-    <Icon viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <Icon
+      height="15px"
+      width="15px"
+      viewBox="0 0 15 15"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      {...props}
+    >
       <circle
         cx="6.364"
         cy="6.364"
