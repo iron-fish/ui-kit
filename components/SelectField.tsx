@@ -11,6 +11,7 @@ import {
   useDisclosure,
   useMultiStyleConfig,
   useStyleConfig,
+  useDimensions,
 } from '@chakra-ui/react'
 import DropdownArrow from 'svgx/dropdown-arrow'
 
@@ -72,16 +73,19 @@ const SelectField: FC<SelectFieldProps> = ({
   ...props
 }) => {
   const [val, setVal] = useState<OptionType | null>(null)
+  const [isToTop, setIsToTop] = useState(false)
   const { onOpen, onClose, isOpen } = useDisclosure()
   const styles = useMultiStyleConfig('SelectField', props)
   const containerRef = useRef()
+  const dimensions = useDimensions(containerRef, isOpen)
 
-  const isToTop =
-    containerRef.current &&
-    containerRef.current.parentElement.getAttribute('data-popper-placement') ===
-      'top'
-
-  console.log(isToTop)
+  useEffect(() => {
+    setIsToTop(
+      containerRef.current.parentElement.getAttribute(
+        'data-popper-placement'
+      ) === 'top'
+    )
+  }, [dimensions?.borderBox.top])
 
   useEffect(() => {
     setVal(value)
