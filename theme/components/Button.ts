@@ -62,14 +62,14 @@ const Button: ComponentStyleConfig = {
       '.chakra-button__icon': {
         fill: mode(NAMED_COLORS.WHITE, NAMED_COLORS.DEEP_BLUE)(props),
       },
-      ':hover': {
+      _hover: {
         bgColor: mode(NAMED_COLORS.WHITE, NAMED_COLORS.LIGHT_BLACK)(props),
         color: mode(NAMED_COLORS.DEEP_BLUE, NAMED_COLORS.WHITE)(props),
         borderColor: mode(NAMED_COLORS.DEEP_BLUE, NAMED_COLORS.WHITE)(props),
         '.chakra-button__icon': {
           fill: mode(NAMED_COLORS.DEEP_BLUE, NAMED_COLORS.WHITE)(props),
         },
-        _disabled: getDisabledStyle,
+        _disabled: getDisabledStyle(props),
       },
       _disabled: {
         '.chakra-button__icon': {
@@ -88,14 +88,14 @@ const Button: ComponentStyleConfig = {
       '.chakra-button__icon': {
         fill: mode(NAMED_COLORS.BLACK, NAMED_COLORS.WHITE)(props),
       },
-      ':hover': {
+      _hover: {
         '.chakra-button__icon': {
           fill: mode(NAMED_COLORS.BLACK, NAMED_COLORS.BLACK)(props),
         },
         bgColor: NAMED_COLORS.WHITE,
         borderColor: mode(NAMED_COLORS.DEEP_BLUE, NAMED_COLORS.WHITE)(props),
         color: NAMED_COLORS.DEEP_BLUE,
-        _disabled: getDisabledStyle,
+        _disabled: getDisabledStyle(props),
       },
       _disabled: {
         '.chakra-button__icon': {
