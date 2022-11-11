@@ -14,6 +14,7 @@ import Link from './Link'
 import Menu from './Menu'
 import MnemonicView from './MnemonicView'
 import Option from './Option'
+import Progress from './Progress'
 import Table from './Table'
 import Tabs from './Tabs'
 import TextField from './TextField'
@@ -34,6 +35,7 @@ const ThemedComponents: Record<string, ComponentStyleConfig> = {
   Menu,
   MnemonicView,
   Option,
+  Progress,
   Table,
   Tabs,
   TextField,
