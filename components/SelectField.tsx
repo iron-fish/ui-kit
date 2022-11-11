@@ -1,4 +1,4 @@
-import { FC, useState, useEffect, ReactNode, useRef } from 'react'
+import { FC, useState, useEffect, ReactNode, useRef, RefObject } from 'react'
 
 import {
   Box,
@@ -11,9 +11,9 @@ import {
   useDisclosure,
   useMultiStyleConfig,
   useStyleConfig,
-  useDimensions,
 } from '@chakra-ui/react'
 import DropdownArrow from 'svgx/dropdown-arrow'
+import useToTop from 'hooks/useToTop'
 
 // This is avoid error: Could not find a declaration file for module 'bem'.
 // eslint-disable-next-line @typescript-eslint/no-var-requires
@@ -73,27 +73,11 @@ const SelectField: FC<SelectFieldProps> = ({
   ...props
 }) => {
   const [val, setVal] = useState<OptionType | null>(null)
-  const [isToTop, setIsToTop] = useState(false)
   const { onOpen, onClose, isOpen } = useDisclosure()
   const styles = useMultiStyleConfig('SelectField', props)
-  const containerRef = useRef<HTMLElement | null>(null)
-
-  const dimensions = useDimensions(
-    containerRef,
-    isOpen &&
-      window.innerHeight >
-        (containerRef.current?.parentElement?.clientHeight || 0)
-  )
-
-  useEffect(() => {
-    setIsToTop(
-      containerRef.current?.parentElement?.getAttribute(
-        'data-popper-placement'
-      ) === 'top'
-    )
-  }, [dimensions])
-
-  useEff
+  const containerRef = useRef<HTMLDivElement>(null)
+  const triggerRef = useRef<HTMLDivElement>(null)
+  const isToTop = useToTop(containerRef, triggerRef, isOpen)
 
   useEffect(() => {
     setVal(value)
@@ -110,6 +94,7 @@ const SelectField: FC<SelectFieldProps> = ({
     >
       <PopoverTrigger>
         <Flex
+          ref={triggerRef as RefObject<HTMLDivElement>}
           id="SelectField"
           className={isOpen ? bem(['focused']) : bem()}
           tabIndex={0}
@@ -151,7 +136,7 @@ const SelectField: FC<SelectFieldProps> = ({
           borderBottomRadius: isToTop ? 0 : '0.25rem',
           borderTopRadius: isToTop ? '0.25rem' : 0,
         }}
-        ref={containerRef}
+        ref={containerRef as RefObject<HTMLDivElement>}
       >
         <PopoverBody w="100%">
           {options.map(option => (

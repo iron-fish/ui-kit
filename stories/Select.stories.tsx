@@ -117,6 +117,18 @@ export const BasicExample: ComponentStory<FC> = () => (
         />
       ))}
     </Flex>
+    <Box>
+      <h4>Flip</h4>
+    </Box>
+    <SelectField
+      label="Select Label"
+      w="50%"
+      options={[...new Array(7)].map((item, index) => ({
+        label: `Test${index}`,
+        helperText: `This is ${index} option`,
+        value: `option ${index}`,
+      }))}
+    />
     <SelectField
       label="Select Label"
       w="50%"
