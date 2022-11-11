@@ -76,16 +76,24 @@ const SelectField: FC<SelectFieldProps> = ({
   const [isToTop, setIsToTop] = useState(false)
   const { onOpen, onClose, isOpen } = useDisclosure()
   const styles = useMultiStyleConfig('SelectField', props)
-  const containerRef = useRef()
-  const dimensions = useDimensions(containerRef, isOpen)
+  const containerRef = useRef<HTMLElement | null>(null)
+
+  const dimensions = useDimensions(
+    containerRef,
+    isOpen &&
+      window.innerHeight >
+        (containerRef.current?.parentElement?.clientHeight || 0)
+  )
 
   useEffect(() => {
     setIsToTop(
-      containerRef.current.parentElement.getAttribute(
+      containerRef.current?.parentElement?.getAttribute(
         'data-popper-placement'
       ) === 'top'
     )
-  }, [dimensions?.borderBox.top])
+  }, [dimensions])
+
+  useEff
 
   useEffect(() => {
     setVal(value)
@@ -149,7 +157,11 @@ const SelectField: FC<SelectFieldProps> = ({
           {options.map(option => (
             <Box
               w="100%"
-              key={option?.value}
+              key={
+                typeof option.value === 'object'
+                  ? Object.values(option.value).join('-')
+                  : option.value
+              }
               className={bem('option-wrapper', {
                 selected: val === option,
               })}
