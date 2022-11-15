@@ -71,6 +71,9 @@ const SelectField: ComponentStyleConfig = {
     optionWrapper: {
       borderColor: mode(NAMED_COLORS.DEEP_BLUE, NAMED_COLORS.WHITE)(props),
       transition: 'all 300ms ease-in',
+      _first: {
+        borderTopRadius: '0.25rem',
+      },
       ':last-of-type': {
         borderBottomRadius: '0.25rem',
       },

@@ -24,6 +24,7 @@ import {
 import useOutsideClickHandler from 'hooks/useOutsideClickHandler'
 import { Option, OptionType, SelectedOption } from './SelectField'
 import DropdownArrow from 'svgx/dropdown-arrow'
+import useToTop from 'hooks/useToTop'
 
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const bem = require('bem-classname').bind(null, 'autocomplete')
@@ -64,8 +65,10 @@ const Autocomplete: FC<AutocompleteProps> = ({
   const [search, setSearch] = useState<string>('')
   const styles = useMultiStyleConfig('Autocomplete', props)
   const inputRef = useRef<HTMLInputElement>()
-  const popoverRef = useRef<HTMLDivElement>()
+  const popoverRef = useRef<HTMLDivElement>(null)
   const { onOpen, onClose, isOpen } = useDisclosure()
+  const triggerRef = useRef<HTMLDivElement>(null)
+  const isToTop = useToTop(popoverRef, triggerRef, isOpen)
 
   useOutsideClickHandler(
     [
@@ -96,6 +99,7 @@ const Autocomplete: FC<AutocompleteProps> = ({
     >
       <PopoverTrigger>
         <Flex
+          ref={triggerRef as RefObject<HTMLDivElement>}
           id="Autocomplete"
           className={isOpen ? bem(['focused']) : bem()}
           tabIndex={0}
@@ -104,8 +108,15 @@ const Autocomplete: FC<AutocompleteProps> = ({
           sx={{
             ...styles?.container,
             ...props.sx,
-            borderBottomRadius: isOpen ? 0 : undefined,
-            borderBottom: isOpen ? 0 : undefined,
+            ...(isToTop
+              ? {
+                  borderTopRadius: isOpen ? 0 : undefined,
+                  borderTop: isOpen ? 0 : undefined,
+                }
+              : {
+                  borderBottomRadius: isOpen ? 0 : undefined,
+                  borderBottom: isOpen ? 0 : undefined,
+                }),
           }}
           role="group"
           justifyContent="center"
@@ -145,7 +156,11 @@ const Autocomplete: FC<AutocompleteProps> = ({
       </PopoverTrigger>
       <PopoverContent
         w="100%"
-        sx={styles?.popover}
+        sx={{
+          ...styles?.popover,
+          borderBottomRadius: isToTop ? 0 : '0.25rem',
+          borderTopRadius: isToTop ? '0.25rem' : 0,
+        }}
         ref={popoverRef as RefObject<HTMLDivElement>}
       >
         <PopoverBody w="100%">
@@ -153,7 +168,11 @@ const Autocomplete: FC<AutocompleteProps> = ({
             optionsToDisplay.map(option => (
               <Box
                 w="100%"
-                key={option.value}
+                key={
+                  typeof option.value === 'object'
+                    ? Object.values(option.value).join('-')
+                    : option.value
+                }
                 className={bem(
                   'option-wrapper',
                   val === option ? 'selected' : ''
