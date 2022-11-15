@@ -1,4 +1,4 @@
-import { RefObject, useState, useRef, useEffect } from 'react'
+import { RefObject, useState, useRef, useEffect, useCallback } from 'react'
 
 export default function useToTop(
   containerRef: RefObject<HTMLDivElement>,
@@ -8,14 +8,15 @@ export default function useToTop(
   const [isToTop, setIsToTop] = useState(false)
   const rafId = useRef<number>()
 
+  const checkPosition = useCallback(() => {
+    rafId.current = requestAnimationFrame(() => {
+      const containerRect = containerRef.current?.getBoundingClientRect()
+      const targetRect = triggerRef.current?.getBoundingClientRect()
+      setIsToTop((containerRect?.y || 0) < (targetRect?.y || 0))
+    })
+  }, [])
+
   useEffect(() => {
-    function checkPosition() {
-      rafId.current = requestAnimationFrame(() => {
-        const containerRect = containerRef.current?.getBoundingClientRect()
-        const targetRect = triggerRef.current?.getBoundingClientRect()
-        setIsToTop((containerRect?.y || 0) < (targetRect?.y || 0))
-      })
-    }
     if (isOpen) {
       checkPosition()
 
