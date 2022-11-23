@@ -1,15 +1,20 @@
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin')
 
 module.exports = {
+  core: {
+    builder: "@storybook/builder-webpack5",
+    disableTelemetry: true,
+  },
   stories: ['../stories/**/*.stories.@(js|jsx|ts|tsx)'],
   addons: [
     '@storybook/addon-links',
     '@storybook/addon-essentials',
     '@storybook/addon-interactions',
+    '@storybook/addon-storysource',
   ],
   framework: '@storybook/react',
   staticDirs: ['../public'],
-  webpack: async (baseConfig, options) => {
+  webpackFinal: async (baseConfig, options) => {
     const { module = {}, resolve = {} } = baseConfig
     return {
       ...baseConfig,
