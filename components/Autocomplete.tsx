@@ -46,6 +46,7 @@ interface AutocompleteProps extends FlexProps {
   renderOption?: (option: OptionType) => ReactNode
   renderSelected?: (option: OptionType) => ReactNode
   filterOption?: (option: OptionType, searchTerm: string) => boolean
+  onClose?: () => void
   onSelectOption?: (option: OptionType) => void
 }
 
@@ -58,6 +59,7 @@ const Autocomplete: FC<AutocompleteProps> = ({
   renderOption = option => <Option {...option} />,
   renderSelected = SelectedOption,
   onSelectOption = () => void 0,
+  onClose: onCloseCallback = () => void 0,
   filterOption = defaultOptionsFilter,
   ...props
 }) => {
@@ -70,12 +72,17 @@ const Autocomplete: FC<AutocompleteProps> = ({
   const triggerRef = useRef<HTMLDivElement>(null)
   const isToTop = useToTop(popoverRef, triggerRef, isOpen)
 
+  const handleClose = () => {
+    onClose()
+    onCloseCallback()
+  }
+
   useOutsideClickHandler(
     [
       inputRef as MutableRefObject<HTMLElement>,
       popoverRef as MutableRefObject<HTMLElement>,
     ],
-    onClose
+    handleClose
   )
   useEffect(() => {
     setVal(value)
@@ -90,7 +97,7 @@ const Autocomplete: FC<AutocompleteProps> = ({
       matchWidth
       isOpen={isOpen}
       onOpen={onOpen}
-      onClose={onClose}
+      onClose={handleClose}
       closeOnBlur={false}
       closeOnEsc
       initialFocusRef={inputRef as RefObject<HTMLInputElement>}
