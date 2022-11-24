@@ -85,7 +85,7 @@ const SelectField: FC<SelectFieldProps> = ({
 
   return (
     <Popover
-      matchWidth
+      matchWidth={props.size !== 'compact'}
       isOpen={isOpen}
       onOpen={onOpen}
       onClose={onClose}

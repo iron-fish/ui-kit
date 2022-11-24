@@ -27,6 +27,9 @@ const Checkbox: ComponentStyleConfig = {
       fontSize: '0.875rem',
       fontWeight: 400,
     },
+    icon: {
+      fontSize: '2xs',
+    },
   }),
 }
 
