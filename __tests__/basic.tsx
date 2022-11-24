@@ -1,5 +1,4 @@
 import { FC } from 'react'
-// import { render } from '@testing-library/react'
 import { chakra } from '@chakra-ui/react'
 import '@testing-library/jest-dom'
 

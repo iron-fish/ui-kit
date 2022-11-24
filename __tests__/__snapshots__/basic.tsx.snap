@@ -7,5 +7,9 @@ exports[`smoke test 1`] = `
   >
     cool
   </strong>
+  <span
+    hidden=""
+    id="__chakra_env"
+  />
 </div>
 `;
