@@ -8,7 +8,7 @@ const SearchAutocomplete: ComponentStyleConfig = {
     'popover',
     'popoverBody',
     'emptyOption',
-    'groupOptionTitle',
+    'groupHeader',
     'groupOptionWrapper',
   ],
   variants: {

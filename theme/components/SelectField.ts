@@ -4,7 +4,14 @@ import { mode } from '@chakra-ui/theme-tools'
 import { FONTS, NAMED_COLORS } from 'theme/constants'
 
 const SelectField: ComponentStyleConfig = {
-  parts: ['container', 'label', 'value', 'popover', 'optionWrapper'],
+  parts: [
+    'container',
+    'label',
+    'value',
+    'popover',
+    'optionWrapper',
+    'leftIcon',
+  ],
   baseStyle: props => ({
     container: {
       h: '4.313rem',
@@ -157,7 +164,8 @@ const SelectField: ComponentStyleConfig = {
         color: mode(NAMED_COLORS.DEEP_BLUE, NAMED_COLORS.PALE_GREY)(props),
       },
       popover: {
-        borderTopRadius: '0.25rem',
+        borderRadius: '0.25rem !important',
+        minWidth: '16.0625rem',
       },
       optionWrapper: {
         '.option': {
