@@ -21,7 +21,7 @@ const Alert: ComponentStyleConfig = {
     },
     description: {
       ...FACES.H5,
-      color: mode(NAMED_COLORS.GREY, NAMED_COLORS.DARKER_GREY)(props),
+      color: mode(NAMED_COLORS.WHITE, NAMED_COLORS.BLACK)(props),
     },
     icon: {
       mr: '1rem',
