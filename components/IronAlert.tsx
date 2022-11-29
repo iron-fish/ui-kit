@@ -12,7 +12,7 @@ import {
 } from '@chakra-ui/react'
 
 interface IronToastProps extends ToastProps {
-  actionsButton?: ReactNode
+  actions?: ReactNode
 }
 
 const IronAlert: React.FC<IronToastProps> = props => {
@@ -23,7 +23,7 @@ const IronAlert: React.FC<IronToastProps> = props => {
     title,
     description,
     icon,
-    actionsButton,
+    actions,
   } = props
   const styles = useMultiStyleConfig('Alert', props)
   const ids = id
@@ -54,7 +54,7 @@ const IronAlert: React.FC<IronToastProps> = props => {
             </AlertDescription>
           )}
         </Flex>
-        {actionsButton && <Box sx={styles.actionsButton}>{actionsButton}</Box>}
+        {actions && <Box sx={styles.actions}>{actions}</Box>}
       </Alert>
     </Flex>
   )

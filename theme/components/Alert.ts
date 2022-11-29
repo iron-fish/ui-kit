@@ -28,7 +28,7 @@ const Alert: ComponentStyleConfig = {
       fontSize: '1.5rem',
       color: mode(NAMED_COLORS.WHITE, NAMED_COLORS.BLACK)(props),
     },
-    actionsButton: {
+    actions: {
       ml: '1rem',
       color: mode(NAMED_COLORS.WHITE, NAMED_COLORS.BLACK)(props),
     },
