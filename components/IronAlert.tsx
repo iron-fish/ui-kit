@@ -35,26 +35,28 @@ const IronAlert: React.FC<IronToastProps> = props => {
     : undefined
 
   return (
-    <Alert
-      addRole={false}
-      status={status}
-      variant={variant}
-      id={ids?.root}
-      alignItems="start"
-      textAlign="start"
-      width="auto"
-    >
-      {icon && <AlertIcon>{icon}</AlertIcon>}
-      <Flex direction="column" flex="1" maxWidth="100%" gap="0.75rem">
-        {title && <AlertTitle id={ids?.title}>{title}</AlertTitle>}
-        {description && (
-          <AlertDescription id={ids?.description} display="block">
-            {description}
-          </AlertDescription>
-        )}
-      </Flex>
-      {actionsButton && <Box sx={styles.actionsButton}>{actionsButton}</Box>}
-    </Alert>
+    <Flex w="100%" justifyContent="center">
+      <Alert
+        addRole={false}
+        status={status}
+        variant={variant}
+        id={ids?.root}
+        alignItems="start"
+        textAlign="start"
+        width="auto"
+      >
+        {icon && <AlertIcon>{icon}</AlertIcon>}
+        <Flex direction="column" flex="1" maxWidth="100%" gap="0.75rem">
+          {title && <AlertTitle id={ids?.title}>{title}</AlertTitle>}
+          {description && (
+            <AlertDescription id={ids?.description} display="block">
+              {description}
+            </AlertDescription>
+          )}
+        </Flex>
+        {actionsButton && <Box sx={styles.actionsButton}>{actionsButton}</Box>}
+      </Alert>
+    </Flex>
   )
 }
 

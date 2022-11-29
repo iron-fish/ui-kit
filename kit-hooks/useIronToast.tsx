@@ -1,5 +1,10 @@
 import { useMemo } from 'react'
-import { useChakra, UseToastOptions, createToastFn } from '@chakra-ui/react'
+import {
+  useChakra,
+  UseToastOptions,
+  createToastFn,
+  CreateToastFnReturn,
+} from '@chakra-ui/react'
 import IronAlert from '../components/IronAlert'
 
 export function useIronToast(
@@ -16,4 +21,5 @@ export function useIronToast(
     [defaultOptions, theme.direction]
   )
 }
+
 export default useIronToast
