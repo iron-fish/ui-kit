@@ -12,7 +12,7 @@ const Alert: ComponentStyleConfig = {
         NAMED_COLORS.WHITE
       )(props)} !important`,
       borderRadius: '0.25rem',
-      boxShadow: '0px 0.3125rem 0.875rem rgba(0, 0, 0, 0.07)',
+      boxShadow: '0 0.3125rem 0.875rem rgba(0, 0, 0, 0.07)',
       maxW: 'max-content',
     },
     title: {
