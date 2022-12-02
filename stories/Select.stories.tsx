@@ -194,3 +194,18 @@ export const DelayedOptions: ComponentStory<FC> = () => {
     </VStack>
   )
 }
+
+export const ClearableExample: ComponentStory<FC> = () => (
+  <Stack>
+    <SelectField
+      label="Select Label"
+      w="50%"
+      isClearable={true}
+      options={[...new Array(5)].map((item, index) => ({
+        label: `Test${index}`,
+        helperText: `This is ${index} option`,
+        value: `option ${index}`,
+      }))}
+    />
+  </Stack>
+)
