@@ -1,4 +1,4 @@
-import type { FC } from 'react'
+import type { FC, ReactNode } from 'react'
 
 import {
   DeepPartial,
@@ -13,6 +13,7 @@ import { css, Global } from '@emotion/react'
 type IronFishProps = {
   initialColorMode?: ConfigColorMode
   theme?: DeepPartial<ChakraTheme>
+  children?: ReactNode
 }
 
 const IronFishUIProvider: FC<IronFishProps> = ({

@@ -4,7 +4,7 @@ import {
   useStyleConfig,
   chakra,
 } from '@chakra-ui/react'
-import { SFC, Fragment } from 'react'
+import { FC, Fragment } from 'react'
 import IconDarkMode from 'svgx/icon-darkmode'
 import IconLightMode from 'svgx/icon-lightmode'
 
@@ -12,7 +12,7 @@ type Bordered = {
   withBorder?: boolean
 }
 
-export const ColorModeSwitcher: SFC<Bordered> = ({ withBorder = false }) => {
+export const ColorModeSwitcher: FC<Bordered> = ({ withBorder = false }) => {
   const { colorMode: $colorMode, toggleColorMode: $toggleColorMode } =
     useColorMode()
   const styles = useStyleConfig('ColorModeSwitcher')

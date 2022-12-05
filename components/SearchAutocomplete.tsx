@@ -35,7 +35,7 @@ interface SearchAutocompleteProps<OptionType> {
   InputProps?: IProps
   options?: (OptionType | SearchOptionGroupType<OptionType>)[]
   emptyOption?: ReactNode
-  renderOption?: (option: OptionType) => ReactNode
+  renderOption: (option?: OptionType) => ReactNode
   onSelectOption?: (option: OptionType | null) => void
   getOptionLabel: (option: OptionType | null) => string
   inputLeftElement?: ReactNode
@@ -48,7 +48,7 @@ const SearchAutocomplete = <OptionType,>({
   InputProps = {},
   options = [],
   emptyOption = 'No matches',
-  renderOption = option => <Box>{option}</Box>,
+  renderOption,
   onSelectOption = () => void 0,
   getOptionLabel,
   inputLeftElement,

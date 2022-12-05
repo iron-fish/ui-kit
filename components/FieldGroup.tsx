@@ -1,13 +1,23 @@
-import { cloneElement, FC, FunctionComponent, ReactElement } from 'react'
+import {
+  cloneElement,
+  FC,
+  FunctionComponent,
+  ReactElement,
+  ReactNode,
+} from 'react'
 import { Flex, StyleProps, useMultiStyleConfig } from '@chakra-ui/react'
 import { getValidChildren } from '@chakra-ui/react-utils'
+
+interface FieldGroupProps extends StyleProps {
+  children?: ReactNode
+}
 
 const isFieldInput = (el: ReactElement) =>
   typeof el.type === 'function' &&
   ((el.type as FunctionComponent).displayName === 'TextField' ||
     (el.type as FunctionComponent).displayName === 'SelectField')
 
-const FieldGroup: FC<StyleProps> = ({ children, ...props }) => {
+const FieldGroup: FC<FieldGroupProps> = ({ children, ...props }) => {
   const styles = useMultiStyleConfig('FieldGroup', props)
   return (
     <Flex
