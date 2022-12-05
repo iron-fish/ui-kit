@@ -201,6 +201,7 @@ const Autocomplete: FC<AutocompleteProps> = ({
                   if (val !== option) {
                     setVal(option)
                     onSelectOption(option)
+                    setSearch('')
                     onClose()
                   }
                 }}

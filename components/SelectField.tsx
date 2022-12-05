@@ -55,17 +55,23 @@ export const SelectedOption: FC<SelectedOptionType> = ({
   onClear = () => void 0,
 }) => (
   <Flex alignItems="end">
-    <Box className={bem('value-label')} pr={2}>
+    <Box
+      className={bem('value-label')}
+      pr={2}
+      overflow="hidden"
+      textOverflow="ellipsis"
+      whiteSpace="nowrap"
+    >
       {label}
     </Box>
     <Box className={bem('value-text')}>{helperText}</Box>
     {label && isClearable && (
       <CloseIcon
-        width="10px"
-        height="10px"
+        width="0.625rem"
+        height="0.625rem"
         alignSelf="baseline"
         ml="auto"
-        mr="24px"
+        mr="1.5rem"
         cursor="pointer"
         onClick={e => {
           e.stopPropagation()
