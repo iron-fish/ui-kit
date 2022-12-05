@@ -48,6 +48,8 @@ interface AutocompleteProps extends FlexProps {
   filterOption?: (option: OptionType, searchTerm: string) => boolean
   onClose?: () => void
   onSelectOption?: (option: OptionType) => void
+  isClearable?: boolean
+  onClear?: () => void
 }
 
 const Autocomplete: FC<AutocompleteProps> = ({
@@ -61,6 +63,8 @@ const Autocomplete: FC<AutocompleteProps> = ({
   onSelectOption = () => void 0,
   onClose: onCloseCallback = () => void 0,
   filterOption = defaultOptionsFilter,
+  isClearable,
+  onClear = () => void 0,
   ...props
 }) => {
   const [val, setVal] = useState<OptionType | null>(value)
@@ -139,7 +143,15 @@ const Autocomplete: FC<AutocompleteProps> = ({
           >
             <Box sx={styles?.label}>{label}</Box>
             <Box sx={styles?.value} display={val && !isOpen ? 'block' : 'none'}>
-              {val && renderSelected(val)}
+              {val &&
+                renderSelected({
+                  ...val,
+                  isClearable,
+                  onClear: () => {
+                    setSearch('')
+                    onClear()
+                  },
+                })}
             </Box>
             <Box sx={styles?.inputWrapper} display={isOpen ? 'block' : 'none'}>
               <Input
@@ -189,6 +201,7 @@ const Autocomplete: FC<AutocompleteProps> = ({
                   if (val !== option) {
                     setVal(option)
                     onSelectOption(option)
+                    setSearch('')
                     onClose()
                   }
                 }}

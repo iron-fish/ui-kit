@@ -13,6 +13,7 @@ import {
   useStyleConfig,
 } from '@chakra-ui/react'
 import DropdownArrow from 'svgx/dropdown-arrow'
+import CloseIcon from 'svgx/close-icon'
 import useToTop from 'hooks/useToTop'
 
 // This is avoid error: Could not find a declaration file for module 'bem'.
@@ -39,15 +40,45 @@ export const Option: FC<OptionType> = ({ label, helperText, ...rest }) => {
   )
 }
 
+export interface SelectedOptionType extends OptionType {
+  isClearable?: boolean
+  onClear?: () => void
+}
+
 /**
  * Default representation of selected option in SelectField
  */
-export const SelectedOption: FC<OptionType> = ({ label, helperText }) => (
+export const SelectedOption: FC<SelectedOptionType> = ({
+  label,
+  helperText,
+  isClearable,
+  onClear = () => void 0,
+}) => (
   <Flex alignItems="end">
-    <Box className={bem('value-label')} pr={2}>
+    <Box
+      className={bem('value-label')}
+      pr={2}
+      overflow="hidden"
+      textOverflow="ellipsis"
+      whiteSpace="nowrap"
+    >
       {label}
     </Box>
     <Box className={bem('value-text')}>{helperText}</Box>
+    {label && isClearable && (
+      <CloseIcon
+        width="0.625rem"
+        height="0.625rem"
+        alignSelf="baseline"
+        ml="auto"
+        mr="1.5rem"
+        cursor="pointer"
+        onClick={e => {
+          e.stopPropagation()
+          onClear()
+        }}
+      />
+    )}
   </Flex>
 )
 
@@ -60,6 +91,8 @@ interface SelectFieldProps extends FlexProps {
   renderLabel?: (label: string) => ReactNode
   renderSelected?: (option: OptionType) => ReactNode
   onSelectOption?: (option: OptionType) => void
+  isClearable?: boolean
+  onClear?: () => void
 }
 
 const SelectField: FC<SelectFieldProps> = ({
@@ -70,6 +103,8 @@ const SelectField: FC<SelectFieldProps> = ({
   renderOption = option => <Option {...option} />,
   renderSelected = SelectedOption,
   onSelectOption = () => void 0,
+  isClearable,
+  onClear = () => void 0,
   ...props
 }) => {
   const [val, setVal] = useState<OptionType | null>(null)
@@ -119,7 +154,15 @@ const SelectField: FC<SelectFieldProps> = ({
           <Flex className={bem('content')} w="100%">
             <Box sx={styles?.label}>{label && renderLabel(label)}</Box>
             <Box sx={styles?.value} overflow="hidden">
-              {val && renderSelected(val)}
+              {val &&
+                renderSelected({
+                  ...val,
+                  isClearable,
+                  onClear: () => {
+                    setVal(null)
+                    onClear()
+                  },
+                })}
             </Box>
           </Flex>
           <Box sx={styles.leftIcon}>
