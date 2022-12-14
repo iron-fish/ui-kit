@@ -1,4 +1,5 @@
 export * from '@chakra-ui/react'
+export * from 'chakra-ui-steps'
 
 export { default as Autocomplete } from './Autocomplete'
 export { default as IronFishUIProvider } from './IronFishUIProvider'
@@ -13,3 +14,4 @@ export { default as CopyValueToClipboard } from './CopyValueToClipboard'
 export { default as CopyToClipboardButton } from './CopyToClipboardButton'
 export { default as ButtonsGroup } from './ButtonsGroup'
 export { default as IronAlert } from './IronAlert'
+export { default as Steps } from './Steps'
