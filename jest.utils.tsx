@@ -1,4 +1,4 @@
-import { ReactType, createElement } from 'react'
+import { ElementType, createElement } from 'react'
 import '@testing-library/jest-dom'
 import * as React from 'react'
 import { render as defaultRender, RenderOptions } from '@testing-library/react'
@@ -27,11 +27,14 @@ export function getGlobalObject<T>(): T {
 }
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
-export const rasterizeWithProps = (C: ReactType, props: Record<string, any>) =>
-  createElement(C, props, props.children || [])
+export const rasterizeWithProps = (
+  C: ElementType,
+  props: Record<string, any>
+) => createElement(C, props, props.children || [])
 
-export const makeRendererFor = (C: ReactType) => (props: Record<string, any>) =>
-  defaultRender(rasterizeWithProps(C, props))
+export const makeRendererFor =
+  (C: ElementType) => (props: Record<string, any>) =>
+    defaultRender(rasterizeWithProps(C, props))
 
 const ChakraRenderer: React.FC = ({
   children,
