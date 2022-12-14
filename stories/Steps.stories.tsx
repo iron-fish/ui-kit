@@ -7,12 +7,6 @@ import Steps from 'components/Steps'
 export default {
   title: 'Components/Steps',
   component: Steps,
-  argTypes: {
-    orientation: {
-      options: [undefined, 'horizontal', 'vertical'],
-      control: { type: 'select' },
-    },
-  },
 } as ComponentMeta<typeof Steps>
 
 const Content: FC<{ number: number }> = ({ number }) => (
@@ -25,7 +19,7 @@ const Content: FC<{ number: number }> = ({ number }) => (
 
 const steps = [1, 2, 3]
 
-export const StepsExample: ComponentStory<typeof Steps> = args => {
+const BaseStepsExample: ComponentStory<typeof Steps> = args => {
   const { nextStep, prevStep, reset, activeStep } = useSteps({
     initialStep: 0,
   })
@@ -34,7 +28,11 @@ export const StepsExample: ComponentStory<typeof Steps> = args => {
     <Flex flexDir="column" width="100%">
       <Steps activeStep={activeStep} {...args}>
         {steps.map(number => (
-          <Step label={`Step ${number}`} key={`Step ${number}`}>
+          <Step
+            label={`Step ${number}`}
+            key={`Step ${number}`}
+            description={`Description for step ${number}`}
+          >
             <Content number={number} />
           </Step>
         ))}
@@ -65,6 +63,54 @@ export const StepsExample: ComponentStory<typeof Steps> = args => {
   )
 }
 
-StepsExample.args = {
-  orientation: undefined,
+export const HorizontalStepExample = () => <BaseStepsExample />
+
+export const VerticalStepExample = () => (
+  <BaseStepsExample orientation="vertical" />
+)
+
+export const LoadingStepsExample: ComponentStory<typeof Steps> = args => {
+  const { nextStep, prevStep, reset, activeStep } = useSteps({
+    initialStep: 0,
+  })
+
+  return (
+    <Flex flexDir="column" width="100%">
+      <Steps activeStep={activeStep} state={'loading'} {...args}>
+        {steps.map(number => (
+          <Step
+            label={`Step ${number}`}
+            key={`Step ${number}`}
+            description={`${
+              activeStep === number - 1 ? 'Loading' : 'Description for'
+            } step ${number}`}
+          >
+            <Content number={number} />
+          </Step>
+        ))}
+      </Steps>
+      {activeStep === steps.length ? (
+        <Flex p={4}>
+          <Button mx="auto" size="sm" onClick={reset}>
+            Reset
+          </Button>
+        </Flex>
+      ) : (
+        <Flex width="100%" justify="flex-end">
+          <Button
+            isDisabled={activeStep === 0}
+            mr={4}
+            onClick={prevStep}
+            size="sm"
+            variant="ghost"
+          >
+            Prev
+          </Button>
+          <Button size="sm" onClick={nextStep}>
+            {activeStep === steps.length - 1 ? 'Finish' : 'Next'}
+          </Button>
+        </Flex>
+      )}
+    </Flex>
+  )
 }
