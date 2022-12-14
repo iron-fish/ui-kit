@@ -1,4 +1,4 @@
-import { SystemStyleFunction } from '@chakra-ui/theme-tools'
+import { SystemStyleFunction, StyleFunctionProps } from '@chakra-ui/theme-tools'
 import { StepsStyleConfig } from 'chakra-ui-steps'
 import { TYPEFACES } from 'styles/type'
 
@@ -15,9 +15,8 @@ const baseStyleLabel: SystemStyleFunction = props => ({
 })
 
 const Steps = {
-  parts: ['label', 'description'],
   ...StepsStyleConfig,
-  baseStyle: props => ({
+  baseStyle: (props: StyleFunctionProps) => ({
     ...StepsStyleConfig.baseStyle(props),
     label: baseStyleLabel(props),
     description: baseStyleDescription(props),
