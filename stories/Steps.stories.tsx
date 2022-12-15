@@ -1,8 +1,7 @@
 import { FC } from 'react'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
-import { Step, useSteps } from 'chakra-ui-steps'
 import { Flex, Box, Button } from '@chakra-ui/react'
-import Steps from 'components/Steps'
+import { Steps, Step, useSteps } from 'components/Steps'
 
 export default {
   title: 'Components/Steps',
@@ -84,11 +83,6 @@ export const LoadingStepsExample: ComponentStory<typeof Steps> = args => {
             description={`${
               activeStep === number - 1 ? 'Loading' : 'Description for'
             } step ${number}`}
-            sx={{
-              '& > div:first-of-type': {
-                w: '8rem'
-              }
-            }}
           >
             <Content number={number} />
           </Step>
