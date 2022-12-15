@@ -83,6 +83,7 @@ export const LoadingStepsExample: ComponentStory<typeof Steps> = args => {
             description={`${
               activeStep === number - 1 ? 'Loading' : 'Description for'
             } step ${number}`}
+            maxContentWidth="8rem"
           >
             <Content number={number} />
           </Step>

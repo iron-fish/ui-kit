@@ -5,7 +5,7 @@ interface StepProps extends OrigStepProps {
   maxContentWidth?: string
 }
 
-const Step: FC<StepProps> = ({ sx, maxContentWidth = '8rem', ...props }) => (
+const Step: FC<StepProps> = ({ sx, maxContentWidth, ...props }) => (
   <OrigStep
     {...props}
     sx={{
