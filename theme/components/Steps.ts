@@ -15,7 +15,6 @@ const baseStyleLabel: SystemStyleFunction = props => ({
 })
 
 const Steps = {
-  parts: ['label', 'description'],
   ...StepsStyleConfig,
   baseStyle: props => ({
     ...StepsStyleConfig.baseStyle(props),

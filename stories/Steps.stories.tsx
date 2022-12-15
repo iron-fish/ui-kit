@@ -84,6 +84,11 @@ export const LoadingStepsExample: ComponentStory<typeof Steps> = args => {
             description={`${
               activeStep === number - 1 ? 'Loading' : 'Description for'
             } step ${number}`}
+            sx={{
+              '& > div:first-of-type': {
+                w: '8rem'
+              }
+            }}
           >
             <Content number={number} />
           </Step>
