@@ -39,6 +39,7 @@ const Menu: ComponentStyleConfig = {
     },
     item: {
       color: mode(NAMED_COLORS.DEEP_BLUE, NAMED_COLORS.WHITE)(props),
+      bg: 'unset',
       fontSize: '0.875rem',
       fontWeight: '400',
       lineHeight: '160%',
