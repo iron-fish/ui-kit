@@ -15,13 +15,13 @@ const Menu: ComponentStyleConfig = {
       borderColor: mode(NAMED_COLORS.LIGHT_GREY, NAMED_COLORS.WHITE)(props),
       bgColor: mode(NAMED_COLORS.WHITE, NAMED_COLORS.BLACK)(props),
       '.chakra-icon': {
-        fill: mode(NAMED_COLORS.DEEP_BLUE, NAMED_COLORS.WHITE)(props),
+        color: mode(NAMED_COLORS.DEEP_BLUE, NAMED_COLORS.WHITE)(props),
       },
       _hover: {
         borderColor: mode(NAMED_COLORS.DEEP_BLUE, NAMED_COLORS.WHITE)(props),
         bgColor: NAMED_COLORS.WHITE,
         '.chakra-icon': {
-          fill: mode(NAMED_COLORS.DEEP_BLUE, NAMED_COLORS.DEEP_BLUE)(props),
+          color: mode(NAMED_COLORS.DEEP_BLUE, NAMED_COLORS.DEEP_BLUE)(props),
         },
       },
     },
@@ -39,6 +39,7 @@ const Menu: ComponentStyleConfig = {
     },
     item: {
       color: mode(NAMED_COLORS.DEEP_BLUE, NAMED_COLORS.WHITE)(props),
+      bg: 'unset',
       fontSize: '0.875rem',
       fontWeight: '400',
       lineHeight: '160%',
