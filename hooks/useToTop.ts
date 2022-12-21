@@ -17,16 +17,22 @@ export default function useToTop(
   }, [])
 
   useEffect(() => {
+    let resizeObserver
     if (isOpen) {
       checkPosition()
 
       window.addEventListener('scroll', checkPosition)
       window.addEventListener('resize', checkPosition)
+      resizeObserver = new ResizeObserver(() => checkPosition())
+      resizeObserver.observe(containerRef.current)
     }
     return () => {
       if (isOpen) {
         window.removeEventListener('scroll', checkPosition)
         window.removeEventListener('resize', checkPosition)
+        if (resizeObserver) {
+          resizeObserver.unobserve(containerRef.current)
+        }
         if (rafId.current) {
           cancelAnimationFrame(rafId.current)
         }
