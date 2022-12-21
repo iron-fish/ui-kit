@@ -17,14 +17,14 @@ export default function useToTop(
   }, [])
 
   useEffect(() => {
-    let resizeObserver
+    let resizeObserver: ResizeObserver
     if (isOpen) {
       checkPosition()
 
       window.addEventListener('scroll', checkPosition)
       window.addEventListener('resize', checkPosition)
       resizeObserver = new ResizeObserver(() => checkPosition())
-      resizeObserver.observe(containerRef.current)
+      resizeObserver.observe(containerRef.current as Element)
     }
     return () => {
       if (isOpen) {
