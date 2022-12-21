@@ -30,7 +30,7 @@ export default function useToTop(
       if (isOpen) {
         window.removeEventListener('scroll', checkPosition)
         window.removeEventListener('resize', checkPosition)
-        if (resizeObserver) {
+        if (resizeObserver && containerRef.current) {
           resizeObserver.unobserve(containerRef.current)
         }
         if (rafId.current) {

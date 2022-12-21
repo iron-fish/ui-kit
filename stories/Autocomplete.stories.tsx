@@ -1,4 +1,4 @@
-import { FC, useState, useMemo } from 'react'
+import { FC, useState, useMemo, useEffect } from 'react'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 import { Box, Stack, Flex } from '@chakra-ui/react'
 import Autocomplete from 'components/Autocomplete'
@@ -92,6 +92,42 @@ export const FlipExample: ComponentStory<FC> = () => (
     </Box>
   </Stack>
 )
+
+export const FlipContentSizeChangeExample: ComponentStory<FC> = () => {
+  const [showAddon, setShowAddon] = useState(true)
+
+  useEffect(() => {
+    const interval = setInterval(() => setShowAddon(prev => !prev), 5000)
+
+    return () => {
+      clearInterval(interval)
+    }
+  }, [])
+
+  return (
+    <Stack h="745px">
+      <Box mt="30px">
+        <h4>Flip example with options change</h4>
+      </Box>
+      <Box
+        w="100%"
+        h={showAddon ? '50px' : '0px'}
+        border="1px solid black"
+        transition="height 1s ease-in-out"
+      />
+      <Autocomplete
+        label="Example"
+        w="50%"
+        my={1}
+        options={[...new Array(5)].map((item, index) => ({
+          label: `Test${index}`,
+          helperText: `This is ${index} option`,
+          value: `option ${index}`,
+        }))}
+      />
+    </Stack>
+  )
+}
 
 const getSelectedOption = (options: OptionType[] = [], inputValue: string) => {
   let selectedOption = options?.find(o => o.value === inputValue)
