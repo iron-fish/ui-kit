@@ -1,4 +1,5 @@
 export * from '@chakra-ui/react'
+export * from './Steps'
 
 export { default as Autocomplete } from './Autocomplete'
 export { default as IronFishUIProvider } from './IronFishUIProvider'
