@@ -1,6 +1,6 @@
 {
   "name": "@ironfish/ui-kit",
-  "version": "1.0.2",
+  "version": "1.1.2",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [
