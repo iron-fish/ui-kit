@@ -57,7 +57,7 @@ export const SelectedOption: FC<SelectedOptionType> = ({
   <Flex alignItems="end">
     <Box
       className={bem('value-label')}
-      pr={2}
+      pr={label ? 2 : 0}
       overflow="hidden"
       textOverflow="ellipsis"
       whiteSpace="nowrap"
@@ -65,7 +65,7 @@ export const SelectedOption: FC<SelectedOptionType> = ({
       {label}
     </Box>
     <Box className={bem('value-text')}>{helperText}</Box>
-    {label && isClearable && (
+    {(label || helperText) && isClearable && (
       <CloseIcon
         width="0.625rem"
         height="0.625rem"

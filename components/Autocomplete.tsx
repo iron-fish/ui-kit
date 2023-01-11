@@ -88,6 +88,7 @@ const Autocomplete: FC<AutocompleteProps> = ({
     ],
     handleClose
   )
+
   useEffect(() => {
     setVal(value)
   }, [value])
