@@ -121,7 +121,7 @@ export const FreeInputClearableExample: ComponentStory<FC> = () => {
   const options = useMemo(
     () =>
       [...new Array(5)].map((item, index) => ({
-        label: `Test${index}`,
+        label: index ? `Test${index}` : '',
         helperText: `This is ${index} option`,
         value: `option ${index}`,
       })),
