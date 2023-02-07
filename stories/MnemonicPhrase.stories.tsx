@@ -52,7 +52,7 @@ export const MnemonicViewTemplate: ComponentStory<FC> = () => {
   }, [])
 
   return (
-    <VStack w="100%" flexDirection="column" spacing={16}>
+    <VStack w="100%" flexDirection="column" spacing={16} mb="6rem">
       <MnemonicView
         header={<Header value={phrase.join(', ')} />}
         value={phrase}
@@ -90,6 +90,24 @@ export const MnemonicViewTemplate: ComponentStory<FC> = () => {
           }}
           isReadOnly={true}
           loaded={false}
+        />
+      </Box>
+      <Box>
+        <h4>Invalid mode</h4>
+        <MnemonicView
+          header="Mnemonic phrase"
+          placeholder="Empty"
+          value={secondPhrase}
+          w="600px"
+          toolTipProps={{
+            label: 'Secret phrase',
+          }}
+          isReadOnly={false}
+          onChange={newPhrase => setSecondPhrase(newPhrase)}
+          error={{
+            isInvalid: true,
+            errors: [true],
+          }}
         />
       </Box>
     </VStack>
