@@ -107,7 +107,7 @@ const MnemonicView: FC<MnemonicViewProps> = ({
   value = [],
   placeholder,
   toolTipProps,
-  isReadOnly,
+  isReadOnly = false,
   visible,
   onChange,
   loaded,
