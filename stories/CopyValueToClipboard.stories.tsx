@@ -26,6 +26,7 @@ export const CopyToClipboard: ComponentStory<FC> = () => (
         ml: '1rem',
         color: NAMED_COLORS.LIGHT_BLUE,
         overflow: 'hidden',
+        as: 'h3',
       }}
       iconButtonProps={{
         color: NAMED_COLORS.GREY,

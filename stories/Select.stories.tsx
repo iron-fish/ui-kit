@@ -60,6 +60,11 @@ export const BasicExample: ComponentStory<FC> = () => (
           helperText: 'This is 3 option',
           value: 'option3',
         },
+        {
+          label: 'Test',
+          helperText: 'This is 3 option',
+          value: 'option3',
+        },
       ]}
     />
     <Box>

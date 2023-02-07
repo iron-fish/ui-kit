@@ -13,12 +13,12 @@ interface CopyValueToClipboardProps extends CopyToClipboardButtonProps {
 
 const CopyValueToClipboard: FC<CopyValueToClipboardProps> = ({
   label,
-  labelProps = {},
+  labelProps = { as: 'h4' },
   containerProps = {},
   ...rest
 }) => (
   <HStack spacing={0} {...containerProps}>
-    <Box as="h4" mr="0.5rem" {...labelProps}>
+    <Box mr="0.5rem" {...labelProps}>
       {label}
     </Box>
     <CopyToClipboardButton {...rest} />
