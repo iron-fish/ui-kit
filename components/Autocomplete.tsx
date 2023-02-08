@@ -185,13 +185,13 @@ const Autocomplete: FC<AutocompleteProps> = ({
       >
         <PopoverBody w="100%">
           {optionsToDisplay.length > 0 ? (
-            optionsToDisplay.map((option, index) => (
+            optionsToDisplay.map(option => (
               <Box
                 w="100%"
                 key={
                   typeof option.value === 'object'
-                    ? `${Object.values(option.value).join('-')}-${index}`
-                    : `${option.value}-${index}`
+                    ? Object.values(option.value).join('-')
+                    : Object.values(option).join('-')
                 }
                 className={bem(
                   'option-wrapper',

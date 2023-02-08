@@ -182,13 +182,13 @@ const SelectField: FC<SelectFieldProps> = ({
         ref={containerRef as RefObject<HTMLDivElement>}
       >
         <PopoverBody w="100%">
-          {options.map((option, index) => (
+          {options.map(option => (
             <Box
               w="100%"
               key={
                 typeof option.value === 'object'
-                  ? `${Object.values(option.value).join('-')}-${index}`
-                  : `${option.value}-${index}`
+                  ? Object.values(option.value).join('-')
+                  : Object.values(option).join('-')
               }
               className={bem('option-wrapper', {
                 selected: val === option,

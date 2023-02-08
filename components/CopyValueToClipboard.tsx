@@ -1,5 +1,5 @@
 import { FC, ReactNode } from 'react'
-import { HStack, BoxProps, StackProps, Box } from '@chakra-ui/react'
+import { HStack, BoxProps, StackProps, Text } from '@chakra-ui/react'
 
 import CopyToClipboardButton, {
   CopyToClipboardButtonProps,
@@ -13,14 +13,14 @@ interface CopyValueToClipboardProps extends CopyToClipboardButtonProps {
 
 const CopyValueToClipboard: FC<CopyValueToClipboardProps> = ({
   label,
-  labelProps = { as: 'h4' },
-  containerProps = {},
+  labelProps,
+  containerProps,
   ...rest
 }) => (
   <HStack spacing={0} {...containerProps}>
-    <Box mr="0.5rem" {...labelProps}>
+    <Text mr="0.5rem" {...labelProps}>
       {label}
-    </Box>
+    </Text>
     <CopyToClipboardButton {...rest} />
   </HStack>
 )

@@ -12,7 +12,7 @@ export default {
 export const CopyToClipboard: ComponentStory<FC> = () => (
   <Flex w="100%" direction="column" gap="10px">
     <CopyValueToClipboard
-      label={'visible value'}
+      label={<h5>visible value</h5>}
       value={'actual value'}
       copyTooltipText="Copy to clipboard"
       copiedTooltipText="Copied"
@@ -26,7 +26,7 @@ export const CopyToClipboard: ComponentStory<FC> = () => (
         ml: '1rem',
         color: NAMED_COLORS.LIGHT_BLUE,
         overflow: 'hidden',
-        as: 'h3',
+        as: 'h4',
       }}
       iconButtonProps={{
         color: NAMED_COLORS.GREY,

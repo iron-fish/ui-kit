@@ -16,7 +16,6 @@ import IconBlinkingEye from 'svgx/icon-blinkingEye'
 import IconInfo from 'svgx/icon-info'
 
 interface MnemonicInputProps {
-  index: number
   value: string
   placeholder: string
   isVisible: boolean
@@ -28,7 +27,6 @@ interface MnemonicInputProps {
 }
 
 const MnemonicInput: FC<MnemonicInputProps> = ({
-  index,
   value,
   placeholder = 'Empty',
   isVisible,
@@ -69,7 +67,6 @@ const MnemonicInput: FC<MnemonicInputProps> = ({
             {orderNo}
           </Kbd>
           <Input
-            key={`mnemonic-phrase-view-input-item-${index}`}
             maxLength={8}
             variant={'unstyled'}
             w="5.3125rem"
@@ -96,10 +93,8 @@ interface MnemonicViewProps extends Omit<FlexProps, 'onChange'> {
   visible?: boolean
   onChange: (value: string[]) => void
   loaded?: boolean
-  error?: {
-    isInvalid: boolean
-    errors: boolean[]
-  }
+  isInvalid?: boolean
+  isInvalidInputs?: boolean[]
 }
 
 const MnemonicView: FC<MnemonicViewProps> = ({
@@ -111,7 +106,8 @@ const MnemonicView: FC<MnemonicViewProps> = ({
   visible,
   onChange,
   loaded,
-  error,
+  isInvalid,
+  isInvalidInputs = [],
   ...rest
 }) => {
   const [$show, $setShow] = useState<boolean>(!!visible)
@@ -136,7 +132,7 @@ const MnemonicView: FC<MnemonicViewProps> = ({
     <Flex
       sx={$styles.container}
       direction="column"
-      aria-invalid={error?.isInvalid}
+      aria-invalid={isInvalid}
       {...rest}
     >
       <Flex justifyContent="space-between" pb="0.75rem" alignItems="center">
@@ -158,7 +154,6 @@ const MnemonicView: FC<MnemonicViewProps> = ({
           return (
             <MnemonicInput
               key={`mnemonic-phrase-view-item-${index}`}
-              index={index}
               value={word}
               loaded={loaded}
               placeholder={placeholder}
@@ -166,7 +161,7 @@ const MnemonicView: FC<MnemonicViewProps> = ({
               orderNo={index + 1}
               isReadOnly={isReadOnly}
               onChange={onWordChange(index)}
-              isInvalid={error?.errors[index]}
+              isInvalid={isInvalidInputs[index]}
             />
           )
         })}

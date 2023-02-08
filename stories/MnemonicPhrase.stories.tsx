@@ -104,10 +104,8 @@ export const MnemonicViewTemplate: ComponentStory<FC> = () => {
           }}
           isReadOnly={false}
           onChange={newPhrase => setSecondPhrase(newPhrase)}
-          error={{
-            isInvalid: true,
-            errors: [true],
-          }}
+          isInvalid={true}
+          isInvalidInputs={[true]}
         />
       </Box>
     </VStack>
