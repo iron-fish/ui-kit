@@ -24,17 +24,20 @@ export const CommonTable: FC<
   textTransform = 'uppercase',
   // eslint-disable-next-line @typescript-eslint/no-empty-function
   onRowClick,
+  lgBreakpointName = 'lg',
   ...rest
 }) => {
   const $bg = useColorModeValue(NAMED_COLORS.WHITE, NAMED_COLORS.DARKER_GREY)
   const borderStyle = {
     base: 'none !important',
-    lg: 'inherit !important',
+    [lgBreakpointName]: 'inherit !important',
   }
 
   return (
     <Table {...rest}>
-      <Thead display={{ base: 'none', lg: 'table-header-group' }}>
+      <Thead
+        display={{ base: 'none', [lgBreakpointName]: 'table-header-group' }}
+      >
         <Tr>
           {columns.map(column => (
             <Th textTransform={textTransform} key={column.key}>
@@ -49,11 +52,11 @@ export const CommonTable: FC<
             key={block?.id || `load-${index}`}
             display={{
               base: 'flex',
-              lg: 'table-row',
+              [lgBreakpointName]: 'table-row',
             }}
             flexWrap={{
               base: 'wrap',
-              lg: 'nowrap',
+              [lgBreakpointName]: 'nowrap',
             }}
             bg={$bg}
             mb="1rem"
@@ -61,7 +64,7 @@ export const CommonTable: FC<
             borderRadius="0.25rem"
             borderColor="inherit"
             boxShadow="0 0.25rem 0.668rem rgba(0, 0, 0, 0.04)"
-            p={{ base: '1rem 0', lg: '1rem' }}
+            p={{ base: '1rem 0', [lgBreakpointName]: '1rem' }}
             cursor={block && onRowClick ? 'pointer' : 'default'}
             onClick={() => block && onRowClick && onRowClick(block)}
           >
@@ -71,11 +74,11 @@ export const CommonTable: FC<
                 {...column.WrapperProps}
                 px={{
                   base: '2rem',
-                  lg: 'inherit',
+                  [lgBreakpointName]: 'inherit',
                 }}
                 py={{
                   base: '1rem',
-                  lg: '1.625rem',
+                  [lgBreakpointName]: '1.625rem',
                 }}
                 borderTop={borderStyle}
                 borderBottom={borderStyle}
@@ -92,6 +95,7 @@ export const CommonTable: FC<
                   label={column.label}
                   {...column.ItemProps}
                   textTransform={textTransform}
+                  lgBreakpointName={lgBreakpointName}
                 >
                   {block ? column.render(block) : <RowItemSpin minW="4rem" />}
                 </RowItem>

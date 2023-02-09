@@ -3,6 +3,7 @@ import { FlexProps, StyleProps, TableProps } from '@chakra-ui/react'
 
 export interface RowItemProps extends FlexProps {
   label: ReactNode
+  lgBreakpointName: string
 }
 
 export interface DataRowProps {
@@ -21,4 +22,5 @@ export interface CommonTableProps<T> extends TableProps {
   data?: T[]
   columns?: ColumnProps<T>[]
   onRowClick?: (data: T) => void
+  lgBreakpointName?: string
 }

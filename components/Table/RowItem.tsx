@@ -7,6 +7,7 @@ const RowItem: FC<RowItemProps> = ({
   label = null,
   children,
   textTransform,
+  lgBreakpointName,
   ...rest
 }) =>
   label || children ? (
@@ -14,7 +15,7 @@ const RowItem: FC<RowItemProps> = ({
       <Table variant="rowItem">
         {label && (
           <Thead>
-            <Tr display={{ base: 'block', lg: 'none' }}>
+            <Tr display={{ base: 'block', [lgBreakpointName]: 'none' }}>
               <Th textTransform={textTransform}>{label}</Th>
             </Tr>
           </Thead>
