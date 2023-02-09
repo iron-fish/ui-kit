@@ -142,7 +142,6 @@ export const BlockTable: ComponentStory<FC> = args => {
     >
       <Box w="100%">
         <CommonTable
-          lgBreakpointName={'md'}
           textTransform={args.textTransform}
           columns={COLUMNS}
           data={args.loading ? emptyData : data}
