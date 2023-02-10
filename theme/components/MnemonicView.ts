@@ -12,6 +12,9 @@ const MnemonicView: ComponentStyleConfig = {
       boxShadow: '0rem 0.25rem 0.6875rem rgba(0, 0, 0, 0.04)',
       borderRadius: '0.25rem',
       padding: '0.75rem 1.5rem 1.5rem',
+      _invalid: {
+        borderColor: NAMED_COLORS.RED,
+      },
     },
     header: {
       color: mode(NAMED_COLORS.GREY, NAMED_COLORS.PALE_GREY)(props),
@@ -33,6 +36,11 @@ const MnemonicView: ComponentStyleConfig = {
       fontFamily: FONTS.FAVORIT,
       _placeholder: {
         color: mode(NAMED_COLORS.GREY, NAMED_COLORS.PALE_GREY)(props),
+      },
+      _invalid: {
+        _placeholder: {
+          color: NAMED_COLORS.RED,
+        },
       },
     },
   }),

@@ -191,7 +191,7 @@ const Autocomplete: FC<AutocompleteProps> = ({
                 key={
                   typeof option.value === 'object'
                     ? Object.values(option.value).join('-')
-                    : option.value
+                    : Object.values(option).join('-')
                 }
                 className={bem(
                   'option-wrapper',

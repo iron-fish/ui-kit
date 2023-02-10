@@ -23,6 +23,7 @@ interface MnemonicInputProps {
   isReadOnly: boolean
   onChange: (value: string) => void
   loaded?: boolean
+  isInvalid?: boolean
 }
 
 const MnemonicInput: FC<MnemonicInputProps> = ({
@@ -33,6 +34,7 @@ const MnemonicInput: FC<MnemonicInputProps> = ({
   isReadOnly,
   onChange,
   loaded = true,
+  isInvalid,
 }) => {
   const $styles = useMultiStyleConfig('MnemonicView', {})
 
@@ -73,6 +75,7 @@ const MnemonicInput: FC<MnemonicInputProps> = ({
             placeholder={!isReadOnly ? placeholder : ''}
             type={isVisible ? 'text' : 'password'}
             sx={$styles.input}
+            isInvalid={isInvalid}
             onChange={changeHandler}
           />
         </Flex>
@@ -86,10 +89,12 @@ interface MnemonicViewProps extends Omit<FlexProps, 'onChange'> {
   placeholder: string
   value?: string[]
   toolTipProps?: TooltipProps
-  isReadOnly: boolean
+  isReadOnly?: boolean
   visible?: boolean
   onChange: (value: string[]) => void
   loaded?: boolean
+  isInvalid?: boolean
+  isInvalidInputs?: boolean[]
 }
 
 const MnemonicView: FC<MnemonicViewProps> = ({
@@ -97,10 +102,12 @@ const MnemonicView: FC<MnemonicViewProps> = ({
   value = [],
   placeholder,
   toolTipProps,
-  isReadOnly,
+  isReadOnly = false,
   visible,
   onChange,
   loaded,
+  isInvalid,
+  isInvalidInputs = [],
   ...rest
 }) => {
   const [$show, $setShow] = useState<boolean>(!!visible)
@@ -122,7 +129,12 @@ const MnemonicView: FC<MnemonicViewProps> = ({
   }, [JSON.stringify(value)])
 
   return (
-    <Flex sx={$styles.container} direction="column" {...rest}>
+    <Flex
+      sx={$styles.container}
+      direction="column"
+      aria-invalid={isInvalid}
+      {...rest}
+    >
       <Flex justifyContent="space-between" pb="0.75rem" alignItems="center">
         <chakra.h6 sx={$styles.header}>{header}</chakra.h6>
         <Box sx={$styles.icons}>
@@ -141,7 +153,7 @@ const MnemonicView: FC<MnemonicViewProps> = ({
         {$currentWords.map((word, index) => {
           return (
             <MnemonicInput
-              key={index}
+              key={`mnemonic-phrase-view-item-${index}`}
               value={word}
               loaded={loaded}
               placeholder={placeholder}
@@ -149,6 +161,7 @@ const MnemonicView: FC<MnemonicViewProps> = ({
               orderNo={index + 1}
               isReadOnly={isReadOnly}
               onChange={onWordChange(index)}
+              isInvalid={isInvalidInputs[index]}
             />
           )
         })}

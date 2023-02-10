@@ -188,7 +188,7 @@ const SelectField: FC<SelectFieldProps> = ({
               key={
                 typeof option.value === 'object'
                   ? Object.values(option.value).join('-')
-                  : option.value
+                  : Object.values(option).join('-')
               }
               className={bem('option-wrapper', {
                 selected: val === option,
