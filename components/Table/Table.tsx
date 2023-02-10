@@ -24,6 +24,15 @@ export const CommonTable: FC<
   textTransform = 'uppercase',
   // eslint-disable-next-line @typescript-eslint/no-empty-function
   onRowClick,
+  tableComponentProps: {
+    tableHeadProps,
+    tableHeadRowProps,
+    tableHeadCellProps,
+    tableBodyProps,
+    tableBodyRowProps,
+    tableBodyCellProps,
+  } = {},
+  tableComponentRowItemProps,
   ...rest
 }) => {
   const $bg = useColorModeValue(NAMED_COLORS.WHITE, NAMED_COLORS.DARKER_GREY)
@@ -34,16 +43,23 @@ export const CommonTable: FC<
 
   return (
     <Table {...rest}>
-      <Thead display={{ base: 'none', lg: 'table-header-group' }}>
-        <Tr>
+      <Thead
+        display={{ base: 'none', lg: 'table-header-group' }}
+        {...tableHeadProps}
+      >
+        <Tr {...tableHeadRowProps}>
           {columns.map(column => (
-            <Th textTransform={textTransform} key={column.key}>
+            <Th
+              textTransform={textTransform}
+              key={column.key}
+              {...tableHeadCellProps}
+            >
               {column.label}
             </Th>
           ))}
         </Tr>
       </Thead>
-      <Tbody>
+      <Tbody {...tableBodyProps}>
         {data?.map((block, index) => (
           <Tr
             key={block?.id || `load-${index}`}
@@ -64,6 +80,7 @@ export const CommonTable: FC<
             p={{ base: '1rem 0', lg: '1rem' }}
             cursor={block && onRowClick ? 'pointer' : 'default'}
             onClick={() => block && onRowClick && onRowClick(block)}
+            {...tableBodyRowProps}
           >
             {columns.map(column => (
               <Td
@@ -87,11 +104,13 @@ export const CommonTable: FC<
                   pr: '2rem',
                   borderRight: borderStyle,
                 }}
+                {...tableBodyCellProps}
               >
                 <RowItem
                   label={column.label}
                   {...column.ItemProps}
                   textTransform={textTransform}
+                  tableComponentProps={tableComponentRowItemProps}
                 >
                   {block ? column.render(block) : <RowItemSpin minW="4rem" />}
                 </RowItem>

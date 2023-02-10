@@ -7,21 +7,32 @@ const RowItem: FC<RowItemProps> = ({
   label = null,
   children,
   textTransform,
+  tableComponentProps: {
+    tableProps,
+    tableHeadProps,
+    tableHeadRowProps,
+    tableHeadCellProps,
+    tableBodyProps,
+    tableBodyRowProps,
+    tableBodyCellProps,
+  } = {},
   ...rest
 }) =>
   label || children ? (
     <Flex direction="column" {...rest}>
-      <Table variant="rowItem">
+      <Table variant="rowItem" {...tableProps}>
         {label && (
-          <Thead>
-            <Tr display={{ base: 'block', lg: 'none' }}>
-              <Th textTransform={textTransform}>{label}</Th>
+          <Thead {...tableHeadProps}>
+            <Tr display={{ base: 'block', lg: 'none' }} {...tableHeadRowProps}>
+              <Th textTransform={textTransform} {...tableHeadCellProps}>
+                {label}
+              </Th>
             </Tr>
           </Thead>
         )}
-        <Tbody>
-          <Tr>
-            <Td>{children}</Td>
+        <Tbody {...tableBodyProps}>
+          <Tr {...tableBodyRowProps}>
+            <Td {...tableBodyCellProps}>{children}</Td>
           </Tr>
         </Tbody>
       </Table>
