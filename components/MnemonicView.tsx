@@ -95,6 +95,15 @@ interface MnemonicViewProps extends Omit<FlexProps, 'onChange'> {
   loaded?: boolean
   isInvalid?: boolean
   isInvalidInputs?: boolean[]
+  wordsAmount?: number
+}
+
+const getCurrentWords = (value: string[], wordsAmount: number): string[] => {
+  let words = value
+  if (value.length < wordsAmount) {
+    words = [...words, ...new Array(wordsAmount - words.length).fill('')]
+  }
+  return words
 }
 
 const MnemonicView: FC<MnemonicViewProps> = ({
@@ -108,6 +117,7 @@ const MnemonicView: FC<MnemonicViewProps> = ({
   loaded,
   isInvalid,
   isInvalidInputs = [],
+  wordsAmount = 12,
   ...rest
 }) => {
   const [$show, $setShow] = useState<boolean>(!!visible)
@@ -121,11 +131,7 @@ const MnemonicView: FC<MnemonicViewProps> = ({
   }
 
   useEffect(() => {
-    $setCurrentWords(isReadOnly ? value : new Array(12).fill(''))
-  }, [])
-
-  useEffect(() => {
-    $setCurrentWords(value.length ? value : new Array(12).fill(''))
+    $setCurrentWords(getCurrentWords(value, wordsAmount))
   }, [JSON.stringify(value)])
 
   return (
