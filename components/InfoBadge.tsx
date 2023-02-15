@@ -1,12 +1,14 @@
 import { FC, ReactNode } from 'react'
-import { Badge, BadgeProps } from '@chakra-ui/react'
+import { Badge, BadgeProps, Text, As } from '@chakra-ui/react'
 import { NAMED_COLORS } from 'theme/constants'
 
 interface InfoBadgeProps extends BadgeProps {
   message: ReactNode
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  textAs?: As<any> | undefined
 }
 
-const InfoBadge: FC<InfoBadgeProps> = ({ message, ...rest }) => (
+const InfoBadge: FC<InfoBadgeProps> = ({ message, textAs = 'h5', ...rest }) => (
   <Badge
     bg={NAMED_COLORS.LIGHT_YELLOW}
     color={NAMED_COLORS.BLACK}
@@ -16,7 +18,7 @@ const InfoBadge: FC<InfoBadgeProps> = ({ message, ...rest }) => (
     textTransform="none"
     {...rest}
   >
-    <h5>{message}</h5>
+    <Text as={textAs}>{message}</Text>
   </Badge>
 )
 
