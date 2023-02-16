@@ -63,6 +63,7 @@ export const MnemonicViewTemplate: ComponentStory<FC> = () => {
         isReadOnly={true}
         visible
         loaded={!loading}
+        wordsAmount={24}
       />
       <Box>
         <h4>Input mode</h4>
@@ -76,6 +77,7 @@ export const MnemonicViewTemplate: ComponentStory<FC> = () => {
           }}
           isReadOnly={false}
           onChange={newPhrase => setSecondPhrase(newPhrase)}
+          wordsAmount={24}
         />
       </Box>
       <Box>
@@ -90,6 +92,7 @@ export const MnemonicViewTemplate: ComponentStory<FC> = () => {
           }}
           isReadOnly={true}
           loaded={false}
+          wordsAmount={24}
         />
       </Box>
       <Box>
@@ -105,7 +108,8 @@ export const MnemonicViewTemplate: ComponentStory<FC> = () => {
           isReadOnly={false}
           onChange={newPhrase => setSecondPhrase(newPhrase)}
           isInvalid={true}
-          isInvalidInputs={[true]}
+          isInvalidInputs={secondPhrase.map(i => !i)}
+          wordsAmount={24}
         />
       </Box>
     </VStack>

@@ -1,4 +1,4 @@
-import { FC, useState, useEffect, ChangeEvent, useMemo, ReactNode } from 'react'
+import { FC, useState, ChangeEvent, useMemo, ReactNode } from 'react'
 
 import {
   Box,
@@ -19,9 +19,9 @@ interface MnemonicInputProps {
   value: string
   placeholder: string
   isVisible: boolean
-  orderNo: number
   isReadOnly: boolean
-  onChange: (value: string) => void
+  index: number
+  onChange: (value: string, index: number) => void
   loaded?: boolean
   isInvalid?: boolean
 }
@@ -30,8 +30,8 @@ const MnemonicInput: FC<MnemonicInputProps> = ({
   value,
   placeholder = 'Empty',
   isVisible,
-  orderNo,
   isReadOnly,
+  index,
   onChange,
   loaded = true,
   isInvalid,
@@ -46,7 +46,7 @@ const MnemonicInput: FC<MnemonicInputProps> = ({
   }, [value, isVisible])
 
   const changeHandler = (e: ChangeEvent<HTMLInputElement>) => {
-    onChange(e.target.value)
+    onChange(e.target.value, index)
   }
 
   return (
@@ -64,7 +64,7 @@ const MnemonicInput: FC<MnemonicInputProps> = ({
             display="flex"
             justifyContent="center"
           >
-            {orderNo}
+            {index + 1}
           </Kbd>
           <Input
             maxLength={8}
@@ -95,6 +95,17 @@ interface MnemonicViewProps extends Omit<FlexProps, 'onChange'> {
   loaded?: boolean
   isInvalid?: boolean
   isInvalidInputs?: boolean[]
+  wordsAmount?: number
+}
+
+function createWordsArray(words: string[], wordsCount: number) {
+  if (words.length === wordsCount) {
+    return words
+  }
+
+  return Array.from({ length: wordsCount }).map((_, i) => {
+    return words[i] || ''
+  })
 }
 
 const MnemonicView: FC<MnemonicViewProps> = ({
@@ -108,25 +119,19 @@ const MnemonicView: FC<MnemonicViewProps> = ({
   loaded,
   isInvalid,
   isInvalidInputs = [],
+  wordsAmount = 12,
   ...rest
 }) => {
   const [$show, $setShow] = useState<boolean>(!!visible)
-  const [$currentWords, $setCurrentWords] = useState<string[]>([])
   const $styles = useMultiStyleConfig('MnemonicView', rest)
 
-  const onWordChange = (index: number) => (word: string) => {
-    const next = [...$currentWords]
-    next[index] = word
-    onChange(next)
+  const wordsArray = createWordsArray(value, wordsAmount)
+
+  const onWordChange = (word: string, index: number) => {
+    const words = [...wordsArray]
+    words[index] = word
+    onChange(words)
   }
-
-  useEffect(() => {
-    $setCurrentWords(isReadOnly ? value : new Array(12).fill(''))
-  }, [])
-
-  useEffect(() => {
-    $setCurrentWords(value.length ? value : new Array(12).fill(''))
-  }, [JSON.stringify(value)])
 
   return (
     <Flex
@@ -150,17 +155,17 @@ const MnemonicView: FC<MnemonicViewProps> = ({
         </Box>
       </Flex>
       <Flex gap="0.625rem" flexWrap="wrap">
-        {$currentWords.map((word, index) => {
+        {wordsArray.map((word, index) => {
           return (
             <MnemonicInput
-              key={`mnemonic-phrase-view-item-${index}`}
+              key={index}
               value={word}
               loaded={loaded}
               placeholder={placeholder}
               isVisible={$show}
-              orderNo={index + 1}
               isReadOnly={isReadOnly}
-              onChange={onWordChange(index)}
+              index={index}
+              onChange={onWordChange}
               isInvalid={isInvalidInputs[index]}
             />
           )
