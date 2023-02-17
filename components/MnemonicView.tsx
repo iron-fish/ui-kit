@@ -96,6 +96,7 @@ interface MnemonicViewProps extends Omit<FlexProps, 'onChange'> {
   isInvalid?: boolean
   isInvalidInputs?: boolean[]
   wordsAmount?: number
+  onBlinkingEyeClick?: (visible: boolean) => void
 }
 
 function createWordsArray(words: string[], wordsCount: number) {
@@ -120,6 +121,7 @@ const MnemonicView: FC<MnemonicViewProps> = ({
   isInvalid,
   isInvalidInputs = [],
   wordsAmount = 12,
+  onBlinkingEyeClick,
   ...rest
 }) => {
   const [$show, $setShow] = useState<boolean>(!!visible)
@@ -146,7 +148,10 @@ const MnemonicView: FC<MnemonicViewProps> = ({
           <IconBlinkingEye
             closed={$show}
             cursor="pointer"
-            onClick={() => $setShow(!$show)}
+            onClick={() => {
+              $setShow(!$show)
+              onBlinkingEyeClick && onBlinkingEyeClick(!$show)
+            }}
             mr="0.9375rem"
           />
           <Tooltip hasArrow={true} {...toolTipProps}>
