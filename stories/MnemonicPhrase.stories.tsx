@@ -21,20 +21,35 @@ const words = [
   'Test',
   'Grass',
   'Milk',
+  'Carrot',
+  'Stick',
+  'Papercut',
+  'Phone',
+  'Keyboard',
+  'Walkway',
+  'Uppercut',
+  'Ball',
+  'Pants',
+  'Test',
+  'Grass',
+  'Milk',
 ]
 
 interface HeaderProps {
   value: string
+  showCopyButton?: boolean
 }
 
-const Header: FC<HeaderProps> = ({ value }) => (
+const Header: FC<HeaderProps> = ({ value, showCopyButton }) => (
   <Flex gap="0.4375rem" alignItems="baseline">
     <h3>Mnemonic phrase</h3>
-    <CopyToClipboardButton
-      value={value}
-      copyTooltipText="CopyToClipBoard"
-      copiedTooltipText="Copied"
-    />
+    {showCopyButton && (
+      <CopyToClipboardButton
+        value={value}
+        copyTooltipText="CopyToClipBoard"
+        copiedTooltipText="Copied"
+      />
+    )}
   </Flex>
 )
 
@@ -42,6 +57,7 @@ export const MnemonicViewTemplate: ComponentStory<FC> = () => {
   const [phrase, setPhrase] = useState([])
   const [secondPhrase, setSecondPhrase] = useState([])
   const [loading, setLoading] = useState(false)
+  const [showCopyButton, setShowCopyButton] = useState(true)
 
   useEffect(() => {
     setLoading(true)
@@ -54,7 +70,9 @@ export const MnemonicViewTemplate: ComponentStory<FC> = () => {
   return (
     <VStack w="100%" flexDirection="column" spacing={16} mb="6rem">
       <MnemonicView
-        header={<Header value={phrase.join(', ')} />}
+        header={
+          <Header value={phrase.join(', ')} showCopyButton={showCopyButton} />
+        }
         value={phrase}
         w="600px"
         toolTipProps={{
@@ -64,6 +82,7 @@ export const MnemonicViewTemplate: ComponentStory<FC> = () => {
         visible
         loaded={!loading}
         wordsAmount={24}
+        onBlinkingEyeClick={setShowCopyButton}
       />
       <Box>
         <h4>Input mode</h4>
