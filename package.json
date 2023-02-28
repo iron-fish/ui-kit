@@ -16,8 +16,8 @@
     "build-storybook": "nps dev.build"
   },
   "dependencies": {
-    "@chakra-ui/icons": "2.0.12",
-    "@chakra-ui/react": "2.4.2",
+    "@chakra-ui/icons": "2.0.17",
+    "@chakra-ui/react": "2.5.1",
     "@emotion/css": "11.7.1",
     "@emotion/react": "11.8.2",
     "@emotion/styled": "11.8.1",
