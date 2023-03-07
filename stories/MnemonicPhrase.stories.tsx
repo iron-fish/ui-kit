@@ -71,7 +71,7 @@ export const MnemonicViewTemplate: ComponentStory<FC> = () => {
     <VStack w="100%" flexDirection="column" spacing={16} mb="6rem">
       <MnemonicView
         header={
-          <Header value={phrase.join(', ')} showCopyButton={showCopyButton} />
+          <Header value={phrase.join(' ')} showCopyButton={showCopyButton} />
         }
         value={phrase}
         w="600px"
