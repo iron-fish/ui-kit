@@ -72,6 +72,7 @@ const TextField: FC<TextFieldProps> = ({
             ref={inputRef}
             value={val}
             variant="unstyled"
+            borderRadius={0}
             onChange={e => {
               setVal(e.target.value)
               InputProps?.onChange && InputProps.onChange(e)
