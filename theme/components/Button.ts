@@ -19,9 +19,7 @@ const Button: ComponentStyleConfig = {
     fontWeight: '400',
     fontFamily: FONTS.FAVORIT,
     lineHeight: '160%',
-    _hover: {
-      transition: 'border-color 300ms ease-in',
-    },
+    transition: 'border-color 300ms ease-in-out',
     _focus: {
       boxShadow: 'none',
     },
