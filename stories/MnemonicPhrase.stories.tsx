@@ -42,7 +42,7 @@ interface HeaderProps {
 
 const Header: FC<HeaderProps> = ({ value, showCopyButton }) => (
   <Flex gap="0.4375rem" alignItems="baseline">
-    <h3>Mnemonic phrase</h3>
+    <h6>Mnemonic phrase</h6>
     {showCopyButton && (
       <CopyToClipboardButton
         value={value}
