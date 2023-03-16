@@ -19,6 +19,8 @@ const Button: ComponentStyleConfig = {
     fontWeight: '400',
     fontFamily: FONTS.FAVORIT,
     lineHeight: '160%',
+    transition:
+      'border-color 300ms ease-in-out, background-color 300ms ease-in-out',
     _focus: {
       boxShadow: 'none',
     },
@@ -84,7 +86,7 @@ const Button: ComponentStyleConfig = {
       boxShadow: '0rem 0.25rem 0.688rem rgba(0, 0, 0, 0.04)',
       border: '0.063rem solid',
       p: '0 1.5rem',
-      borderColor: mode(NAMED_COLORS.LIGHT_GREY, NAMED_COLORS.WHITE)(props),
+      borderColor: mode(NAMED_COLORS.LIGHT_GREY, NAMED_COLORS.DARK_GREY)(props),
       '.chakra-button__icon': {
         fill: mode(NAMED_COLORS.BLACK, NAMED_COLORS.WHITE)(props),
       },
