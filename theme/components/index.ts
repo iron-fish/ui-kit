@@ -19,6 +19,7 @@ import Progress from './Progress'
 import Steps from './Steps'
 import Table from './Table'
 import Tabs from './Tabs'
+import Textarea from './Textarea'
 import TextField from './TextField'
 import Tooltip from './Tooltip'
 
@@ -42,6 +43,7 @@ const ThemedComponents: Record<string, ComponentStyleConfig> = {
   Steps,
   Table,
   Tabs,
+  Textarea,
   TextField,
   Tooltip,
 }
