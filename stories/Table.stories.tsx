@@ -6,7 +6,7 @@ import { NAMED_COLORS } from 'theme/constants'
 import Caret from 'svgx/icon-caret'
 
 export default {
-  title: 'Components/CommonTable',
+  title: 'Components/Table',
   component: CommonTable,
   argTypes: {
     textTransform: {
