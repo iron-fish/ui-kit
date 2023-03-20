@@ -9,30 +9,30 @@ export default {
 } as ComponentMeta<typeof MnemonicView>
 
 const words = [
-  'Carrot',
-  'Stick',
-  'Papercut',
-  'Phone',
-  'Keyboard',
-  'Walkway',
-  'Uppercut',
-  'Ball',
-  'Pants',
-  'Test',
-  'Grass',
-  'Milk',
-  'Carrot',
-  'Stick',
-  'Papercut',
-  'Phone',
-  'Keyboard',
-  'Walkway',
-  'Uppercut',
-  'Ball',
-  'Pants',
-  'Test',
-  'Grass',
-  'Milk',
+  'carrot',
+  'stick',
+  'papercut',
+  'phone',
+  'keyboard',
+  'walkway',
+  'uppercut',
+  'ball',
+  'pants',
+  'test',
+  'grass',
+  'milk',
+  'carrot',
+  'stick',
+  'papercut',
+  'phone',
+  'keyboard',
+  'walkway',
+  'uppercut',
+  'ball',
+  'pants',
+  'test',
+  'grass',
+  'milk',
 ]
 
 interface HeaderProps {
@@ -42,7 +42,7 @@ interface HeaderProps {
 
 const Header: FC<HeaderProps> = ({ value, showCopyButton }) => (
   <Flex gap="0.4375rem" alignItems="baseline">
-    <h3>Mnemonic phrase</h3>
+    <h6>Mnemonic phrase</h6>
     {showCopyButton && (
       <CopyToClipboardButton
         value={value}
@@ -71,7 +71,7 @@ export const MnemonicViewTemplate: ComponentStory<FC> = () => {
     <VStack w="100%" flexDirection="column" spacing={16} mb="6rem">
       <MnemonicView
         header={
-          <Header value={phrase.join(', ')} showCopyButton={showCopyButton} />
+          <Header value={phrase.join(' ')} showCopyButton={showCopyButton} />
         }
         value={phrase}
         w="600px"

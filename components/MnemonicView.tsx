@@ -1,4 +1,12 @@
-import { FC, useState, ChangeEvent, useMemo, ReactNode } from 'react'
+import {
+  FC,
+  useState,
+  ChangeEvent,
+  useMemo,
+  ReactNode,
+  ClipboardEvent,
+  forwardRef,
+} from 'react'
 
 import {
   Box,
@@ -70,7 +78,7 @@ const MnemonicInput: FC<MnemonicInputProps> = ({
             maxLength={8}
             variant={'unstyled'}
             w="5.3125rem"
-            value={isReadOnly ? visibleValue : value}
+            value={isReadOnly || (!isVisible && value) ? visibleValue : value}
             isReadOnly={isReadOnly}
             placeholder={!isReadOnly ? placeholder : ''}
             type={isVisible ? 'text' : 'password'}
@@ -97,6 +105,7 @@ interface MnemonicViewProps extends Omit<FlexProps, 'onChange'> {
   isInvalidInputs?: boolean[]
   wordsAmount?: number
   onBlinkingEyeClick?: (visible: boolean) => void
+  wordsDelimiter?: string
 }
 
 function createWordsArray(words: string[], wordsCount: number) {
@@ -109,75 +118,93 @@ function createWordsArray(words: string[], wordsCount: number) {
   })
 }
 
-const MnemonicView: FC<MnemonicViewProps> = ({
-  header,
-  value = [],
-  placeholder,
-  toolTipProps,
-  isReadOnly = false,
-  visible,
-  onChange,
-  loaded,
-  isInvalid,
-  isInvalidInputs = [],
-  wordsAmount = 12,
-  onBlinkingEyeClick,
-  ...rest
-}) => {
-  const [$show, $setShow] = useState<boolean>(!!visible)
-  const $styles = useMultiStyleConfig('MnemonicView', rest)
+const MnemonicView = forwardRef<HTMLDivElement, MnemonicViewProps>(
+  (
+    {
+      header,
+      value = [],
+      placeholder,
+      toolTipProps,
+      isReadOnly = false,
+      visible,
+      onChange,
+      loaded,
+      isInvalid,
+      isInvalidInputs = [],
+      wordsAmount = 12,
+      onBlinkingEyeClick,
+      wordsDelimiter = ' ',
+      ...rest
+    },
+    ref
+  ) => {
+    const [$show, $setShow] = useState<boolean>(!!visible)
+    const $styles = useMultiStyleConfig('MnemonicView', rest)
 
-  const wordsArray = createWordsArray(value, wordsAmount)
+    const wordsArray = createWordsArray(value, wordsAmount)
 
-  const onWordChange = (word: string, index: number) => {
-    const words = [...wordsArray]
-    words[index] = word
-    onChange(words)
-  }
+    const onWordChange = (word: string, index: number) => {
+      const words = [...wordsArray]
+      words[index] = word
+      onChange(words)
+    }
 
-  return (
-    <Flex
-      sx={$styles.container}
-      direction="column"
-      aria-invalid={isInvalid}
-      {...rest}
-    >
-      <Flex justifyContent="space-between" pb="0.75rem" alignItems="center">
-        <chakra.h6 sx={$styles.header}>{header}</chakra.h6>
-        <Box sx={$styles.icons}>
-          <IconBlinkingEye
-            closed={$show}
-            cursor="pointer"
-            onClick={() => {
-              $setShow(!$show)
-              onBlinkingEyeClick && onBlinkingEyeClick(!$show)
-            }}
-            mr="0.9375rem"
-          />
-          <Tooltip hasArrow={true} {...toolTipProps}>
-            <IconInfo cursor="pointer" />
-          </Tooltip>
-        </Box>
-      </Flex>
-      <Flex gap="0.625rem" flexWrap="wrap">
-        {wordsArray.map((word, index) => {
-          return (
-            <MnemonicInput
-              key={index}
-              value={word}
-              loaded={loaded}
-              placeholder={placeholder}
-              isVisible={$show}
-              isReadOnly={isReadOnly}
-              index={index}
-              onChange={onWordChange}
-              isInvalid={isInvalidInputs[index]}
+    return (
+      <Flex
+        ref={ref}
+        sx={$styles.container}
+        direction="column"
+        aria-invalid={isInvalid}
+        onPaste={(event: ClipboardEvent<HTMLInputElement>) => {
+          const copiedText = event.clipboardData.getData('text')
+          const copiedPhrase = copiedText.split(wordsDelimiter)
+          if (copiedPhrase.length > 1) {
+            event.preventDefault()
+            onChange(copiedPhrase)
+            navigator.clipboard.writeText('')
+          }
+        }}
+        {...rest}
+      >
+        <Flex justifyContent="space-between" pb="0.75rem" alignItems="center">
+          <chakra.h6 sx={$styles.header}>{header}</chakra.h6>
+          <Box sx={$styles.icons}>
+            <IconBlinkingEye
+              closed={$show}
+              cursor="pointer"
+              onClick={() => {
+                $setShow(!$show)
+                onBlinkingEyeClick && onBlinkingEyeClick(!$show)
+              }}
+              mr="0.9375rem"
             />
-          )
-        })}
+            <Tooltip hasArrow={true} {...toolTipProps}>
+              <IconInfo cursor="pointer" />
+            </Tooltip>
+          </Box>
+        </Flex>
+        <Flex gap="0.625rem" flexWrap="wrap">
+          {wordsArray.map((word, index) => {
+            return (
+              <MnemonicInput
+                key={index}
+                value={word}
+                loaded={loaded}
+                placeholder={placeholder}
+                isVisible={$show}
+                isReadOnly={isReadOnly}
+                index={index}
+                onChange={onWordChange}
+                isInvalid={isInvalidInputs[index]}
+              />
+            )
+          })}
+        </Flex>
       </Flex>
-    </Flex>
-  )
-}
+    )
+  }
+)
+
+MnemonicView.displayName = 'MnemonicView'
 
 export default MnemonicView
