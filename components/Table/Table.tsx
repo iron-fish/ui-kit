@@ -24,6 +24,7 @@ export const CommonTable: FC<
   textTransform = 'uppercase',
   // eslint-disable-next-line @typescript-eslint/no-empty-function
   onRowClick,
+  disableHover,
   tableComponentProps: {
     tableHeadProps,
     tableHeadRowProps,
@@ -63,6 +64,7 @@ export const CommonTable: FC<
         {data?.map((block, index) => (
           <Tr
             key={block?.id || `load-${index}`}
+            className={disableHover ? 'no-hover' : ''}
             display={{
               base: 'flex',
               lg: 'table-row',
