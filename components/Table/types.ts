@@ -41,4 +41,5 @@ export interface CommonTableProps<T> extends TableProps {
   onRowClick?: (data: T) => void
   tableComponentProps?: TableComponentProps
   tableComponentRowItemProps?: TableComponentProps
+  disableHover?: boolean
 }

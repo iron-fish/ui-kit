@@ -17,6 +17,9 @@ const Table: ComponentStyleConfig = {
         transition: 'all 300ms ease-in',
         _hover: {
           borderColor: mode(NAMED_COLORS.DEEP_BLUE, NAMED_COLORS.WHITE)(props),
+          '&.no-hover': {
+            borderColor: 'revert',
+          },
         },
       },
     },

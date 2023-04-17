@@ -146,6 +146,7 @@ export const BlockTable: ComponentStory<FC> = args => {
           columns={COLUMNS}
           data={args.loading ? emptyData : data}
           onRowClick={() => alert('row clicked')}
+          disableHover={args.disableHover}
         />
       </Box>
     </Flex>
@@ -154,4 +155,5 @@ export const BlockTable: ComponentStory<FC> = args => {
 BlockTable.args = {
   loading: false,
   textTransform: null,
+  disableHover: false,
 }
