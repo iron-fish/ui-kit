@@ -59,7 +59,7 @@ export const IronFishTheme: DeepPartial<ChakraTheme> = {
       borderColor: NAMED_COLORS.LIGHT_GREY,
       borderRadius: '0.125rem',
       m: '0.2rem',
-      '.chakra-ui-dark &': {
+      _dark: {
         bg: NAMED_COLORS.DARKER_GREY,
         borderColor: NAMED_COLORS.DARK_GREY,
         boxShadow: `0.25rem 0.25rem 0 -0.063rem ${NAMED_COLORS.DARKER_GREY}, 0.25rem 0.25rem ${NAMED_COLORS.DARK_GREY}`,
