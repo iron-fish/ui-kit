@@ -168,7 +168,7 @@ const variants = {
       p: 0,
       flex: 'unset',
     },
-  })
+  }),
 }
 
 const cardTheme = defineMultiStyleConfig({
