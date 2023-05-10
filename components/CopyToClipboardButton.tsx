@@ -6,8 +6,8 @@ import {
   IconButtonProps,
 } from '@chakra-ui/react'
 
-import CopyIcon from 'svgx/icon-copy'
-import CheckIcon from 'svgx/icon-check'
+import CopyIcon from 'svgx/common/icon-copy'
+import CheckIcon from 'svgx/common/icon-check'
 
 export interface CopyToClipboardButtonProps {
   value: string

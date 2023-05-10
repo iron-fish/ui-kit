@@ -3,9 +3,9 @@ import { FC } from 'react'
 
 export const ThreeDotsIcon: FC<IconProps> = props => (
   <Icon
-    w="1.75rem"
-    h="1rem"
-    viewBox="0 0 28 28"
+    width="40px"
+    height="28px"
+    viewBox="0 0 40 28"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
     {...props}

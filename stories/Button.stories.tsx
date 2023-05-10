@@ -1,7 +1,7 @@
 import { FC } from 'react'
 import { Button } from '@chakra-ui/react'
 import { ComponentMeta } from '@storybook/react'
-import IconAdd from 'svgx/icon-add'
+import IconAdd from 'svgx/common/icon-add'
 
 export default {
   title: 'Components/Button',

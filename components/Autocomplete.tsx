@@ -23,7 +23,7 @@ import {
 } from '@chakra-ui/react'
 import useOutsideClickHandler from 'hooks/useOutsideClickHandler'
 import { Option, OptionType, SelectedOption } from './SelectField'
-import DropdownArrow from 'svgx/dropdown-arrow'
+import DropdownArrow from 'svgx/common/dropdown-arrow'
 import useToTop from 'hooks/useToTop'
 
 // eslint-disable-next-line @typescript-eslint/no-var-requires

@@ -2,7 +2,7 @@ import { FC } from 'react'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 import { Flex, Alert, Button } from '@chakra-ui/react'
 import useIronToast from '../kit-hooks/useIronToast'
-import IconInfo from 'svgx/icon-info'
+import IconInfo from 'svgx/common/icon-info'
 
 export default {
   title: 'Components/Toast',
