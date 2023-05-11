@@ -12,7 +12,7 @@ export default {
       control: { type: 'select' },
     },
     variant: {
-      options: ['primary', 'secondary'],
+      options: ['primary', 'secondary', 'ironfish-main'],
       control: { type: 'select' },
     },
   },
@@ -62,4 +62,18 @@ Tertiary.args = {
   ...commonProps,
   variant: 'primary',
   size: 'small',
+}
+
+export const Ironfish: ComponentStory<FC> = args => (
+  <>
+    <Button {...args} mr="2rem">Button</Button>
+    <Button leftIcon={<IconAdd w="22px" h="22px" />} {...args}>
+      Button
+    </Button>
+  </>
+)
+Ironfish.args = {
+  ...commonProps,
+  variant: 'ironfish-main',
+  size: 'medium',
 }
