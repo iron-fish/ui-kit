@@ -66,7 +66,9 @@ Tertiary.args = {
 
 export const Ironfish: ComponentStory<FC> = args => (
   <>
-    <Button {...args} mr="2rem">Button</Button>
+    <Button {...args} mr="2rem">
+      Button
+    </Button>
     <Button leftIcon={<IconAdd w="22px" h="22px" />} {...args}>
       Button
     </Button>

@@ -1,6 +1,11 @@
-import type { ComponentStyleConfig } from '@chakra-ui/theme'
+import type { ComponentStyleConfig } from '@chakra-ui/react'
 
 import { FONTS, NAMED_COLORS } from 'theme/constants'
+
+import { buttonAnatomy as parts } from '@chakra-ui/anatomy'
+import { createMultiStyleConfigHelpers } from '@chakra-ui/styled-system'
+
+const { definePartsStyle } = createMultiStyleConfigHelpers(parts.keys)
 
 const DISABLED_STYLES = {
   bgColor: NAMED_COLORS.LIGHTER_GREY,
@@ -57,7 +62,7 @@ const Button: ComponentStyleConfig = {
     },
   },
   variants: {
-    primary: {
+    primary: definePartsStyle({
       bgColor: NAMED_COLORS.DEEP_BLUE,
       color: NAMED_COLORS.WHITE,
       border: '0.063rem solid',
@@ -101,8 +106,8 @@ const Button: ComponentStyleConfig = {
           },
         },
       },
-    },
-    secondary: {
+    }),
+    secondary: definePartsStyle({
       bgColor: NAMED_COLORS.WHITE,
       color: NAMED_COLORS.DEEP_BLUE,
       boxShadow: '0rem 0.25rem 0.688rem rgba(0, 0, 0, 0.04)',
@@ -147,8 +152,8 @@ const Button: ComponentStyleConfig = {
           },
         },
       },
-    },
-    'ironfish-main': {
+    }),
+    'ironfish-main': definePartsStyle({
       bgColor: NAMED_COLORS.WHITE,
       color: NAMED_COLORS.DEEP_BLUE,
       boxShadow: `0.25rem 0.25rem 0rem ${NAMED_COLORS.BLACK}`,
@@ -201,8 +206,8 @@ const Button: ComponentStyleConfig = {
           boxShadow: `0.25rem 0.25rem 0rem ${NAMED_COLORS.GREY}`,
         },
       },
-    },
-    navItem: {
+    }),
+    navItem: definePartsStyle({
       h: '2.5rem',
       w: '100%',
       fontSize: '0.875rem',
@@ -251,7 +256,7 @@ const Button: ComponentStyleConfig = {
           display: 'none',
         },
       },
-    },
+    }),
   },
 }
 
