@@ -96,7 +96,7 @@ interface MnemonicViewProps extends Omit<FlexProps, 'onChange'> {
   header: ReactNode
   placeholder: string
   value?: string[]
-  toolTipProps?: TooltipProps
+  toolTipProps?: Omit<TooltipProps, 'children'>
   isReadOnly?: boolean
   visible?: boolean
   onChange: (value: string[]) => void
@@ -106,6 +106,7 @@ interface MnemonicViewProps extends Omit<FlexProps, 'onChange'> {
   wordsAmount?: number
   onBlinkingEyeClick?: (visible: boolean) => void
   wordsDelimiter?: string
+  showInfoIcon?: boolean
 }
 
 function createWordsArray(words: string[], wordsCount: number) {
@@ -134,6 +135,7 @@ const MnemonicView = forwardRef<HTMLDivElement, MnemonicViewProps>(
       wordsAmount = 12,
       onBlinkingEyeClick,
       wordsDelimiter = ' ',
+      showInfoIcon = true,
       ...rest
     },
     ref
@@ -176,11 +178,12 @@ const MnemonicView = forwardRef<HTMLDivElement, MnemonicViewProps>(
                 $setShow(!$show)
                 onBlinkingEyeClick && onBlinkingEyeClick(!$show)
               }}
-              mr="0.9375rem"
             />
-            <Tooltip hasArrow={true} {...toolTipProps}>
-              <IconInfo cursor="pointer" />
-            </Tooltip>
+            {showInfoIcon && (
+              <Tooltip hasArrow={true} {...toolTipProps}>
+                <IconInfo ml="0.9375rem" cursor="pointer" />
+              </Tooltip>
+            )}
           </Box>
         </Flex>
         <Flex gap="0.625rem" flexWrap="wrap">
