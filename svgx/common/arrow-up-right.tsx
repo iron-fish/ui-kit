@@ -3,16 +3,17 @@ import { FC } from 'react'
 
 export const ArrowUpRight: FC<IconProps> = props => (
   <Icon
-    height="17px"
-    width="16px"
-    viewBox="0 0 16 17"
+    height="18px"
+    width="18px"
+    viewBox="0 0 18 18"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
     {...props}
   >
     <path
-      d="M0 15.402 1.504 17 13.867 3.865v7.468H16V0H5.333v2.267h7.03L0 15.402Z"
-      fill="currentColor"
+      stroke="currentColor"
+      strokeWidth="2"
+      d="M3.888 1c2.341 2.03 8.148 4.964 12.644.468m0 0-.012.012m.012-.012L17 1m0 13.112c-2.027-2.34-4.959-8.138-.48-12.632m0 0L1 17"
     />
   </Icon>
 )
