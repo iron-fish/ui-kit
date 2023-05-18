@@ -16,7 +16,10 @@ import {
   InputProps as IProps,
   Popover,
   PopoverBody,
+  PopoverBodyProps,
   PopoverContent,
+  PopoverContentProps,
+  PopoverProps,
   PopoverTrigger,
   useDisclosure,
   useMultiStyleConfig,
@@ -50,6 +53,12 @@ interface AutocompleteProps extends FlexProps {
   onSelectOption?: (option: OptionType) => void
   isClearable?: boolean
   onClear?: () => void
+  maxMenuHeight?: number
+  popoverProps?: {
+    popover: PopoverProps
+    popoverContent: PopoverContentProps
+    popoverBody: PopoverBodyProps
+  }
 }
 
 const Autocomplete: FC<AutocompleteProps> = ({
@@ -65,6 +74,8 @@ const Autocomplete: FC<AutocompleteProps> = ({
   filterOption = defaultOptionsFilter,
   isClearable,
   onClear = () => void 0,
+  maxMenuHeight,
+  popoverProps,
   ...props
 }) => {
   const [val, setVal] = useState<OptionType | null>(value)
@@ -108,6 +119,7 @@ const Autocomplete: FC<AutocompleteProps> = ({
       initialFocusRef={inputRef as RefObject<HTMLInputElement>}
       offset={[0, 0]}
       placement="bottom"
+      {...popoverProps?.popover}
     >
       <PopoverTrigger>
         <Flex
@@ -176,14 +188,27 @@ const Autocomplete: FC<AutocompleteProps> = ({
       </PopoverTrigger>
       <PopoverContent
         w="100%"
+        {...popoverProps?.popoverContent}
         sx={{
           ...styles?.popover,
           borderBottomRadius: isToTop ? 0 : '0.25rem',
           borderTopRadius: isToTop ? '0.25rem' : 0,
+          ...popoverProps?.popoverContent.sx,
         }}
         ref={popoverRef as RefObject<HTMLDivElement>}
       >
-        <PopoverBody w="100%">
+        <PopoverBody
+          w="100%"
+          {...popoverProps?.popoverBody}
+          sx={{
+            ...(maxMenuHeight && {
+              maxHeight: `${maxMenuHeight}px`,
+              overflowY: 'scroll',
+              scrollSnapType: 'y mandatory',
+            }),
+            ...popoverProps?.popoverBody.sx,
+          }}
+        >
           {optionsToDisplay.length > 0 ? (
             optionsToDisplay.map(option => (
               <Box
@@ -197,7 +222,12 @@ const Autocomplete: FC<AutocompleteProps> = ({
                   'option-wrapper',
                   val === option ? 'selected' : ''
                 )}
-                sx={styles?.optionWrapper}
+                sx={{
+                  ...styles?.optionWrapper,
+                  ...(maxMenuHeight && {
+                    scrollSnapAlign: 'start',
+                  }),
+                }}
                 onClick={() => {
                   if (val !== option) {
                     setVal(option)
