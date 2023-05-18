@@ -155,8 +155,10 @@ const Button: ComponentSingleStyleConfig = {
       border: '0.063rem solid',
       p: '0 1.5rem',
       borderColor: NAMED_COLORS.BLACK,
+      h: '2.5rem',
       transition: 'box-shadow ease 0.1s, backgroundColor ease 0.1s,',
       '.chakra-button__icon': {
+        marginRight: '0.5rem',
         fill: NAMED_COLORS.BLACK,
         _dark: { fill: NAMED_COLORS.WHITE },
       },
@@ -184,9 +186,7 @@ const Button: ComponentSingleStyleConfig = {
           },
         },
         _dark: {
-          bgColor: NAMED_COLORS.DARK_GREY,
-          boxShadow: `0.25rem 0.25rem 0rem ${NAMED_COLORS.GREY}`,
-          borderColor: NAMED_COLORS.GREY,
+          bgColor: NAMED_COLORS.LIGHT_BLACK,
         },
       },
       _disabled: {
