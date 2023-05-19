@@ -41,7 +41,7 @@ interface HeaderProps {
 }
 
 const Header: FC<HeaderProps> = ({ value, showCopyButton }) => (
-  <Flex gap="0.4375rem" alignItems="baseline">
+  <Flex gap="0.4375rem" alignItems="center">
     <h6>Mnemonic phrase</h6>
     {showCopyButton && (
       <CopyToClipboardButton
@@ -52,6 +52,38 @@ const Header: FC<HeaderProps> = ({ value, showCopyButton }) => (
     )}
   </Flex>
 )
+
+export const MnemonicViewBasic: ComponentStory<FC> = args => {
+  const [showCopyButton, setShowCopyButton] = useState(true)
+  const [phrase, setPhrase] = useState(words)
+
+  return (
+    <MnemonicView
+      header={
+        <Header value={phrase.join(' ')} showCopyButton={showCopyButton} />
+      }
+      value={phrase}
+      w="600px"
+      toolTipProps={{
+        label: 'Secret phrase',
+      }}
+      wordsAmount={24}
+      onBlinkingEyeClick={() => setShowCopyButton(!showCopyButton)}
+      onChange={newPhrase => {
+        setPhrase(newPhrase)
+      }}
+      isInvalidInputs={phrase.map(i => !i)}
+      {...args}
+    />
+  )
+}
+
+MnemonicViewBasic.args = {
+  isReadOnly: true,
+  loaded: true,
+  isInvalid: false,
+  showInfoIcon: true,
+}
 
 export const MnemonicViewTemplate: ComponentStory<FC> = () => {
   const [phrase, setPhrase] = useState([])
@@ -79,7 +111,6 @@ export const MnemonicViewTemplate: ComponentStory<FC> = () => {
           label: 'Secret phrase',
         }}
         isReadOnly={true}
-        visible
         loaded={!loading}
         wordsAmount={24}
         onBlinkingEyeClick={setShowCopyButton}
