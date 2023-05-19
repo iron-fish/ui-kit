@@ -3,8 +3,8 @@ import { FC, useState, useEffect } from 'react'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 import { Stack, Box, Flex } from '@chakra-ui/react'
 import SearchAutocomplete from 'components/SearchAutocomplete'
-import IconSearch from 'svgx/icon-search'
-import IconBlock from 'svgx/icon-block'
+import IconSearch from 'svgx/common/icon-search'
+import IconBlock from 'svgx/ironfish/ironfish-block-icon'
 import { NAMED_COLORS } from 'theme/constants'
 
 export default {

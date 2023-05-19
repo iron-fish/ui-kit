@@ -2,7 +2,7 @@ import { FC } from 'react'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 import { Alert, VStack } from '@chakra-ui/react'
 import IronAlert from 'components/IronAlert'
-import IconInfo from 'svgx/icon-info'
+import IconInfo from 'svgx/common/icon-info'
 
 export default {
   title: 'Components/Alert',

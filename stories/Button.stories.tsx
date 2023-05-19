@@ -1,7 +1,7 @@
 import { FC } from 'react'
 import { Button } from '@chakra-ui/react'
 import { ComponentMeta } from '@storybook/react'
-import IconAdd from 'svgx/icon-add'
+import IconAdd from 'svgx/common/icon-add'
 
 export default {
   title: 'Components/Button',
@@ -12,7 +12,7 @@ export default {
       control: { type: 'select' },
     },
     variant: {
-      options: ['primary', 'secondary'],
+      options: ['primary', 'secondary', 'ironfish-main'],
       control: { type: 'select' },
     },
   },
@@ -62,4 +62,20 @@ Tertiary.args = {
   ...commonProps,
   variant: 'primary',
   size: 'small',
+}
+
+export const Ironfish: ComponentStory<FC> = args => (
+  <>
+    <Button {...args} mr="2rem">
+      Button
+    </Button>
+    <Button leftIcon={<IconAdd w="22px" h="22px" />} {...args}>
+      Button
+    </Button>
+  </>
+)
+Ironfish.args = {
+  ...commonProps,
+  variant: 'ironfish-main',
+  size: 'medium',
 }

@@ -20,8 +20,8 @@ import {
   Input,
   Skeleton,
 } from '@chakra-ui/react'
-import IconBlinkingEye from 'svgx/icon-blinkingEye'
-import IconInfo from 'svgx/icon-info'
+import IconBlinkingEye from 'svgx/common/icon-blinkingEye'
+import IconInfo from 'svgx/common/icon-info'
 
 interface MnemonicInputProps {
   value: string

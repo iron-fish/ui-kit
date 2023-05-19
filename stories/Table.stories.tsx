@@ -3,7 +3,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react'
 import { Box, Flex, Link, chakra } from '@chakra-ui/react'
 import { CommonTable } from 'components'
 import { NAMED_COLORS } from 'theme/constants'
-import Caret from 'svgx/icon-caret'
+import Caret from 'svgx/common/icon-caret'
 
 export default {
   title: 'Components/Table',

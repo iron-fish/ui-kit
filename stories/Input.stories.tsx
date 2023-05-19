@@ -4,9 +4,9 @@ import { Box, HStack, Button, Stack } from '@chakra-ui/react'
 import TextField from 'components/TextField'
 import FieldGroup from 'components/FieldGroup'
 import ColorModeSwitcher from 'components/ColorModeSwitcher'
-import IconCopy from 'svgx/icon-copy'
-import IconEye from 'svgx/icon-eye'
-import IconInfo from 'svgx/icon-info'
+import IconCopy from 'svgx/common/icon-copy'
+import IconEye from 'svgx/common/icon-eye'
+import IconInfo from 'svgx/common/icon-info'
 import { NAMED_COLORS } from 'theme/constants'
 
 export default {

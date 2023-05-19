@@ -1,8 +1,8 @@
 import { FC } from 'react'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 import { Button, Box, Stack, Kbd } from '@chakra-ui/react'
-import ArrowDownLeft from 'svgx/arrow-down-left'
-import IconHome from 'svgx/icon-home'
+import ArrowDownLeft from 'svgx/common/arrow-down-left'
+import IconHome from 'svgx/common/icon-home'
 
 export default {
   title: 'Components/SideBarNavigationItem',

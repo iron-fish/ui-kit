@@ -7,7 +7,7 @@ import {
   Stack,
   Box,
 } from '@chakra-ui/react'
-import IconSearch from 'svgx/icon-search'
+import IconSearch from 'svgx/common/icon-search'
 
 export default {
   title: 'Components/SearchInput',

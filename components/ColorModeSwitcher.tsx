@@ -5,8 +5,8 @@ import {
   chakra,
 } from '@chakra-ui/react'
 import { FC, Fragment } from 'react'
-import IconDarkMode from 'svgx/icon-darkmode'
-import IconLightMode from 'svgx/icon-lightmode'
+import IconDarkMode from 'svgx/common/icon-darkmode'
+import IconLightMode from 'svgx/common/icon-lightmode'
 
 type Bordered = {
   withBorder?: boolean

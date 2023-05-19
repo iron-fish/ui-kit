@@ -9,7 +9,7 @@ import {
   MenuListProps,
   MenuProps,
 } from '@chakra-ui/react'
-import ThreeDotsIcon from 'svgx/three-dots-icon'
+import ThreeDotsIcon from 'svgx/common/three-dots-icon'
 
 export interface MenuItemsType {
   key: string

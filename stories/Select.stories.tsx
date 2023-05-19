@@ -2,7 +2,7 @@ import { FC, useState, useEffect } from 'react'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 import SelectField from 'components/SelectField'
 import { Flex, Box, Stack, VStack } from '@chakra-ui/react'
-import ArrowUpArrowDownIcon from 'svgx/arrow-up-arrow-down-icon'
+import ArrowUpArrowDownIcon from 'svgx/common/arrow-up-arrow-down-icon'
 
 export default {
   title: 'Components/Select',

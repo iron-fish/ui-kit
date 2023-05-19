@@ -12,8 +12,8 @@ import {
   useMultiStyleConfig,
   useStyleConfig,
 } from '@chakra-ui/react'
-import DropdownArrow from 'svgx/dropdown-arrow'
-import CloseIcon from 'svgx/close-icon'
+import DropdownArrow from 'svgx/common/dropdown-arrow'
+import CloseIcon from 'svgx/common/close-icon'
 import useToTop from 'hooks/useToTop'
 
 // This is avoid error: Could not find a declaration file for module 'bem'.
