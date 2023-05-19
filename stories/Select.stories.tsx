@@ -219,7 +219,7 @@ export const MaxMenuHeightExample: ComponentStory<FC> = () => (
   <SelectField
     label="Select Label"
     w="50%"
-    maxMenuHeight={130}
+    maxMenuHeight={325}
     options={[...new Array(20)].map((item, index) => ({
       label: `Test${index}`,
       helperText: `This is ${index} option`,
