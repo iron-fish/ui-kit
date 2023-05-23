@@ -6,7 +6,10 @@ import {
   FlexProps,
   Popover,
   PopoverBody,
+  PopoverBodyProps,
   PopoverContent,
+  PopoverContentProps,
+  PopoverProps,
   PopoverTrigger,
   useDisclosure,
   useMultiStyleConfig,
@@ -93,6 +96,12 @@ interface SelectFieldProps extends FlexProps {
   onSelectOption?: (option: OptionType) => void
   isClearable?: boolean
   onClear?: () => void
+  maxMenuHeight?: number
+  popoverProps?: {
+    popover: PopoverProps
+    popoverContent: PopoverContentProps
+    popoverBody: PopoverBodyProps
+  }
 }
 
 const SelectField: FC<SelectFieldProps> = ({
@@ -105,6 +114,8 @@ const SelectField: FC<SelectFieldProps> = ({
   onSelectOption = () => void 0,
   isClearable,
   onClear = () => void 0,
+  maxMenuHeight,
+  popoverProps,
   ...props
 }) => {
   const [val, setVal] = useState<OptionType | null>(null)
@@ -126,6 +137,7 @@ const SelectField: FC<SelectFieldProps> = ({
       onClose={onClose}
       offset={[0, 0]}
       placement={props.size !== 'compact' ? 'bottom' : 'bottom-end'}
+      {...popoverProps?.popover}
     >
       <PopoverTrigger>
         <Flex
@@ -174,14 +186,27 @@ const SelectField: FC<SelectFieldProps> = ({
       </PopoverTrigger>
       <PopoverContent
         w="100%"
+        {...popoverProps?.popoverContent}
         sx={{
           ...styles?.popover,
           borderBottomRadius: isToTop ? 0 : '0.25rem',
           borderTopRadius: isToTop ? '0.25rem' : 0,
+          ...popoverProps?.popoverContent.sx,
         }}
         ref={containerRef as RefObject<HTMLDivElement>}
       >
-        <PopoverBody w="100%">
+        <PopoverBody
+          w="100%"
+          {...popoverProps?.popoverBody}
+          sx={{
+            ...(maxMenuHeight && {
+              maxHeight: `${maxMenuHeight}px`,
+              overflowY: 'scroll',
+              scrollSnapType: 'y mandatory',
+            }),
+            ...popoverProps?.popoverBody.sx,
+          }}
+        >
           {options.map(option => (
             <Box
               w="100%"
@@ -193,7 +218,12 @@ const SelectField: FC<SelectFieldProps> = ({
               className={bem('option-wrapper', {
                 selected: val === option,
               })}
-              sx={styles?.optionWrapper}
+              sx={{
+                ...styles?.optionWrapper,
+                ...(maxMenuHeight && {
+                  scrollSnapAlign: 'start',
+                }),
+              }}
               onClick={() => {
                 if (val !== option) {
                   setVal(option)
