@@ -4,12 +4,9 @@ import Alert from './Alert'
 import Autocomplete from './Autocomplete'
 import Button from './Button'
 import Card from './Card'
-import ColorModeSwitcher from './ColorModeSwitcher'
 import Checkbox from './Checkbox'
+import ColorModeSwitcher from './ColorModeSwitcher'
 import FieldGroup from './FieldGroup'
-import SearchAutocomplete from './SearchAutocomplete'
-import SelectField from './SelectField'
-import Skeleton from './Skeleton'
 import Input from './Input'
 import Kbd from './Kbd'
 import Link from './Link'
@@ -17,7 +14,11 @@ import Menu from './Menu'
 import MnemonicView from './MnemonicView'
 import Option from './Option'
 import Progress from './Progress'
+import SearchAutocomplete from './SearchAutocomplete'
+import SelectField from './SelectField'
+import Skeleton from './Skeleton'
 import Steps from './Steps'
+import Switch from './Switch'
 import Table from './Table'
 import Tabs from './Tabs'
 import Textarea from './Textarea'
@@ -29,12 +30,9 @@ const ThemedComponents: Record<string, ComponentStyleConfig> = {
   Autocomplete,
   Button,
   Card,
-  ColorModeSwitcher,
   Checkbox,
+  ColorModeSwitcher,
   FieldGroup,
-  SelectField,
-  SearchAutocomplete,
-  Skeleton,
   Input,
   Kbd,
   Link,
@@ -42,7 +40,11 @@ const ThemedComponents: Record<string, ComponentStyleConfig> = {
   MnemonicView,
   Option,
   Progress,
+  SearchAutocomplete,
+  SelectField,
+  Skeleton,
   Steps,
+  Switch,
   Table,
   Tabs,
   Textarea,
