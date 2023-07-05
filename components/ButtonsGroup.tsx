@@ -39,7 +39,7 @@ const ButtonsGroup: FC<ButtonsGroupProps> = ({
   return (
     <Menu {...menuProps}>
       <MenuButton {...menuButtonProps}>
-        <ThreeDotsIcon mb="5px" mr="3px" />
+        <ThreeDotsIcon display="block" w="100%" />
       </MenuButton>
       <MenuList {...menuListProps}>
         {menuItems.map(({ key, label, onClick }) => (
