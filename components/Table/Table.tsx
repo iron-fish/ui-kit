@@ -5,6 +5,9 @@
 import { FC } from 'react'
 
 import {
+  Link,
+  LinkOverlay,
+  LinkBox,
   Table,
   Tbody,
   Td,
@@ -28,6 +31,7 @@ export const CommonTable: FC<
   textTransform = 'uppercase',
   // eslint-disable-next-line @typescript-eslint/no-empty-function
   onRowClick,
+  onRowHref,
   disableHover,
   tableComponentProps: {
     tableHeadProps,
@@ -65,52 +69,46 @@ export const CommonTable: FC<
         </Tr>
       </Thead>
       <Tbody {...tableBodyProps}>
-        {data?.map((block, index) => (
-          <Tr
-            key={block?.id || `load-${index}`}
-            className={disableHover ? 'no-hover' : ''}
-            display={{
-              base: 'flex',
-              lg: 'table-row',
-            }}
-            flexWrap={{
-              base: 'wrap',
-              lg: 'nowrap',
-            }}
-            bg={$bg}
-            mb="1rem"
-            border="0.063rem solid"
-            borderRadius="0.25rem"
-            borderColor="inherit"
-            boxShadow="0 0.25rem 0.668rem rgba(0, 0, 0, 0.04)"
-            p={{ base: '1rem 0', lg: '1rem' }}
-            cursor={block && onRowClick ? 'pointer' : 'default'}
-            onClick={() => block && onRowClick && onRowClick(block)}
-            {...tableBodyRowProps}
-          >
-            {columns.map(column => (
-              <Td
-                key={column.key}
-                {...column.WrapperProps}
-                px={{
-                  base: '2rem',
-                  lg: 'inherit',
+        {data?.map((block, index) => {
+          const items = columns.map(column => (
+            <Td
+              key={column.key}
+              {...column.WrapperProps}
+              px={{
+                base: '2rem',
+                lg: 'inherit',
+              }}
+              py={{
+                base: '1rem',
+                lg: '1.625rem',
+              }}
+              borderTop={borderStyle}
+              borderBottom={borderStyle}
+              _first={{
+                pl: '2rem',
+                borderLeft: borderStyle,
+              }}
+              _last={{
+                pr: '2rem',
+                borderRight: borderStyle,
+              }}
+              {...tableBodyCellProps}
+            >
+              <LinkOverlay
+                as={Link}
+                href={onRowHref ? onRowHref(block) : undefined}
+                style={{
+                  display: 'flex',
+                  position: 'inherit',
+                  color: 'inherit',
+                  outline: 'inherit',
+                  outlineOffset: 'inherit',
+                  fontStyle: 'inherit',
+                  fontSize: 'inherit',
+                  lineHeight: 'inherit',
+                  fontWeight: 'inherit',
+                  fontFamily: 'inherit',
                 }}
-                py={{
-                  base: '1rem',
-                  lg: '1.625rem',
-                }}
-                borderTop={borderStyle}
-                borderBottom={borderStyle}
-                _first={{
-                  pl: '2rem',
-                  borderLeft: borderStyle,
-                }}
-                _last={{
-                  pr: '2rem',
-                  borderRight: borderStyle,
-                }}
-                {...tableBodyCellProps}
               >
                 <RowItem
                   label={column.label}
@@ -120,10 +118,49 @@ export const CommonTable: FC<
                 >
                   {block ? column.render(block) : <RowItemSpin minW="4rem" />}
                 </RowItem>
-              </Td>
-            ))}
-          </Tr>
-        ))}
+              </LinkOverlay>
+            </Td>
+          ))
+
+          return (
+            <LinkBox
+              transform="scale(1)"
+              as={Tr}
+              key={block?.id || `load-${index}`}
+              className={disableHover ? 'no-hover' : ''}
+              display={{
+                base: 'flex',
+                lg: 'table-row',
+              }}
+              flexWrap={{
+                base: 'wrap',
+                lg: 'nowrap',
+              }}
+              bg={$bg}
+              mb="1rem"
+              border="0.063rem solid"
+              borderRadius="0.25rem"
+              borderColor="inherit"
+              boxShadow="0 0.25rem 0.668rem rgba(0, 0, 0, 0.04)"
+              p={{ base: '1rem 0', lg: '1rem' }}
+              cursor={
+                block && (onRowClick || onRowHref) ? 'pointer' : 'default'
+              }
+              onClick={
+                onRowClick
+                  ? e => {
+                      e.preventDefault()
+                      e.stopPropagation()
+                      block && onRowClick && onRowClick(block)
+                    }
+                  : undefined
+              }
+              {...tableBodyRowProps}
+            >
+              {items}
+            </LinkBox>
+          )
+        })}
       </Tbody>
     </Table>
   )

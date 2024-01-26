@@ -4,7 +4,7 @@
 
 import { FC, useState, useEffect } from 'react'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
-import { Box, Flex, Link, chakra } from '@chakra-ui/react'
+import { Box, Flex, chakra, Link } from '@chakra-ui/react'
 import { CommonTable } from 'components'
 import { NAMED_COLORS } from 'theme/constants'
 import Caret from 'svgx/common/icon-caret'
@@ -109,8 +109,9 @@ const COLUMNS: ColumnProps<BlockType>[] = [
     ItemProps: {
       justifyContent: 'flex-end',
     },
-    render: () => (
+    render: (block: BlockType) => (
       <Link
+        href={block ? `/block/${block.hash}/details` : null}
         sx={{
           color: NAMED_COLORS.LIGHT_BLUE,
           _hover: {
@@ -149,7 +150,12 @@ export const BlockTable: ComponentStory<FC> = args => {
           textTransform={args.textTransform}
           columns={COLUMNS}
           data={args.loading ? emptyData : data}
-          onRowClick={() => alert('row clicked')}
+          onRowClick={args.useHref ? undefined : () => alert('row clicked')}
+          onRowHref={
+            args.useHref
+              ? (row: BlockType | null) => (row ? '/' + row.hash : '')
+              : undefined
+          }
           disableHover={args.disableHover}
         />
       </Box>
@@ -160,4 +166,5 @@ BlockTable.args = {
   loading: false,
   textTransform: null,
   disableHover: false,
+  useHref: false,
 }
